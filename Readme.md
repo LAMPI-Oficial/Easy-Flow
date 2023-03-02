@@ -1,6 +1,6 @@
-## Achados && Perdidos
+## Easy Flow
 
-- Aplicação desenvolvida na linguagem Java e frameWork Spring Boot.
+- Aplicação desenvolvida na linguagem Dart e framework Flutter.
 - Seguirá o desenvolvimento atráves da arquitetura MVC (Model - Visual - Control).
   
 ![enter image description here](https://book.cakephp.org/1.3/pt/_images/basic_mvc.png)
@@ -53,6 +53,7 @@ Segue abaixo o fluxo da etapa de code review
 - Matheus Farias - Desenvolvedor 
 - Julia Evangelisa - Q&A
 - Paulo Vinicius - Q&A
+- Raul Pereira - UX/UI
 
 ## Links úteis
 
@@ -62,4 +63,4 @@ Segue abaixo o fluxo da etapa de code review
 ## Parceria
 
 
-Laboratorio do Grupo Discente de Programação e Projetos Inovadores - GDPPI
+DARM Labs
