@@ -57,8 +57,8 @@ Segue abaixo o fluxo da etapa de code review
 
 ## Links úteis
 
-- [Figma](https://www.figma.com/file/deZwAfaPkXNOtwHo1QnPgz/achados-e-perdidos?node-id=0%3A1&t=HUK3Zx1sZ7zsUdW2-1)
-- [Documentação](https://docs.google.com/document/d/1XcWkNQvsFP0NXcAHzRN45u2JcigKjdJkOSZCQ-xY8XI/edit?usp=sharing)
+- [Figma](https://www.figma.com/file/ftvjAMg5xcMjU0eJUTABm5/EasyFlow?node-id=176%3A1677&t=JVQvs2wThYzPqb1p-1)
+- [Documentação](https://docs.google.com/document/d/1_5eT4xgSPMJzlIKatAWG4liNMxcG47C-smGBBeAcTcQ/edit?usp=sharing)
 
 ## Parceria
 
