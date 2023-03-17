@@ -12,10 +12,10 @@ class ListingHoraryPage extends GetView<ListingHoraryController> {
       builder: (context, constraints) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('ListingHoraryPage'),
+            title: const Text('Listagem de Horários'),
           ),
           body: const SafeArea(
-            child: Text('ListingHoraryController'),
+            child: Text('Listagem de Horários'),
           ),
         );
       },
