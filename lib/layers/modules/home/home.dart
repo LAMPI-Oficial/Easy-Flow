@@ -1,4 +1,6 @@
 import 'package:easyflow/layers/modules/home/components/home_tile.dart';
+import 'package:easyflow/layers/modules/home/pages/announcements.dart';
+import 'package:easyflow/layers/modules/home/pages/representatives.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -10,6 +12,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   String opcao = "Comunicados";
+
   @override
   Widget build(BuildContext context) {
     final tamanho = MediaQuery.of(context).size.height;
@@ -76,6 +79,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ),
         ),
       ),
+      body: opcao == "Representantes"
+          ? PageRepresentatives()
+          : const PageAnnouncements()
     );
   }
 }
