@@ -33,7 +33,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               borderSide: const BorderSide(color: Colors.white),
               borderRadius: BorderRadius.circular(8),
             ),
-            fillColor: Colors.white,
+            fillColor: Colors.white,   
             prefixIcon: const Icon(Icons.search),
           ),
         ),
