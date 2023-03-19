@@ -12,10 +12,12 @@ import 'package:easyflow/layers/modules/forgot_password/pages/email_forgot_passw
 import 'package:easyflow/layers/modules/forgot_password/pages/code_forgot_password_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/new_password_forgot_password_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/success_forgot_password_page.dart';
+
+import '../../layers/modules/horary/horary_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.SPLASH_SCREEN;
+  static const initialRoute = Routes.LISTING_HORARY;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -43,16 +45,20 @@ abstract class AppPages {
     GetPage(
       name: Routes.FORGOT_PASSWORD_CODE,
       page: () => CodeForgotPasswordPage(),
-         binding: ForgotPasswordBinding(),
+      binding: ForgotPasswordBinding(),
     ),
     GetPage(
       name: Routes.FORGOT_PASSWORD_NEW_PASSWORD,
       page: () => NewPasswordForgotPasswordPage(),
-         binding: ForgotPasswordBinding(),
+      binding: ForgotPasswordBinding(),
     ),
     GetPage(
       name: Routes.FORGOT_PASSWORD_SUCCESS,
       page: () => SuccessForgotPasswordPage(),
+    ),
+    GetPage(
+      name: Routes.LISTING_HORARY,
+      page: () => HoraryPage(),
     )
   ];
 }
