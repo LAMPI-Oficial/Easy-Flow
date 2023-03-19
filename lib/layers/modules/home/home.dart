@@ -41,7 +41,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 hintText: "Buscar",
-                
                 hintStyle: const TextStyle(
                   fontSize: 16,
                 ),

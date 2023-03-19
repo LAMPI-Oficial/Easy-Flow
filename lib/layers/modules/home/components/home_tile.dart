@@ -8,13 +8,14 @@ class HomeTile extends StatelessWidget {
     Key? key,
     required this.tile,
     required this.isSelected,
-
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: tile == "Comunicados" ? Alignment.centerRight : Alignment.centerLeft,
+       alignment: tile == "Representantes"
+          ? Alignment.centerLeft
+          : Alignment.centerRight,
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 8,
@@ -28,6 +29,7 @@ class HomeTile extends StatelessWidget {
         ),
         child: Text(
           tile,
+          textAlign: TextAlign.start,
           style: TextStyle(
             color: isSelected ? Theme.of(context).primaryColor : Colors.white,
             fontSize: 13,
