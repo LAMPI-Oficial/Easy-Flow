@@ -1,3 +1,4 @@
+import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/modules/horary/widgets/list_horary_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,9 @@ class HoraryPage extends GetView<HoraryController> {
                 title: const Text('Horário'),
               ),
               floatingActionButton: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.ADD_HORARY);
+                },
                 child: const Icon(Icons.add),
               ),
               body: SafeArea(
