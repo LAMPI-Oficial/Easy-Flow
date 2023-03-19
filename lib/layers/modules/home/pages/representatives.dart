@@ -61,6 +61,11 @@ class PageRepresentatives extends StatelessWidget {
               padding: const EdgeInsets.only(top: 2, left: 4),
               child: Card(
                 elevation: 1,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    8,
+                  ),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,

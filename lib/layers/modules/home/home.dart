@@ -35,8 +35,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       child: Scaffold(
         drawer: const Drawer(),
         appBar: AppBar(
-          title: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.055,
+          title: Container(
+            alignment: Alignment.centerLeft,
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width * 0.8,
             child: TextFormField(
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
