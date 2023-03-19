@@ -6,8 +6,8 @@ class PageRepresentatives extends StatelessWidget {
   final List<String> nomes = [
     "Mário Jamisson",
     "Julia Fonseca",
-    "Rubens Abraão",
     "Raul Pereira",
+    "Rubens Abraão",
   ];
   final List<String> fotos = [
     "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_2.0/c_scale,w_400/ncom/pt_BR/games/switch/n/new-super-mario-bros-u-deluxe-switch/description-image",
@@ -22,7 +22,12 @@ class PageRepresentatives extends StatelessWidget {
     "raulpereira@gmail.com",
   ];
 
-  final List<String> areas = ["Games", "Q&A", "Representante Líder", "UX-UI"];
+  final List<String> areas = [
+    "Games",
+    "Q&A",
+    "UX-UI",
+    "Representante Líder",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,7 @@ class PageRepresentatives extends StatelessWidget {
         itemCount: 4,
         itemBuilder: (context, index) {
           return ListTile(
+            dense: true,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             leading: ClipRRect(
@@ -51,8 +57,9 @@ class PageRepresentatives extends StatelessWidget {
               ),
             ),
             title: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Text( 
+                Text(
                   nomes[index],
                   style: const TextStyle(
                       fontSize: 14,
@@ -68,12 +75,16 @@ class PageRepresentatives extends StatelessWidget {
                     color: Color(0xFF0085FF),
                   ),
                 ),
-                Text(
-                  areas[index],
-                  style: const TextStyle(
+                Expanded(
+                  child: Text(
+                    areas[index],
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Color(0xFF0085FF),
-                      fontFamily: 'Segoe UI'),
+                      fontFamily: 'Segoe UI',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -86,9 +97,14 @@ class PageRepresentatives extends StatelessWidget {
                       color: Color(0xFF8B8B8B),
                       size: 15,
                     ),
-                    Text(
-                      email[index],
-                      style: const TextStyle(fontSize: 15),
+                    Expanded(
+                      child: Text(
+                        email[index],
+                        style: const TextStyle(
+                          fontSize: 15,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -99,7 +115,12 @@ class PageRepresentatives extends StatelessWidget {
                       size: 15,
                       color: Color(0xFF8B8B8B),
                     ),
-                    Text("Segunda-Feira. Turno Manha")
+                    Expanded(
+                      child: Text(
+                        "Segunda-Feira. Turno Manha",
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )
                   ],
                 )
               ],
