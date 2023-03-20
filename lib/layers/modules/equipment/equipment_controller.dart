@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EquipmentController extends GetxController {
@@ -9,6 +10,8 @@ class EquipmentController extends GetxController {
   var returnDate = DateTime.now().obs;
   var returnDateFocusedDay = DateTime.now().add(const Duration(days: 1)).obs;
   var returnDateFirstDay = DateTime.now().add(const Duration(days: 1)).obs;
+
+  var justificationTextFieldController = TextEditingController();
 
   void onRequestDaySelected(DateTime selectedDay, DateTime focusedDay) {
     requestDate.value = selectedDay;
