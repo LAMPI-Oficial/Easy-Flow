@@ -28,9 +28,9 @@ class SuccessSignUpPage extends StatelessWidget {
                   child: Text(
                     "Cadastro finalizado",
                     style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
+                        fontFamily: 'Segoe UI',
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,),
                   ),
                 ),
                 Padding(
@@ -44,7 +44,12 @@ class SuccessSignUpPage extends StatelessWidget {
                       ),
                       child: Text(
                         "Início",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Segoe UI',
+                        ),
                       ),
                     ),
                   ),
