@@ -37,7 +37,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         appBar: AppBar(
           title: Container(
             alignment: Alignment.centerLeft,
-            height: MediaQuery.of(context).size.height * 0.1,
+            height: MediaQuery.of(context).size.height * 0.05,
             width: MediaQuery.of(context).size.width * 0.8,
             child: TextFormField(
               textAlignVertical: TextAlignVertical.center,

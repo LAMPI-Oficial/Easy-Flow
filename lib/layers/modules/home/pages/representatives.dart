@@ -1,32 +1,47 @@
+import 'package:easyflow/layers/modules/home/components/subtitle_comp.dart';
+import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
 import 'package:flutter/material.dart';
 
 class PageRepresentatives extends StatelessWidget {
   PageRepresentatives({super.key});
 
-  final List<String> nomes = [
-    "Mário Jamisson",
-    "Julia Fonseca",
-    "Raul Pereira",
-    "Rubens Abraão",
-  ];
-  final List<String> fotos = [
-    "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_2.0/c_scale,w_400/ncom/pt_BR/games/switch/n/new-super-mario-bros-u-deluxe-switch/description-image",
-    "https://cdn.britannica.com/59/182359-050-C6F38CA3/Scarlett-Johansson-Natasha-Romanoff-Avengers-Age-of.jpg",
-    "http://m.lance.com.br/files/admin_slider_thumbnail/uploads/2022/12/19/63a0b3f5e4240.jpeg",
-    "https://classic.exame.com/wp-content/uploads/2018/10/brad-pitt-britain-allied-premiere.jpg?quality=70&strip=info&w=1017"
-  ];
-  final List<String> email = [
-    "Mariojamisson@gmail.com",
-    "juliafonseca@gmail.com",
-    "rubensabraao@gmail.com",
-    "raulpereira@gmail.com",
-  ];
-
-  final List<String> areas = [
-    "Games",
-    "Q&A",
-    "UX-UI",
-    "Representante Líder",
+  final List<RepresentativesModel> representatives = [
+    RepresentativesModel(
+      uid: "0",
+      name: "Mário Jamisson",
+      imageUrl:
+          "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_2.0/c_scale,w_400/ncom/pt_BR/games/switch/n/new-super-mario-bros-u-deluxe-switch/description-image",
+      email: "mariojamisson@gmail.com",
+      area: "Games",
+      turn: "Segunda-Feira. Turno Manha",
+    ),
+    RepresentativesModel(
+      uid: "1",
+      name: "Julia Fonseca",
+      imageUrl:
+          "https://cdn.britannica.com/59/182359-050-C6F38CA3/Scarlett-Johansson-Natasha-Romanoff-Avengers-Age-of.jpg",
+      email: "juliafonseca@gmail.com",
+      area: "Q&A",
+      turn: "Segunda-Feira. Turno Manha",
+    ),
+    RepresentativesModel(
+      uid: "2",
+      name: "Raul Pereira",
+      imageUrl:
+          "http://m.lance.com.br/files/admin_slider_thumbnail/uploads/2022/12/19/63a0b3f5e4240.jpeg",
+      email: "raulpereira@gmail.com",
+      area: "UX-UI",
+      turn: "Segunda-Feira. Turno Manha",
+    ),
+    RepresentativesModel(
+      uid: "3",
+      name: "Rubens Abraão",
+      imageUrl:
+          "https://classic.exame.com/wp-content/uploads/2018/10/brad-pitt-britain-allied-premiere.jpg?quality=70&strip=info&w=1017",
+      email: "rubensabraao@gmail.com",
+      area: "Representante Líder",
+      turn: "Segunda-Feira. Turno Manha",
+    ),
   ];
 
   @override
@@ -34,7 +49,8 @@ class PageRepresentatives extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 2),
       child: ListView.builder(
-        itemCount: 4,
+        itemCount: representatives.length,
+        
         itemBuilder: (context, index) {
           return ListTile(
             contentPadding: const EdgeInsets.symmetric(
@@ -46,26 +62,28 @@ class PageRepresentatives extends StatelessWidget {
               child: SizedBox(
                 height: double.infinity,
                 width: 45.0,
-                child: FadeInImage(
+                child: 
+                FadeInImage(
                   placeholder: const AssetImage(
                     "assets/images/collab_bro_image.png",
                   ),
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    fotos[index],
+                    representatives[index].imageUrl,
                   ),
                 ),
               ),
             ),
-            title: Container(
-              padding: const EdgeInsets.only(top: 2, left: 4),
-              child: Card(
-                elevation: 1,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    8,
-                  ),
+            title: Card(
+              elevation: 0,
+              margin: const EdgeInsets.symmetric(vertical: 2),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  8,
                 ),
+              ),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
@@ -77,7 +95,7 @@ class PageRepresentatives extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: Text(
-                            nomes[index],
+                            representatives[index].name,
                             style: const TextStyle(
                                 fontSize: 14,
                                 overflow: TextOverflow.ellipsis,
@@ -97,7 +115,7 @@ class PageRepresentatives extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: Text(
-                            areas[index],
+                            representatives[index].area,
                             style: const TextStyle(
                               fontSize: 14,
                               color: Color(0xFF0085FF),
@@ -109,44 +127,13 @@ class PageRepresentatives extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 2.0),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.email_outlined,
-                            color: Color(0xFF8B8B8B),
-                            size: 15,
-                          ),
-                          Expanded(
-                            child: Text(
-                              email[index],
-                              style: const TextStyle(
-                                fontSize: 10,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: const [
-                        Icon(
-                          Icons.alarm,
-                          size: 15,
-                          color: Color(0xFF8B8B8B),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "Segunda-Feira. Turno Manha",
-                            style: TextStyle(
-                              fontSize: 10,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        )
-                      ],
-                    )
+                        padding: const EdgeInsets.only(top: 0.0, bottom: 1),
+                        child: Subtitle(
+                          text: representatives[index].email,
+                          icon: Icons.email_outlined,
+                        )),
+                    Subtitle(
+                        text: representatives[index].turn, icon: Icons.alarm)
                   ],
                 ),
               ),
