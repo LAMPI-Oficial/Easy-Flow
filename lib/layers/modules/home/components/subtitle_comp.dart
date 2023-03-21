@@ -22,6 +22,7 @@ class Subtitle extends StatelessWidget {
             text,
             style: const TextStyle(
               fontSize: 10,
+              color: Color(0xFF8B8B8B)
             ),
             overflow: TextOverflow.ellipsis,
           ),

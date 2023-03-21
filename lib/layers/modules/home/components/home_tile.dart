@@ -19,7 +19,7 @@ class HomeTile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 8,
-          vertical: 6,
+          vertical: 6, 
         ),
         decoration: BoxDecoration(
           color: isSelected ? Colors.white : Colors.transparent,

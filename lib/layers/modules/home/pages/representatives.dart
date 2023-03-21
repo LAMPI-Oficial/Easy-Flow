@@ -58,8 +58,8 @@ class PageRepresentatives extends StatelessWidget {
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: SizedBox(
-                height: double.infinity,
-                width: 45.0,
+                height: 50,
+                width: 44.0,
                 child: FadeInImage(
                   placeholder: const AssetImage(
                     "assets/images/collab_bro_image.png",
@@ -90,7 +90,7 @@ class PageRepresentatives extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Expanded(
-                          flex: 2,
+                          flex: 1,
                           child: Text(
                             representatives[index].name,
                             style: const TextStyle(
@@ -103,9 +103,10 @@ class PageRepresentatives extends StatelessWidget {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(left: 8.0),
+                          padding: EdgeInsets.only(left: 8.0, right: 2),
                           child: Icon(
                             Icons.verified_outlined,
+                            size: 10,
                             color: Color(0xFF0085FF),
                           ),
                         ),
@@ -114,7 +115,7 @@ class PageRepresentatives extends StatelessWidget {
                           child: Text(
                             representatives[index].area,
                             style: const TextStyle(
-                              fontSize: 14,
+                              fontSize: 10,
                               color: Color(0xFF0085FF),
                               fontFamily: 'Segoe UI',
                               overflow: TextOverflow.ellipsis,

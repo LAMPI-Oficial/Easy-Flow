@@ -45,6 +45,7 @@ class CardAnnoumencementsComp extends StatelessWidget {
                         "GDPPI",
                         style: TextStyle(
                           fontSize: 13,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
