@@ -47,14 +47,12 @@ class PageRepresentatives extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 2),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
       child: ListView.builder(
         itemCount: representatives.length,
-        
         itemBuilder: (context, index) {
           return ListTile(
             contentPadding: const EdgeInsets.symmetric(
-              vertical: 5,
               horizontal: 10,
             ),
             leading: ClipRRect(
@@ -62,8 +60,7 @@ class PageRepresentatives extends StatelessWidget {
               child: SizedBox(
                 height: double.infinity,
                 width: 45.0,
-                child: 
-                FadeInImage(
+                child: FadeInImage(
                   placeholder: const AssetImage(
                     "assets/images/collab_bro_image.png",
                   ),
@@ -76,7 +73,7 @@ class PageRepresentatives extends StatelessWidget {
             ),
             title: Card(
               elevation: 0,
-              margin: const EdgeInsets.symmetric(vertical: 2),
+              margin: const EdgeInsets.symmetric(vertical: 1),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
                   8,
