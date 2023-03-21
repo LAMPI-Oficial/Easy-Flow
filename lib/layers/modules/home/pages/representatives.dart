@@ -1,5 +1,5 @@
-import 'package:easyflow/layers/modules/home/components/subtitle_comp.dart';
 import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
+import 'package:easyflow/layers/widgets/tite_representative.dart';
 import 'package:flutter/material.dart';
 
 class PageRepresentatives extends StatelessWidget {
@@ -51,91 +51,8 @@ class PageRepresentatives extends StatelessWidget {
       child: ListView.builder(
         itemCount: representatives.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 10,
-            ),
-            leading: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: SizedBox(
-                height: 50,
-                width: 44.0,
-                child: FadeInImage(
-                  placeholder: const AssetImage(
-                    "assets/images/collab_bro_image.png",
-                  ),
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                    representatives[index].imageUrl,
-                  ),
-                ),
-              ),
-            ),
-            title: Card(
-              elevation: 0,
-              margin: const EdgeInsets.symmetric(vertical: 1),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  8,
-                ),
-              ),
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            representatives[index].name,
-                            style: const TextStyle(
-                                fontSize: 14,
-                                overflow: TextOverflow.ellipsis,
-                                color: Color(
-                                  0xFF4A6F91,
-                                ),
-                                fontFamily: 'Segoe UI'),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 8.0, right: 2),
-                          child: Icon(
-                            Icons.verified_outlined,
-                            size: 10,
-                            color: Color(0xFF0085FF),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            representatives[index].area,
-                            style: const TextStyle(
-                              fontSize: 10,
-                              color: Color(0xFF0085FF),
-                              fontFamily: 'Segoe UI',
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.only(top: 0.0, bottom: 1),
-                        child: Subtitle(
-                          text: representatives[index].email,
-                          icon: Icons.email_outlined,
-                        )),
-                    Subtitle(
-                        text: representatives[index].turn, icon: Icons.alarm)
-                  ],
-                ),
-              ),
-            ),
+          return TileRepresentativeWidget(
+            representative: representatives[index],
           );
         },
       ),

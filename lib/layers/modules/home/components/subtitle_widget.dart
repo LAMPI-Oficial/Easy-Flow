@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Subtitle extends StatelessWidget {
+class SubtitleWidget extends StatelessWidget {
   final String text;
   final IconData icon;
-  const Subtitle({super.key, required this.text, required this.icon});
+  const SubtitleWidget({super.key, required this.text, required this.icon});
 
   @override
   Widget build(BuildContext context) {

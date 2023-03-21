@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/modules/home/components/card_announcements_comp.dart';
+import 'package:easyflow/layers/widgets/card_announcements_widget.dart';
 import 'package:flutter/material.dart';
 
 class PageAnnouncements extends StatelessWidget {
@@ -10,7 +10,7 @@ class PageAnnouncements extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: ListView.separated(
         itemBuilder: (context, index) {
-          return const CardAnnoumencementsComp(
+          return const CardAnnoumencementsWidget(
               text:
                   "Aquisição de macbooks para o laboratório gera entusiasmo para os desenvolvedores.");
         },

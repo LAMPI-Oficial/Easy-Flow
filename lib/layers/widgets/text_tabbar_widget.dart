@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HomeTile extends StatelessWidget {
+class TextTabbarWidget extends StatelessWidget {
   final String tile;
   final bool isSelected;
 
-  const HomeTile({
+  const TextTabbarWidget({
     Key? key,
     required this.tile,
     required this.isSelected,

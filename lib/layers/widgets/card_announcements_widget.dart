@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CardAnnoumencementsComp extends StatelessWidget {
+class CardAnnoumencementsWidget extends StatelessWidget {
   final String text;
-  const CardAnnoumencementsComp({super.key, required this.text});
+  const CardAnnoumencementsWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
