@@ -17,7 +17,7 @@ import '../../layers/modules/horary/horary_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.LISTING_HORARY;
+  static const initialRoute = Routes.FORGOT_PASSWORD_CODE;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
