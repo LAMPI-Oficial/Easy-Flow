@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/modules/home/components/subtitle_widget.dart';
+import 'package:easyflow/layers/widgets/subtitle_widget.dart';
 import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
