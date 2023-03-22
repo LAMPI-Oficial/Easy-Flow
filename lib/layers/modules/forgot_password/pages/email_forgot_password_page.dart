@@ -2,6 +2,7 @@ import 'package:easyflow/layers/modules/forgot_password/forgot_password_controll
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/utils/validators_util.dart';
 import '../../../widgets/text_field_widget.dart';
 
 class EmailForgotPasswordPage extends GetView<ForgotPasswordController> {
@@ -12,7 +13,7 @@ class EmailForgotPasswordPage extends GetView<ForgotPasswordController> {
     return Scaffold(
         body: SafeArea(
             child: Form(
-      key: controller.formKey,
+      key: controller.formKey1,
       child: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
@@ -32,20 +33,28 @@ class EmailForgotPasswordPage extends GetView<ForgotPasswordController> {
                 label: "Digite seu email",
                 hintText: "Email",
                 controller: controller.emailTextController,
-                keyboardType: TextInputType.name,
+                keyboardType: TextInputType.emailAddress,
                 prefixIcon: const Icon(Icons.email_outlined),
                 textInputAction: TextInputAction.next,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) => Validators.combine(
+                  [
+                    () => Validators.isNotEmpty(value),
+                    () => Validators.isEmail(value)
+                  ],
+                ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: null,
-                style: ButtonStyle(
+                onPressed: () {
+                  controller.sendCode();
+                },
+                style: const ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(Colors.blue),
                 ),
-                child: Text(
+                child: const Text(
                   "Enviar código",
                   style: TextStyle(color: Colors.white),
                 ),

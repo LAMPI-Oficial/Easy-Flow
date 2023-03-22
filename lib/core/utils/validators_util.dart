@@ -24,6 +24,15 @@ class Validators {
     return null;
   }
 
+  static String? isCodeForgotPassword(String? value) {
+    if (RegExp(r"^[0-9]{4}")
+        .hasMatch(value!) ==
+        false) {
+      return "Código inválido!";
+    }
+    return null;
+  }
+
   static String? isPassword(String? value) {
     List<String> erros = [];
 

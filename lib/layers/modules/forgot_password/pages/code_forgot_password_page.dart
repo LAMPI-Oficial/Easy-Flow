@@ -1,10 +1,9 @@
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../widgets/text_field_widget.dart';
+import '../../../../core/utils/validators_util.dart';
 
 class CodeForgotPasswordPage extends GetView<ForgotPasswordController> {
   const CodeForgotPasswordPage({super.key});
@@ -14,7 +13,7 @@ class CodeForgotPasswordPage extends GetView<ForgotPasswordController> {
     return Scaffold(
         body: SafeArea(
             child: Form(
-      key: controller.formKey,
+      key: controller.formKey2,
       child: Container(
         alignment: AlignmentDirectional.center,
         child: Padding(
@@ -55,20 +54,25 @@ class CodeForgotPasswordPage extends GetView<ForgotPasswordController> {
                     cursorColor: Colors.blueAccent,
                     keyboardType: TextInputType.number,
                     pinTheme: PinTheme(
-                      activeColor: Colors.blue,
-                      selectedColor: Colors.blue,
-                      inactiveColor: Colors.grey,
-                      shape: PinCodeFieldShape.box,
-                      fieldHeight: 50,
-                      fieldWidth: 50,
-                      borderRadius: BorderRadius.circular(10)
-                    ),
+                        activeColor: Colors.blue,
+                        selectedColor: Colors.blue,
+                        inactiveColor: Colors.grey,
+                        shape: PinCodeFieldShape.box,
+                        fieldHeight: 50,
+                        fieldWidth: 50,
+                        borderRadius: BorderRadius.circular(10)),
                     length: 4,
+                    validator: (value) => Validators.combine(
+                      [
+                        () => Validators.isNotEmpty(value),
+                        () => Validators.isCodeForgotPassword(value)
+                      ],
+                    ),
                     onChanged: (value) {},
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: SizedBox(
                     width: 320,
                     child: Row(
@@ -99,14 +103,16 @@ class CodeForgotPasswordPage extends GetView<ForgotPasswordController> {
                     ),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: null,
-                    style: ButtonStyle(
+                    onPressed: () {
+                      controller.checkCode();
+                    },
+                    style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(Colors.blue),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Verificar",
                       style: TextStyle(color: Colors.white),
                     ),
