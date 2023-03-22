@@ -10,6 +10,6 @@ ForgotPasswordController(this._repository);
 final formKey = GlobalKey<FormState>();
 
 final emailTextController = TextEditingController();
-
+final codeTextController = TextEditingController();
 
 }
