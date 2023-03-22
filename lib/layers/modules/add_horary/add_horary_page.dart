@@ -1,3 +1,5 @@
+import 'package:easyflow/layers/modules/add_horary/widgets/add_day_widget.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,8 +21,36 @@ class AddHoraryPage extends GetView<AddHoraryController> {
                 title: const Text('Horário'),
               ),
               body: SafeArea(
-                child: Column(
-                  children: [],
+                child: Center(
+                  child: Column(
+                    children: [
+                      AddDayWidget(
+                        selected: _.selectedSeg,
+                        aux: 0,
+                        title: "Segunda-feira",
+                      ),
+                      AddDayWidget(
+                        selected: _.selectedTer,
+                        aux: 1,
+                        title: "Terça-feira",
+                      ),
+                      AddDayWidget(
+                        selected: _.selectedQua,
+                        aux: 2,
+                        title: "Quarta-feira",
+                      ),
+                      AddDayWidget(
+                        selected: _.selectedQui,
+                        aux: 3,
+                        title: "Quinta-feira",
+                      ),
+                      AddDayWidget(
+                        selected: _.selectedSex,
+                        aux: 4,
+                        title: "Sexta-feira",
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
