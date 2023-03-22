@@ -1,4 +1,5 @@
 import 'package:easyflow/layers/modules/home/components/comp_no_found.dart';
+import 'package:easyflow/layers/modules/home/controller/repre_controller.dart';
 import 'package:easyflow/layers/widgets/text_tabbar_widget.dart';
 import 'package:easyflow/layers/modules/home/pages/announcements.dart';
 import 'package:easyflow/layers/modules/home/pages/representatives.dart';
@@ -29,7 +30,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  final TextEditingController _controllerForm = TextEditingController();
+  final TextEditingController _controller =
+      HomeController().controllerTextFormField;
   bool isEmpty = true;
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             height: MediaQuery.of(context).size.height * 0.06,
             width: MediaQuery.of(context).size.width * 0.8,
             child: TextFormField(
-              controller: _controllerForm,
+              controller: _controller,
               onChanged: (texto) {
                 setState(() {
                   if (texto != "") {
