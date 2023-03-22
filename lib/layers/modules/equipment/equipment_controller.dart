@@ -13,9 +13,19 @@ class EquipmentController extends GetxController {
 
   var justificationTextFieldController = TextEditingController();
 
+  List<String> representatives = ["Abraão", "Mário", "Júlia"];
+  String representative = "Abraão";
+
+  void onDropdownValueChanged(String? value) {
+    representative = value ?? "";
+  }
+
   void onRequestDaySelected(DateTime selectedDay, DateTime focusedDay) {
     requestDate.value = selectedDay;
     this.focusedDay.value = focusedDay;
+
+    returnDateFocusedDay = requestDate.value.add(const Duration(days: 1)).obs;
+    returnDateFirstDay = requestDate.value.add(const Duration(days: 1)).obs;
   }
 
   void onReturnDaySelected(DateTime selectedDay, DateTime focusedDay) {
