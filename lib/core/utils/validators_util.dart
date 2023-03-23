@@ -1,5 +1,7 @@
 // ignore_for_file: valid_regexps, non_constant_identifier_names
 
+import 'package:form_builder_file_picker/form_builder_file_picker.dart';
+
 class Validators {
   static String? isNotEmpty(String? value) {
     if (value!.isEmpty || value == '') {
@@ -52,6 +54,20 @@ class Validators {
   static String? isEqualPassword(String? password, String? confirmPassword) {
     if (password != confirmPassword) {
       return "As duas senhas devem ser iguais!";
+    }
+    return null;
+  }
+
+  static String? isDescription(String? value) {
+    if (value != null && value.length > 500){
+      return "O máximo de caracteres é 500!";
+    }
+    return null;
+  }
+
+  static String? isArchive(List<PlatformFile>? value) {
+    if (value == null || value.isEmpty){
+      return "Este campo é obrigatório";
     }
     return null;
   }
