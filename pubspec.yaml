@@ -39,6 +39,7 @@ dependencies:
   result_dart: ^1.0.5
   auto_size_text: ^3.0.0
   stylish_dialog: ^1.0.2
+  intl: ^0.18.0
  
 
 dev_dependencies:

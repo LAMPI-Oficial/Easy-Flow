@@ -24,13 +24,19 @@ class AddDayWidget extends GetView<AddHoraryController> {
       init: AddHoraryController(),
       initState: (_) {},
       builder: (_) {
-        return Container(
+        return SizedBox(
           width: medWidth * .90,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
           child: ExpansionTile(
+            backgroundColor: Colors.white,
+            collapsedBackgroundColor: Colors.white,
+            shape: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
+            collapsedShape: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
             title: Text(
               title,
               style: const TextStyle(
@@ -42,7 +48,7 @@ class AddDayWidget extends GetView<AddHoraryController> {
             ),
             tilePadding: EdgeInsets.symmetric(horizontal: medWidth * .03),
             childrenPadding: EdgeInsets.only(
-              bottom: medHeight * .01,
+              bottom: medHeight * .02,
               left: medWidth * .03,
               right: medWidth * .03,
             ),
@@ -53,10 +59,13 @@ class AddDayWidget extends GetView<AddHoraryController> {
             children: [
               Padding(
                 padding: EdgeInsets.only(bottom: medHeight * .02),
-                child: const Divider(height: 0),
+                child: const Divider(
+                  height: 1,
+                  thickness: 1,
+                ),
               ),
               SizedBox(
-                height: medHeight * .05,
+                height: medHeight * .06,
                 width: medWidth,
                 child: ListView.separated(
                   itemCount: 3,
@@ -92,61 +101,7 @@ class AddDayWidget extends GetView<AddHoraryController> {
                     );
                   },
                 ),
-              )
-              // SizedBox(
-              //   height: medHeight * .05,
-              //   width: medWidth,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: [
-              //       SizedBox(
-              //         width: medWidth * .26,
-              //         child: ElevatedButton(
-              //           style: selected == 0
-              //               ? onElevatedButton
-              //               : offElevatedButton,
-              //           onPressed: () {
-              //             _.selected(0, aux);
-              //           },
-              //           child: Text(
-              //             "Manhã",
-              //             style: selected == 0 ? onTextStyle : offTextStyle,
-              //           ),
-              //         ),
-              //       ),
-              //       SizedBox(
-              //         width: medWidth * .26,
-              //         child: ElevatedButton(
-              //           style: selected == 1
-              //               ? onElevatedButton
-              //               : offElevatedButton,
-              //           onPressed: () {
-              //             _.selected(1, aux);
-              //           },
-              //           child: Text(
-              //             "Tarde",
-              //             style: selected == 1 ? onTextStyle : offTextStyle,
-              //           ),
-              //         ),
-              //       ),
-              //       SizedBox(
-              //         width: medWidth * .26,
-              //         child: ElevatedButton(
-              //           style: selected == 2
-              //               ? onElevatedButton
-              //               : offElevatedButton,
-              //           onPressed: () {
-              //             _.selected(2, aux);
-              //           },
-              //           child: Text(
-              //             "Noite",
-              //             style: selected == 2 ? onTextStyle : offTextStyle,
-              //           ),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // )
+              ),
             ],
           ),
         );
