@@ -1,38 +1,66 @@
 import 'package:get/get.dart';
 
 class AddHoraryController extends GetxController {
-  bool isSelected = false;
-  int selectedSeg = 3;
-  int selectedTer = 3;
-  int selectedQua = 3;
-  int selectedQui = 3;
-  int selectedSex = 3;
+  bool selectedSeg = false;
+  bool selectedTer = false;
+  bool selectedQua = false;
+  bool selectedQui = false;
+  bool selectedSex = false;
+
+  int turnSeg = 3;
+  int turnTer = 3;
+  int turnQua = 3;
+  int turnQui = 3;
+  int turnSex = 3;
+
+  int selectedTable = 21;
 
   final texts = ["Manhã", "Tarde", "Noite"];
 
-  // changeIsSelected() {
-  //   isSelected = !isSelected;
-  //   update();
-  // }
+  changeIsSelected(bool selected, int aux) {
+    switch (aux) {
+      case 0:
+        selectedSeg = selected;
+        break;
+      case 1:
+        selectedTer = selected;
+        break;
+      case 2:
+        selectedQua = selected;
+        break;
+      case 3:
+        selectedQui = selected;
+        break;
+      case 4:
+        selectedSex = selected;
+        break;
+    }
+    update();
+  }
 
   selected(int index, int aux) {
     switch (aux) {
       case 0:
-        selectedSeg = index;
+        turnSeg = index;
         break;
       case 1:
-        selectedTer = index;
+        turnTer = index;
         break;
       case 2:
-        selectedQua = index;
+        turnQua = index;
         break;
       case 3:
-        selectedQui = index;
+        turnQui = index;
         break;
       case 4:
-        selectedSex = index;
+        turnSex = index;
         break;
     }
+    update();
+  }
+
+  selectTable(int index) {
+    selectedTable = index;
     update();
   }
 }

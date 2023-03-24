@@ -1,14 +1,17 @@
 import 'package:easyflow/layers/modules/add_horary/add_horary_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AddDayWidget extends GetView<AddHoraryController> {
+  final bool value;
   final int selected;
   final int aux;
   final String title;
 
   const AddDayWidget({
     super.key,
+    required this.value,
     required this.selected,
     required this.aux,
     required this.title,
@@ -52,10 +55,13 @@ class AddDayWidget extends GetView<AddHoraryController> {
               left: medWidth * .03,
               right: medWidth * .03,
             ),
-            // trailing: CupertinoSwitch(
-            //   value: value,
-            //   onChanged: onChanged,
-            // ),
+            trailing: CupertinoSwitch(
+              value: value,
+              onChanged: (value) {},
+            ),
+            onExpansionChanged: (value) {
+              _.changeIsSelected(value, aux);
+            },
             children: [
               Padding(
                 padding: EdgeInsets.only(bottom: medHeight * .02),
@@ -65,37 +71,37 @@ class AddDayWidget extends GetView<AddHoraryController> {
                 ),
               ),
               SizedBox(
-                height: medHeight * .06,
-                width: medWidth,
-                child: ListView.separated(
+                height: medHeight * .04,
+                child: GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: 3,
-                  scrollDirection: Axis.horizontal,
-                  separatorBuilder: (context, index) => Padding(
-                    padding: EdgeInsets.symmetric(horizontal: medWidth * .03),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisExtent: medHeight * .04,
+                    crossAxisSpacing: medWidth * .03,
+                    mainAxisSpacing: 0,
                   ),
                   itemBuilder: (context, index) {
-                    return SizedBox(
-                      width: medWidth * .24,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: selected == index
-                              ? Get.theme.colorScheme.primary
-                              : const Color(0xffD9D9D9),
-                          elevation: 0,
+                    return TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: selected == index
+                            ? Get.theme.colorScheme.primary
+                            : const Color(0xffD9D9D9),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        onPressed: () {
-                          _.selected(index, aux);
-                        },
-                        child: Text(
-                          _.texts[index],
-                          style: TextStyle(
-                            fontFamily: "Segoe UI",
-                            color: selected == index
-                                ? Colors.white
-                                : const Color(0xff323232),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                          ),
+                      ),
+                      onPressed: () => _.selected(index, aux),
+                      child: Text(
+                        _.texts[index],
+                        style: TextStyle(
+                          fontFamily: "Segoe UI",
+                          color: selected == index
+                              ? Colors.white
+                              : const Color(0xff323232),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                     );
