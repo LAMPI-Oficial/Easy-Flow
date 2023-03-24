@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TextTabbarWidget extends StatelessWidget {
+class TextTabbarWidget extends StatefulWidget {
   final String tile;
   final bool isSelected;
 
@@ -11,27 +11,34 @@ class TextTabbarWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<TextTabbarWidget> createState() => _TextTabbarWidgetState();
+}
+
+class _TextTabbarWidgetState extends State<TextTabbarWidget> {
+  @override
   Widget build(BuildContext context) {
     return Align(
-       alignment: tile == "Representantes"
+      alignment: widget.tile == "Representantes"
           ? Alignment.centerLeft
           : Alignment.centerRight,
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 8,
-          vertical: 6, 
+          vertical: 6,
         ),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.white : Colors.transparent,
+          color: widget.isSelected ? Colors.white : Colors.transparent,
           borderRadius: BorderRadius.circular(
             8,
           ),
         ),
         child: Text(
-          tile,
+          widget.tile,
           textAlign: TextAlign.start,
           style: TextStyle(
-            color: isSelected ? Theme.of(context).primaryColor : Colors.white,
+            color: widget.isSelected
+                ? Theme.of(context).primaryColor
+                : Colors.white,
             fontSize: 13,
           ),
         ),

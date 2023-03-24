@@ -1,13 +1,11 @@
-import 'package:easyflow/layers/modules/home/controller/repre_controller.dart';
+import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
 import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
-import 'package:easyflow/layers/widgets/tite_representative.dart';
+import 'package:easyflow/layers/modules/home/widgets/tite_representative.dart';
 import 'package:flutter/material.dart';
 
 class PageRepresentatives extends StatelessWidget {
-  PageRepresentatives({super.key});
-
-  final List<RepresentativesModel> representatives =
-      HomeController().representatives;
+  final List<RepresentativesModel> representatives;
+  PageRepresentatives({super.key, required this.representatives});
 
   @override
   Widget build(BuildContext context) {

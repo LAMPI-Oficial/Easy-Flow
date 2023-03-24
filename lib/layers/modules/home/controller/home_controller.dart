@@ -1,10 +1,33 @@
+// import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
 import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  TextEditingController controllerTextFormField = TextEditingController();
-  final List<RepresentativesModel> _representatives = [
+class HomeController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  TextEditingController controllerTextFormField =
+      TextEditingController(text: "");
+  late TabController controllerTab;
+
+  RxBool selecao = true.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    controllerTab = TabController(vsync: this, length: 2);
+
+    controllerTab.addListener(() {
+      controllerTab.index == 0 ? selecao.value = true : selecao.value = false;
+    });
+  }
+
+  @override
+  void onClose() {
+    controllerTab.dispose();
+    super.onClose();
+  }
+
+  List<RepresentativesModel> representatives = [
     RepresentativesModel(
       uid: "0",
       name: "Mário Jamisson",
@@ -42,6 +65,4 @@ class HomeController extends GetxController {
       turn: "Segunda-Feira. Turno Manha",
     ),
   ].obs;
-
-  get representatives => _representatives;
 }

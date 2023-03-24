@@ -13,6 +13,7 @@ import 'package:easyflow/layers/modules/forgot_password/pages/email_forgot_passw
 import 'package:easyflow/layers/modules/forgot_password/pages/code_forgot_password_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/new_password_forgot_password_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/success_forgot_password_page.dart';
+import 'package:easyflow/layers/modules/home/bindings/home_binding.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
@@ -55,9 +56,6 @@ abstract class AppPages {
       name: Routes.FORGOT_PASSWORD_SUCCESS,
       page: () => SuccessForgotPasswordPage(),
     ),
-    GetPage(
-      name: Routes.HOME,
-      page: () => Home(),
-    )
+    GetPage(name: Routes.HOME, page: () => Home(), binding: HomeBinding())
   ];
 }

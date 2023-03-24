@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/widgets/card_announcements_widget.dart';
+import 'package:easyflow/layers/modules/home/widgets/card_announcements_widget.dart';
 import 'package:flutter/material.dart';
 
 class PageAnnouncements extends StatelessWidget {

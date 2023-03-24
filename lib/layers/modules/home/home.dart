@@ -1,38 +1,13 @@
-import 'package:easyflow/layers/modules/home/components/comp_no_found.dart';
-import 'package:easyflow/layers/modules/home/controller/repre_controller.dart';
-import 'package:easyflow/layers/widgets/text_tabbar_widget.dart';
+import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
 import 'package:easyflow/layers/modules/home/pages/announcements.dart';
 import 'package:easyflow/layers/modules/home/pages/representatives.dart';
+import 'package:easyflow/layers/modules/home/widgets/text_tabbar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Home extends StatefulWidget {
+class Home extends GetView<HomeController> {
   const Home({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  late TabController controllerTab;
-
-  @override
-  void initState() {
-    super.initState();
-    controllerTab = TabController(length: 2, vsync: this);
-    controllerTab.addListener(() {
-      setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    controllerTab.dispose();
-    super.dispose();
-  }
-
-  final TextEditingController _controller =
-      HomeController().controllerTextFormField;
-  bool isEmpty = true;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -43,18 +18,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           title: Container(
             alignment: Alignment.centerLeft,
             height: MediaQuery.of(context).size.height * 0.06,
-            width: MediaQuery.of(context).size.width * 0.8,
+            width: MediaQuery.of(context).size.width,
             child: TextFormField(
-              controller: _controller,
-              onChanged: (texto) {
-                setState(() {
-                  if (texto != "") {
-                    isEmpty = false;
-                  } else {
-                    isEmpty = true;
-                  }
-                });
-              },
+              controller: controller.controllerTextFormField,
+              onChanged: (texto) {},
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 hintText: "Buscar",
@@ -81,32 +48,40 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
           ),
           bottom: TabBar(
-            controller: controllerTab,
+            controller: controller.controllerTab,
             tabs: [
-              Tab(
-                child: TextTabbarWidget(
-                  tile: "Comunicados",
-                  isSelected: controllerTab.index == 0,
-                ),
+              GetX<HomeController>(
+                builder: (ct) {
+                  return Tab(
+                    child: TextTabbarWidget(
+                      tile: "Comunicados",
+                      isSelected: ct.selecao.value == true,
+                    ),
+                  );
+                },
               ),
-              Tab(
-                child: TextTabbarWidget(
-                  tile: "Representantes",
-                  isSelected: controllerTab.index == 1,
-                ),
+              GetX<HomeController>(
+                builder: (ct) {
+                  return Tab(
+                    child: TextTabbarWidget(
+                      tile: "Representantes",
+                      isSelected: ct.selecao.value == false,
+                    ),
+                  );
+                },
               ),
             ],
           ),
         ),
-        body: isEmpty
-            ? TabBarView(
-                controller: controllerTab,
-                children: [
-                  const PageAnnouncements(),
-                  PageRepresentatives(),
-                ],
-              )
-            : const CompNoFound(),
+        body: TabBarView(
+          controller: controller.controllerTab,
+          children: [
+            const PageAnnouncements(),
+            PageRepresentatives(
+              representatives: controller.representatives,
+            ),
+          ],
+        ),
       ),
     );
   }
