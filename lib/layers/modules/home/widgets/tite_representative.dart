@@ -1,4 +1,5 @@
-import 'package:easyflow/layers/widgets/subtitle_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:easyflow/layers/modules/home/widgets/subtitle_widget.dart';
 import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
 import 'package:flutter/material.dart';
 
@@ -48,11 +49,13 @@ class TileRepresentativeWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: Text(
+                    child: AutoSizeText(
                       representative.name,
+                      maxLines: 1,
+                      maxFontSize: 14,
                       style: const TextStyle(
                           fontSize: 14,
-                          overflow: TextOverflow.ellipsis,
+                          // overflow: TextOverflow.ellipsis,
                           color: Color(
                             0xFF4A6F91,
                           ),

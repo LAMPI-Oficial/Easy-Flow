@@ -20,8 +20,8 @@ class Home extends GetView<HomeController> {
             height: MediaQuery.of(context).size.height * 0.06,
             width: MediaQuery.of(context).size.width,
             child: TextFormField(
-              controller: controller.controllerTextFormField,
-              onChanged: (texto) {},
+              controller: controller.controllerTextFormField.value,
+              onChanged: (_) => controller.pesquisar(),
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 hintText: "Buscar",

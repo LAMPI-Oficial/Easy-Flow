@@ -1,3 +1,4 @@
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 
 class CardAnnoumencementsWidget extends StatelessWidget {
@@ -58,47 +59,23 @@ class CardAnnoumencementsWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                title: LayoutBuilder(
-                  builder: (p0, p1) {
-                    TextPainter textPainter = TextPainter(
-                      text: TextSpan(text: text),
-                      textDirection: TextDirection.ltr,
-                      maxLines: 3,
-                    )..layout(maxWidth: p1.maxWidth);
-
-                    int numberOfLines =
-                        (textPainter.height / textPainter.preferredLineHeight)
-                            .ceil();
-
-                    return Text.rich(
-                      maxLines: 3,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        color: Color(0xFF000000),
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Segoe UI',
-                      ),
-                      textAlign: TextAlign.justify,
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: text,
-                            style: const TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          TextSpan(
-                            text: numberOfLines < 3
-                                ? "\nVer mais..."
-                                : " Ver mais...",
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
+                title: ExpandableText(
+                  text,
+                  maxLines: 3,
+                  textAlign: TextAlign.justify,
+                  expandText: "\nVer mais...",
+                  collapseText: "\nVer menos",
+                  linkStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                    color: Color(0xFF000000),
+                  ),
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Segoe UI',
+                  ),
                 ),
               ),
             )

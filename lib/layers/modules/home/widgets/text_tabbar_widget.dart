@@ -1,6 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class TextTabbarWidget extends StatefulWidget {
+class TextTabbarWidget extends StatelessWidget {
   final String tile;
   final bool isSelected;
 
@@ -11,14 +12,9 @@ class TextTabbarWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<TextTabbarWidget> createState() => _TextTabbarWidgetState();
-}
-
-class _TextTabbarWidgetState extends State<TextTabbarWidget> {
-  @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: widget.tile == "Representantes"
+      alignment: tile == "Representantes"
           ? Alignment.centerLeft
           : Alignment.centerRight,
       child: Container(
@@ -27,19 +23,18 @@ class _TextTabbarWidgetState extends State<TextTabbarWidget> {
           vertical: 6,
         ),
         decoration: BoxDecoration(
-          color: widget.isSelected ? Colors.white : Colors.transparent,
+          color: isSelected ? Colors.white : Colors.transparent,
           borderRadius: BorderRadius.circular(
             8,
           ),
         ),
-        child: Text(
-          widget.tile,
-          textAlign: TextAlign.start,
+        child: AutoSizeText(
+          tile,
+          maxLines: 1,
+          maxFontSize: 13,
+          // textAlign: TextAlign.start,
           style: TextStyle(
-            color: widget.isSelected
-                ? Theme.of(context).primaryColor
-                : Colors.white,
-            fontSize: 13,
+            color: isSelected ? Theme.of(context).primaryColor : Colors.white,
           ),
         ),
       ),

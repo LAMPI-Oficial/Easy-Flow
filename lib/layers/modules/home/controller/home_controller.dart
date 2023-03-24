@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  TextEditingController controllerTextFormField =
-      TextEditingController(text: "");
+  Rx<TextEditingController> controllerTextFormField =
+      TextEditingController().obs;
   late TabController controllerTab;
 
   RxBool selecao = true.obs;
@@ -27,7 +27,16 @@ class HomeController extends GetxController
     super.onClose();
   }
 
-  List<RepresentativesModel> representatives = [
+  pesquisar() {
+    if (selecao.value == 1) {
+      representatives.value = representatives
+          .where(
+              (element) => element.name == controllerTextFormField.value.text)
+          .toList();
+    }
+  }
+
+  RxList<RepresentativesModel> representatives = [
     RepresentativesModel(
       uid: "0",
       name: "Mário Jamisson",
