@@ -1,5 +1,6 @@
 import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
 import 'package:easyflow/layers/modules/home/pages/announcements.dart';
+import 'package:easyflow/layers/modules/home/pages/comp_no_found.dart';
 import 'package:easyflow/layers/modules/home/pages/representatives.dart';
 import 'package:easyflow/layers/modules/home/widgets/text_tabbar_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,7 @@ class Home extends GetView<HomeController> {
             height: MediaQuery.of(context).size.height * 0.06,
             width: MediaQuery.of(context).size.width,
             child: TextFormField(
-              controller: controller.controllerTextFormField.value,
-              onChanged: (_) => controller.pesquisar(),
+              controller: controller.controllerTextFormField,
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 hintText: "Buscar",
@@ -50,22 +50,22 @@ class Home extends GetView<HomeController> {
           bottom: TabBar(
             controller: controller.controllerTab,
             tabs: [
-              GetX<HomeController>(
-                builder: (ct) {
+              Obx(
+                () {
                   return Tab(
                     child: TextTabbarWidget(
                       tile: "Comunicados",
-                      isSelected: ct.selecao.value == true,
+                      isSelected: controller.selecao.value == true,
                     ),
                   );
                 },
               ),
-              GetX<HomeController>(
-                builder: (ct) {
+              Obx(
+                () {
                   return Tab(
                     child: TextTabbarWidget(
                       tile: "Representantes",
-                      isSelected: ct.selecao.value == false,
+                      isSelected: controller.selecao.value == false,
                     ),
                   );
                 },
@@ -73,14 +73,20 @@ class Home extends GetView<HomeController> {
             ],
           ),
         ),
-        body: TabBarView(
-          controller: controller.controllerTab,
-          children: [
-            const PageAnnouncements(),
-            PageRepresentatives(
-              representatives: controller.representatives,
-            ),
-          ],
+        body: Obx(
+          () => TabBarView(
+            controller: controller.controllerTab,
+            children: [
+              controller.textEmpty
+                  ? const PageAnnouncements()
+                  : const CompNoFound(),
+              controller.representatives.length > 0
+                  ? PageRepresentatives(
+                      representatives: controller.representatives,
+                    )
+                  : const CompNoFound(),
+            ],
+          ),
         ),
       ),
     );
