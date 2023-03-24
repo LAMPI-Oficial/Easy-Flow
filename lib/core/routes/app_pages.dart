@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:easyflow/layers/modules/about/pages/about_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.dart';
 import 'package:easyflow/layers/modules/splash_screen/splash_screen_page.dart';
 import 'package:easyflow/layers/modules/login/login_binding.dart';
@@ -17,7 +18,7 @@ import '../../layers/modules/horary/horary_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.LISTING_HORARY;
+  static const initialRoute = Routes.ABOUT;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -59,6 +60,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.LISTING_HORARY,
       page: () => HoraryPage(),
+    ),
+    GetPage(
+      name: Routes.ABOUT,
+      page: () => AboutPage(),
     )
   ];
 }
