@@ -20,10 +20,9 @@ class PageAnnouncements extends StatelessWidget {
               crossAxisSpacing: 12,
             ),
             itemBuilder: (context, index) {
-              return CardAnnoumencementsWidget(
+              return const CardAnnoumencementsWidget(
                 text:
-                    "Aquisição de macbooks para o laboratório gera entusiasmo para os desenvolvedores." *
-                        10,
+                    "Aquisição de macbooks para o laboratório gera entusiasmo para os desenvolvedores.",
               );
             },
           ),

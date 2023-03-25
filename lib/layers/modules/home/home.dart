@@ -2,7 +2,6 @@ import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
 import 'package:easyflow/layers/modules/home/pages/announcements.dart';
 import 'package:easyflow/layers/modules/home/pages/comp_no_found.dart';
 import 'package:easyflow/layers/modules/home/pages/representatives.dart';
-import 'package:easyflow/layers/modules/home/widgets/text_tabbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +17,7 @@ class Home extends GetView<HomeController> {
         appBar: AppBar(
           title: Container(
             alignment: Alignment.centerLeft,
-            height: MediaQuery.of(context).size.height * 0.06,
+            height: 32,
             width: MediaQuery.of(context).size.width,
             child: TextFormField(
               controller: controller.controllerTextFormField,
@@ -49,26 +48,30 @@ class Home extends GetView<HomeController> {
           ),
           bottom: TabBar(
             controller: controller.controllerTab,
-            tabs: [
-              Obx(
-                () {
-                  return Tab(
-                    child: TextTabbarWidget(
-                      tile: "Comunicados",
-                      isSelected: controller.selecao.value == true,
-                    ),
-                  );
-                },
+            indicatorSize: TabBarIndicatorSize.label,
+            // indicatorWeight: 10,
+            isScrollable: true,
+            indicatorPadding: const EdgeInsets.symmetric(
+              horizontal: -10,
+              vertical: 10,
+            ),
+            unselectedLabelColor: Colors.white,
+            labelColor: Theme.of(context).primaryColor,
+            labelStyle: const TextStyle(
+              fontSize: 13,
+            ),
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                8,
               ),
-              Obx(
-                () {
-                  return Tab(
-                    child: TextTabbarWidget(
-                      tile: "Representantes",
-                      isSelected: controller.selecao.value == false,
-                    ),
-                  );
-                },
+              color: Colors.white,
+            ),
+            tabs: const [
+              Tab(
+                text: "Comunicados",
+              ),
+              Tab(
+                text: "Representantes",
               ),
             ],
           ),
