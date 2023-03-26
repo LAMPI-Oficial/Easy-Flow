@@ -9,7 +9,6 @@ class HomeController extends GetxController
   late TabController controllerTab;
   final RxList<RepresentativesModel> _reprePesquisar =
       RxList<RepresentativesModel>();
-  RxBool selecao = true.obs;
 
   @override
   void onInit() {
@@ -20,10 +19,6 @@ class HomeController extends GetxController
     _reprePesquisar.value = representativesData;
 
     controllerTab = TabController(vsync: this, length: 2);
-
-    controllerTab.addListener(() {
-      controllerTab.index == 0 ? selecao.value = true : selecao.value = false;
-    });
   }
 
   @override
