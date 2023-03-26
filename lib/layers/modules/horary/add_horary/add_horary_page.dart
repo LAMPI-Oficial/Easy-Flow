@@ -1,5 +1,5 @@
-import 'package:easyflow/layers/modules/add_horary/widgets/add_day_widget.dart';
-import 'package:easyflow/layers/modules/add_horary/widgets/choose_table_widget.dart';
+import 'package:easyflow/layers/modules/horary/add_horary/widgets/add_day_widget.dart';
+import 'package:easyflow/layers/modules/horary/add_horary/widgets/choose_table_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

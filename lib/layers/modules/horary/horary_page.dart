@@ -1,140 +1,112 @@
 import 'package:easyflow/core/routes/app_pages.dart';
-import 'package:easyflow/layers/data/model/horary_model.dart';
+import 'package:easyflow/layers/modules/horary/widgets/dropbutton_widget.dart';
 import 'package:easyflow/layers/modules/horary/widgets/list_horary_widget.dart';
+import 'package:easyflow/layers/modules/horary/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'horary_controller.dart';
-import 'widgets/dropbutton_widget.dart';
 
 class HoraryPage extends GetView<HoraryController> {
   const HoraryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HoraryController>(
-      init: HoraryController(),
-      initState: (_) {},
-      builder: (_) {
-        return LayoutBuilder(
-          builder: (context, constraints) {
-            return Scaffold(
-              appBar: AppBar(
-                title: const Text('Horário'),
-              ),
-              floatingActionButton: FloatingActionButton(
-                onPressed: () => Get.toNamed(Routes.ADD_HORARY),
-                child: const Icon(Icons.add),
-              ),
-              body: SafeArea(
-                child: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Horário'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.toNamed(Routes.ADD_HORARY),
+        child: const Icon(Icons.add),
+      ),
+      body: SafeArea(
+        child: Center(
+          child: SizedBox(
+            width: context.width * .90,
+            height: context.height,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: context.height * .01,
+                  ),
                   child: SizedBox(
-                    width: constraints.maxWidth * .90,
-                    child: Column(
+                    height: context.height * .05,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: SizedBox(
-                            height: constraints.maxHeight * .05,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                const Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    "Mesa",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: "Segoe UI",
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 13,
-                                      color: Color(0xff4A6F90),
-                                    ),
-                                  ),
-                                ),
-                                const Expanded(
-                                  flex: 3,
-                                  child: Text(
-                                    "Nome",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: "Segoe UI",
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 13,
-                                      color: Color(0xff4A6F90),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Center(
-                                    child: DropButtonWidget(
-                                      hint: "Dia",
-                                      value: _.valueDay,
-                                      items: _.valuesDays.map((value) {
-                                        return DropdownMenuItem(
-                                          value: value,
-                                          child: Text(value.substring(0, 3)),
-                                        );
-                                      }).toList(),
-                                      onChanged: (value) =>
-                                          _.changeValueDay(value),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Center(
-                                    child: DropButtonWidget(
-                                      hint: "Turno",
-                                      value: _.valueTurn,
-                                      items: _.valuesTurns.map((value) {
-                                        return DropdownMenuItem(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList(),
-                                      onChanged: (value) =>
-                                          _.changeValueTurn(value),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                        const TextWidget(
+                          flex: 1,
+                          title: "Mesa",
+                        ),
+                        const TextWidget(
+                          flex: 3,
+                          title: "Nome",
+                        ),
+                        Obx(
+                          () => DropButtonWidget(
+                            flex: 2,
+                            hint: "Dia",
+                            value: controller.valueDay.value,
+                            items: controller.valuesDays.map((value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value.substring(0, 3)),
+                              );
+                            }).toList(),
+                            onChanged: (value) =>
+                                controller.changeValueDay(value!),
                           ),
                         ),
-                        SizedBox(
-                          height: constraints.maxHeight * .80,
-                          child: ListView.separated(
-                            itemCount: objects.length,
-                            separatorBuilder: (context, index) {
-                              return const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 3),
+                        Obx(
+                          () => DropButtonWidget(
+                            flex: 2,
+                            hint: "Turno",
+                            value: controller.valueTurn.value,
+                            items: controller.valuesTurns.map((value) {
+                              return DropdownMenuItem(
+                                value: value,
+                                child: Text(value),
                               );
-                            },
-                            itemBuilder: (context, index) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.white,
-                                ),
-                                height: constraints.maxHeight * .05,
-                                child: ListHoraryWidget(
-                                  object: objects[index],
-                                ),
-                              );
+                            }).toList(),
+                            onChanged: (value) {
+                              controller.changeValueTurn(value!);
                             },
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ),
-              ),
-            );
-          },
-        );
-      },
+                SizedBox(
+                  height: context.height * .80,
+                  child: ListView.separated(
+                    itemCount: controller.objects.length,
+                    separatorBuilder: (context, index) {
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 3),
+                      );
+                    },
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+                        height: context.height * .05,
+                        child: ListHoraryWidget(
+                          object: controller.objects[index],
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
