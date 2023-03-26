@@ -19,8 +19,7 @@ class AddDayWidget extends GetView<AddHoraryController> {
 
   @override
   Widget build(BuildContext context) {
-    final medHeight = MediaQuery.of(context).size.height -
-        (MediaQuery.of(context).padding.top + AppBar().preferredSize.height);
+    final medHeight = MediaQuery.of(context).size.height;
     final medWidth = MediaQuery.of(context).size.width;
 
     return GetBuilder<AddHoraryController>(
@@ -45,7 +44,7 @@ class AddDayWidget extends GetView<AddHoraryController> {
               style: const TextStyle(
                 fontFamily: "Poppins",
                 color: Color(0xff323232),
-                fontSize: 13,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -92,7 +91,9 @@ class AddDayWidget extends GetView<AddHoraryController> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      onPressed: () => _.selected(index, aux),
+                      onPressed: () {
+                        _.selected(index, aux);
+                      },
                       child: Text(
                         _.texts[index],
                         style: TextStyle(

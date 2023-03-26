@@ -1,18 +1,14 @@
+import 'package:easyflow/layers/data/model/horary_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class ListHoraryWidget extends StatelessWidget {
-  final String? numTable;
-  final String? name;
-  final String? day;
-  final String? turn;
+  final HoraryModel object;
 
   const ListHoraryWidget({
     super.key,
-    required this.numTable,
-    required this.name,
-    required this.day,
-    required this.turn,
+    required this.object,
   });
 
   static const textStyle = TextStyle(
@@ -24,6 +20,8 @@ class ListHoraryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final NumberFormat formatter = NumberFormat("00");
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return Row(
@@ -42,7 +40,7 @@ class ListHoraryWidget extends StatelessWidget {
                 height: constraints.maxHeight,
                 child: Center(
                   child: Text(
-                    numTable!,
+                    formatter.format(object.numTable),
                     style: const TextStyle(
                       fontFamily: "Segoe UI",
                       fontWeight: FontWeight.w400,
@@ -59,7 +57,7 @@ class ListHoraryWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
-                    name!,
+                    object.name,
                     overflow: TextOverflow.ellipsis,
                     style: textStyle,
                   ),
@@ -72,7 +70,7 @@ class ListHoraryWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
-                    day!,
+                    object.day.substring(0, 3),
                     overflow: TextOverflow.ellipsis,
                     style: textStyle,
                   ),
@@ -85,7 +83,7 @@ class ListHoraryWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
-                    turn!,
+                    object.turn,
                     overflow: TextOverflow.ellipsis,
                     style: textStyle,
                   ),

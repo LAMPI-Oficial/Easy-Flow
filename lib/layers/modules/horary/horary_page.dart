@@ -1,4 +1,5 @@
 import 'package:easyflow/core/routes/app_pages.dart';
+import 'package:easyflow/layers/data/model/horary_model.dart';
 import 'package:easyflow/layers/modules/horary/widgets/list_horary_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,9 +23,7 @@ class HoraryPage extends GetView<HoraryController> {
                 title: const Text('Horário'),
               ),
               floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  Get.toNamed(Routes.ADD_HORARY);
-                },
+                onPressed: () => Get.toNamed(Routes.ADD_HORARY),
                 child: const Icon(Icons.add),
               ),
               body: SafeArea(
@@ -75,7 +74,7 @@ class HoraryPage extends GetView<HoraryController> {
                                       items: _.valuesDays.map((value) {
                                         return DropdownMenuItem(
                                           value: value,
-                                          child: Text(value),
+                                          child: Text(value.substring(0, 3)),
                                         );
                                       }).toList(),
                                       onChanged: (value) =>
@@ -107,7 +106,7 @@ class HoraryPage extends GetView<HoraryController> {
                         SizedBox(
                           height: constraints.maxHeight * .80,
                           child: ListView.separated(
-                            itemCount: 15,
+                            itemCount: objects.length,
                             separatorBuilder: (context, index) {
                               return const Padding(
                                 padding: EdgeInsets.symmetric(vertical: 3),
@@ -120,11 +119,8 @@ class HoraryPage extends GetView<HoraryController> {
                                   color: Colors.white,
                                 ),
                                 height: constraints.maxHeight * .05,
-                                child: const ListHoraryWidget(
-                                  numTable: "06",
-                                  name: "Larissa Silva",
-                                  day: "Seg",
-                                  turn: "Manhã",
+                                child: ListHoraryWidget(
+                                  object: objects[index],
                                 ),
                               );
                             },

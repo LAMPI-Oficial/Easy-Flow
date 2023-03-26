@@ -1,12 +1,14 @@
 import 'package:get/get.dart';
 
+HoraryController controller = Get.put(HoraryController());
+
 class HoraryController extends GetxController {
   List<String> valuesDays = [
-    "Seg",
-    "Ter",
-    "Qua",
-    "Qui",
-    "Sex",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
   ];
 
   List<String> valuesTurns = [
@@ -18,13 +20,15 @@ class HoraryController extends GetxController {
   String? valueDay;
   String? valueTurn;
 
-  changeValueDay(String? value) {
-    valueDay = value!;
+  changeValueDay(dynamic value) {
+    print(valueDay);
+    valueDay = value;
     update();
+    print(valueDay);
   }
 
-  changeValueTurn(String? value) {
-    valueTurn = value!;
+  changeValueTurn(dynamic value) {
+    valueTurn = value;
     update();
   }
 }

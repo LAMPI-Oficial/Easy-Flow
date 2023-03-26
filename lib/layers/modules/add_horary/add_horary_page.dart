@@ -85,12 +85,17 @@ class AddHoraryPage extends GetView<AddHoraryController> {
                             ),
                           ),
                           SizedBox(
+                            height: medHeight * .06,
                             width: medWidth,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: const Text(
                                 "Guardar",
-                                style: TextStyle(fontWeight: FontWeight.w600),
+                                style: TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           )
