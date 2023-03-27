@@ -38,14 +38,54 @@ class SignUpPasswordData extends GetView<SignUpController> {
                           ),
                         ],
                       )),
-                  const SizedBox(
-                    width: 360,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      child: LinearProgressIndicator(
-                        value: 1,
-                        minHeight: 8,
-                      ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 1,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 1,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 1,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Container(
@@ -106,7 +146,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
                       children: [
                         Expanded(
                           child: OutlinedButton(
-                            onPressed: () => Navigator.of(context).pop(),
+                            onPressed: () => Navigator.of(context)..pop()..pop(),
                             style: OutlinedButton.styleFrom(
                                 side: BorderSide(
                                     color: Theme.of(context).colorScheme.error),

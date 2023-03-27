@@ -43,15 +43,52 @@ class SignUpPersonalData extends GetView<SignUpController> {
                   )),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        child: LinearProgressIndicator(
-                          value: 1 / 3,
-                          minHeight: 8,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 1,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 0,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 0,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Container(
@@ -123,38 +160,56 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                   ],
                                 ),
                               ),
-                              Obx(
-                                () => DropdownButtonFormField(
-                                  value: "${controller.dropdownCourseValue}",
-                                  isExpanded: true,
-                                  borderRadius: BorderRadius.circular(12),
-                                  items:
-                                      controller.courseList.map((String value) {
-                                    if (controller.dropdownCourseValuePattern ==
-                                        value) {
-                                      return DropdownMenuItem<String>(
-                                        enabled: false,
-                                        value: value,
-                                        child: Text(
-                                          value,
-                                          style: const TextStyle(
-                                              color: Colors.grey),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 16),
+                                child: Obx(
+                                  () => DropdownButtonFormField(
+                                    value: "${controller.dropdownCourseValue}",
+                                    isExpanded: true,
+                                    borderRadius: BorderRadius.circular(12),
+                                    decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                        borderSide: const BorderSide(
+                                          color: Color(0xFFD4D4D4),
                                         ),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                                      errorStyle: const TextStyle(
+                                        fontFamily: 'Segoe_UI',
+                                      ),
+                                    ),
+                                    items:
+                                        controller.courseList.map((String value) {
+                                      if (controller.dropdownCourseValuePattern ==
+                                          value) {
+                                        return DropdownMenuItem<String>(
+                                          enabled: false,
+                                          value: value,
+                                          child: Text(
+                                            value,
+                                            style: const TextStyle(
+                                                color: Colors.grey),
+                                          ),
+                                        );
+                                      }
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
                                       );
-                                    }
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String? value) {
-                                    controller.dropdownCourseValue.value =
-                                        value!;
-                                  },
-                                  validator: (value) => Validators.combine(
-                                    [
-                                      () => Validators.isNotSelected(value),
-                                    ],
+                                    }).toList(),
+                                    onChanged: (String? value) {
+                                      controller.dropdownCourseValue.value =
+                                          value!;
+                                    },
+                                    validator: (value) => Validators.combine(
+                                      [
+                                        () => Validators.isNotSelected(value),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -164,6 +219,21 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                       "${controller.dropdownAreaOfStudyValue}",
                                   isExpanded: true,
                                   borderRadius: BorderRadius.circular(12),
+                                  decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                      borderSide: const BorderSide(
+                                        color: Color(0xFFD4D4D4),
+                                      ),
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                                    errorStyle: const TextStyle(
+                                      fontFamily: 'Segoe_UI',
+                                    ),
+                                  ),
                                   items: controller.areaOfStudyList
                                       .map((String value) {
                                     if (controller

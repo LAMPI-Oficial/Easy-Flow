@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.dart';
+import 'package:easyflow/layers/modules/sign_up/pages/sign_up_password_data.dart';
 import 'package:easyflow/layers/modules/sign_up/pages/sign_up_residential_data.dart';
 import 'package:easyflow/layers/modules/splash_screen/splash_screen_page.dart';
 import 'package:easyflow/layers/modules/login/login_binding.dart';
@@ -35,6 +36,11 @@ abstract class AppPages {
     GetPage(
       name: Routes.SIGN_UP_RESIDENTIAL,
       page: () => SignUpResidentialData(),
+      binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: Routes.SIGN_UP_PASSWORD,
+      page: () => SignUpPasswordData(),
       binding: SignUpBinding(),
     ),
     GetPage(

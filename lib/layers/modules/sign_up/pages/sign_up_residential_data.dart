@@ -42,15 +42,52 @@ class SignUpResidentialData extends GetView<SignUpController> {
                       )),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        child: LinearProgressIndicator(
-                          value: 2 / 3,
-                          minHeight: 8,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 1,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 1,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          child: SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              child: LinearProgressIndicator(
+                                value: 0,
+                                minHeight: 8,
+                                backgroundColor: Color.fromRGBO(199, 211, 235, 1),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Container(
@@ -144,15 +181,14 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                       label: "Número da sua casa",
                                       hintText: "Número",
                                       controller: controller.houseNumberTextController,
-                                      keyboardType: TextInputType.number,
+                                      keyboardType: TextInputType.text,
                                       prefixIcon: const Icon(Icons.onetwothree_rounded),
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
                                       validator: (value) => Validators.combine(
                                         [
-                                              () => Validators.isNotEmpty(value),
-                                              () => Validators.isHouseNumber(value)
+                                              () => Validators.isNotEmpty(value)
                                         ],
                                       ),
                                     ),

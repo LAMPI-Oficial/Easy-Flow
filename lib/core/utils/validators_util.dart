@@ -36,13 +36,6 @@ class Validators {
     return null;
   }
 
-  static String? isHouseNumber(String? value) {
-    if (RegExp(r"^([0-9]{1,5}$)").hasMatch(value!) == false) {
-      return "Este número é inválido!";
-    }
-    return null;
-  }
-
   static String? isEmail(String? value) {
     if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
             .hasMatch(value!) ==
