@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:easyflow/layers/modules/edit_profile/edit_profile_binding.dart';
+import 'package:easyflow/layers/modules/edit_profile/edit_profile_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.dart';
-import 'package:easyflow/layers/modules/home/home.dart';
+
 import 'package:easyflow/layers/modules/splash_screen/splash_screen_page.dart';
 import 'package:easyflow/layers/modules/login/login_binding.dart';
 import 'package:easyflow/layers/modules/login/login_page.dart';
@@ -13,11 +15,11 @@ import 'package:easyflow/layers/modules/forgot_password/pages/email_forgot_passw
 import 'package:easyflow/layers/modules/forgot_password/pages/code_forgot_password_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/new_password_forgot_password_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/success_forgot_password_page.dart';
-import 'package:easyflow/layers/modules/home/bindings/home_binding.dart';
+
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.HOME;
+  static const initialRoute = Routes.EDIT_PROFILE;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -56,6 +58,9 @@ abstract class AppPages {
       name: Routes.FORGOT_PASSWORD_SUCCESS,
       page: () => SuccessForgotPasswordPage(),
     ),
-    GetPage(name: Routes.HOME, page: () => Home(), binding: HomeBinding())
+    GetPage(
+        name: Routes.EDIT_PROFILE,
+        page: () => EditProfilePage(),
+        binding: EditProfileBinding()),
   ];
 }
