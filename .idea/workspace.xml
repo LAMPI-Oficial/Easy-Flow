@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="1ee55747-6606-446e-bea7-ba391bd91836" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes/app_pages.dart" afterDir="false" />
@@ -11,23 +12,48 @@
       <change beforePath="$PROJECT_DIR$/lib/layers/modules/forgot_password/forgot_password_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/modules/forgot_password/forgot_password_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/layers/modules/forgot_password/pages/code_forgot_password_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/modules/forgot_password/pages/code_forgot_password_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/layers/modules/forgot_password/pages/email_forgot_password_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/modules/forgot_password/pages/email_forgot_password_page.dart" afterDir="false" />
+
+    <list default="true" id="a7419c3e-14ac-4078-ac5c-a9eb0d2a5f4c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/layers/modules/about/pages/about_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes/app_routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+
   <component name="ProjectId" id="2NLGV9bFGQy2mjAuLHhrE4oG6Sd" />
+
+  <component name="ProjectId" id="2NR5SjPXNDs8u9eiFAODOLZjHBR" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -40,6 +66,18 @@
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
@@ -56,5 +94,24 @@
       <updated>1679435973916</updated>
     </task>
     <servers />
+  </component>
+      <changelist id="a7419c3e-14ac-4078-ac5c-a9eb0d2a5f4c" name="Changes" comment="" />
+      <created>1679614058820</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679614058820</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -39,7 +39,12 @@ dependencies:
   result_dart: ^1.0.5
   auto_size_text: ^3.0.0
   stylish_dialog: ^1.0.2
+
   pin_code_fields: ^7.4.0
+
+  form_builder_file_picker: ^2.4.0
+  table_calendar: ^3.0.9
+  expandable_text: ^2.3.0
  
 
 dev_dependencies:
