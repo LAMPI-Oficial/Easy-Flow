@@ -25,9 +25,7 @@ import 'package:easyflow/layers/modules/about/pages/about_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-
   static const initialRoute = Routes.SPLASH_SCREEN;
-
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
