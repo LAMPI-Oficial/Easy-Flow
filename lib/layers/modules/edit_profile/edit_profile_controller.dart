@@ -10,24 +10,4 @@ class EditProfileController extends GetxController {
   final courseTextController =
       TextEditingController(text: "Analise desenvolvimento de sistemas");
   final areaTextController = TextEditingController(text: "UX-UI");
-
-  //  saveEditions(context) async {
-  //   if (formKey.currentState!.validate()) {
-  //     Dialogs.loading(context).show();
-  //     try {
-  //       final result = _authRepository.login(AuthRequestModel(
-  //           login: loginTextController.text,
-  //           password: passwordTextController.text));
-  //       result.fold((success) {
-  //         Dialogs.loading(context).dismiss();
-  //         Get.put(UserService()).auth(success);
-  //       }, (failure) {
-  //         Dialogs.loading(context).dismiss();
-  //         Dialogs.error(context, failure).show();
-  //       });
-  //     } on IncorrectLoginOrPasswordException catch (e) {
-  //       Dialogs.error(context, e).show();
-  //     }
-  //   }
-  // }
 }

@@ -110,14 +110,12 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                       : widget.obscureText!
                   : false,
               obscuringCharacter: "∗",
-              textAlign: widget.textAlign ?? TextAlign.left,
-              textAlignVertical: TextAlignVertical.center,
+              // textAlign: widget.textAlign ?? TextAlign.left,
+              // textAlignVertical: TextAlignVertical.center,
               style: const TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 12,
-
                 color: Color(0xFF8B8B8B),
-                // fontWeight: FontWeight.w400,
               ),
               inputFormatters: widget.inputFormatters,
             ),
