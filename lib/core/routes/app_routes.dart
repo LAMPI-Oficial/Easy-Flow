@@ -11,6 +11,7 @@ abstract class Routes {
   static const FORGOT_PASSWORD_CODE = '/forgot_password/code';
   static const FORGOT_PASSWORD_NEW_PASSWORD = '/forgot_password/password/new';
   static const FORGOT_PASSWORD_SUCCESS = '/forgot_password/success';
+  static const COMPLAINT = '/complaint';
   static const HOME = "/home";
   static const EQUIPMENT = '/equipment';
   static const EQUIPMENT_REQUEST = '/equipment/request';

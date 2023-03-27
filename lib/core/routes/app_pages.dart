@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+
+import 'package:easyflow/layers/modules/complaint/complaint_binding.dart';
+import 'package:easyflow/layers/modules/complaint/pages/complaint_page.dart';
 import 'package:easyflow/layers/modules/equipment/equipment_binding.dart';
 import 'package:easyflow/layers/modules/equipment/pages/equipments_page.dart';
 import 'package:easyflow/layers/modules/equipment/pages/equipment_request_page.dart';
@@ -22,7 +25,9 @@ import 'package:easyflow/layers/modules/about/pages/about_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
+
   static const initialRoute = Routes.SPLASH_SCREEN;
+
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -62,6 +67,12 @@ abstract class AppPages {
       page: () => SuccessForgotPasswordPage(),
     ),
     GetPage(
+
+      name: Routes.COMPLAINT,
+      page: () => ComplaintPage(),
+      binding: ComplaintBinding(),
+    ),
+    GetPage(
       name: Routes.EQUIPMENT,
       page: () => EquipmentPage(),
       binding: EquipmentBinding(),
@@ -80,6 +91,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.ABOUT,
       page: () => AboutPage(),
-    )
+    ),
   ];
 }
