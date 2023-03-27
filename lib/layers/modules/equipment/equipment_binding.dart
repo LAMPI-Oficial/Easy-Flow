@@ -1,5 +1,5 @@
 import 'package:easyflow/layers/modules/equipment/equipment_controller.dart';
-import 'package:get/instance_manager.dart';
+import 'package:get/get.dart';
 
 class EquipmentBinding implements Bindings {
   @override

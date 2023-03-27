@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:easyflow/layers/modules/equipment/equipment_binding.dart';
+import 'package:easyflow/layers/modules/equipment/pages/equipments_page.dart';
 import 'package:easyflow/layers/modules/equipment/pages/equipment_request_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.dart';
 import 'package:easyflow/layers/modules/home/home.dart';
@@ -20,7 +21,7 @@ import '../../layers/modules/horary/horary_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.EQUIPMENT_REQUEST;
+  static const initialRoute = Routes.SPLASH_SCREEN;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -59,7 +60,11 @@ abstract class AppPages {
       name: Routes.FORGOT_PASSWORD_SUCCESS,
       page: () => SuccessForgotPasswordPage(),
     ),
-
+    GetPage(
+      name: Routes.EQUIPMENT,
+      page: () => EquipmentPage(),
+      binding: EquipmentBinding(),
+    ),
     GetPage(
       name: Routes.EQUIPMENT_REQUEST,
       page: () => EquipmentRequestPage(),
@@ -69,6 +74,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.LISTING_HORARY,
       page: () => HoraryPage(),
-    )
+    ),
   ];
 }
