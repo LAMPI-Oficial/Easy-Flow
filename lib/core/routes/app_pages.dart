@@ -17,7 +17,7 @@ import '../../layers/modules/add_horary/add_horary_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.LISTING_HORARY;
+  static const initialRoute = Routes.ADD_HORARY;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
