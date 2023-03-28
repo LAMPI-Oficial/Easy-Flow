@@ -44,24 +44,17 @@ class HoraryController extends GetxController {
     ),
     HoraryModel(
       id: 1,
-      name: "Lucas Correa",
+      name: "José Chico",
       day: "Segunda-feira",
       numTable: 12,
       turn: "Manhã",
     ),
     HoraryModel(
       id: 2,
-      name: "Lucas Correa",
+      name: "Maria Luize",
       day: "Segunda-feira",
       numTable: 12,
       turn: "Manhã",
     ),
-    // HoraryModel(
-    //   id: 3,
-    //   name: "Ana Laura",
-    //   day: "Quinta-feira",
-    //   numTable: 1,
-    //   turn: "Noite",
-    // )
-  ].obs;
+  ];
 }
