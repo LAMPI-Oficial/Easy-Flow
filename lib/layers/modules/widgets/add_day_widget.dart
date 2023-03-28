@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/modules/horary/add_horary/add_horary_controller.dart';
+import 'package:easyflow/layers/modules/add_horary/add_horary_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../add_horary_controller.dart';
+import '../add_horary/add_horary_controller.dart';
 
 class ChooseTableWidget extends GetView<AddHoraryController> {
   final int selected;

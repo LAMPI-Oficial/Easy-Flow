@@ -13,8 +13,7 @@ import 'package:easyflow/layers/modules/forgot_password/pages/code_forgot_passwo
 import 'package:easyflow/layers/modules/forgot_password/pages/new_password_forgot_password_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/success_forgot_password_page.dart';
 
-import '../../layers/modules/horary/add_horary/add_horary_page.dart';
-import '../../layers/modules/horary/horary_page.dart';
+import '../../layers/modules/add_horary/add_horary_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
@@ -56,10 +55,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.FORGOT_PASSWORD_SUCCESS,
       page: () => SuccessForgotPasswordPage(),
-    ),
-    GetPage(
-      name: Routes.LISTING_HORARY,
-      page: () => HoraryPage(),
     ),
     GetPage(
       name: Routes.ADD_HORARY,
