@@ -9,7 +9,7 @@ import '../../../widgets/text_field_widget.dart';
 import '../sign_up_controller.dart';
 
 class SignUpPersonalData extends GetView<SignUpController> {
-  const SignUpPersonalData({super.key});
+  SignUpPersonalData({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
               height: 650,
               child: Column(
                 children: [
-                  const Expanded(
+                  Expanded(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -41,7 +41,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                       ),
                     ],
                   )),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -92,9 +92,9 @@ class SignUpPersonalData extends GetView<SignUpController> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(12),
-                    margin: const EdgeInsets.only(top: 20),
-                    decoration: const BoxDecoration(
+                    padding: EdgeInsets.all(12),
+                    margin: EdgeInsets.only(top: 20),
+                    decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
@@ -102,7 +102,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: SizedBox(
                         height: 380,
                         child: SingleChildScrollView(
@@ -113,7 +113,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                 hintText: "nome completo",
                                 controller: controller.nameTextController,
                                 keyboardType: TextInputType.name,
-                                prefixIcon: const Icon(Icons.badge_outlined),
+                                prefixIcon: Icon(Icons.badge_outlined),
                                 textInputAction: TextInputAction.next,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
@@ -128,7 +128,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                 label: "Digite seu e-mail",
                                 hintText: "e-mail",
                                 controller: controller.emailTextController,
-                                prefixIcon: const Icon(Icons.email_outlined),
+                                prefixIcon: Icon(Icons.email_outlined),
                                 keyboardType: TextInputType.emailAddress,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
@@ -144,7 +144,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                 label: "Digite seu telefone",
                                 hintText: "Telefone",
                                 controller: controller.phoneTextController,
-                                prefixIcon: const Icon(Icons.phone),
+                                prefixIcon: Icon(Icons.phone),
                                 keyboardType: TextInputType.phone,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
@@ -161,7 +161,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 16),
+                                padding: EdgeInsets.only(bottom: 16),
                                 child: Obx(
                                   () => DropdownButtonFormField(
                                     value: "${controller.dropdownCourseValue}",
@@ -170,15 +170,15 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(8),
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0xFFD4D4D4),
                                         ),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                                      errorStyle: const TextStyle(
+                                      contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                                      errorStyle: TextStyle(
                                         fontFamily: 'Segoe_UI',
                                       ),
                                     ),
@@ -191,7 +191,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                           value: value,
                                           child: Text(
                                             value,
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                                 color: Colors.grey),
                                           ),
                                         );
@@ -222,14 +222,14 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                   decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8),
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0xFFD4D4D4),
                                       ),
                                     ),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 20),
                                     errorStyle: const TextStyle(
                                       fontFamily: 'Segoe_UI',
                                     ),
@@ -244,7 +244,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                         value: value,
                                         child: Text(
                                           value,
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               color: Colors.grey),
                                         ),
                                       );
@@ -272,7 +272,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                         horizontal: 16, vertical: 10),
                     width: double.infinity,
                     color: Colors.white,
@@ -281,7 +281,7 @@ class SignUpPersonalData extends GetView<SignUpController> {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () => controller.signUp1(context),
-                            child: const Text("Continuar"),
+                            child: Text("Continuar"),
                           ),
                         ),
                       ],

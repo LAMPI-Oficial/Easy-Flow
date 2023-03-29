@@ -6,7 +6,7 @@ import '../../../widgets/text_field_widget.dart';
 import '../sign_up_controller.dart';
 
 class SignUpPasswordData extends GetView<SignUpController> {
-  const SignUpPasswordData({super.key});
+  SignUpPasswordData({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
               height: 650,
               child: Column(
                 children: [
-                  const Expanded(
+                  Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -38,7 +38,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
                           ),
                         ],
                       )),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -90,9 +90,9 @@ class SignUpPasswordData extends GetView<SignUpController> {
                   ),
                   Container(
                     height: 400,
-                    padding: const EdgeInsets.all(12),
-                    margin: const EdgeInsets.only(top: 20),
-                    decoration: const BoxDecoration(
+                    padding: EdgeInsets.all(12),
+                    margin: EdgeInsets.only(top: 20),
+                    decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
@@ -100,7 +100,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: Column(
                         children: [
                           TextFieldWidget(
@@ -108,7 +108,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
                             hintText: "Senha",
                             controller: controller.passwordTextController,
                             keyboardType: TextInputType.name,
-                            prefixIcon: const Icon(Icons.add_circle),
+                            prefixIcon: Icon(Icons.add_circle),
                             textInputAction: TextInputAction.next,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value) => Validators.combine(
@@ -123,7 +123,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
                             hintText: "Confirmar",
                             controller: controller.repeatPasswordTextController,
                             keyboardType: TextInputType.name,
-                            prefixIcon: const Icon(Icons.add_circle),
+                            prefixIcon: Icon(Icons.add_circle),
                             textInputAction: TextInputAction.next,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value) => Validators.combine(
@@ -139,7 +139,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
                   ),
                   Container(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                     width: double.infinity,
                     color: Colors.white,
                     child: Row(
@@ -152,16 +152,16 @@ class SignUpPasswordData extends GetView<SignUpController> {
                                     color: Theme.of(context).colorScheme.error),
                                 foregroundColor:
                                 Theme.of(context).colorScheme.error),
-                            child: const Text("Cancelar"),
+                            child: Text("Cancelar"),
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 16,
                         ),
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () => controller.signUp3(context),
-                            child: const Text("Confirmar cadastro"),
+                            child: Text("Confirmar cadastro"),
                           ),
                         ),
                       ],

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SuccessSignUpPage extends StatelessWidget {
-  const SuccessSignUpPage({super.key});
+  SuccessSignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: SizedBox(

@@ -8,7 +8,7 @@ import '../../../../core/utils/validators_util.dart';
 import '../../../widgets/text_field_widget.dart';
 import '../sign_up_controller.dart';
 class SignUpResidentialData extends GetView<SignUpController> {
-  const SignUpResidentialData({Key? key}) : super(key: key);
+  SignUpResidentialData({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
               height: 650,
               child: Column(
                 children: [
-                  const Expanded(
+                  Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -40,7 +40,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                           ),
                         ],
                       )),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -91,9 +91,9 @@ class SignUpResidentialData extends GetView<SignUpController> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(12),
-                    margin: const EdgeInsets.only(top: 20),
-                    decoration: const BoxDecoration(
+                    padding: EdgeInsets.all(12),
+                    margin: EdgeInsets.only(top: 20),
+                    decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
@@ -101,7 +101,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: SizedBox(
                         height: 380,
                         child: SingleChildScrollView(
@@ -115,7 +115,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                       hintText: "CEP",
                                       controller: controller.cepTextController,
                                       keyboardType: TextInputType.number,
-                                      prefixIcon: const Icon(Icons.near_me),
+                                      prefixIcon: Icon(Icons.near_me),
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -141,7 +141,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                       controller: controller.streetTextController,
                                       keyboardType: TextInputType.text,
                                       prefixIcon:
-                                      const Icon(Icons.maps_home_work_outlined),
+                                      Icon(Icons.maps_home_work_outlined),
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -162,7 +162,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                       hintText: "Bairro",
                                       controller: controller.neighborhoodTextController,
                                       keyboardType: TextInputType.text,
-                                      prefixIcon: const Icon(Icons.cable),
+                                      prefixIcon: Icon(Icons.cable),
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -182,7 +182,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                       hintText: "Número",
                                       controller: controller.houseNumberTextController,
                                       keyboardType: TextInputType.text,
-                                      prefixIcon: const Icon(Icons.onetwothree_rounded),
+                                      prefixIcon: Icon(Icons.onetwothree_rounded),
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -204,7 +204,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                       controller: controller.municipalityTextController,
                                       keyboardType: TextInputType.text,
                                       prefixIcon:
-                                      const Icon(Icons.location_city_outlined),
+                                      Icon(Icons.location_city_outlined),
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -224,7 +224,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                       hintText: "Estado",
                                       controller: controller.stateTextController,
                                       keyboardType: TextInputType.text,
-                                      prefixIcon: const Icon(Icons.map_outlined),
+                                      prefixIcon: Icon(Icons.map_outlined),
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -242,7 +242,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                 hintText: "Complemento",
                                 controller: controller.complementTextController,
                                 keyboardType: TextInputType.text,
-                                prefixIcon: const Icon(Icons.add_circle),
+                                prefixIcon: Icon(Icons.add_circle),
                                 textInputAction: TextInputAction.next,
                                 autovalidateMode: AutovalidateMode.onUserInteraction,
                                 validator: (value) => Validators.combine(
@@ -259,7 +259,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                   ),
                   Container(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                     width: double.infinity,
                     color: Colors.white,
                     child: Row(
@@ -267,7 +267,7 @@ class SignUpResidentialData extends GetView<SignUpController> {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () => controller.signUp2(context),
-                            child: const Text("Continuar"),
+                            child: Text("Continuar"),
                           ),
                         ),
                       ],

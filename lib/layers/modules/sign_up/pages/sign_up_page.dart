@@ -8,6 +8,6 @@ class SignUpPage extends GetView<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
-    return const SignUpPersonalData();
+    return SignUpPersonalData();
   }
 }
