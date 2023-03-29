@@ -43,7 +43,7 @@ dependencies:
   pin_code_fields: ^7.4.0
 
   form_builder_file_picker: ^2.4.0
-  table_calendar: ^3.0.9
+  table_calendar: ^3.0.0
   expandable_text: ^2.3.0
  
 

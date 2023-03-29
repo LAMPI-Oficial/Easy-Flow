@@ -1,3 +1,4 @@
+import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
 import 'package:easyflow/layers/modules/home/pages/announcements.dart';
 import 'package:easyflow/layers/modules/home/pages/comp_no_found.dart';
@@ -13,12 +14,17 @@ class Home extends GetView<HomeController> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        drawer: const Drawer(),
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Get.offAllNamed(Routes.MENU);
+            },
+            icon: const Icon(Icons.menu_outlined),
+          ).marginZero,
           title: Container(
             alignment: Alignment.centerLeft,
             height: 32,
-            width: MediaQuery.of(context).size.width,
+            width: double.infinity,
             child: TextFormField(
               controller: controller.controllerTextFormField,
               textAlignVertical: TextAlignVertical.center,

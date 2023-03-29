@@ -19,6 +19,13 @@ class TileRepresentativeWidget extends StatelessWidget {
           height: 50,
           width: 44.0,
           child: FadeInImage(
+            imageErrorBuilder: (context, error, stackTrace) {
+              return const Image(
+                image: AssetImage(
+                  "assets/images/collab_bro_image.png",
+                ),
+              );
+            },
             placeholder: const AssetImage(
               "assets/images/collab_bro_image.png",
             ),

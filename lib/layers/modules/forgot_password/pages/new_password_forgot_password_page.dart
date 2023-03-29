@@ -22,9 +22,9 @@ class NewPasswordForgotPasswordPage extends GetView<ForgotPasswordController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       'Digite sua nova senha',
                       style: TextStyle(
