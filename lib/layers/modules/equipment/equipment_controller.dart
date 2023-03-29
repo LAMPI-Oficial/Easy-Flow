@@ -51,4 +51,14 @@ class EquipmentController extends GetxController {
 
     return monthsOfTheYear[month] ?? "Janeiro";
   }
+
+  final requests = [
+    'Pendente',
+    'Recusado',
+    'Aprovado',
+    'Aprovado',
+    'Aprovado',
+    'Aprovado',
+    'Aprovado',
+  ];
 }

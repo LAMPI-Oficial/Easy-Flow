@@ -18,4 +18,5 @@ abstract class Routes {
   static const LISTING_HORARY = '/listing_horary';
   static const ABOUT = '/about';
 
+  static const ADMIN_EQUIPMENT_REQUESTS = '/admin/equipment/requests';
 }
