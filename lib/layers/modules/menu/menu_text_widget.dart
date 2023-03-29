@@ -8,21 +8,26 @@ class MenuTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 2),
+      margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            size: 16,
-            color: const Color(0xFFD9D9D9),
-          ),
           Padding(
-            padding: const EdgeInsets.only(left: 2),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: Icon(
+              icon,
+              size: 16,
+              color: const Color(0xFFD9D9D9),
+            ),
+          ),
+          Expanded(
+            flex: 4,
             child: Text(
               text,
               style: const TextStyle(
                 fontSize: 14,
+                overflow: TextOverflow.ellipsis,
                 color: Color(0xFFD9D9D9),
                 fontWeight: FontWeight.w400,
               ),

@@ -1,3 +1,5 @@
+import 'package:easyflow/core/routes/app_pages.dart';
+import 'package:easyflow/layers/modules/horary/horary_page.dart';
 import 'package:easyflow/layers/modules/menu/menu_text_widget.dart';
 import 'package:easyflow/layers/modules/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,17 +13,8 @@ class MenuPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: const Icon(
-            Icons.close,
-            size: 16,
-          ),
-        ),
         title: const Text("Menu"),
-        centerTitle: true,
+        
       ),
       body: SafeArea(
           child: Column(
@@ -32,11 +25,11 @@ class MenuPage extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    height: 70,
+                    height: 80,
                     color: const Color(0xFF0085FF),
                   ),
                   Container(
-                    height: 60,
+                    height: 107,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(
@@ -48,10 +41,11 @@ class MenuPage extends StatelessWidget {
                 ],
               ),
               Positioned(
-                top: 10,
+                top: 45,
+                bottom: -75,
                 child: Container(
-                  width: 330,
-                  height: 170,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 200,
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.vertical(
@@ -62,30 +56,59 @@ class MenuPage extends StatelessWidget {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(bottom: 60, left: 10),
+                        margin: const EdgeInsets.only(bottom: 80, left: 10),
                         alignment: Alignment.centerLeft,
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
+                              margin: const EdgeInsets.symmetric(vertical: 5),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
+                                ),
                               ),
                               width: 92,
-                              height: 40,
+                              height: 92,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: FadeInImage(
+                                  placeholder: const AssetImage(
+                                      "assets/images/collab_bro_image.png"),
+                                  image: const NetworkImage(
+                                    "https://cdn.britannica.com/59/182359-050-C6F38CA3/Scarlett-Johansson-Natasha-Romanoff-Avengers-Age-of.jpg",
+                                  ),
+                                  fit: BoxFit.cover,
+                                  imageErrorBuilder:
+                                      (context, error, stackTrace) {
+                                    return const Image(
+                                      image: AssetImage(
+                                        "assets/images/collab_bro_image.png",
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
                             ),
                             SizedBox(
-                              // height: 30,
-                              width: 92,
+                              height: 25,
+                              width: 88,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                  ),
                                   textStyle: const TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white,
+                                  ),
                                 ),
                                 onPressed: () {},
                                 child: const Text(
@@ -96,35 +119,45 @@ class MenuPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Container(
-                        alignment: Alignment.bottomCenter,
-                        margin: const EdgeInsets.only(bottom: 60, left: 10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            MenuTextWidget(
-                              icon: Icons.badge_outlined,
-                              text: "carla Pereira",
-                            ),
-                            MenuTextWidget(
-                              icon: Icons.mail,
-                              text: "carlapereira@gmail.com",
-                            ),
-                            MenuTextWidget(
-                              icon: Icons.chrome_reader_mode_outlined,
-                              text: "carlapereira@gmail.com",
-                            ),
-                            MenuTextWidget(
-                              icon: Icons.lock,
-                              text: "**********",
-                            ),
-                            MenuTextWidget(
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          width: 100,
+                          alignment: Alignment.topCenter,
+                          margin: const EdgeInsets.only(
+                            bottom: 80,
+                            left: 10,
+                            top: 10,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              MenuTextWidget(
+                                icon: Icons.badge_outlined,
+                                text: "carla pereira",
+                              ),
+                              MenuTextWidget(
+                                icon: Icons.mail,
+                                text: "carlapereira@gmail.com",
+                              ),
+                              MenuTextWidget(
+                                icon: Icons.chrome_reader_mode_outlined,
+                                text: "Análise d. de sistemas",
+                              ),
+                              MenuTextWidget(
+                                icon: Icons.lock,
+                                text: "**********",
+                              ),
+                              MenuTextWidget(
                                 icon: Icons.psychology_alt_outlined,
-                                text: "UX-UI"),
-                          ],
+                                text: "UX-UI",
+                              ),
+                            ],
+                          ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -135,48 +168,58 @@ class MenuPage extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.symmetric(
                 horizontal: 15,
-                vertical: 10,
+                vertical: 16,
               ),
               children: [
                 MenuWidget(
                   icon: Icons.home_outlined,
                   title: "Inicio",
-                  onTap: () {},
+                  onTap: () {
+                    Get.offAllNamed(Routes.HOME);
+                  },
                 ),
                 MenuWidget(
                   icon: Icons.event_outlined,
-                  title: "Ver horários",
-                  onTap: () {},
+                  title: "Horário",
+                  onTap: () {
+                    Get.to(
+                      const HoraryPage(),
+                      fullscreenDialog: GetPlatform.isAndroid,
+                    );
+                  },
                 ),
                 MenuWidget(
                   icon: Icons.desktop_windows_outlined,
                   title: "Equipamentos",
-                  onTap: () {},
-                ),
-                MenuWidget(
-                  icon: Icons.desktop_windows_outlined,
-                  title: "Verificar solicitações",
-                  onTap: () {},
+                  onTap: () {
+                    Get.offAllNamed(Routes.EQUIPMENT);
+                  },
                 ),
                 MenuWidget(
                   icon: Icons.diversity_3_outlined,
-                  title: "Analisar daily",
+                  title: "Daily",
                   onTap: () {},
                 ),
                 MenuWidget(
                   icon: Icons.report_outlined,
-                  title: "Ver reclamações",
-                  onTap: () {},
+                  title: "Fazer reclamação",
+                  onTap: () {
+                    Get.offNamed(Routes.COMPLAINT);
+                  },
                 ),
                 MenuWidget(
                   icon: Icons.help_center_outlined,
                   title: "Sobre",
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.ABOUT);
+                  },
                 ),
                 MenuWidget(
                   icon: Icons.logout_outlined,
                   title: "Sair",
-                  onTap: () {},
+                  onTap: () {
+                    Get.offAllNamed(Routes.LOGIN);
+                  },
                   isLogout: true,
                 ),
               ],

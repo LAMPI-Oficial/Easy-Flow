@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MenuWidget extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -18,9 +19,18 @@ class MenuWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6),
       margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(16))),
+        color: Colors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
       child: ListTile(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(16),
+          ),
+        ),
+        selectedColor: Colors.transparent,
         dense: true,
         leading: CircleAvatar(
           backgroundColor: isLogout!

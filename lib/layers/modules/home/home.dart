@@ -1,8 +1,8 @@
-import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
 import 'package:easyflow/layers/modules/home/pages/announcements.dart';
 import 'package:easyflow/layers/modules/home/pages/comp_no_found.dart';
 import 'package:easyflow/layers/modules/home/pages/representatives.dart';
+import 'package:easyflow/layers/modules/menu/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,14 @@ class Home extends GetView<HomeController> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Get.offAllNamed(Routes.MENU);
+              Get.to(
+                const MenuPage(),
+                fullscreenDialog: GetPlatform.isAndroid,
+                transition: Transition.rightToLeft,
+                duration: const Duration(
+                  milliseconds: 500,
+                ),
+              );
             },
             icon: const Icon(Icons.menu_outlined),
           ).marginZero,
