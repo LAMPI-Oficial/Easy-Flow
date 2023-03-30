@@ -2,6 +2,7 @@ import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
 import 'package:easyflow/layers/modules/home/pages/announcements.dart';
 import 'package:easyflow/layers/modules/home/pages/comp_no_found.dart';
 import 'package:easyflow/layers/modules/home/pages/representatives.dart';
+import 'package:easyflow/layers/modules/menu/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,12 +14,24 @@ class Home extends GetView<HomeController> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        drawer: const Drawer(),
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Get.to(
+                const MenuPage(),
+                fullscreenDialog: GetPlatform.isAndroid,
+                transition: Transition.rightToLeft,
+                duration: const Duration(
+                  milliseconds: 500,
+                ),
+              );
+            },
+            icon: const Icon(Icons.menu_outlined),
+          ).marginZero,
           title: Container(
             alignment: Alignment.centerLeft,
             height: 32,
-            width: MediaQuery.of(context).size.width,
+            width: double.infinity,
             child: TextFormField(
               controller: controller.controllerTextFormField,
               textAlignVertical: TextAlignVertical.center,
