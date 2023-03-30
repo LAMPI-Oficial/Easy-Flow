@@ -10,6 +10,8 @@ import 'package:easyflow/layers/modules/equipment/equipment_binding.dart';
 import 'package:easyflow/layers/modules/equipment/pages/equipment_request_page.dart';
 import 'package:easyflow/layers/modules/equipment/pages/equipments_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.dart';
+import 'package:easyflow/layers/modules/sign_up/pages/sign_up_password_data.dart';
+import 'package:easyflow/layers/modules/sign_up/pages/sign_up_residential_data.dart';
 import 'package:easyflow/layers/modules/menu/menu_page.dart';
 import 'package:easyflow/layers/modules/splash_screen/splash_screen_page.dart';
 import 'package:easyflow/layers/modules/login/login_binding.dart';
@@ -25,7 +27,7 @@ import 'package:get/get.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.SPLASH_SCREEN;
+  static const initialRoute = Routes.SIGN_UP;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -39,6 +41,16 @@ abstract class AppPages {
     GetPage(
       name: Routes.SIGN_UP,
       page: () => SignUpPage(),
+      binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: Routes.SIGN_UP_RESIDENTIAL,
+      page: () => SignUpResidentialData(),
+      binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: Routes.SIGN_UP_PASSWORD,
+      page: () => SignUpPasswordData(),
       binding: SignUpBinding(),
     ),
     GetPage(
