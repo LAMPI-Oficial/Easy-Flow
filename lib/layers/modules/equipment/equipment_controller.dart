@@ -51,17 +51,4 @@ class EquipmentController extends GetxController {
 
     return monthsOfTheYear[month] ?? "Janeiro";
   }
-
-  List<String> requests = [
-    "Pendente",
-    "Aprovado",
-    "Recusado",
-    "Aprovado",
-    "Aprovado",
-    "Aprovado",
-    "Aprovado",
-    "Aprovado",
-    "Recusado",
-    "Recusado",
-  ];
 }

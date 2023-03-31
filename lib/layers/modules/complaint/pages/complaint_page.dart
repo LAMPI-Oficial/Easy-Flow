@@ -34,7 +34,7 @@ class ComplaintPage extends GetView<ComplaintController> {
                       validator: (value) => Validators.combine(
                         [
                           () => Validators.isNotEmpty(value),
-                          () => Validators.IsName(value)
+                          () => Validators.isName(value)
                         ],
                       ),
                     ),

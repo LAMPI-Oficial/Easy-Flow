@@ -8,8 +8,10 @@ import 'package:easyflow/layers/modules/edit_profile/edit_profile_binding.dart';
 import 'package:easyflow/layers/modules/edit_profile/edit_profile_page.dart';
 import 'package:easyflow/layers/modules/equipment/equipment_binding.dart';
 import 'package:easyflow/layers/modules/equipment/pages/equipment_request_page.dart';
-import 'package:easyflow/layers/modules/equipment/pages/equipments_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.dart';
+import 'package:easyflow/layers/modules/home/bindings/home_binding.dart';
+import 'package:easyflow/layers/modules/home/pages/home_page.dart';
+import 'package:easyflow/layers/modules/horary/horary_page.dart';
 import 'package:easyflow/layers/modules/sign_up/pages/sign_up_password_data.dart';
 import 'package:easyflow/layers/modules/sign_up/pages/sign_up_residential_data.dart';
 import 'package:easyflow/layers/modules/menu/menu_page.dart';
@@ -91,7 +93,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.EQUIPMENT,
-      page: () => EquipmentPage(),
+      page: () => EquipmentRequestPage(),
       binding: EquipmentBinding(),
       transition: Transition.fadeIn,
       fullscreenDialog: GetPlatform.isAndroid,
