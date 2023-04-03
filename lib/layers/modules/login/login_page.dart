@@ -1,6 +1,6 @@
 import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/core/utils/validators_util.dart';
-import 'package:easyflow/layers/widgets/text_field_widget.dart';
+import 'package:easyflow/layers/widgets/text_field_secure_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'login_controller.dart';
@@ -41,17 +41,17 @@ class LoginPage extends GetView<LoginController> {
                 child: ListView(
                   padding: const EdgeInsets.all(32),
                   children: [
-                    TextFieldWidget(
-                      label: 'E-mail',
-                      hintText: 'e-mail',
-                      prefixIcon: const Icon(Icons.email_outlined),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text('E-mail'),
+                        prefixIcon: Icon(Icons.email_outlined),
+                      ),
                       controller: controller.loginTextController,
                       validator: (value) => Validators.isNotEmpty(value),
                       textInputAction: TextInputAction.next,
                     ),
-                    TextFieldWidget(
+                    TextFieldSecureWidget(
                       label: 'Senha',
-                      hintText: "senha",
                       prefixIcon: const Icon(Icons.lock_outlined),
                       controller: controller.passwordTextController,
                       security: true,
@@ -74,7 +74,8 @@ class LoginPage extends GetView<LoginController> {
                       width: double.infinity,
                       margin: const EdgeInsets.symmetric(vertical: 30),
                       child: ElevatedButton(
-                        onPressed: () => controller.login(context),
+                        onPressed: () =>
+                            Navigator.of(context).pushNamed(Routes.HOME),
                         child: const Text('Entrar'),
                       ),
                     ),

@@ -1,57 +1,55 @@
 import 'dart:convert';
 import 'package:easyflow/core/config/http_headers_config.dart';
-import 'package:easyflow/layers/data/exceptions/custom_exceptions.dart';
+import 'package:easyflow/layers/data/exceptions/api_exception.dart';
 import 'package:easyflow/layers/data/model/auth_request_model.dart';
 import 'package:easyflow/layers/data/model/create_user_request_model.dart';
 import 'package:easyflow/layers/data/model/user_model.dart';
-import 'package:result_dart/result_dart.dart';
 import 'package:easyflow/core/config/api_config.dart';
 import 'package:http/http.dart' as http;
 
 class AuthProvider {
-  AsyncResult<UserModel, Exception> login(
-      AuthRequestModel authRequestModel) async {
-    try {
-      final response = await http.post(
-        Uri.parse(ApiConfig.getUrl(ApiConfig.urlEndPointAuth)),
-        body: jsonEncode(
-          authRequestModel.toMap(),
-        ),
-        headers: HttpHeadersConfig.buildHeadersWithoutAuth(),
-      );
-      return Success(
-        UserModel.fromMap(
-          jsonDecode(
-            response.body,
-          ),
+  Future<UserModel> login(AuthRequestModel authRequestModel) async {
+    final response = await http.post(
+      Uri.parse(ApiConfig.getUrl(ApiConfig.urlEndPointAuth)),
+      body: jsonEncode(
+        authRequestModel.toMap(),
+      ),
+      headers: HttpHeadersConfig.buildHeadersWithoutAuth(),
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      return UserModel.fromMap(
+        jsonDecode(
+          response.body,
         ),
       );
-    } catch (e) {
-      return Failure(
-        IncorrectLoginOrPasswordException(),
-      );
+    } else if (response.statusCode == 401) {
+      throw ApiException('Credenciais Invalidas', 'Verifique suas Credenciais');
+    } else {
+      throw ApiException('Erro ao Realizar Operação', 'Tente novamente');
     }
   }
 
-  AsyncResult<UserModel, Exception> signUp(
+  Future<UserModel> signUp(
       CreateUserRequestModel createUserRequestModel) async {
-    try {
-      final response = await http.post(
-        Uri.parse(ApiConfig.getUrl(ApiConfig.urlEndPointCreateUser)),
-        body: jsonEncode(createUserRequestModel.toMap()),
-        headers: HttpHeadersConfig.buildHeadersWithoutAuth(),
-      );
-      return Success(
-        UserModel.fromMap(
-          jsonDecode(
-            response.body,
-          ),
+    final response = await http.post(
+      Uri.parse(ApiConfig.getUrl(ApiConfig.urlEndPointCreateUser)),
+      body: jsonEncode(createUserRequestModel.toMap()),
+      headers: HttpHeadersConfig.buildHeadersWithoutAuth(),
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      return UserModel.fromMap(
+        jsonDecode(
+          response.body,
         ),
       );
-    } catch (e) {
-      return Failure(
-        IncorrectSignUpException(),
-      );
+    } else if (response.statusCode == 409) {
+      throw ApiException('Essa conta já existe', 'use outro email ou cpf');
+    } else if (response.statusCode == 400) {
+      throw ApiException('Erro ao cadastrar-se', 'as senhas não correspondem');
+    } else {
+      throw ApiException('Erro ao Realizar Operação', 'Tente novamente');
     }
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../core/utils/validators_util.dart';
-import '../../../widgets/text_field_widget.dart';
+import '../../../widgets/text_field_secure_widget.dart';
 import '../sign_up_controller.dart';
 class SignUpResidentialData extends GetView<SignUpController> {
   SignUpResidentialData({Key? key}) : super(key: key);
@@ -110,12 +110,15 @@ class SignUpResidentialData extends GetView<SignUpController> {
                               Row(
                                 children: [
                                   Expanded(
-                                    child: TextFieldWidget(
-                                      label: "Digite seu CEP",
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                      label: Text("Digite seu CEP"),
+                                       prefixIcon: Icon(Icons.near_me),
                                       hintText: "CEP",
+                                      ),
                                       controller: controller.cepTextController,
                                       keyboardType: TextInputType.number,
-                                      prefixIcon: Icon(Icons.near_me),
+                                     
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -135,13 +138,16 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                     width: 8,
                                   ),
                                   Expanded(
-                                    child: TextFieldWidget(
-                                      label: "Digite sua rua",
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                      label: Text("Digite sua rua"),
+                                       prefixIcon:
+                                      Icon(Icons.maps_home_work_outlined),
                                       hintText: "Rua",
+                                      ),
                                       controller: controller.streetTextController,
                                       keyboardType: TextInputType.text,
-                                      prefixIcon:
-                                      Icon(Icons.maps_home_work_outlined),
+                                     
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -157,12 +163,15 @@ class SignUpResidentialData extends GetView<SignUpController> {
                               Row(
                                 children: [
                                   Expanded(
-                                    child: TextFieldWidget(
-                                      label: "Digite seu bairro",
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                      label: Text("Digite seu bairro"),
+                                        prefixIcon: Icon(Icons.cable),
                                       hintText: "Bairro",
+                                      ),
                                       controller: controller.neighborhoodTextController,
                                       keyboardType: TextInputType.text,
-                                      prefixIcon: Icon(Icons.cable),
+                                    
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -177,12 +186,15 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                     width: 8,
                                   ),
                                   Expanded(
-                                    child: TextFieldWidget(
-                                      label: "Número da sua casa",
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                      label: Text("Número da sua casa"),
+                                       prefixIcon: Icon(Icons.onetwothree_rounded),
                                       hintText: "Número",
+                                      ),
                                       controller: controller.houseNumberTextController,
                                       keyboardType: TextInputType.text,
-                                      prefixIcon: Icon(Icons.onetwothree_rounded),
+                                     
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -198,13 +210,15 @@ class SignUpResidentialData extends GetView<SignUpController> {
                               Row(
                                 children: [
                                   Expanded(
-                                    child: TextFieldWidget(
-                                      label: "Digite seu município",
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                      label: Text("Digite seu município"),
+                                       prefixIcon:
+                                      Icon(Icons.location_city_outlined),
                                       hintText: "Município",
+                                      ),
                                       controller: controller.municipalityTextController,
                                       keyboardType: TextInputType.text,
-                                      prefixIcon:
-                                      Icon(Icons.location_city_outlined),
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -219,12 +233,15 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                     width: 8,
                                   ),
                                   Expanded(
-                                    child: TextFieldWidget(
-                                      label: "Digite seu estado",
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                      label: Text("Digite seu estado"),
+                                        prefixIcon: Icon(Icons.map_outlined),
                                       hintText: "Estado",
+                                      ),
                                       controller: controller.stateTextController,
                                       keyboardType: TextInputType.text,
-                                      prefixIcon: Icon(Icons.map_outlined),
+                                    
                                       textInputAction: TextInputAction.next,
                                       autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
@@ -237,12 +254,15 @@ class SignUpResidentialData extends GetView<SignUpController> {
                                   ),
                                 ],
                               ),
-                              TextFieldWidget(
-                                label: "Digite um complemento para o endereço",
+                              TextFormField(
+                                decoration: const InputDecoration(
+                                label: Text("Digite um complemento para o endereço"),
+                                  prefixIcon: Icon(Icons.add_circle),
                                 hintText: "Complemento",
+                                ),
                                 controller: controller.complementTextController,
                                 keyboardType: TextInputType.text,
-                                prefixIcon: Icon(Icons.add_circle),
+                              
                                 textInputAction: TextInputAction.next,
                                 autovalidateMode: AutovalidateMode.onUserInteraction,
                                 validator: (value) => Validators.combine(

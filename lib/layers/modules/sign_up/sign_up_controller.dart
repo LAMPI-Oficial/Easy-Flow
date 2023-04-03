@@ -1,12 +1,11 @@
 import 'package:easyflow/core/routes/app_pages.dart';
-import 'package:easyflow/layers/data/exceptions/custom_exceptions.dart';
+import 'package:easyflow/layers/data/exceptions/api_exception.dart';
 import 'package:easyflow/layers/data/model/create_user_request_model.dart';
 import 'package:easyflow/layers/data/repository/auth_repository.dart';
 import 'package:easyflow/layers/data/service/user_service.dart';
 import 'package:easyflow/layers/widgets/dialogs_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:result_dart/result_dart.dart';
 
 class SignUpController extends GetxController {
   final AuthRepository _authRepository;
@@ -21,10 +20,20 @@ class SignUpController extends GetxController {
   final phoneTextController = TextEditingController();
   final courseTextController = TextEditingController();
   final areaOfStudyTextController = TextEditingController();
-  final List<String> courseList = ["Selecionar curso", "Redes", "ADS", "Eventos"];
+  final List<String> courseList = [
+    "Selecionar curso",
+    "Redes",
+    "ADS",
+    "Eventos"
+  ];
   final dropdownCourseValue = "Selecionar curso".obs;
   final dropdownCourseValuePattern = "Selecionar curso";
-  final List<String> areaOfStudyList = ["Selecionar área de estudo","Programação WEB", "UX/UI", "Jogos"];
+  final List<String> areaOfStudyList = [
+    "Selecionar área de estudo",
+    "Programação WEB",
+    "UX/UI",
+    "Jogos"
+  ];
   final dropdownAreaOfStudyValue = "Selecionar área de estudo".obs;
   final dropdownAreaOfStudyValuePattern = "Selecionar área de estudo";
 
@@ -41,11 +50,13 @@ class SignUpController extends GetxController {
 
   signUp1(context) async {
     if (formKey1.currentState!.validate()) {
-      if("$dropdownCourseValue" != dropdownCourseValuePattern && "$dropdownAreaOfStudyValue" != dropdownAreaOfStudyValuePattern){
+      if ("$dropdownCourseValue" != dropdownCourseValuePattern &&
+          "$dropdownAreaOfStudyValue" != dropdownAreaOfStudyValuePattern) {
         Get.toNamed(Routes.SIGN_UP_RESIDENTIAL);
       }
     }
   }
+
   signUp2(context) async {
     if (formKey2.currentState!.validate()) {
       Get.toNamed(Routes.SIGN_UP_PASSWORD);
@@ -54,24 +65,23 @@ class SignUpController extends GetxController {
 
   signUp3(context) async {
     if (formKey3.currentState!.validate()) {
-      Dialogs.loading(context).show();
+      Dialogs.loading(context);
       try {
-        final result = _authRepository.signUp(CreateUserRequestModel(
+        _authRepository
+            .signUp(CreateUserRequestModel(
           name: nameTextController.text,
           email: emailTextController.text,
           phone: phoneTextController.text,
           password: passwordTextController.text,
           repeatPassword: repeatPasswordTextController.text,
-        ));
-        result.fold((success) {
-          Dialogs.loading(context).dismiss();
-          Get.put(UserService()).auth(success);
-        }, (failure) {
-          Dialogs.loading(context).dismiss();
-          Dialogs.error(context, failure).show();
+        ))
+            .then((user) {
+          Get.put(UserService()).auth(user);
+          Navigator.of(context).pushNamed(Routes.HOME);
         });
-      } on IncorrectSignUpException catch (e) {
-        Dialogs.error(context, e).show();
+      } on ApiException catch (e) {
+        Navigator.of(context).pop();
+        Dialogs.error(context, title: e.title, message: e.message);
       }
     }
   }

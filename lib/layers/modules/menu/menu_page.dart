@@ -1,5 +1,5 @@
 import 'package:easyflow/core/routes/app_pages.dart';
-import 'package:easyflow/layers/modules/horary/horary_page.dart';
+import 'package:easyflow/layers/modules/horary/pages/horary_page.dart';
 import 'package:easyflow/layers/modules/menu/menu_text_widget.dart';
 import 'package:easyflow/layers/modules/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +12,13 @@ class MenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         title: const Text("Menu"),
-        
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(Icons.close)),
       ),
       body: SafeArea(
-          child: Column(
+          child: ListView(
         children: [
           Stack(
             alignment: Alignment.center,
@@ -110,7 +111,8 @@ class MenuPage extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () => Navigator.of(context)
+                                    .pushNamed(Routes.EDIT_PROFILE),
                                 child: const Text(
                                   "Editar Perfil",
                                 ),
@@ -165,64 +167,53 @@ class MenuPage extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: ListView(
+            child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 15,
                 vertical: 16,
               ),
-              children: [
-                MenuWidget(
-                  icon: Icons.home_outlined,
-                  title: "Inicio",
-                  onTap: () {
-                    Get.offAllNamed(Routes.HOME);
-                  },
-                ),
-                MenuWidget(
-                  icon: Icons.event_outlined,
-                  title: "Horário",
-                  onTap: () {
-                    Get.to(
-                      const HoraryPage(),
-                      fullscreenDialog: GetPlatform.isAndroid,
-                    );
-                  },
-                ),
-                MenuWidget(
-                  icon: Icons.desktop_windows_outlined,
-                  title: "Equipamentos",
-                  onTap: () {
-                    Get.offAllNamed(Routes.EQUIPMENT);
-                  },
-                ),
-                MenuWidget(
-                  icon: Icons.diversity_3_outlined,
-                  title: "Daily",
-                  onTap: () {},
-                ),
-                MenuWidget(
-                  icon: Icons.report_outlined,
-                  title: "Fazer reclamação",
-                  onTap: () {
-                    Get.offNamed(Routes.COMPLAINT);
-                  },
-                ),
-                MenuWidget(
-                  icon: Icons.help_center_outlined,
-                  title: "Sobre",
-                  onTap: () {
-                    Get.toNamed(Routes.ABOUT);
-                  },
-                ),
-                MenuWidget(
-                  icon: Icons.logout_outlined,
-                  title: "Sair",
-                  onTap: () {
-                    Get.offAllNamed(Routes.LOGIN);
-                  },
-                  isLogout: true,
-                ),
-              ],
+              child: Column(
+                children: [
+                  MenuWidget(
+                    icon: Icons.home_outlined,
+                    title: "Inicio",
+                    onTap: () => Navigator.of(context).pushNamed(Routes.HOME),
+                  ),
+                  MenuWidget(
+                    icon: Icons.event_outlined,
+                    title: "Horário",
+                    onTap: () => Navigator.of(context).pushNamed(Routes.HORARY),
+                  ),
+                  MenuWidget(
+                    icon: Icons.desktop_windows_outlined,
+                    title: "Equipamentos",
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(Routes.EQUIPMENT),
+                  ),
+                  MenuWidget(
+                    icon: Icons.diversity_3_outlined,
+                    title: "Daily",
+                    onTap: () => Navigator.of(context).pushNamed(Routes.DAILY),
+                  ),
+                  MenuWidget(
+                    icon: Icons.report_outlined,
+                    title: "Fazer reclamação",
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(Routes.COMPLAINT),
+                  ),
+                  MenuWidget(
+                    icon: Icons.help_center_outlined,
+                    title: "Sobre",
+                    onTap: () => Navigator.of(context).pushNamed(Routes.ABOUT),
+                  ),
+                  MenuWidget(
+                    icon: Icons.logout_outlined,
+                    title: "Sair",
+                    onTap: () => Navigator.of(context).pushNamed(Routes.LOGIN),
+                    isLogout: true,
+                  ),
+                ],
+              ),
             ),
           )
         ],

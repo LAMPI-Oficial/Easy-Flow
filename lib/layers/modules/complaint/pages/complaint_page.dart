@@ -1,6 +1,6 @@
 import 'package:easyflow/core/utils/validators_util.dart';
 import 'package:easyflow/layers/modules/complaint/complaint_controller.dart';
-import 'package:easyflow/layers/widgets/text_field_widget.dart';
+import 'package:easyflow/layers/widgets/text_field_secure_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_file_picker/form_builder_file_picker.dart';
 import 'package:get/get.dart';
@@ -23,12 +23,14 @@ class ComplaintPage extends GetView<ComplaintController> {
                 child: ListView(
                   padding: const EdgeInsets.all(16),
                   children: [
-                    TextFieldWidget(
-                      label: "Digite seu nome completo",
-                      hintText: "nome completo",
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text("Digite seu nome completo"),
+                        hintText: "nome completo",
+                        prefixIcon: Icon(Icons.badge_outlined),
+                      ),
                       controller: controller.nameTextController,
                       keyboardType: TextInputType.name,
-                      prefixIcon: const Icon(Icons.badge_outlined),
                       textInputAction: TextInputAction.next,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) => Validators.combine(
@@ -38,11 +40,13 @@ class ComplaintPage extends GetView<ComplaintController> {
                         ],
                       ),
                     ),
-                    TextFieldWidget(
-                      label: "Digite seu e-mail",
-                      hintText: "e-mail",
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text("Digite seu e-mail"),
+                        prefixIcon: Icon(Icons.email_outlined),
+                        hintText: "e-mail",
+                      ),
                       controller: controller.emailTextController,
-                      prefixIcon: const Icon(Icons.email_outlined),
                       keyboardType: TextInputType.emailAddress,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       textInputAction: TextInputAction.next,

@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:easyflow/layers/modules/about/pages/about_page.dart';
-import 'package:easyflow/layers/modules/add_horary/add_horary_page.dart';
+import 'package:easyflow/layers/modules/horary/horary_binding.dart';
+import 'package:easyflow/layers/modules/horary/pages/add_horary_page.dart';
 import 'package:easyflow/layers/modules/complaint/complaint_binding.dart';
 import 'package:easyflow/layers/modules/complaint/pages/complaint_page.dart';
 import 'package:easyflow/layers/modules/edit_profile/edit_profile_binding.dart';
@@ -9,9 +10,9 @@ import 'package:easyflow/layers/modules/edit_profile/edit_profile_page.dart';
 import 'package:easyflow/layers/modules/equipment/equipment_binding.dart';
 import 'package:easyflow/layers/modules/equipment/pages/equipment_request_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.dart';
-import 'package:easyflow/layers/modules/home/bindings/home_binding.dart';
+import 'package:easyflow/layers/modules/home/home_binding.dart';
 import 'package:easyflow/layers/modules/home/pages/home_page.dart';
-import 'package:easyflow/layers/modules/horary/horary_page.dart';
+import 'package:easyflow/layers/modules/horary/pages/horary_page.dart';
 import 'package:easyflow/layers/modules/sign_up/pages/sign_up_password_data.dart';
 import 'package:easyflow/layers/modules/sign_up/pages/sign_up_residential_data.dart';
 import 'package:easyflow/layers/modules/menu/menu_page.dart';
@@ -29,7 +30,7 @@ import 'package:get/get.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.SIGN_UP;
+  static const initialRoute = Routes.SPLASH_SCREEN;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -83,8 +84,14 @@ abstract class AppPages {
         page: () => EditProfilePage(),
         binding: EditProfileBinding()),
     GetPage(
+      name: Routes.HORARY,
+      page: () => HoraryPage(),
+      binding: HoraryBinding(),
+    ),
+    GetPage(
       name: Routes.ADD_HORARY,
       page: () => AddHoraryPage(),
+      binding: HoraryBinding(),
     ),
     GetPage(
       name: Routes.COMPLAINT,
@@ -95,11 +102,6 @@ abstract class AppPages {
       name: Routes.EQUIPMENT,
       page: () => EquipmentRequestPage(),
       binding: EquipmentBinding(),
-      transition: Transition.fadeIn,
-      fullscreenDialog: GetPlatform.isAndroid,
-      transitionDuration: const Duration(
-        milliseconds: 300,
-      ),
     ),
     GetPage(
       name: Routes.EQUIPMENT_REQUEST,
@@ -110,27 +112,10 @@ abstract class AppPages {
       name: Routes.HOME,
       page: () => HomePage(),
       binding: HomeBinding(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(
-        milliseconds: 500,
-      ),
-    ),
-    GetPage(
-      name: Routes.LISTING_HORARY,
-      page: () => HoraryPage(),
-      fullscreenDialog: GetPlatform.isAndroid,
-      transition: Transition.rightToLeft,
-      transitionDuration: const Duration(
-        milliseconds: 400,
-      ),
     ),
     GetPage(
       name: Routes.ABOUT,
       page: () => AboutPage(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(
-        milliseconds: 300,
-      ),
     ),
     GetPage(
       name: Routes.MENU,

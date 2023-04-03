@@ -16,11 +16,17 @@ final ThemeData appThemeData = ThemeData(
   ),
   appBarTheme: const AppBarTheme(
     foregroundColor: Colors.white,
+    elevation: 0,
     titleTextStyle: TextStyle(
         color: Colors.white,
         fontFamily: 'Poppins',
         fontSize: 16,
         fontWeight: FontWeight.w500),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+    ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(

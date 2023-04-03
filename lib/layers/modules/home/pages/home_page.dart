@@ -1,4 +1,5 @@
-import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
+import 'package:easyflow/core/routes/app_pages.dart';
+import 'package:easyflow/layers/modules/home/home_controller.dart';
 import 'package:easyflow/layers/modules/home/pages/announcements.dart';
 import 'package:easyflow/layers/modules/home/pages/comp_no_found.dart';
 import 'package:easyflow/layers/modules/home/pages/representatives.dart';
@@ -13,8 +14,11 @@ class HomePage extends GetView<HomeController> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        drawer: const Drawer(),
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () => Navigator.of(context).pushNamed(Routes.MENU),
+            icon: const Icon(Icons.menu),
+          ),
           title: Container(
             alignment: Alignment.centerLeft,
             height: 32,

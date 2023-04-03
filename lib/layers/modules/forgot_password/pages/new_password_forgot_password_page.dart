@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/utils/validators_util.dart';
-import '../../../widgets/text_field_widget.dart';
+import '../../../widgets/text_field_secure_widget.dart';
 
 class NewPasswordForgotPasswordPage extends GetView<ForgotPasswordController> {
   const NewPasswordForgotPasswordPage({super.key});
@@ -50,7 +50,7 @@ class NewPasswordForgotPasswordPage extends GetView<ForgotPasswordController> {
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Column(
                     children: [
-                      TextFieldWidget(
+                      TextFieldSecureWidget(
                         label: "Digite sua senha",
                         hintText: "Senha",
                         controller: controller.passwordTextController,
@@ -65,7 +65,7 @@ class NewPasswordForgotPasswordPage extends GetView<ForgotPasswordController> {
                           ],
                         ),
                       ),
-                      TextFieldWidget(
+                      TextFieldSecureWidget(
                         label: "Confirme sua senha",
                         hintText: "Confirmar senha",
                         controller: controller.repeatPasswordTextController,

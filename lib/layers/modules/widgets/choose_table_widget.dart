@@ -1,10 +1,9 @@
+import 'package:easyflow/layers/modules/horary/horary_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../add_horary/add_horary_controller.dart';
-
-class ChooseTableWidget extends GetView<AddHoraryController> {
+class ChooseTableWidget extends StatefulWidget {
   final int selected;
   final String title;
   final String subtitle;
@@ -17,17 +16,18 @@ class ChooseTableWidget extends GetView<AddHoraryController> {
   });
 
   @override
+  State<ChooseTableWidget> createState() => _ChooseTableWidgetState();
+}
+
+class _ChooseTableWidgetState extends State<ChooseTableWidget> {
+  @override
   Widget build(BuildContext context) {
     final medHeight = MediaQuery.of(context).size.height;
     final medWidth = MediaQuery.of(context).size.width;
 
     final NumberFormat formatter = NumberFormat("00");
 
-    return GetBuilder<AddHoraryController>(
-      init: AddHoraryController(),
-      initState: (_) {},
-      builder: (_) {
-        return Container(
+    return Container(
           width: medWidth * .90,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -43,7 +43,7 @@ class ChooseTableWidget extends GetView<AddHoraryController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    widget.title,
                     maxLines: 1,
                     style: const TextStyle(
                       fontFamily: "Poppins",
@@ -53,7 +53,7 @@ class ChooseTableWidget extends GetView<AddHoraryController> {
                     ),
                   ),
                   Text(
-                    subtitle,
+                    widget.subtitle,
                     maxLines: 2,
                     style: const TextStyle(
                       fontFamily: "Poppins",
@@ -76,9 +76,11 @@ class ChooseTableWidget extends GetView<AddHoraryController> {
                       ),
                       itemBuilder: (context, index) {
                         return TextButton(
-                          onPressed: () => _.selectTable(index),
+                          onPressed: () => setState(() {
+                            
+                          }),
                           style: TextButton.styleFrom(
-                            backgroundColor: selected == index
+                            backgroundColor: widget.selected == index
                                 ? Get.theme.colorScheme.primary
                                 : const Color(0xffD9D9D9),
                             elevation: 0,
@@ -92,7 +94,7 @@ class ChooseTableWidget extends GetView<AddHoraryController> {
                               fontFamily: "Segoe UI",
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: selected == index
+                              color: widget.selected == index
                                   ? Colors.white
                                   : const Color(0xff323232),
                             ),
@@ -106,7 +108,6 @@ class ChooseTableWidget extends GetView<AddHoraryController> {
             ),
           ),
         );
-      },
-    );
+    
   }
 }

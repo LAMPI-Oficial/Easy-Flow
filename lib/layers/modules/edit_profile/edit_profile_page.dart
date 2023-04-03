@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/modules/edit_profile/edit_form_widget.dart';
+import 'package:easyflow/layers/modules/edit_profile/widgets/edit_form_widget.dart';
 import 'package:easyflow/layers/modules/edit_profile/edit_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,17 +9,9 @@ class EditProfilePage extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0085FF),
       appBar: AppBar(
-        elevation: 0,
         title: const Text(
           "Perfil",
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        leading: const Icon(
-          Icons.arrow_back_ios,
         ),
       ),
       body: SafeArea(
@@ -29,6 +21,13 @@ class EditProfilePage extends GetView<EditProfileController> {
             Stack(
               alignment: Alignment.center,
               children: [
+                Container(
+                  height: 130,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF0085FF),
+                  ),
+                ),
                 Column(
                   children: [
                     Container(
@@ -112,61 +111,73 @@ class EditProfilePage extends GetView<EditProfileController> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   children: [
-                    EditFormWidget(
-                      hintText: 'Nome Completo',
-                      prefixIcon: const Icon(
-                        Icons.badge_outlined,
-                        size: 15,
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text('Nome Completo'),
+                        prefixIcon: Icon(
+                          Icons.badge_outlined,
+                          size: 15,
+                        ),
                       ),
                       controller: controller.nameTextController,
                       textInputAction: TextInputAction.next,
                     ),
-                    EditFormWidget(
-                      hintText: 'E-mail',
-                      prefixIcon: const Icon(
-                        Icons.email_outlined,
-                        size: 15,
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text('E-mail'),
+                        prefixIcon: Icon(
+                          Icons.email_outlined,
+                          size: 15,
+                        ),
                       ),
                       controller: controller.emailTextController,
                       textInputAction: TextInputAction.next,
                     ),
-                    EditFormWidget(
-                      // label: 'E-mail',
-                      hintText: 'Curso',
-                      prefixIcon: const Icon(
-                        Icons.chrome_reader_mode_outlined,
-                        size: 15,
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text('Curso'),
+                        prefixIcon: Icon(
+                          Icons.chrome_reader_mode_outlined,
+                          size: 15,
+                        ),
                       ),
                       controller: controller.courseTextController,
                       textInputAction: TextInputAction.next,
                     ),
-                    EditFormWidget(
-                      hintText: 'Área',
-                      prefixIcon: const Icon(
-                        Icons.psychology_alt_outlined,
-                        size: 15,
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text('Área'),
+                        prefixIcon: Icon(
+                          Icons.psychology_alt_outlined,
+                          size: 15,
+                        ),
                       ),
                       controller: controller.areaTextController,
                       textInputAction: TextInputAction.next,
                     ),
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 8),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                        ),
-                        onPressed: () {},
-                        child: const Text(
-                          'Salvar',
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
-            )
+            ),
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.all(16),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text(
+                  'Salvar',
+                ),
+              ),
+            ),
           ],
         ),
       ),

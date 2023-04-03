@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../core/utils/validators_util.dart';
-import '../../../widgets/text_field_widget.dart';
+import '../../../widgets/text_field_secure_widget.dart';
 import '../sign_up_controller.dart';
 
 class SignUpPasswordData extends GetView<SignUpController> {
@@ -103,7 +103,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
                       padding: EdgeInsets.all(12.0),
                       child: Column(
                         children: [
-                          TextFieldWidget(
+                          TextFieldSecureWidget(
                             label: "Digite sua senha",
                             hintText: "Senha",
                             controller: controller.passwordTextController,
@@ -118,7 +118,7 @@ class SignUpPasswordData extends GetView<SignUpController> {
                               ],
                             ),
                           ),
-                          TextFieldWidget(
+                          TextFieldSecureWidget(
                             label: "Digite a confirmação de senha",
                             hintText: "Confirmar",
                             controller: controller.repeatPasswordTextController,

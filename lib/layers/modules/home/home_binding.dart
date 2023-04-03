@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/modules/home/controller/home_controller.dart';
+import 'package:easyflow/layers/modules/home/home_controller.dart';
 import 'package:get/get.dart';
 
 class HomeBinding implements Bindings {

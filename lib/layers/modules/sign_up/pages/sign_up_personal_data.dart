@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../core/utils/validators_util.dart';
-import '../../../widgets/text_field_widget.dart';
+import '../../../widgets/text_field_secure_widget.dart';
 import '../sign_up_controller.dart';
 
 class SignUpPersonalData extends GetView<SignUpController> {
@@ -108,12 +108,15 @@ class SignUpPersonalData extends GetView<SignUpController> {
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              TextFieldWidget(
-                                label: "Digite seu nome completo",
+                              TextFormField(
+                                decoration: InputDecoration(
+                                label: Text("Digite seu nome completo"),
+                                  prefixIcon: Icon(Icons.badge_outlined),
                                 hintText: "nome completo",
+                                ),
                                 controller: controller.nameTextController,
                                 keyboardType: TextInputType.name,
-                                prefixIcon: Icon(Icons.badge_outlined),
+                              
                                 textInputAction: TextInputAction.next,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
@@ -124,11 +127,14 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                   ],
                                 ),
                               ),
-                              TextFieldWidget(
-                                label: "Digite seu e-mail",
-                                hintText: "e-mail",
-                                controller: controller.emailTextController,
+                              TextFormField(
+                                decoration: const InputDecoration(
+                                label: Text("Digite seu e-mail"),
                                 prefixIcon: Icon(Icons.email_outlined),
+                                hintText: "e-mail",
+                                ),
+                                controller: controller.emailTextController,
+                                
                                 keyboardType: TextInputType.emailAddress,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
@@ -140,11 +146,14 @@ class SignUpPersonalData extends GetView<SignUpController> {
                                   ],
                                 ),
                               ),
-                              TextFieldWidget(
-                                label: "Digite seu telefone",
+                              TextFormField(
+                                decoration: const InputDecoration(
+                                label: Text("Digite seu telefone"),
+                                  prefixIcon: Icon(Icons.phone),
                                 hintText: "Telefone",
+                                ),
                                 controller: controller.phoneTextController,
-                                prefixIcon: Icon(Icons.phone),
+                              
                                 keyboardType: TextInputType.phone,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,

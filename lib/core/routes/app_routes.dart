@@ -14,13 +14,17 @@ abstract class Routes {
   static const FORGOT_PASSWORD_CODE = '/forgot_password/code';
   static const FORGOT_PASSWORD_NEW_PASSWORD = '/forgot_password/password/new';
   static const FORGOT_PASSWORD_SUCCESS = '/forgot_password/success';
-  static const EDIT_PROFILE = '/edit_profile';
-  static const COMPLAINT = '/complaint';
+  static const EDIT_PROFILE = '/profile/edit';
   static const HOME = "/home";
+  static const MENU = '/menu';
+  static const HORARY = '/horary';
+  static const ADD_HORARY = '/horary/add';
   static const EQUIPMENT = '/equipment';
   static const EQUIPMENT_REQUEST = '/equipment/request';
-  static const LISTING_HORARY = '/listing_horary';
-  static const ADD_HORARY = '/add_horary';
+  static const DAILY = '/daily';
+  static const ADD_DAILY = '/daily/add';
+  static const COMPLAINT = '/complaint';
   static const ABOUT = '/about';
-  static const MENU = '/menu';
+  
+  
 }
