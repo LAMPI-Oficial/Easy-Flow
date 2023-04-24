@@ -1,26 +1,29 @@
-
+import 'package:easyflow/layers/data/model/horary_model.dart';
+import 'package:easyflow/layers/data/model/user_model.dart';
 import 'package:easyflow/layers/data/provider/horary_provider.dart';
 
 class HoraryRepository {
+  final HoraryProvider horaryProvider;
 
-final HoraryProvider horaryProvider;
+  HoraryRepository(this.horaryProvider);
 
-HoraryRepository(this.horaryProvider);
+  Future<List<HoraryModel>> getAll(UserModel userModel) {
+    return horaryProvider.getAll(userModel);
+  }
 
-getAll(){
-  return horaryProvider.getAll();
-}
-getId(id){
-  return horaryProvider.getId(id);
-}
-delete(id){
-  return horaryProvider.delete(id);
-}
-edit(obj){
-  return horaryProvider.edit( obj );
-}
-add(obj){
-    return horaryProvider.add( obj );
-}
+  Future<HoraryModel> getId(int id) {
+    return horaryProvider.getId(id);
+  }
 
+  Future<int> add(HoraryModel horaryModel) {
+    return horaryProvider.add(horaryModel);
+  }
+
+  Future<void> edit(HoraryModel horaryModel) {
+    return horaryProvider.edit(horaryModel);
+  }
+
+  Future<void> del(int id) {
+    return horaryProvider.del(id);
+  }
 }

@@ -5,23 +5,21 @@ import 'package:easyflow/layers/data/model/auth_request_model.dart';
 import 'package:easyflow/layers/data/model/create_user_request_model.dart';
 import 'package:easyflow/layers/data/model/user_model.dart';
 import 'package:easyflow/core/config/api_config.dart';
-import 'package:http/http.dart' as http;
+import 'package:get/get_connect.dart';
 
-class AuthProvider {
+class AuthProvider extends GetConnect {
   Future<UserModel> login(AuthRequestModel authRequestModel) async {
-    final response = await http.post(
-      Uri.parse(ApiConfig.getUrl(ApiConfig.urlEndPointAuth)),
-      body: jsonEncode(
-        authRequestModel.toMap(),
-      ),
+    final response = await post(
+      ApiConfig.getUrl(ApiConfig.urlEndPointAuth),
+      authRequestModel.toMap(),
       headers: HttpHeadersConfig.buildHeadersWithoutAuth(),
     );
     print(response.body);
     if (response.statusCode == 200) {
       return UserModel.fromMap(
-        jsonDecode(
+       
           response.body,
-        ),
+     
       );
     } else if (response.statusCode == 401) {
       throw ApiException('Credenciais Invalidas', 'Verifique suas Credenciais');
@@ -32,17 +30,17 @@ class AuthProvider {
 
   Future<UserModel> signUp(
       CreateUserRequestModel createUserRequestModel) async {
-    final response = await http.post(
-      Uri.parse(ApiConfig.getUrl(ApiConfig.urlEndPointCreateUser)),
-      body: jsonEncode(createUserRequestModel.toMap()),
+    final response = await post(
+      ApiConfig.getUrl(ApiConfig.urlEndPointCreateUser),
+      createUserRequestModel.toMap(),
       headers: HttpHeadersConfig.buildHeadersWithoutAuth(),
     );
     print(response.body);
     if (response.statusCode == 200) {
       return UserModel.fromMap(
-        jsonDecode(
+        
           response.body,
-        ),
+        
       );
     } else if (response.statusCode == 409) {
       throw ApiException('Essa conta já existe', 'use outro email ou cpf');

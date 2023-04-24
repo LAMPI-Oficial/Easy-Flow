@@ -9,6 +9,9 @@ class ApiConfig {
   static const String _urlEndPointGetUserByLogin =
       "/users/search_by_login?login=#login#";
 
+  static const String urlHorariesByRequester = "/horaries/requester/";
+  static const String urlHoraries = "/horaries/";
+
   static String getUrl(endpoint) => _urlApi + endpoint;
 
   static String urlEndPointGetUserByLogin({required String login}) =>

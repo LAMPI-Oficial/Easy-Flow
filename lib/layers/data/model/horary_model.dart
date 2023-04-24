@@ -14,4 +14,24 @@ class HoraryModel {
     required this.numTable,
     required this.turn,
   });
+
+  static HoraryModel fromMap(Map map) {
+    return HoraryModel(
+      id: map['id'],
+      name: map['name'],
+      numTable: map['numTable'],
+      day: map['day'],
+      turn: map['turn'],
+    );
+  }
+
+  Map toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'day': day,
+      'numTable': numTable,
+      'turn': turn,
+    };
+  }
 }
