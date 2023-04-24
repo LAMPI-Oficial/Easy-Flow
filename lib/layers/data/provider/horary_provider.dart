@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:easyflow/core/config/api_config.dart';
 import 'package:easyflow/core/config/http_headers_config.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
@@ -8,7 +7,6 @@ import 'package:easyflow/layers/data/model/user_model.dart';
 import 'package:get/get_connect.dart';
 
 class HoraryProvider extends GetConnect {
-
   // Método para obter todos os horários da API
   Future<List<HoraryModel>> getAll(UserModel userModel) async {
     final url = ApiConfig.getUrl(ApiConfig.urlHorariesByRequester) +
