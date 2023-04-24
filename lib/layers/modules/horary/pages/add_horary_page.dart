@@ -9,9 +9,6 @@ class AddHoraryPage extends GetView<HoraryController> {
 
   @override
   Widget build(BuildContext context) {
-    final medHeight = MediaQuery.of(context).size.height;
-    final medWidth = MediaQuery.of(context).size.width;
-
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
@@ -19,14 +16,11 @@ class AddHoraryPage extends GetView<HoraryController> {
             title: const Text('Horário'),
           ),
           body: SafeArea(
-            child: SingleChildScrollView(
-              child: Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: medHeight * .02,
-                    horizontal: medWidth * .05,
-                  ),
-                  child: Column(
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.all(16),
                     children: [
                       AddDayWidget(
                         value: controller.selectedSeg,
@@ -34,16 +28,17 @@ class AddHoraryPage extends GetView<HoraryController> {
                         aux: 0,
                         title: "Segunda-feira",
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: medHeight * .02,
-                        ),
-                        child: AddDayWidget(
-                          value: controller.selectedTer,
-                          selected: controller.turnTer,
-                          aux: 1,
-                          title: "Terça-feira",
-                        ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      AddDayWidget(
+                        value: controller.selectedTer,
+                        selected: controller.turnTer,
+                        aux: 1,
+                        title: "Terça-feira",
+                      ),
+                      const SizedBox(
+                        height: 16,
                       ),
                       AddDayWidget(
                         value: controller.selectedQua,
@@ -51,16 +46,17 @@ class AddHoraryPage extends GetView<HoraryController> {
                         aux: 2,
                         title: "Quarta-feira",
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: medHeight * .02,
-                        ),
-                        child: AddDayWidget(
-                          value: controller.selectedQui,
-                          selected: controller.turnQui,
-                          aux: 3,
-                          title: "Quinta-feira",
-                        ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      AddDayWidget(
+                        value: controller.selectedQui,
+                        selected: controller.turnQui,
+                        aux: 3,
+                        title: "Quinta-feira",
+                      ),
+                      const SizedBox(
+                        height: 16,
                       ),
                       AddDayWidget(
                         value: controller.selectedSex,
@@ -68,36 +64,29 @@ class AddHoraryPage extends GetView<HoraryController> {
                         aux: 4,
                         title: "Sexta-feira",
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: medHeight * .03,
-                        ),
-                        child: ChooseTableWidget(
-                          selected: controller.selectedTable,
-                          title: "Selecione uma mesa",
-                          subtitle:
-                              "a mesa selecionada é válida pelos\ndias selecionados",
-                        ),
+                      const SizedBox(
+                        height: 16,
                       ),
-                      SizedBox(
-                        height: medHeight * .06,
-                        width: medWidth,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text(
-                            "Guardar",
-                            style: TextStyle(
-                              fontFamily: "Segoe UI",
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      )
+                      ChooseTableWidget(
+                        selected: controller.selectedTable,
+                        title: "Selecione uma mesa",
+                        subtitle:
+                            "a mesa selecionada é válida pelos\ndias selecionados",
+                      ),
                     ],
                   ),
                 ),
-              ),
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Salvar",
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
         );

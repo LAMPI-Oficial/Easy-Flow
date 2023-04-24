@@ -32,7 +32,7 @@ class EmailForgotPasswordPage extends GetView<ForgotPasswordController> {
                       ),
                     ),
                     const SizedBox(
-                      height: 16,
+                      height: 24,
                     ),
                     TextFormField(
                       autofocus: true,
