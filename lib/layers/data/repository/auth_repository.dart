@@ -8,11 +8,11 @@ class AuthRepository {
 
   AuthRepository(this._authProvider);
 
-  Future<UserModel?> login(AuthRequestModel authRequestModel) {
+  Future<UserModel> login(AuthRequestModel authRequestModel) {
     return _authProvider.login(authRequestModel);
   }
 
-  Future<UserModel?> signUp(CreateUserRequestModel createUserRequestModel) {
+  Future<UserModel> signUp(CreateUserRequestModel createUserRequestModel) {
     return _authProvider.signUp(createUserRequestModel);
   }
 }
