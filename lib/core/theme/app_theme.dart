@@ -42,7 +42,6 @@ final ThemeData appThemeData = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontFamily: 'Poppins',
         fontSize: 16,
@@ -51,6 +50,22 @@ final ThemeData appThemeData = ThemeData(
           color: Color(0xFF0085FF), width: 1.0, style: BorderStyle.solid),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+  ),
+  dropdownMenuTheme: DropdownMenuThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: Color(0xFFD4D4D4),
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      errorStyle: const TextStyle(
+        fontFamily: 'Segoe_UI',
       ),
     ),
   ),

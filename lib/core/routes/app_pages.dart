@@ -13,9 +13,10 @@ import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.
 import 'package:easyflow/layers/modules/home/home_binding.dart';
 import 'package:easyflow/layers/modules/home/pages/home_page.dart';
 import 'package:easyflow/layers/modules/horary/pages/horary_page.dart';
-import 'package:easyflow/layers/modules/sign_up/pages/sign_up_password_data.dart';
-import 'package:easyflow/layers/modules/sign_up/pages/sign_up_residential_data.dart';
+import 'package:easyflow/layers/modules/sign_up/pages/password_sign_up_page.dart';
+import 'package:easyflow/layers/modules/sign_up/pages/address_sign_up_page.dart';
 import 'package:easyflow/layers/modules/menu/menu_page.dart';
+import 'package:easyflow/layers/modules/sign_up/pages/repeat_password_sign_up_page.dart';
 import 'package:easyflow/layers/modules/splash_screen/splash_screen_page.dart';
 import 'package:easyflow/layers/modules/login/login_binding.dart';
 import 'package:easyflow/layers/modules/login/login_page.dart';
@@ -47,13 +48,18 @@ abstract class AppPages {
       binding: SignUpBinding(),
     ),
     GetPage(
-      name: Routes.SIGN_UP_RESIDENTIAL,
-      page: () => SignUpResidentialData(),
+      name: Routes.ADDRESS_SIGN_UP,
+      page: () => AddressSignUpPage(),
       binding: SignUpBinding(),
     ),
     GetPage(
-      name: Routes.SIGN_UP_PASSWORD,
-      page: () => SignUpPasswordData(),
+      name: Routes.PASSWORD_SIGN_UP,
+      page: () => PasswordSignUpPage(),
+      binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: Routes.REPEAT_PASSWORD_SIGN_UP,
+      page: () => RepeatPasswordSignUpPage(),
       binding: SignUpBinding(),
     ),
     GetPage(

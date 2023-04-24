@@ -11,9 +11,10 @@ class SignUpController extends GetxController {
   final AuthRepository _authRepository;
   SignUpController(this._authRepository);
 
-  final formKey1 = GlobalKey<FormState>();
-  final formKey2 = GlobalKey<FormState>();
-  final formKey3 = GlobalKey<FormState>();
+  final formKeyPersonal = GlobalKey<FormState>();
+  final formKeyAddress = GlobalKey<FormState>();
+  final formKeyPassword = GlobalKey<FormState>();
+  final formKeyRepeatPassword = GlobalKey<FormState>();
 
   final nameTextController = TextEditingController();
   final emailTextController = TextEditingController();
@@ -48,41 +49,51 @@ class SignUpController extends GetxController {
   final passwordTextController = TextEditingController();
   final repeatPasswordTextController = TextEditingController();
 
-  signUp1(context) async {
-    if (formKey1.currentState!.validate()) {
+  personal(context) async {
+    if (formKeyPersonal.currentState!.validate()) {
       if ("$dropdownCourseValue" != dropdownCourseValuePattern &&
           "$dropdownAreaOfStudyValue" != dropdownAreaOfStudyValuePattern) {
-        Get.toNamed(Routes.SIGN_UP_RESIDENTIAL);
+        Navigator.of(context).pushNamed(Routes.ADDRESS_SIGN_UP);
       }
     }
   }
 
-  signUp2(context) async {
-    if (formKey2.currentState!.validate()) {
-      Get.toNamed(Routes.SIGN_UP_PASSWORD);
+  address(context) async {
+    if (formKeyAddress.currentState!.validate()) {
+      Navigator.of(context).pushNamed(Routes.PASSWORD_SIGN_UP);
     }
   }
 
-  signUp3(context) async {
-    if (formKey3.currentState!.validate()) {
-      Dialogs.loading(context);
-      try {
-        _authRepository
-            .signUp(CreateUserRequestModel(
-          name: nameTextController.text,
-          email: emailTextController.text,
-          phone: phoneTextController.text,
-          password: passwordTextController.text,
-          repeatPassword: repeatPasswordTextController.text,
-        ))
-            .then((user) {
-          Get.put(UserService()).auth(user);
-          Navigator.of(context).pushNamed(Routes.HOME);
-        });
-      } on ApiException catch (e) {
-        Navigator.of(context).pop();
-        Dialogs.error(context, title: e.title, message: e.message);
-      }
+  password(context) async {
+    if (formKeyPassword.currentState!.validate()) {
+      Navigator.of(context).pushNamed(Routes.REPEAT_PASSWORD_SIGN_UP);
+    }
+  }
+
+  repeat_password(context) async {
+    if (formKeyRepeatPassword.currentState!.validate()) {
+      signUp(context);
+    }
+  }
+
+  signUp(context) async {
+    Dialogs.loading(context);
+    try {
+      _authRepository
+          .signUp(CreateUserRequestModel(
+        name: nameTextController.text,
+        email: emailTextController.text,
+        phone: phoneTextController.text,
+        password: passwordTextController.text,
+        repeatPassword: repeatPasswordTextController.text,
+      ))
+          .then((user) {
+        Get.put(UserService()).auth(user);
+        Navigator.of(context).pushNamed(Routes.HOME);
+      });
+    } on ApiException catch (e) {
+      Navigator.of(context).pop();
+      Dialogs.error(context, title: e.title, message: e.message);
     }
   }
 }

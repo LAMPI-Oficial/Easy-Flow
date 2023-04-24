@@ -54,61 +54,57 @@ class _TextFieldWidgetState extends State<TextFieldSecureWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10, bottom: 16),
-      child: TextFormField(
-        key: widget.key,
-        autovalidateMode: widget.autovalidateMode,
-        decoration: InputDecoration(
-            label: Text(widget.label!),
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: Color(0xFFD4D4D4))),
-            contentPadding: const EdgeInsets.all(0),
-            border: OutlineInputBorder(
+    return TextFormField(
+      key: widget.key,
+      autovalidateMode: widget.autovalidateMode,
+      decoration: InputDecoration(
+          label: Text(widget.label!),
+          enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-            ),
-            hintText: widget.hintText,
-            errorStyle: const TextStyle(
-              fontFamily: 'Segoe_UI',
-            ),
-            prefixIcon: widget.prefixIcon,
-            suffixIcon: widget.security == true
-                ? GestureDetector(
-                    onTap: () => setState(() {
-                          eye = !eye;
-                        }),
-                    child: Icon(
-                      eye == true
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      size: 23,
-                    ))
-                : widget.suffix),
-        onChanged: widget.onChanged,
-        controller: widget.controller,
-        validator: widget.validator,
-        keyboardType: widget.keyboardType,
-        textInputAction: widget.textInputAction,
-        maxLength: widget.maxLenght,
-        onSaved: widget.onSaved,
-        autofocus: widget.autofocus ?? false,
-        obscureText: widget.security == true
-            ? widget.obscureText == null
-                ? eye
-                : widget.obscureText!
-            : false,
-        obscuringCharacter: "∗",
-        textAlign: widget.textAlign ?? TextAlign.left,
-        textAlignVertical: TextAlignVertical.center,
-        style: const TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 16,
-          color: Colors.black,
-          fontWeight: FontWeight.w400,
-        ),
-        inputFormatters: widget.inputFormatters,
+              borderSide: const BorderSide(color: Color(0xFFD4D4D4))),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          hintText: widget.hintText,
+          errorStyle: const TextStyle(
+            fontFamily: 'Segoe_UI',
+          ),
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: widget.security == true
+              ? GestureDetector(
+                  onTap: () => setState(() {
+                        eye = !eye;
+                      }),
+                  child: Icon(
+                    eye == true
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
+                    size: 23,
+                  ))
+              : widget.suffix),
+      onChanged: widget.onChanged,
+      controller: widget.controller,
+      validator: widget.validator,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      maxLength: widget.maxLenght,
+      onSaved: widget.onSaved,
+      autofocus: widget.autofocus ?? false,
+      obscureText: widget.security == true
+          ? widget.obscureText == null
+              ? eye
+              : widget.obscureText!
+          : false,
+      obscuringCharacter: "∗",
+      textAlign: widget.textAlign ?? TextAlign.left,
+      textAlignVertical: TextAlignVertical.center,
+      style: const TextStyle(
+        fontFamily: 'Poppins',
+        fontSize: 16,
+        color: Colors.black,
+        fontWeight: FontWeight.w400,
       ),
+      inputFormatters: widget.inputFormatters,
     );
   }
 }

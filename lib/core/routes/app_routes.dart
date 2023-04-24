@@ -6,9 +6,9 @@ abstract class Routes {
   static const SPLASH_SCREEN = '/';
   static const LOGIN = '/login';
   static const SIGN_UP = '/sign_up';
-  static const SIGN_UP_PERSONAL = '/sign_up/personal';
-  static const SIGN_UP_RESIDENTIAL = '/sign_up/residential';
-  static const SIGN_UP_PASSWORD = '/sign_up/password';
+  static const ADDRESS_SIGN_UP = '/sign_up/address';
+  static const PASSWORD_SIGN_UP = '/sign_up/password';
+  static const REPEAT_PASSWORD_SIGN_UP = '/sign_up/repeat_password';
   static const SIGN_UP_SUCCESS = '/sign_up/success';
   static const FORGOT_PASSWORD_EMAIL = '/forgot_password/email';
   static const FORGOT_PASSWORD_CODE = '/forgot_password/code';
@@ -25,6 +25,4 @@ abstract class Routes {
   static const ADD_DAILY = '/daily/add';
   static const COMPLAINT = '/complaint';
   static const ABOUT = '/about';
-  
-  
 }

@@ -50,6 +50,9 @@ class LoginPage extends GetView<LoginController> {
                       validator: (value) => Validators.isNotEmpty(value),
                       textInputAction: TextInputAction.next,
                     ),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     TextFieldSecureWidget(
                       label: 'Senha',
                       prefixIcon: const Icon(Icons.lock_outlined),
