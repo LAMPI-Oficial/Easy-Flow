@@ -1,11 +1,11 @@
-import 'package:easyflow/layers/modules/horary/horary_controller.dart';
+import 'package:easyflow/layers/modules/schedule/schedule_controller.dart';
 import 'package:easyflow/layers/modules/widgets/add_day_widget.dart';
 import 'package:easyflow/layers/modules/widgets/choose_table_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddHoraryPage extends GetView<HoraryController> {
-  const AddHoraryPage({super.key});
+class AddSchedulePage extends GetView<ScheduleController> {
+  const AddSchedulePage({super.key});
 
   @override
   Widget build(BuildContext context) {

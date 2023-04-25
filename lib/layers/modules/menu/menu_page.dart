@@ -1,5 +1,5 @@
 import 'package:easyflow/core/routes/app_pages.dart';
-import 'package:easyflow/layers/modules/horary/pages/horary_page.dart';
+import 'package:easyflow/layers/modules/schedule/pages/schedule_page.dart';
 import 'package:easyflow/layers/modules/menu/menu_text_widget.dart';
 import 'package:easyflow/layers/modules/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -182,7 +182,8 @@ class MenuPage extends StatelessWidget {
                   MenuWidget(
                     icon: Icons.event_outlined,
                     title: "Horário",
-                    onTap: () => Navigator.of(context).pushNamed(Routes.HORARY),
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(Routes.SCHEDULE),
                   ),
                   MenuWidget(
                     icon: Icons.desktop_windows_outlined,

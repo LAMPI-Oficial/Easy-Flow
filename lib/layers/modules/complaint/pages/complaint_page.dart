@@ -1,6 +1,5 @@
 import 'package:easyflow/core/utils/validators_util.dart';
 import 'package:easyflow/layers/modules/complaint/complaint_controller.dart';
-import 'package:easyflow/layers/widgets/text_field_secure_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_file_picker/form_builder_file_picker.dart';
 import 'package:get/get.dart';
@@ -40,6 +39,9 @@ class ComplaintPage extends GetView<ComplaintController> {
                         ],
                       ),
                     ),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     TextFormField(
                       decoration: const InputDecoration(
                         label: Text("Digite seu e-mail"),
@@ -57,22 +59,28 @@ class ComplaintPage extends GetView<ComplaintController> {
                         ],
                       ),
                     ),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     const Text("Descreva sua reclamação",
                         style: TextStyle(
                           fontFamily: 'Segoe_UI',
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                         )),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8),
-                      child: Text(
-                        "Escreva a sua reclamação com detalhes precisos",
-                        style: TextStyle(
-                          fontFamily: 'Segoe_UI',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const Text(
+                      "Escreva a sua reclamação com detalhes precisos",
+                      style: TextStyle(
+                        fontFamily: 'Segoe_UI',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
                       ),
+                    ),
+                    const SizedBox(
+                      height: 16,
                     ),
                     TextFormField(
                       controller: controller.descriptionTextController,
@@ -101,59 +109,59 @@ class ComplaintPage extends GetView<ComplaintController> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: FormBuilderFilePicker(
-                        name: "Arquivo",
-                        previewImages: true,
-                        allowMultiple: true,
-                        maxFiles: 1,
-                        withData: true,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) => Validators.combine(
-                          [
-                            () => Validators.isArchive(value),
-                          ],
-                        ),
-                        onChanged: (val) {},
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: const BorderSide(
-                              color: Color(0xFFD4D4D4),
-                            ),
-                          ),
-                        ),
-                        typeSelectors: [
-                          TypeSelector(
-                            type: FileType.any,
-                            selector: SizedBox(
-                              width: MediaQuery.of(context).size.width - 58,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Icon(
-                                    Icons.add_link_outlined,
-                                    color: Colors.blue,
-                                  ),
-                                  SizedBox(
-                                    width: 16,
-                                  ),
-                                  Text(
-                                    "Anexar arquivo",
-                                    style: TextStyle(
-                                        color: Colors.blue,
-                                        decoration: TextDecoration.underline),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    FormBuilderFilePicker(
+                      name: "Arquivo",
+                      previewImages: true,
+                      allowMultiple: true,
+                      maxFiles: 1,
+                      withData: true,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) => Validators.combine(
+                        [
+                          () => Validators.isArchive(value),
                         ],
                       ),
+                      onChanged: (val) {},
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFD4D4D4),
+                          ),
+                        ),
+                      ),
+                      typeSelectors: [
+                        TypeSelector(
+                          type: FileType.any,
+                          selector: SizedBox(
+                            width: MediaQuery.of(context).size.width - 58,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(
+                                  Icons.add_link_outlined,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Text(
+                                  "Anexar arquivo",
+                                  style: TextStyle(
+                                      color: Colors.blue,
+                                      decoration: TextDecoration.underline),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -167,12 +175,8 @@ class ComplaintPage extends GetView<ComplaintController> {
                 onPressed: () {
                   controller.complaint();
                 },
-                style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.blue),
-                ),
                 child: const Text(
                   "Enviar",
-                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),

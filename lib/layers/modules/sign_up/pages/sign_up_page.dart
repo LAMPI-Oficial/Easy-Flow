@@ -84,69 +84,36 @@ class SignUpPage extends GetView<SignUpController> {
                     const SizedBox(
                       height: 16,
                     ),
-                    Obx(
-                      () => DropdownButtonFormField(
-                        value: "${controller.dropdownCourseValue}",
-                        decoration: const InputDecoration(label: Text('Curso')),
-                        items: controller.courseList.map((String value) {
-                          if (controller.dropdownCourseValuePattern == value) {
-                            return DropdownMenuItem<String>(
-                              enabled: false,
-                              value: value,
-                              child: Text(
-                                value,
-                              ),
-                            );
-                          }
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (String? value) {
-                          controller.dropdownCourseValue.value = value!;
-                        },
-                        validator: (value) => Validators.combine(
-                          [
-                            () => Validators.isNotSelected(value),
-                          ],
-                        ),
-                      ),
+                    DropdownButtonFormField(
+                      decoration: const InputDecoration(label: Text('Curso')),
+                      items: controller.courses.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? value) {
+                        controller.course = value!;
+                      },
+                      validator: (value) => Validators.isNotSelected(value),
                     ),
                     const SizedBox(
                       height: 16,
                     ),
-                    Obx(
-                      () => DropdownButtonFormField<String>(
-                        value: "${controller.dropdownAreaOfStudyValue}",
-                        decoration: const InputDecoration(
-                          label: Text('Areá de estudo'),
-                        ),
-                        items: controller.areaOfStudyList.map((String value) {
-                          if (controller.dropdownAreaOfStudyValuePattern ==
-                              value) {
-                            return DropdownMenuItem<String>(
-                              enabled: false,
-                              value: value,
-                              child: Text(
-                                value,
-                              ),
-                            );
-                          }
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (String? value) {
-                          controller.dropdownAreaOfStudyValue.value = value!;
-                        },
-                        validator: (value) => Validators.combine(
-                          [
-                            () => Validators.isNotSelected(value),
-                          ],
-                        ),
+                    DropdownButtonFormField<String>(
+                      decoration: const InputDecoration(
+                        label: Text('Areá de estudo'),
                       ),
+                      items: controller.areaOfStudys.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? value) {
+                        controller.areaOfStudy = value!;
+                      },
+                      validator: (value) => Validators.isNotSelected(value),
                     ),
                   ],
                 ),

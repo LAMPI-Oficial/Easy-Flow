@@ -1,13 +1,13 @@
-import 'package:get/get.dart';
 
-class HoraryModel {
+
+class ScheduleModel {
   int id;
   String name;
   int numTable;
   String day;
   String turn;
 
-  HoraryModel({
+  ScheduleModel({
     required this.id,
     required this.name,
     required this.day,
@@ -15,8 +15,8 @@ class HoraryModel {
     required this.turn,
   });
 
-  static HoraryModel fromMap(Map map) {
-    return HoraryModel(
+  static ScheduleModel fromMap(Map map) {
+    return ScheduleModel(
       id: map['id'],
       name: map['name'],
       numTable: map['numTable'],

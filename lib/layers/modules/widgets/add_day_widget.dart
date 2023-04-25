@@ -1,9 +1,9 @@
-import 'package:easyflow/layers/modules/horary/horary_controller.dart';
+import 'package:easyflow/layers/modules/schedule/schedule_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddDayWidget extends GetView<HoraryController> {
+class AddDayWidget extends GetView<ScheduleController> {
   final bool value;
   final int selected;
   final int aux;
@@ -22,7 +22,7 @@ class AddDayWidget extends GetView<HoraryController> {
     final medHeight = MediaQuery.of(context).size.height;
     final medWidth = MediaQuery.of(context).size.width;
 
-    return GetBuilder<HoraryController>(
+    return GetBuilder<ScheduleController>(
       initState: (_) {},
       builder: (_) {
         return SizedBox(

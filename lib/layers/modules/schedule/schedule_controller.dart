@@ -1,10 +1,10 @@
-import 'package:easyflow/layers/data/provider/horary_provider.dart';
+import 'package:easyflow/layers/data/provider/schedule.dart';
 import 'package:easyflow/layers/data/repository/horary_repository.dart';
 import 'package:get/get.dart';
 
-class HoraryController extends GetxController {
-  final HoraryRepository _horaryRepository;
-  HoraryController(this._horaryRepository);
+class ScheduleController extends GetxController {
+  final ScheduleRepository _scheduleRepository;
+  ScheduleController(this._scheduleRepository);
   List<String> valuesDays = [
     "Seg",
     "Ter",

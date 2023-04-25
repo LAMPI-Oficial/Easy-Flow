@@ -2,13 +2,13 @@ import 'dart:async';
 import 'package:easyflow/core/config/api_config.dart';
 import 'package:easyflow/core/config/http_headers_config.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
-import 'package:easyflow/layers/data/model/horary_model.dart';
+import 'package:easyflow/layers/data/model/Schedule_model.dart';
 import 'package:easyflow/layers/data/model/user_model.dart';
 import 'package:get/get_connect.dart';
 
-class HoraryProvider extends GetConnect {
+class ScheduleProvider extends GetConnect {
   // Método para obter todos os horários da API
-  Future<List<HoraryModel>> getAll(UserModel userModel) async {
+  Future<List<ScheduleModel>> getAll(UserModel userModel) async {
     final url = ApiConfig.getUrl(ApiConfig.urlHorariesByRequester) +
         userModel.personModel.id.toString();
     try {
@@ -22,7 +22,7 @@ class HoraryProvider extends GetConnect {
       if (response.statusCode == 200) {
         return (response.body as List)
             .map(
-              (i) => HoraryModel.fromMap(
+              (i) => ScheduleModel.fromMap(
                 i,
               ),
             )
@@ -37,7 +37,7 @@ class HoraryProvider extends GetConnect {
   }
 
 // Método para obter um horário específico por ID da API
-  Future<HoraryModel> getId(int id) async {
+  Future<ScheduleModel> getId(int id) async {
     final url = ApiConfig.getUrl(ApiConfig.urlHoraries) + id.toString();
     try {
       final response = await get(
@@ -49,7 +49,7 @@ class HoraryProvider extends GetConnect {
       print(response.body);
 
       if (response.statusCode == 200) {
-        return HoraryModel.fromMap(response.body);
+        return ScheduleModel.fromMap(response.body);
       } else {
         throw ApiException('Erro ao Realizar Operação', 'Tente novamente');
       }
@@ -60,7 +60,7 @@ class HoraryProvider extends GetConnect {
   }
 
   // Método para adicionar um novo horário à API
-  Future<int> add(HoraryModel horary) async {
+  Future<int> add(ScheduleModel horary) async {
     final url = ApiConfig.getUrl(ApiConfig.urlHoraries);
     try {
       final response = await post(
@@ -83,7 +83,7 @@ class HoraryProvider extends GetConnect {
   }
 
   // Método para editar um horário existente na API
-  Future<void> edit(HoraryModel horary) async {
+  Future<void> edit(ScheduleModel horary) async {
     final url = ApiConfig.getUrl(ApiConfig.urlHoraries) + horary.id.toString();
     try {
       final response = await put(

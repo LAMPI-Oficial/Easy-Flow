@@ -17,8 +17,8 @@ abstract class Routes {
   static const EDIT_PROFILE = '/profile/edit';
   static const HOME = "/home";
   static const MENU = '/menu';
-  static const HORARY = '/horary';
-  static const ADD_HORARY = '/horary/add';
+  static const SCHEDULE = '/schedule';
+  static const ADD_SCHEDULE = '/schedule/add';
   static const EQUIPMENT = '/equipment';
   static const EQUIPMENT_REQUEST = '/equipment/request';
   static const DAILY = '/daily';

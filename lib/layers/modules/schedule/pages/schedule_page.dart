@@ -1,13 +1,13 @@
 import 'package:easyflow/core/routes/app_pages.dart';
-import 'package:easyflow/layers/modules/horary/widgets/list_horary_widget.dart';
+import 'package:easyflow/layers/modules/schedule/widgets/list_horary_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../horary_controller.dart';
+import '../schedule_controller.dart';
 import '../widgets/dropbutton_widget.dart';
 
-class HoraryPage extends GetView<HoraryController> {
-  const HoraryPage({super.key});
+class SchedulePage extends GetView<ScheduleController> {
+  const SchedulePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class HoraryPage extends GetView<HoraryController> {
               !GetPlatform.isAndroid
                   ? IconButton(
                       onPressed: () =>
-                          Navigator.of(context).pushNamed(Routes.ADD_HORARY),
+                          Navigator.of(context).pushNamed(Routes.ADD_SCHEDULE),
                       icon: const Icon(
                         Icons.add,
                         size: 30,
@@ -32,7 +32,7 @@ class HoraryPage extends GetView<HoraryController> {
           floatingActionButton: GetPlatform.isAndroid
               ? FloatingActionButton(
                   onPressed: () =>
-                      Navigator.of(context).pushNamed(Routes.ADD_HORARY),
+                      Navigator.of(context).pushNamed(Routes.ADD_SCHEDULE),
                   child: const Icon(Icons.add),
                 )
               : Container(),

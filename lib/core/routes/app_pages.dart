@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:easyflow/layers/modules/about/pages/about_page.dart';
-import 'package:easyflow/layers/modules/horary/horary_binding.dart';
-import 'package:easyflow/layers/modules/horary/pages/add_horary_page.dart';
+import 'package:easyflow/layers/modules/schedule/pages/add_schedule_page.dart';
+import 'package:easyflow/layers/modules/schedule/pages/schedule_page.dart';
+import 'package:easyflow/layers/modules/schedule/schedule_binding.dart';
 import 'package:easyflow/layers/modules/complaint/complaint_binding.dart';
 import 'package:easyflow/layers/modules/complaint/pages/complaint_page.dart';
 import 'package:easyflow/layers/modules/edit_profile/edit_profile_binding.dart';
@@ -12,7 +12,6 @@ import 'package:easyflow/layers/modules/equipment/pages/equipment_request_page.d
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_binding.dart';
 import 'package:easyflow/layers/modules/home/home_binding.dart';
 import 'package:easyflow/layers/modules/home/pages/home_page.dart';
-import 'package:easyflow/layers/modules/horary/pages/horary_page.dart';
 import 'package:easyflow/layers/modules/sign_up/pages/password_sign_up_page.dart';
 import 'package:easyflow/layers/modules/sign_up/pages/address_sign_up_page.dart';
 import 'package:easyflow/layers/modules/menu/menu_page.dart';
@@ -90,14 +89,14 @@ abstract class AppPages {
         page: () => EditProfilePage(),
         binding: EditProfileBinding()),
     GetPage(
-      name: Routes.HORARY,
-      page: () => HoraryPage(),
-      binding: HoraryBinding(),
+      name: Routes.SCHEDULE,
+      page: () => SchedulePage(),
+      binding: ScheduleBinding(),
     ),
     GetPage(
-      name: Routes.ADD_HORARY,
-      page: () => AddHoraryPage(),
-      binding: HoraryBinding(),
+      name: Routes.ADD_SCHEDULE,
+      page: () => AddSchedulePage(),
+      binding: ScheduleBinding(),
     ),
     GetPage(
       name: Routes.COMPLAINT,

@@ -55,6 +55,7 @@ final ThemeData appThemeData = ThemeData(
   ),
   dropdownMenuTheme: DropdownMenuThemeData(
     inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.all(0),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(

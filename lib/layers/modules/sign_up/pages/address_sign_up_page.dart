@@ -1,8 +1,9 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:easyflow/layers/data/model/state_model.dart';
 import 'package:easyflow/layers/modules/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 import '../../../../core/utils/validators_util.dart';
 import '../sign_up_controller.dart';
 
@@ -89,7 +90,7 @@ class AddressSignUpPage extends GetView<SignUpController> {
                             decoration: const InputDecoration(
                               label: Text("Número"),
                             ),
-                            controller: controller.houseNumberTextController,
+                            controller: controller.numberTextController,
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.next,
                             autovalidateMode:
@@ -126,21 +127,26 @@ class AddressSignUpPage extends GetView<SignUpController> {
                         const SizedBox(
                           width: 8,
                         ),
-                        Expanded(
-                          child: TextFormField(
+                        SizedBox(
+                          width: 100,
+                          child: DropdownButtonFormField<String>(
                             decoration: const InputDecoration(
-                              label: Text("Estado"),
+                              label: Text('Estado'),
                             ),
-                            controller: controller.stateTextController,
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.next,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: (value) => Validators.combine(
-                              [
-                                () => Validators.isNotEmpty(value),
-                              ],
-                            ),
+                          
+                            items:
+                                controller.states.map((StateModel stateModel) {
+                              return DropdownMenuItem<String>(
+                                
+                                value: stateModel.nome,
+                                child: Text(stateModel.sigla),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              controller.state = value!;
+                            },
+                            validator: (value) =>
+                                Validators.isNotSelected(value),
                           ),
                         ),
                       ],

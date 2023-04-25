@@ -1,6 +1,7 @@
 import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
 import 'package:easyflow/layers/data/model/create_user_request_model.dart';
+import 'package:easyflow/layers/data/model/state_model.dart';
 import 'package:easyflow/layers/data/repository/auth_repository.dart';
 import 'package:easyflow/layers/data/service/user_service.dart';
 import 'package:easyflow/layers/widgets/dialogs_widget.dart';
@@ -21,29 +22,17 @@ class SignUpController extends GetxController {
   final phoneTextController = TextEditingController();
   final courseTextController = TextEditingController();
   final areaOfStudyTextController = TextEditingController();
-  final List<String> courseList = [
-    "Selecionar curso",
-    "Redes",
-    "ADS",
-    "Eventos"
-  ];
-  final dropdownCourseValue = "Selecionar curso".obs;
-  final dropdownCourseValuePattern = "Selecionar curso";
-  final List<String> areaOfStudyList = [
-    "Selecionar área de estudo",
-    "Programação WEB",
-    "UX/UI",
-    "Jogos"
-  ];
-  final dropdownAreaOfStudyValue = "Selecionar área de estudo".obs;
-  final dropdownAreaOfStudyValuePattern = "Selecionar área de estudo";
+  final List<String> courses = ["Redes", "ADS", "Eventos"];
+  String? course;
+  final List<String> areaOfStudys = ["Programação WEB", "UX/UI", "Jogos"];
+  String? areaOfStudy;
 
   final cepTextController = TextEditingController();
   final streetTextController = TextEditingController();
   final neighborhoodTextController = TextEditingController();
-  final houseNumberTextController = TextEditingController();
+  final numberTextController = TextEditingController();
   final municipalityTextController = TextEditingController();
-  final stateTextController = TextEditingController();
+  String? state;
   final complementTextController = TextEditingController();
 
   final passwordTextController = TextEditingController();
@@ -51,10 +40,7 @@ class SignUpController extends GetxController {
 
   personal(context) async {
     if (formKeyPersonal.currentState!.validate()) {
-      if ("$dropdownCourseValue" != dropdownCourseValuePattern &&
-          "$dropdownAreaOfStudyValue" != dropdownAreaOfStudyValuePattern) {
-        Navigator.of(context).pushNamed(Routes.ADDRESS_SIGN_UP);
-      }
+      Navigator.of(context).pushNamed(Routes.ADDRESS_SIGN_UP);
     }
   }
 
@@ -70,7 +56,7 @@ class SignUpController extends GetxController {
     }
   }
 
-  repeat_password(context) async {
+  repeatPassword(context) async {
     if (formKeyRepeatPassword.currentState!.validate()) {
       signUp(context);
     }
@@ -96,4 +82,34 @@ class SignUpController extends GetxController {
       Dialogs.error(context, title: e.title, message: e.message);
     }
   }
+
+  List<StateModel> states = [
+    StateModel(nome: 'Acre', sigla: 'AC'),
+    StateModel(nome: 'Alagoas', sigla: 'AL'),
+    StateModel(nome: 'Amapá', sigla: 'AP'),
+    StateModel(nome: 'Amazonas', sigla: 'AM'),
+    StateModel(nome: 'Bahia', sigla: 'BA'),
+    StateModel(nome: 'Ceará', sigla: 'CE'),
+    StateModel(nome: 'Distrito Federal', sigla: 'DF'),
+    StateModel(nome: 'Espírito Santo', sigla: 'ES'),
+    StateModel(nome: 'Goiás', sigla: 'GO'),
+    StateModel(nome: 'Maranhão', sigla: 'MA'),
+    StateModel(nome: 'Mato Grosso', sigla: 'MT'),
+    StateModel(nome: 'Mato Grosso do Sul', sigla: 'MS'),
+    StateModel(nome: 'Minas Gerais', sigla: 'MG'),
+    StateModel(nome: 'Pará', sigla: 'PA'),
+    StateModel(nome: 'Paraíba', sigla: 'PB'),
+    StateModel(nome: 'Paraná', sigla: 'PR'),
+    StateModel(nome: 'Pernambuco', sigla: 'PE'),
+    StateModel(nome: 'Piauí', sigla: 'PI'),
+    StateModel(nome: 'Rio de Janeiro', sigla: 'RJ'),
+    StateModel(nome: 'Rio Grande do Norte', sigla: 'RN'),
+    StateModel(nome: 'Rio Grande do Sul', sigla: 'RS'),
+    StateModel(nome: 'Rondônia', sigla: 'RO'),
+    StateModel(nome: 'Roraima', sigla: 'RR'),
+    StateModel(nome: 'Santa Catarina', sigla: 'SC'),
+    StateModel(nome: 'São Paulo', sigla: 'SP'),
+    StateModel(nome: 'Sergipe', sigla: 'SE'),
+    StateModel(nome: 'Tocantins', sigla: 'TO'),
+  ];
 }

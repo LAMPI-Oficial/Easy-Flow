@@ -18,24 +18,18 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
       appBar: AppBar(
         title: const Text(
           "Solicitando",
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
-          ),
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
+        child: Form(
+          key: controller.formKey,
+          child: Column(
+            children: [
+              Expanded(
                 child: Obx(
                   () => Container(
                     margin: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: ListView(
                       children: [
                         const Text(
                           "Selecione a data de solicitação",
@@ -111,6 +105,7 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
                             formatButtonVisible: false,
                             titleCentered: true,
                           ),
+                          
                           calendarBuilders: CalendarBuilders(
                             outsideBuilder: _dayBuilder,
                             todayBuilder: _dayBuilder,
@@ -134,124 +129,72 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
                             ),
                           ),
                         ),
-                        Form(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: Text(
-                                  "Representante",
-                                  style: TextStyle(
-                                    fontFamily: "Segoe_UI",
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                              DropdownButtonFormField<String>(
-                                onChanged: controller.onDropdownValueChanged,
-                                value: controller.representative,
-                                items: controller.representatives
-                                    .map<DropdownMenuItem<String>>(
-                                        (representante) {
-                                  return DropdownMenuItem(
-                                    value: representante,
-                                    child: Text(
-                                      representante,
-                                      style: const TextStyle(
-                                        fontFamily: "Segoe_UI",
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                  );
-                                }).toList(),
-                                borderRadius: BorderRadius.circular(10),
-                                dropdownColor: Colors.white,
-                                isExpanded: true,
-                                decoration: InputDecoration(
-                                  hintStyle: const TextStyle(
-                                    fontFamily: "Segoe_UI",
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 13,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  fillColor: Colors.white,
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: Text(
-                                  "Justificativa",
-                                  style: TextStyle(
-                                    fontFamily: "Segoe_UI",
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                              const Text(
-                                "Escreva uma justificativa para a solicitação do notebook",
-                                style: TextStyle(
-                                  fontFamily: "Poppins",
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              TextFormField(
-                                minLines: 4,
-                                maxLines: 4,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  fillColor: Colors.white,
-                                ),
-                                controller:
-                                    controller.justificationTextFieldController,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                validator: (value) =>
-                                    Validators.isNotEmpty(value),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20),
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        Theme.of(context).colorScheme.primary,
-                                    elevation: 0,
-                                    minimumSize:
-                                        const Size(double.infinity, 40),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                  ),
-                                  child: const Text(
-                                    "Finalizar solicitação",
-                                    style: TextStyle(
-                                      fontFamily: "Segoe_UI",
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        Obx(
+                          () => DropdownButtonFormField<String>(
+                            decoration: const InputDecoration(
+                              label: Text('Representante'),
+                            ),
+                            items:
+                                controller.representatives.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              controller.representative.value = value!;
+                            },
+                            validator: (value) => Validators.combine(
+                              [
+                                () => Validators.isNotSelected(value),
+                              ],
+                            ),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        TextFormField(
+                          minLines: 4,
+                          maxLines: 10,
+                          decoration: const InputDecoration(
+                            label: Text('Justificativa'),
+                            hintText:
+                                'Escreva uma justificativa para a solicitação do notebook',
+                          ),
+                          controller:
+                              controller.justificationTextFieldController,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) => Validators.isNotEmpty(value),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.all(16),
+                child: ElevatedButton(
+                  onPressed: () => controller.requestEquipment(context),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    elevation: 0,
+                    minimumSize: const Size(double.infinity, 40),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                  child: const Text(
+                    "Solicitar",
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

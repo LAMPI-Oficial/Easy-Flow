@@ -45,7 +45,7 @@ class RepeatPasswordSignUpPage extends GetView<SignUpController> {
                 width: double.infinity,
                 color: Colors.white,
                 child: ElevatedButton(
-                  onPressed: () => controller.repeat_password(context),
+                  onPressed: () => controller.repeatPassword(context),
                   child: const Text("Finalizar"),
                 ),
               ),

@@ -1,7 +1,9 @@
+import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EquipmentController extends GetxController {
+  final formKey = GlobalKey<FormState>();
   var firstDay = DateTime.now();
   var lastDay = DateTime.utc(DateTime.now().year + 1);
   var requestDate = DateTime.now().obs;
@@ -13,11 +15,23 @@ class EquipmentController extends GetxController {
 
   var justificationTextFieldController = TextEditingController();
 
-  List<String> representatives = ["Abraão", "Mário", "Júlia"];
-  String representative = "Abraão";
+  var representatives = <String>[].obs;
+  var representative = ''.obs;
 
-  void onDropdownValueChanged(String? value) {
-    representative = value ?? "";
+  @override
+  void onInit() {
+    super.onInit();
+    _loadRepresentatives();
+  }
+
+  void _loadRepresentatives() {
+    representatives.value = ['Abrahão', 'Júlia', 'Anderson'];
+  }
+
+  requestEquipment(context) {
+    if (formKey.currentState!.validate()) {
+      Navigator.of(context).pushNamed(Routes.EQUIPMENT);
+    }
   }
 
   void onRequestDaySelected(DateTime selectedDay, DateTime focusedDay) {
