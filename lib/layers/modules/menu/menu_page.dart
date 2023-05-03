@@ -198,9 +198,9 @@ class MenuPage extends StatelessWidget {
                   ),
                   MenuWidget(
                     icon: Icons.report_outlined,
-                    title: "Fazer reclamação",
+                    title: "Reclamações",
                     onTap: () =>
-                        Navigator.of(context).pushNamed(Routes.COMPLAINT),
+                        Navigator.of(context).pushNamed(Routes.COMPLAINTS),
                   ),
                   MenuWidget(
                     icon: Icons.help_center_outlined,

@@ -44,7 +44,6 @@ class LoginPage extends GetView<LoginController> {
                     TextFormField(
                       decoration: const InputDecoration(
                         label: Text('E-mail'),
-                        prefixIcon: Icon(Icons.email_outlined),
                       ),
                       controller: controller.loginTextController,
                       validator: (value) => Validators.isNotEmpty(value),
@@ -55,7 +54,6 @@ class LoginPage extends GetView<LoginController> {
                     ),
                     TextFieldSecureWidget(
                       label: 'Senha',
-                      prefixIcon: const Icon(Icons.lock_outlined),
                       controller: controller.passwordTextController,
                       security: true,
                       validator: (value) => Validators.isNotEmpty(value),

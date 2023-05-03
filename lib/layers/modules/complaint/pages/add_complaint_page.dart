@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:form_builder_file_picker/form_builder_file_picker.dart';
 import 'package:get/get.dart';
 
-class ComplaintPage extends GetView<ComplaintController> {
-  const ComplaintPage({super.key});
+class AddComplaintPage extends GetView<ComplaintController> {
+  const AddComplaintPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,7 @@ class ComplaintPage extends GetView<ComplaintController> {
                         TypeSelector(
                           type: FileType.any,
                           selector: SizedBox(
-                            width: MediaQuery.of(context).size.width - 58,
+                            width: MediaQuery.of(context).size.width - 75,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
@@ -168,7 +168,7 @@ class ComplaintPage extends GetView<ComplaintController> {
               ),
             ),
             Container(
-              height: 60,
+              height: 50,
               width: double.infinity,
               margin: const EdgeInsets.all(16),
               child: ElevatedButton(

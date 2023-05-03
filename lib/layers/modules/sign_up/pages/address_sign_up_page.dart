@@ -64,6 +64,7 @@ class AddressSignUpPage extends GetView<SignUpController> {
                       height: 16,
                     ),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: TextFormField(
@@ -106,6 +107,7 @@ class AddressSignUpPage extends GetView<SignUpController> {
                       height: 16,
                     ),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: TextFormField(
@@ -133,11 +135,9 @@ class AddressSignUpPage extends GetView<SignUpController> {
                             decoration: const InputDecoration(
                               label: Text('Estado'),
                             ),
-                          
                             items:
                                 controller.states.map((StateModel stateModel) {
                               return DropdownMenuItem<String>(
-                                
                                 value: stateModel.nome,
                                 child: Text(stateModel.sigla),
                               );

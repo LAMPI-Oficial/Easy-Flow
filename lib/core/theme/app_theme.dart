@@ -24,6 +24,7 @@ final ThemeData appThemeData = ThemeData(
         fontWeight: FontWeight.w500),
   ),
   inputDecorationTheme: InputDecorationTheme(
+    contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
     ),

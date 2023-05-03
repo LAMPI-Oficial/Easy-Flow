@@ -23,6 +23,7 @@ abstract class Routes {
   static const EQUIPMENT_REQUEST = '/equipment/request';
   static const DAILY = '/daily';
   static const ADD_DAILY = '/daily/add';
-  static const COMPLAINT = '/complaint';
+  static const COMPLAINTS = '/complaints';
+  static const ADD_COMPLAINT = '/complaint/add';
   static const ABOUT = '/about';
 }

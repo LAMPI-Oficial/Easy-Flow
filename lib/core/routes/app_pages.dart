@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:easyflow/layers/modules/about/pages/about_page.dart';
+import 'package:easyflow/layers/modules/complaint/pages/complaints_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/add_schedule_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/schedule_page.dart';
 import 'package:easyflow/layers/modules/schedule/schedule_binding.dart';
 import 'package:easyflow/layers/modules/complaint/complaint_binding.dart';
-import 'package:easyflow/layers/modules/complaint/pages/complaint_page.dart';
+import 'package:easyflow/layers/modules/complaint/pages/add_complaint_page.dart';
 import 'package:easyflow/layers/modules/edit_profile/edit_profile_binding.dart';
 import 'package:easyflow/layers/modules/edit_profile/edit_profile_page.dart';
 import 'package:easyflow/layers/modules/equipment/equipment_binding.dart';
@@ -99,8 +100,13 @@ abstract class AppPages {
       binding: ScheduleBinding(),
     ),
     GetPage(
-      name: Routes.COMPLAINT,
-      page: () => ComplaintPage(),
+      name: Routes.COMPLAINTS,
+      page: () => ComplaintsPage(),
+      binding: ComplaintBinding(),
+    ),
+    GetPage(
+      name: Routes.ADD_COMPLAINT,
+      page: () => AddComplaintPage(),
       binding: ComplaintBinding(),
     ),
     GetPage(
