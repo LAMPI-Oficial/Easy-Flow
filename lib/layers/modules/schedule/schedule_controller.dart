@@ -1,9 +1,12 @@
-import 'package:easyflow/layers/data/provider/schedule.dart';
-import 'package:easyflow/layers/data/repository/horary_repository.dart';
+import 'package:easyflow/layers/data/model/schedule_model.dart';
+import 'package:easyflow/layers/data/provider/schedule_provider.dart';
+import 'package:easyflow/layers/data/repository/schedule_repository.dart';
+import 'package:easyflow/layers/data/service/user_service.dart';
 import 'package:get/get.dart';
 
 class ScheduleController extends GetxController {
   final ScheduleRepository _scheduleRepository;
+  final user = Get.put<UserService>(UserService());
   ScheduleController(this._scheduleRepository);
   List<String> valuesDays = [
     "Seg",
@@ -93,5 +96,9 @@ class ScheduleController extends GetxController {
   selectTable(int index) {
     selectedTable = index;
     update();
+  }
+  RxList<ScheduleModel> schedules = <ScheduleModel>[].obs;
+  getAll() {
+    _scheduleRepository.getAll(user.userLogged).then((value) => schedules(value));
   }
 }

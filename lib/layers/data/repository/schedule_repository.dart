@@ -1,6 +1,6 @@
-import 'package:easyflow/layers/data/model/Schedule_model.dart';
+import 'package:easyflow/layers/data/model/schedule_model.dart';
 import 'package:easyflow/layers/data/model/user_model.dart';
-import 'package:easyflow/layers/data/provider/schedule.dart';
+import 'package:easyflow/layers/data/provider/schedule_provider.dart';
 
 class ScheduleRepository {
   final ScheduleProvider scheduleProvider;

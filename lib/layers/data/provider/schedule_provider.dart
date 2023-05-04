@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:easyflow/core/config/api_config.dart';
 import 'package:easyflow/core/config/http_headers_config.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
-import 'package:easyflow/layers/data/model/Schedule_model.dart';
+import 'package:easyflow/layers/data/model/schedule_model.dart';
 import 'package:easyflow/layers/data/model/user_model.dart';
 import 'package:get/get_connect.dart';
 

@@ -7,7 +7,6 @@ class HttpHeadersConfig {
       'Content-Type': 'application/json',
       'authorization': "Bearer $token"
     };
-
     return headers;
   }
 
