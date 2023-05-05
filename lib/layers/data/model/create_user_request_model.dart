@@ -5,16 +5,15 @@ class CreateUserRequestModel {
   String password;
   String repeatPassword;
 
+  CreateUserRequestModel({
+    required this.name,
+    required this.email,
+    required this.phone,
+    required this.password,
+    required this.repeatPassword,
+  });
 
-  CreateUserRequestModel(
-      {required this.name,
-      required this.email,
-      required this.phone,
-      required this.password,
-      required this.repeatPassword,
-});
-
- Map toMap() {
+  Map toMap() {
     return {
       'name': name,
       'email': email,

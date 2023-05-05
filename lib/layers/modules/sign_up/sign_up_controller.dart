@@ -1,8 +1,12 @@
 import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
+import 'package:easyflow/layers/data/model/course_model.dart';
 import 'package:easyflow/layers/data/model/create_user_request_model.dart';
 import 'package:easyflow/layers/data/model/state_model.dart';
+import 'package:easyflow/layers/data/model/study_area_model.dart';
 import 'package:easyflow/layers/data/repository/auth_repository.dart';
+import 'package:easyflow/layers/data/repository/course_repository.dart';
+import 'package:easyflow/layers/data/repository/study_area_repository.dart';
 import 'package:easyflow/layers/data/service/user_service.dart';
 import 'package:easyflow/layers/widgets/dialogs_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +14,13 @@ import 'package:get/get.dart';
 
 class SignUpController extends GetxController {
   final AuthRepository _authRepository;
-  SignUpController(this._authRepository);
+  final StudyAreaRepository _studyAreaRepository;
+  final CourseRepository _courseRepository;
+  SignUpController(
+    this._authRepository,
+    this._courseRepository,
+    this._studyAreaRepository,
+  );
 
   final formKeyPersonal = GlobalKey<FormState>();
   final formKeyAddress = GlobalKey<FormState>();
@@ -22,9 +32,9 @@ class SignUpController extends GetxController {
   final phoneTextController = TextEditingController();
   final courseTextController = TextEditingController();
   final areaOfStudyTextController = TextEditingController();
-  final List<String> courses = ["Redes", "ADS", "Eventos"];
+  RxList<CourseModel> courses = <CourseModel>[].obs;
   String? course;
-  final List<String> areaOfStudys = ["Programação WEB", "UX/UI", "Jogos"];
+  RxList<StudyAreaModel> study_area = <StudyAreaModel>[].obs;
   String? areaOfStudy;
 
   final cepTextController = TextEditingController();
@@ -81,6 +91,14 @@ class SignUpController extends GetxController {
       Navigator.of(context).pop();
       Dialogs.error(context, title: e.title, message: e.message);
     }
+  }
+
+  Future<List<CourseModel>> getAllCourses() {
+    return _courseRepository.getAll().then((value) => courses(value));
+  }
+
+  Future<List<StudyAreaModel>> getAllStudyArea() {
+    return _studyAreaRepository.getAll().then((value) => study_area(value));
   }
 
   List<StateModel> states = [
