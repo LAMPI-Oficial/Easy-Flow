@@ -15,12 +15,8 @@ final ThemeData appThemeData = ThemeData(
     onSurface: Color(0xFF323232),
   ),
   appBarTheme: const AppBarTheme(
-    foregroundColor: Colors.white,
     titleTextStyle: TextStyle(
-        color: Colors.white,
-        fontFamily: 'Poppins',
-        fontSize: 16,
-        fontWeight: FontWeight.w500),
+        fontFamily: 'Poppins', fontSize: 16, fontWeight: FontWeight.w500),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
