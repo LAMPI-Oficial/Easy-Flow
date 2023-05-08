@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:easyflow/layers/modules/about/pages/about_page.dart';
 import 'package:easyflow/layers/modules/complaint/pages/complaints_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/add_schedule_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/schedule_page.dart';
 import 'package:easyflow/layers/modules/schedule/schedule_binding.dart';
+import 'package:easyflow/layers/modules/complaint/complaint_binding.dart';
 import 'package:easyflow/layers/modules/complaint/pages/add_complaint_page.dart';
 import 'package:easyflow/layers/modules/edit_profile/edit_profile_binding.dart';
 import 'package:easyflow/layers/modules/edit_profile/edit_profile_page.dart';
@@ -29,7 +31,7 @@ import 'package:get/get.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.LISTING_HORARY;
+  static const initialRoute = Routes.SPLASH_SCREEN;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -84,12 +86,6 @@ abstract class AppPages {
       page: () => SuccessForgotPasswordPage(),
     ),
     GetPage(
-
-      name: Routes.LISTING_HORARY,
-      page: () => HoraryPage(),
-    ),
- GetPage(
-
         name: Routes.EDIT_PROFILE,
         page: () => EditProfilePage(),
         binding: EditProfileBinding()),
