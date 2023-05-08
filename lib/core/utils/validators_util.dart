@@ -10,9 +10,32 @@ class Validators {
     return null;
   }
 
-  static String? IsName(String? value) {
+  static String? isNotSelected(String? value) {
+    if (value == "" || value == null) {
+      return "Este campo é obrigatório!";
+    }
+    return null;
+  }
+
+  static String? isName(String? value) {
     if (RegExp(r"^([A-Z][a-z].* [A-Z][a-z].*)").hasMatch(value!) == false) {
       return "Este nome é inválido!";
+    }
+    return null;
+  }
+
+  static String? isPhone(String? value) {
+    if (RegExp(r"^([(][0-9]{2}[)] [0-9]{5}[-][0-9]{4}$)").hasMatch(value!) ==
+        false) {
+      return "Este telefone é inválido!";
+    }
+    return null;
+  }
+
+  static String? isCep(String? value) {
+    if (RegExp(r"^([0-9]{2}[.][0-9]{3}[-][0-9]{3}$)").hasMatch(value!) ==
+        false) {
+      return "Este CEP é inválido!";
     }
     return null;
   }
@@ -27,9 +50,7 @@ class Validators {
   }
 
   static String? isCodeForgotPassword(String? value) {
-    if (RegExp(r"^[0-9]{4}")
-        .hasMatch(value!) ==
-        false) {
+    if (RegExp(r"^[0-9]{4}").hasMatch(value!) == false) {
       return "Código inválido!";
     }
     return null;
@@ -68,14 +89,14 @@ class Validators {
   }
 
   static String? isDescription(String? value) {
-    if (value != null && value.length > 500){
+    if (value != null && value.length > 500) {
       return "O máximo de caracteres é 500!";
     }
     return null;
   }
 
   static String? isArchive(List<PlatformFile>? value) {
-    if (value == null || value.isEmpty){
+    if (value == null || value.isEmpty) {
       return "Este campo é obrigatório";
     }
     return null;

@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easyflow/layers/modules/home/widgets/subtitle_widget.dart';
-import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
+import 'package:easyflow/layers/data/model/representatives_model.dart';
 import 'package:flutter/material.dart';
 
 class TileRepresentativeWidget extends StatelessWidget {

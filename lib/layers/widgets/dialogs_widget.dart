@@ -1,100 +1,71 @@
-import 'package:easyflow/layers/data/exceptions/custom_exceptions.dart';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:stylish_dialog/stylish_dialog.dart';
 
 class Dialogs {
-  static StylishDialog? _dialogLoading;
-  static StylishDialog? _incorrectLoginOrPassword;
-  static StylishDialog? _genericError;
-
-  static StylishDialog loading(context) {
-    _dialogLoading ??= StylishDialog(
+  static loading(context) {
+    showDialog(
       context: context,
-      alertType: StylishDialogType.NORMAL,
-      dismissOnTouchOutside: false,
-      style: Style1(
-          backgroundColor: Colors.transparent,
-          dialogBgColor: Colors.transparent),
-      addView: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: 40,
-            height: 40,
-            child: GetPlatform.isIOS
-                ? CupertinoActivityIndicator(
-                    radius: 20, color: Theme.of(context).colorScheme.primary)
-                : CircularProgressIndicator(
-                    color: Theme.of(context).colorScheme.primary),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Text(
-            'Aguarde...',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-                color: Colors.white),
-          ),
-        ],
-      ),
-    );
-
-    return _dialogLoading!;
-  }
-
-  static StylishDialog _incorrectLoginOrPassowrd(context) {
-    _incorrectLoginOrPassword ??= StylishDialog(
-      context: context,
-      alertType: StylishDialogType.ERROR,
-      title: const Text(
-        "Login ou Senha Inválido",
-        style: TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 14,
-        ),
-      ),
-      content: const Text(
-        "Vefique suas Credenciais.",
-        style: TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 12,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 40,
+              height: 40,
+              child: Platform.isIOS
+                  ? CupertinoActivityIndicator(
+                      radius: 20, color: Theme.of(context).colorScheme.primary)
+                  : CircularProgressIndicator(
+                      color: Theme.of(context).colorScheme.primary),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              'Aguarde...',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.white),
+            ),
+          ],
         ),
       ),
     );
-    return _incorrectLoginOrPassword!;
   }
 
-  static StylishDialog _genericErro(context) {
-    _genericError ??= StylishDialog(
+  static error(context, {required String title, required String message}) {
+    showDialog(
       context: context,
-      alertType: StylishDialogType.ERROR,
-      title: const Text(
-        "Erro ao Realizar Operação",
-        style: TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 14,
-        ),
-      ),
-      content: const Text(
-        "Por favor, tente novamente.",
-        style: TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 12,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.white),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              message,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.white),
+            ),
+          ],
         ),
       ),
     );
-    return _genericError!;
-  }
-
-  static StylishDialog error(context, Exception e) {
-    final Map errosMap = {
-      IncorrectLoginOrPasswordException: _incorrectLoginOrPassowrd(context)
-    };
-    return errosMap.containsKey(e) ? errosMap[e] : _genericErro(context);
   }
 }

@@ -1,36 +1,37 @@
-import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/data/repository/auth_repository.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordController extends GetxController {
-  final AuthRepository _repository;
-  ForgotPasswordController(this._repository);
 
-  final formKey1 = GlobalKey<FormState>();
-  final formKey2 = GlobalKey<FormState>();
-  final formKey3 = GlobalKey<FormState>();
+<<<<<<< HEAD
+final AuthRepository repository;
+ForgotPasswordController(this.repository);
+=======
+  final formKeyEmail = GlobalKey<FormState>();
+  final formKeyCheckCode = GlobalKey<FormState>();
+  final formKeyNewPassword = GlobalKey<FormState>();
+>>>>>>> Dev
 
-  final emailTextController = TextEditingController();
-  final codeTextController = TextEditingController();
-  final passwordTextController = TextEditingController();
-  final repeatPasswordTextController = TextEditingController();
 
-  sendCode() {
-    if (formKey1.currentState!.validate()) {
-      Get.toNamed(Routes.FORGOT_PASSWORD_CODE);
+<<<<<<< HEAD
+}
+=======
+  sendCode(context) {
+    if (formKeyEmail.currentState!.validate()) {
+      Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD_CODE);
     }
   }
 
-  checkCode() {
-    if (formKey2.currentState!.validate()) {
-      Get.toNamed(Routes.FORGOT_PASSWORD_NEW_PASSWORD);
+  checkCode(context) {
+    if (formKeyCheckCode.currentState!.validate()) {
+      Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD_NEW_PASSWORD);
     }
   }
 
-  resetPassword() {
-    if (formKey3.currentState!.validate()) {
-      Get.toNamed(Routes.FORGOT_PASSWORD_SUCCESS);
+  forgotPassword(context) {
+    if (formKeyNewPassword.currentState!.validate()) {
+      Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD_SUCCESS);
     }
   }
 }
+>>>>>>> Dev

@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/modules/home/model/representatives_model.dart';
+import 'package:easyflow/layers/data/model/representatives_model.dart';
 import 'package:easyflow/layers/modules/home/widgets/tite_representative.dart';
 import 'package:flutter/material.dart';
 
