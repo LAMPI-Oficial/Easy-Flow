@@ -15,8 +15,16 @@ final ThemeData appThemeData = ThemeData(
     onSurface: Color(0xFF323232),
   ),
   appBarTheme: const AppBarTheme(
+    foregroundColor: Colors.white,
+    elevation: 0,
     titleTextStyle: TextStyle(
         fontFamily: 'Poppins', fontSize: 16, fontWeight: FontWeight.w500),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+    ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
@@ -32,7 +40,6 @@ final ThemeData appThemeData = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontFamily: 'Poppins',
         fontSize: 16,
@@ -41,6 +48,23 @@ final ThemeData appThemeData = ThemeData(
           color: Color(0xFF0085FF), width: 1.0, style: BorderStyle.solid),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+  ),
+  dropdownMenuTheme: DropdownMenuThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.all(0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: Color(0xFFD4D4D4),
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      errorStyle: const TextStyle(
+        fontFamily: 'Segoe_UI',
       ),
     ),
   ),

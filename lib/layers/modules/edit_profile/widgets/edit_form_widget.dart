@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TextFieldWidget extends StatefulWidget {
+class EditFormWidget extends StatefulWidget {
   final TextEditingController? controller;
   final String? label;
   final String? hintText;
@@ -22,7 +22,7 @@ class TextFieldWidget extends StatefulWidget {
   final bool? security;
   final AutovalidateMode? autovalidateMode;
 
-  const TextFieldWidget(
+  const EditFormWidget(
       {Key? key,
       this.controller,
       this.label,
@@ -46,10 +46,10 @@ class TextFieldWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<TextFieldWidget> createState() => _TextFieldWidgetState();
+  State<EditFormWidget> createState() => _EditFormWidgetState();
 }
 
-class _TextFieldWidgetState extends State<TextFieldWidget> {
+class _EditFormWidgetState extends State<EditFormWidget> {
   bool eye = true;
 
   @override
@@ -67,7 +67,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                   ))
               : Container(),
           Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 16),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             child: TextFormField(
               key: widget.key,
               autovalidateMode: widget.autovalidateMode,
@@ -83,7 +83,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                   errorStyle: const TextStyle(
                     fontFamily: 'Segoe_UI',
                   ),
-    
                   prefixIcon: widget.prefixIcon,
                   suffixIcon: widget.security == true
                       ? GestureDetector(
@@ -111,13 +110,12 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       : widget.obscureText!
                   : false,
               obscuringCharacter: "∗",
-              textAlign: widget.textAlign ?? TextAlign.left,
-              textAlignVertical: TextAlignVertical.center,
+              // textAlign: widget.textAlign ?? TextAlign.left,
+              // textAlignVertical: TextAlignVertical.center,
               style: const TextStyle(
                 fontFamily: 'Poppins',
-                fontSize: 16,
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
+                fontSize: 12,
+                color: Color(0xFF8B8B8B),
               ),
               inputFormatters: widget.inputFormatters,
             ),
