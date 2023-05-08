@@ -1,21 +1,21 @@
-import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/data/repository/auth_repository.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordController extends GetxController {
-  final AuthRepository _repository;
-  ForgotPasswordController(this._repository);
 
+<<<<<<< HEAD
+final AuthRepository repository;
+ForgotPasswordController(this.repository);
+=======
   final formKeyEmail = GlobalKey<FormState>();
   final formKeyCheckCode = GlobalKey<FormState>();
   final formKeyNewPassword = GlobalKey<FormState>();
+>>>>>>> Dev
 
-  final emailTextController = TextEditingController();
-  final codeTextController = TextEditingController();
-  final passwordTextController = TextEditingController();
-  final repeatPasswordTextController = TextEditingController();
 
+<<<<<<< HEAD
+}
+=======
   sendCode(context) {
     if (formKeyEmail.currentState!.validate()) {
       Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD_CODE);
@@ -34,3 +34,4 @@ class ForgotPasswordController extends GetxController {
     }
   }
 }
+>>>>>>> Dev

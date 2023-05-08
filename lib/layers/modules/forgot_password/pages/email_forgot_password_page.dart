@@ -6,8 +6,10 @@ import '../../../../core/utils/validators_util.dart';
 class EmailForgotPasswordPage extends GetView<ForgotPasswordController> {
   const EmailForgotPasswordPage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

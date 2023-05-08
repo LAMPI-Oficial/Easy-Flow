@@ -18,10 +18,7 @@ final ThemeData appThemeData = ThemeData(
     foregroundColor: Colors.white,
     elevation: 0,
     titleTextStyle: TextStyle(
-        color: Colors.white,
-        fontFamily: 'Poppins',
-        fontSize: 16,
-        fontWeight: FontWeight.w500),
+        fontFamily: 'Poppins', fontSize: 16, fontWeight: FontWeight.w500),
   ),
   inputDecorationTheme: InputDecorationTheme(
     contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),

@@ -8,8 +8,10 @@ import '../../../widgets/text_field_secure_widget.dart';
 class NewPasswordForgotPasswordPage extends GetView<ForgotPasswordController> {
   const NewPasswordForgotPasswordPage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
