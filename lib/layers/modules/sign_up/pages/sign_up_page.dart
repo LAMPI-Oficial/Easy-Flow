@@ -23,141 +23,157 @@ class SignUpPage extends GetView<SignUpController> {
             return const Scaffold(
                 body: Center(child: CircularProgressIndicator()));
           } else {
-            final List<CourseModel> courses = snapshot.data![0];
-            final List<StudyAreaModel> studyArea = snapshot.data![1];
+            if (snapshot.data != null) {
+              final List<CourseModel> courses = snapshot.data![0];
+              final List<StudyAreaModel> studyArea = snapshot.data![1];
 
-            return Scaffold(
-                appBar: AppBarWidget(
-                  value: 1,
-                  subtitle: 'Dados pessoais',
-                ),
-                backgroundColor: Colors.white,
-                body: SafeArea(
-                  child: Form(
-                    key: controller.formKeyPersonal,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: ListView(
-                            padding: const EdgeInsets.all(16),
-                            children: [
-                              TextFormField(
-                                decoration: const InputDecoration(
-                                  label: Text("Nome completo"),
-                                ),
-                                controller: controller.nameTextController,
-                                keyboardType: TextInputType.name,
-                                textInputAction: TextInputAction.next,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                validator: (value) => Validators.combine(
-                                  [
-                                    () => Validators.isNotEmpty(value),
-                                    () => Validators.isName(value)
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              TextFormField(
-                                decoration: const InputDecoration(
-                                  label: Text("E-mail"),
-                                ),
-                                controller: controller.emailTextController,
-                                keyboardType: TextInputType.emailAddress,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                textInputAction: TextInputAction.next,
-                                validator: (value) => Validators.combine(
-                                  [
-                                    () => Validators.isNotEmpty(value),
-                                    () => Validators.isEmail(value)
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              TextFormField(
-                                decoration: const InputDecoration(
-                                  label: Text("Telefone"),
-                                ),
-                                controller: controller.phoneTextController,
-                                keyboardType: TextInputType.phone,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                textInputAction: TextInputAction.next,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
-                                  TelefoneInputFormatter()
-                                ],
-                                validator: (value) => Validators.combine(
-                                  [
-                                    () => Validators.isNotEmpty(value),
-                                    () => Validators.isPhone(value)
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              DropdownButtonFormField(
-                                decoration:
-                                    const InputDecoration(label: Text('Curso')),
-                                items: courses.map((value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value.id.toString(),
-                                    child: Text(value.name),
-                                  );
-                                }).toList(),
-                                onChanged: (String? value) {
-                                  controller.course = value!;
-                                },
-                                validator: (value) =>
-                                    Validators.isNotSelected(value),
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              DropdownButtonFormField<String>(
-                                decoration: const InputDecoration(
-                                  label: Text('Área de estudo'),
-                                ),
-                                items: studyArea.map((value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value.id.toString(),
-                                    child: Text(value.name),
-                                  );
-                                }).toList(),
-                                onChanged: (String? value) {
-                                  controller.areaOfStudy = value!;
-                                },
-                                validator: (value) =>
-                                    Validators.isNotSelected(value),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(16),
-                          width: double.infinity,
-                          color: Colors.white,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () => controller.personal(context),
-                                  child: const Text("Continuar"),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+              return Scaffold(
+                  appBar: AppBarWidget(
+                    value: 1,
+                    subtitle: 'Dados pessoais',
                   ),
-                ));
+                  backgroundColor: Colors.white,
+                  body: SafeArea(
+                    child: Form(
+                      key: controller.formKeyPersonal,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: ListView(
+                              padding: const EdgeInsets.all(16),
+                              children: [
+                                TextFormField(
+                                  decoration: const InputDecoration(
+                                    label: Text("Nome completo"),
+                                  ),
+                                  controller: controller.nameTextController,
+                                  keyboardType: TextInputType.name,
+                                  textInputAction: TextInputAction.next,
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  validator: (value) => Validators.combine(
+                                    [
+                                      () => Validators.isNotEmpty(value),
+                                      () => Validators.isName(value)
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                TextFormField(
+                                  decoration: const InputDecoration(
+                                    label: Text("E-mail"),
+                                  ),
+                                  controller: controller.emailTextController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  textInputAction: TextInputAction.next,
+                                  validator: (value) => Validators.combine(
+                                    [
+                                      () => Validators.isNotEmpty(value),
+                                      () => Validators.isEmail(value)
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                TextFormField(
+                                  decoration: const InputDecoration(
+                                    label: Text("Telefone"),
+                                  ),
+                                  controller: controller.phoneTextController,
+                                  keyboardType: TextInputType.phone,
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  textInputAction: TextInputAction.next,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.digitsOnly,
+                                    TelefoneInputFormatter()
+                                  ],
+                                  validator: (value) => Validators.combine(
+                                    [
+                                      () => Validators.isNotEmpty(value),
+                                      () => Validators.isPhone(value)
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                DropdownButtonFormField(
+                                  decoration: const InputDecoration(
+                                      label: Text('Curso')),
+                                  items: courses.map((value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value.id.toString(),
+                                      child: Text(value.name),
+                                    );
+                                  }).toList(),
+                                  onChanged: (String? value) {
+                                    controller.course = value!;
+                                  },
+                                  validator: (value) =>
+                                      Validators.isNotSelected(value),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                DropdownButtonFormField<String>(
+                                  decoration: const InputDecoration(
+                                    label: Text('Área de estudo'),
+                                  ),
+                                  items: studyArea.map((value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value.id.toString(),
+                                      child: Text(value.name),
+                                    );
+                                  }).toList(),
+                                  onChanged: (String? value) {
+                                    controller.areaOfStudy = value!;
+                                  },
+                                  validator: (value) =>
+                                      Validators.isNotSelected(value),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            width: double.infinity,
+                            color: Colors.white,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () =>
+                                        controller.personal(context),
+                                    child: const Text("Continuar"),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ));
+            } else {
+              return Scaffold(
+                body: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text("Erro: O servidor não retornou nenhum dado"),
+                      Text("Verifique sua conexão com a internet")
+                    ],
+                  ),
+                ),
+              );
+            }
           }
         });
   }

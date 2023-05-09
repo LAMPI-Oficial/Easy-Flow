@@ -1,9 +1,11 @@
 import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
 import 'package:easyflow/layers/data/model/course_model.dart';
+import 'package:easyflow/layers/data/model/create_adress_request_model.dart';
 import 'package:easyflow/layers/data/model/create_user_request_model.dart';
 import 'package:easyflow/layers/data/model/state_model.dart';
 import 'package:easyflow/layers/data/model/study_area_model.dart';
+import 'package:easyflow/layers/data/repository/adress_repository.dart';
 import 'package:easyflow/layers/data/repository/auth_repository.dart';
 import 'package:easyflow/layers/data/repository/course_repository.dart';
 import 'package:easyflow/layers/data/repository/study_area_repository.dart';
@@ -14,10 +16,13 @@ import 'package:get/get.dart';
 
 class SignUpController extends GetxController {
   final AuthRepository _authRepository;
+  final AdressRepository _adressRepository;
   final StudyAreaRepository _studyAreaRepository;
   final CourseRepository _courseRepository;
+
   SignUpController(
     this._authRepository,
+    this._adressRepository,
     this._courseRepository,
     this._studyAreaRepository,
   );
@@ -75,17 +80,38 @@ class SignUpController extends GetxController {
   signUp(context) async {
     Dialogs.loading(context);
     try {
-      _authRepository
+      await _authRepository
           .signUp(CreateUserRequestModel(
         name: nameTextController.text,
         email: emailTextController.text,
         phone: phoneTextController.text,
         password: passwordTextController.text,
         repeatPassword: repeatPasswordTextController.text,
+        course: course ?? '',
+        studyArea: areaOfStudy ?? '',
       ))
-          .then((user) {
-        Get.put(UserService()).auth(user);
-        Navigator.of(context).pushNamed(Routes.HOME);
+          .then((user) async {
+        try {
+          await _adressRepository
+              .save(CreateAdressRequestModel(
+            complement: complementTextController.text,
+            municipality: municipalityTextController.text,
+            neighborhood: neighborhoodTextController.text,
+            number: numberTextController.text,
+            personId: "${user.id}",
+            stateEnum: state!.toUpperCase() ?? '',
+            street: streetTextController.text,
+          ))
+              .then((res) {
+                if(res == "ok"){
+                  Get.put(UserService()).auth(user);
+                  Navigator.of(context).pushNamed(Routes.HOME);
+                }
+          });
+        } on ApiException catch (e) {
+          Navigator.of(context).pop();
+          Dialogs.error(context, title: e.title, message: e.message);
+        }
       });
     } on ApiException catch (e) {
       Navigator.of(context).pop();
@@ -104,29 +130,29 @@ class SignUpController extends GetxController {
   List<StateModel> states = [
     StateModel(nome: 'Acre', sigla: 'AC'),
     StateModel(nome: 'Alagoas', sigla: 'AL'),
-    StateModel(nome: 'Amapá', sigla: 'AP'),
+    StateModel(nome: 'Amapa', sigla: 'AP'),
     StateModel(nome: 'Amazonas', sigla: 'AM'),
     StateModel(nome: 'Bahia', sigla: 'BA'),
-    StateModel(nome: 'Ceará', sigla: 'CE'),
-    StateModel(nome: 'Distrito Federal', sigla: 'DF'),
-    StateModel(nome: 'Espírito Santo', sigla: 'ES'),
-    StateModel(nome: 'Goiás', sigla: 'GO'),
-    StateModel(nome: 'Maranhão', sigla: 'MA'),
-    StateModel(nome: 'Mato Grosso', sigla: 'MT'),
-    StateModel(nome: 'Mato Grosso do Sul', sigla: 'MS'),
-    StateModel(nome: 'Minas Gerais', sigla: 'MG'),
-    StateModel(nome: 'Pará', sigla: 'PA'),
-    StateModel(nome: 'Paraíba', sigla: 'PB'),
-    StateModel(nome: 'Paraná', sigla: 'PR'),
+    StateModel(nome: 'Ceara', sigla: 'CE'),
+    StateModel(nome: 'Distrito_Federal', sigla: 'DF'),
+    StateModel(nome: 'Espirito_Santo', sigla: 'ES'),
+    StateModel(nome: 'Goias', sigla: 'GO'),
+    StateModel(nome: 'Maranhao', sigla: 'MA'),
+    StateModel(nome: 'Mato_Grosso', sigla: 'MT'),
+    StateModel(nome: 'Mato_Grosso_do_Sul', sigla: 'MS'),
+    StateModel(nome: 'Minas_Gerais', sigla: 'MG'),
+    StateModel(nome: 'Para', sigla: 'PA'),
+    StateModel(nome: 'Paraiba', sigla: 'PB'),
+    StateModel(nome: 'Parana', sigla: 'PR'),
     StateModel(nome: 'Pernambuco', sigla: 'PE'),
-    StateModel(nome: 'Piauí', sigla: 'PI'),
-    StateModel(nome: 'Rio de Janeiro', sigla: 'RJ'),
-    StateModel(nome: 'Rio Grande do Norte', sigla: 'RN'),
-    StateModel(nome: 'Rio Grande do Sul', sigla: 'RS'),
-    StateModel(nome: 'Rondônia', sigla: 'RO'),
+    StateModel(nome: 'Piaui', sigla: 'PI'),
+    StateModel(nome: 'Rio_de_Janeiro', sigla: 'RJ'),
+    StateModel(nome: 'Rio_Grande_do_Norte', sigla: 'RN'),
+    StateModel(nome: 'Rio_Grande_do_Sul', sigla: 'RS'),
+    StateModel(nome: 'Rondonia', sigla: 'RO'),
     StateModel(nome: 'Roraima', sigla: 'RR'),
-    StateModel(nome: 'Santa Catarina', sigla: 'SC'),
-    StateModel(nome: 'São Paulo', sigla: 'SP'),
+    StateModel(nome: 'Santa_Catarina', sigla: 'SC'),
+    StateModel(nome: 'Sao_Paulo', sigla: 'SP'),
     StateModel(nome: 'Sergipe', sigla: 'SE'),
     StateModel(nome: 'Tocantins', sigla: 'TO'),
   ];
