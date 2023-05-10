@@ -1,6 +1,6 @@
 class ApiConfig {
   // static const String _urlApi = "http://10.12.14.187:8080";
-  static const String _urlApi = "http://10.0.2.2:8080";
+  static const String _urlApi = "https://2fdd-200-17-32-74.ngrok-free.app";
 
   static const String urlEndPointAuth = "/auth";
 
