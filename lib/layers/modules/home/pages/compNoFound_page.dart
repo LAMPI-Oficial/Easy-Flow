@@ -1,7 +1,8 @@
+
 import 'package:flutter/material.dart';
 
-class CompNoFound extends StatelessWidget {
-  const CompNoFound({super.key});
+class CompNoFoundPage extends StatelessWidget {
+  const CompNoFoundPage({super.key});
 
   @override
   Widget build(BuildContext context) {
