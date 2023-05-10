@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="77e39213-5cfa-4095-94a9-ae55c78c64d9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Easy-Flow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Easy-Flow.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/config/api_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/config/api_config.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routes/app_routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/modules/forgot_password/forgot_password_binding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/modules/forgot_password/forgot_password_binding.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/modules/forgot_password/forgot_password_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/modules/forgot_password/forgot_password_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/modules/forgot_password/pages/code_forgot_password_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/modules/forgot_password/pages/new_password_forgot_password_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/modules/forgot_password/pages/success_forgot_password_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/modules/forgot_password/pages/success_forgot_password_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/modules/schedule/schedule_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/modules/schedule/schedule_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/modules/splash_screen/splash_screen_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/modules/splash_screen/splash_screen_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/widgets/dialogs_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/widgets/dialogs_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PZtTdckuPzZQiWWwdlXWEr8aBM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lucas/Downloads/flutter/Easy-Flow/lib/layers/data/provider&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas\Downloads\flutter\Easy-Flow\lib\layers\data\provider" />
+      <recent name="C:\Users\lucas\Downloads\flutter\Easy-Flow\lib\layers\data\repository" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="77e39213-5cfa-4095-94a9-ae55c78c64d9" name="Changes" comment="" />
+      <created>1683676445526</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683676445526</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

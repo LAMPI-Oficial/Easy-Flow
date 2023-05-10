@@ -24,14 +24,12 @@ import 'package:easyflow/layers/modules/sign_up/pages/sign_up_page.dart';
 import 'package:easyflow/layers/modules/sign_up/pages/success_sign_up_page.dart';
 import 'package:easyflow/layers/modules/sign_up/sign_up_binding.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/email_forgot_password_page.dart';
-import 'package:easyflow/layers/modules/forgot_password/pages/code_forgot_password_page.dart';
-import 'package:easyflow/layers/modules/forgot_password/pages/new_password_forgot_password_page.dart';
 import 'package:easyflow/layers/modules/forgot_password/pages/success_forgot_password_page.dart';
 import 'package:get/get.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.LISTING_HORARY;
+  static const initialRoute = Routes.FORGOT_PASSWORD_EMAIL;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -72,23 +70,8 @@ abstract class AppPages {
       binding: ForgotPasswordBinding(),
     ),
     GetPage(
-      name: Routes.FORGOT_PASSWORD_CODE,
-      page: () => CodeForgotPasswordPage(),
-      binding: ForgotPasswordBinding(),
-    ),
-    GetPage(
-      name: Routes.FORGOT_PASSWORD_NEW_PASSWORD,
-      page: () => NewPasswordForgotPasswordPage(),
-      binding: ForgotPasswordBinding(),
-    ),
-    GetPage(
       name: Routes.FORGOT_PASSWORD_SUCCESS,
       page: () => SuccessForgotPasswordPage(),
-    ),
-    GetPage(
-
-      name: Routes.LISTING_HORARY,
-      page: () => SchedulePage(),
     ),
  GetPage(
 
