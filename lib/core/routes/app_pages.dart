@@ -31,7 +31,7 @@ import 'package:get/get.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.LISTING_HORARY;
+  static const initialRoute = Routes.SPLASH_SCREEN;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -84,11 +84,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.FORGOT_PASSWORD_SUCCESS,
       page: () => SuccessForgotPasswordPage(),
-    ),
-    GetPage(
-
-      name: Routes.LISTING_HORARY,
-      page: () => SchedulePage(),
     ),
  GetPage(
 
