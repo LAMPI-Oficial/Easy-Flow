@@ -4,7 +4,8 @@ class ApiConfig {
 
   static const String urlEndPointAuth = "/auth";
 
-  static const String urlEndPointCreateUser = "/users";
+  static const String urlEndPointCreateUser = "/persons";
+  static const String urlEndPointCreateAdress = "/address";
 
   static const String urlForgotPassword = " /users/recoveryPassword/";
 
@@ -13,6 +14,9 @@ class ApiConfig {
 
   static const String urlHorariesByRequester = "/horaries/requester/";
   static const String urlHoraries = "/horaries/";
+
+  static const String urlCourses = "/courses";
+  static const String urlStudyArea = "/study_area";
 
   static String getUrl(endpoint) => _urlApi + endpoint;
 

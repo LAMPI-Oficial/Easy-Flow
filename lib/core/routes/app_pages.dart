@@ -29,7 +29,7 @@ import 'package:get/get.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-  static const initialRoute = Routes.FORGOT_PASSWORD_EMAIL;
+  static const initialRoute = Routes.SPLASH_SCREEN;
   static final pages = [
     GetPage(
       name: Routes.SPLASH_SCREEN,

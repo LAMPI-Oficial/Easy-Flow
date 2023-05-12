@@ -133,7 +133,7 @@ class AddressSignUpPage extends GetView<SignUpController> {
                           width: 100,
                           child: DropdownButtonFormField<String>(
                             decoration: const InputDecoration(
-                              label: Text('Estado'),
+                              label: Text('UF'),
                             ),
                             items:
                                 controller.states.map((StateModel stateModel) {
