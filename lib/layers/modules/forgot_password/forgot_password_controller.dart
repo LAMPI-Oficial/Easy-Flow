@@ -1,32 +1,36 @@
 import 'package:easyflow/core/routes/app_pages.dart';
+import 'package:easyflow/layers/data/exceptions/api_exception.dart';
+import 'package:easyflow/layers/data/repository/forgot_password_repository.dart';
+import 'package:easyflow/layers/widgets/dialogs_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordController extends GetxController {
+  final ForgotPasswordRepository _forgotPassowordRepository;
+
+  ForgotPasswordController(this._forgotPassowordRepository);
+
   final formKeyEmail = GlobalKey<FormState>();
-  final formKeyCheckCode = GlobalKey<FormState>();
-  final formKeyNewPassword = GlobalKey<FormState>();
 
   final emailTextController = TextEditingController();
-  final codeTextController = TextEditingController();
-  final passwordTextController = TextEditingController();
   final repeatPasswordTextController = TextEditingController();
 
-  sendCode(context) {
+  sendCode(context) async{
     if (formKeyEmail.currentState!.validate()) {
-      Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD_CODE);
+      Dialogs.loading(context);
+      try{
+        await _forgotPassowordRepository.forgot(emailTextController.text)
+            .then((value){
+              if(value == 'ok'){
+                Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD_SUCCESS);
+              }
+        });
+
+      } on ApiException catch (e) {
+        Navigator.of(context).pop();
+        Dialogs.error(context, title: e.title, message: e.message);
+      }
     }
   }
 
-  checkCode(context) {
-    if (formKeyCheckCode.currentState!.validate()) {
-      Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD_NEW_PASSWORD);
-    }
-  }
-
-  forgotPassword(context) {
-    if (formKeyNewPassword.currentState!.validate()) {
-      Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD_SUCCESS);
-    }
-  }
 }

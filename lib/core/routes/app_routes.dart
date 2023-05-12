@@ -11,10 +11,7 @@ abstract class Routes {
   static const REPEAT_PASSWORD_SIGN_UP = '/sign_up/repeat_password';
   static const SIGN_UP_SUCCESS = '/sign_up/success';
   static const FORGOT_PASSWORD_EMAIL = '/forgot_password/email';
-  static const FORGOT_PASSWORD_CODE = '/forgot_password/code';
-  static const FORGOT_PASSWORD_NEW_PASSWORD = '/forgot_password/password/new';
   static const FORGOT_PASSWORD_SUCCESS = '/forgot_password/success';
-  static const LISTING_HORARY = '/listing_horary';
   static const EDIT_PROFILE = '/profile/edit';
   static const HOME = "/home";
   static const MENU = '/menu';

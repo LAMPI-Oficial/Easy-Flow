@@ -6,6 +6,8 @@ class ApiConfig {
 
   static const String urlEndPointCreateUser = "/users";
 
+  static const String urlForgotPassword = " /users/recoveryPassword/";
+
   static const String _urlEndPointGetUserByLogin =
       "/users/search_by_login?login=#login#";
 
