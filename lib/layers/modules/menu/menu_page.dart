@@ -194,7 +194,7 @@ class MenuPage extends StatelessWidget {
                   MenuWidget(
                     icon: Icons.diversity_3_outlined,
                     title: "Daily",
-                    onTap: () => Navigator.of(context).pushNamed(Routes.DAILY),
+                    onTap: () => Navigator.of(context).pushNamed(Routes.DAILYS),
                   ),
                   MenuWidget(
                     icon: Icons.report_outlined,

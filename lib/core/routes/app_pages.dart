@@ -2,6 +2,8 @@
 import 'package:easyflow/layers/modules/about/about_page.dart';
 import 'package:easyflow/layers/modules/complaint/complaint_binding.dart';
 import 'package:easyflow/layers/modules/complaint/pages/complaints_page.dart';
+import 'package:easyflow/layers/modules/daily/daily_bindins.dart';
+import 'package:easyflow/layers/modules/daily/pages/dailys_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/add_schedule_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/schedule_page.dart';
 import 'package:easyflow/layers/modules/schedule/schedule_binding.dart';
@@ -120,6 +122,7 @@ abstract class AppPages {
     GetPage(
       name: Routes.MENU,
       page: () => MenuPage(),
-    )
+    ),
+    GetPage(name: Routes.DAILYS, page: () => DailysPage(), binding: DailyBinding())
   ];
 }
