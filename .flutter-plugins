@@ -5,3 +5,6 @@ permission_handler=/Users/darmlabs/.pub-cache/hosted/pub.dev/permission_handler-
 permission_handler_android=/Users/darmlabs/.pub-cache/hosted/pub.dev/permission_handler_android-10.2.0/
 permission_handler_apple=/Users/darmlabs/.pub-cache/hosted/pub.dev/permission_handler_apple-9.0.8/
 permission_handler_windows=/Users/darmlabs/.pub-cache/hosted/pub.dev/permission_handler_windows-0.1.2/
+webview_flutter=/Users/darmlabs/.pub-cache/hosted/pub.dev/webview_flutter-3.0.4/
+webview_flutter_android=/Users/darmlabs/.pub-cache/hosted/pub.dev/webview_flutter_android-2.10.4/
+webview_flutter_wkwebview=/Users/darmlabs/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-2.9.5/
