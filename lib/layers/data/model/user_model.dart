@@ -19,7 +19,7 @@ class UserModel {
       token: map["token"]["value"],
       login: map['user']['login'],
       personModel: PersonModel.fromMap(
-        map['person'],
+        map['user']['tb_person'],
       ),
     );
   }

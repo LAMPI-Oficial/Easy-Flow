@@ -21,6 +21,7 @@ class AuthProvider extends GetConnect {
       ).timeout(
         const Duration(seconds: 10),
       );
+      print(response.body);
       if (response.statusCode == 200) {
         return UserModel.fromMap(
           response.body,
