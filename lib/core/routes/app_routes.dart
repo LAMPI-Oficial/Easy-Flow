@@ -17,7 +17,7 @@ abstract class Routes {
   static const MENU = '/menu';
   static const SCHEDULE = '/schedule';
   static const ADD_SCHEDULE = '/schedule/add';
-  static const EQUIPMENT = '/equipment';
+  static const EQUIPMENT_REQUESTS = '/equipment/requests';
   static const EQUIPMENT_REQUEST = '/equipment/request';
   static const DAILY = '/daily';
   static const ADD_DAILY = '/daily/add';

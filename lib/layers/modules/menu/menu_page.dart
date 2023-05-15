@@ -187,9 +187,9 @@ class MenuPage extends StatelessWidget {
                   ),
                   MenuWidget(
                     icon: Icons.desktop_windows_outlined,
-                    title: "Equipamentos",
-                    onTap: () =>
-                        Navigator.of(context).pushNamed(Routes.EQUIPMENT),
+                    title: "Equipamentos solicitados",
+                    onTap: () => Navigator.of(context)
+                        .pushNamed(Routes.EQUIPMENT_REQUESTS),
                   ),
                   MenuWidget(
                     icon: Icons.diversity_3_outlined,
