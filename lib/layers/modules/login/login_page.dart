@@ -76,7 +76,7 @@ class LoginPage extends GetView<LoginController> {
                       margin: const EdgeInsets.symmetric(vertical: 30),
                       child: ElevatedButton(
                         onPressed: () =>
-                            Navigator.of(context).pushNamed(Routes.HOME),
+                     controller.login(context),
                         child: const Text('Entrar'),
                       ),
                     ),

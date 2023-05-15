@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/platform/platform.dart';
 
 class Dialogs {
   static loading(context) {
@@ -15,7 +16,7 @@ class Dialogs {
             SizedBox(
               width: 40,
               height: 40,
-              child: Platform.isIOS
+              child: GetPlatform.isIOS
                   ? CupertinoActivityIndicator(
                       radius: 20, color: Theme.of(context).colorScheme.primary)
                   : CircularProgressIndicator(
