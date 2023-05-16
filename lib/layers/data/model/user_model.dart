@@ -4,13 +4,13 @@ class UserModel {
   int id;
   String token;
   String login;
-  PersonModel personModel;
+  PersonModel person;
 
   UserModel({
     required this.id,
     required this.token,
     required this.login,
-    required this.personModel,
+    required this.person,
   });
 
   static UserModel fromMap(Map map) {
@@ -18,7 +18,7 @@ class UserModel {
       id: map["user"]["id"],
       token: map["token"]["value"],
       login: map['user']['login'],
-      personModel: PersonModel.fromMap(
+      person: PersonModel.fromMap(
         map['user']['tb_person'],
       ),
     );

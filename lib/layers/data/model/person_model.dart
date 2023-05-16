@@ -2,12 +2,13 @@ class PersonModel {
   int? id;
   String? name;
   String? email;
-
+  bool? admin;
 
   PersonModel({
     required this.id,
     required this.name,
     required this.email,
+    required this.admin,
   });
 
   static PersonModel fromMap(Map map) {
@@ -15,6 +16,7 @@ class PersonModel {
       id: map['id'],
       name: map['name'],
       email: map['email'],
+      admin: map['admin'],
     );
   }
 
