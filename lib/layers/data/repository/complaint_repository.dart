@@ -6,7 +6,7 @@ class ComplaintRepository {
 
   ComplaintRepository(this._complaintProvider);
 
-  void addComplaint(
+  Future<void> addComplaint(
       {required String name,
       required String email,
       required String description}) async {
