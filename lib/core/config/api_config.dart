@@ -18,6 +18,8 @@ class ApiConfig {
   static const String urlCourses = "/courses";
   static const String urlStudyArea = "/study_area";
 
+  static const String urlComplaints = "/claims";
+
   static String getUrl(endpoint) => _urlApi + endpoint;
 
   static String urlEndPointGetUserByLogin({required String login}) =>
