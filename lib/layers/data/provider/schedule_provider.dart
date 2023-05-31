@@ -10,7 +10,7 @@ class ScheduleProvider extends GetConnect {
   // Método para obter todos os horários da API
   Future<List<ScheduleModel>> getAll(UserModel userModel) async {
     final url = ApiConfig.getUrl(ApiConfig.urlHorariesByRequester) +
-        userModel.person.id.toString();
+        userModel.personModel.id.toString();
     try {
       final response = await get(
         url,

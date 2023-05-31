@@ -90,7 +90,7 @@ class SplashScreenPage extends StatelessWidget {
                         ),
                         SizedBox(
                           width: double.infinity,
-                          height: 60,
+                          height: 40,
                           child: ElevatedButton(
                             onPressed: () => Get.offNamed(Routes.LOGIN),
                             child: const Text('Começar'),
