@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class ScheduleController extends GetxController {
   final ScheduleRepository _scheduleRepository;
   final user = Get.put<UserService>(UserService());
+
   ScheduleController(this._scheduleRepository);
   List<String> valuesDays = [
     "Seg",

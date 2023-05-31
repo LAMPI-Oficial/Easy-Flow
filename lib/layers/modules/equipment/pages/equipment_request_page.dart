@@ -17,7 +17,7 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Solicitando",
+          "Solicitação",
         ),
       ),
       body: SafeArea(
@@ -105,7 +105,6 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
                             formatButtonVisible: false,
                             titleCentered: true,
                           ),
-                          
                           calendarBuilders: CalendarBuilders(
                             outsideBuilder: _dayBuilder,
                             todayBuilder: _dayBuilder,
@@ -189,7 +188,7 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
                     ),
                   ),
                   child: const Text(
-                    "Solicitar",
+                    "Finalizar solicitar",
                   ),
                 ),
               ),
