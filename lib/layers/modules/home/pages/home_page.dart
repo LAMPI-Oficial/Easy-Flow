@@ -1,7 +1,7 @@
 import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/modules/home/home_controller.dart';
-import 'package:easyflow/layers/modules/home/pages/announcements_page.dart';
-import 'package:easyflow/layers/modules/home/pages/compNoFound_page.dart';
+import 'package:easyflow/layers/modules/home/pages/announcements.dart';
+import 'package:easyflow/layers/modules/home/pages/comp_no_found.dart';
 import 'package:easyflow/layers/modules/home/pages/representatives.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -85,13 +85,13 @@ class HomePage extends GetView<HomeController> {
             controller: controller.controllerTab,
             children: [
               controller.textEmpty
-                  ? const AnnouncementsPage()
-                  : const CompNoFoundPage(),
+                  ? const PageAnnouncements()
+                  : const CompNoFound(),
               controller.representatives.length > 0
                   ? PageRepresentatives(
                       representatives: controller.representatives,
                     )
-                  : const CompNoFoundPage(),
+                  : const CompNoFound(),
             ],
           ),
         ),

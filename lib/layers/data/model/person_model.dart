@@ -4,6 +4,7 @@ class PersonModel {
   String? email;
   bool? admin;
 
+
   PersonModel({
     required this.id,
     required this.name,

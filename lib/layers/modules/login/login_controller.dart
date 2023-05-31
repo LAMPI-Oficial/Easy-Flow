@@ -20,7 +20,7 @@ class LoginController extends GetxController {
     if (formKey.currentState!.validate()) {
       Dialogs.loading(context);
       try {
-       await _authRepository
+        _authRepository
             .login(AuthRequestModel(
                 login: loginTextController.text,
                 password: passwordTextController.text))
