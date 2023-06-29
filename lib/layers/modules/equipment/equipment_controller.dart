@@ -15,8 +15,6 @@ class EquipmentController extends GetxController {
 
   var justificationTextFieldController = TextEditingController();
 
-  var requests = <String>[].obs;
-
   var representatives = <String>[].obs;
   var representative = ''.obs;
 
@@ -32,7 +30,7 @@ class EquipmentController extends GetxController {
 
   requestEquipment(context) {
     if (formKey.currentState!.validate()) {
-      Navigator.of(context).pushNamed(Routes.EQUIPMENT_REQUESTS);
+      Navigator.of(context).pushNamed(Routes.EQUIPMENT);
     }
   }
 

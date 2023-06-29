@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/platform/platform.dart';
 
 class Dialogs {
   static loading(context) {
@@ -16,7 +15,7 @@ class Dialogs {
             SizedBox(
               width: 40,
               height: 40,
-              child: GetPlatform.isIOS
+              child: Platform.isIOS
                   ? CupertinoActivityIndicator(
                       radius: 20, color: Theme.of(context).colorScheme.primary)
                   : CircularProgressIndicator(
@@ -41,39 +40,31 @@ class Dialogs {
   static error(context, {required String title, required String message}) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        contentPadding: const EdgeInsets.all(16),
-        alignment: Alignment.center,
-        icon: const Icon(
-          Icons.error_outline,
-          color: Color(0xFFFF3737),
-          size: 50,
-        ),
-        title: Column(
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               title,
-              textAlign: TextAlign.center,
               style: const TextStyle(
-                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  fontWeight: FontWeight.w600),
+                  color: Colors.white),
             ),
             const SizedBox(
-              height: 8,
+              height: 20,
             ),
             Text(
               message,
-              textAlign: TextAlign.center,
               style: const TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Color(0xFF737373),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.white),
             ),
           ],
         ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
     );
   }
