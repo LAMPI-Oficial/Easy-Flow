@@ -38,7 +38,7 @@ class CodeForgotPasswordPage extends GetView<ForgotPasswordController> {
                       height: 8,
                     ),
                     Text(
-                      'Um código de 4 dígitos foi enviado para seu e-mail ${controller.emailTextController.text.substring(0, 4)}∗∗∗∗∗${controller.emailTextController.text.substring(9)} verifique e digite abaixo',
+                      'Um código de 4 dígitos foi enviado para seu e-mail ${controller.emailTextEditingController.text.substring(0, 4)}∗∗∗∗∗${controller.emailTextEditingController.text.substring(9)} verifique e digite abaixo',
                       style: const TextStyle(
                         fontFamily: "Segoe UI",
                         fontWeight: FontWeight.w400,
@@ -52,7 +52,7 @@ class CodeForgotPasswordPage extends GetView<ForgotPasswordController> {
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: PinCodeTextField(
                         appContext: context,
-                        controller: controller.codeTextController,
+                        controller: controller.codeTextEditingController,
                         cursorColor: Colors.blueAccent,
                         keyboardType: TextInputType.number,
                         autoFocus: true,

@@ -52,7 +52,7 @@ class NewPasswordForgotPasswordPage extends GetView<ForgotPasswordController> {
                     TextFieldSecureWidget(
                       autofocus: true,
                       label: "Nova senha",
-                      controller: controller.passwordTextController,
+                      controller: controller.passwordTextEditingController,
                       security: true,
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.next,
@@ -78,7 +78,7 @@ class NewPasswordForgotPasswordPage extends GetView<ForgotPasswordController> {
                         [
                           () => Validators.isNotEmpty(value),
                           () => Validators.isEqualPassword(
-                              controller.passwordTextController.text, value)
+                              controller.passwordTextEditingController.text, value)
                         ],
                       ),
                     ),

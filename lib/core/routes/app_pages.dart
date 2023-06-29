@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:easyflow/layers/modules/complaint/complaint_binding.dart';
 import 'package:easyflow/layers/modules/complaint/pages/complaints_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/add_schedule_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/schedule_page.dart';

@@ -41,7 +41,7 @@ class EmailForgotPasswordPage extends GetView<ForgotPasswordController> {
                       decoration: const InputDecoration(
                         label: Text("Digite seu email"),
                       ),
-                      controller: controller.emailTextController,
+                      controller: controller.emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       autovalidateMode: AutovalidateMode.onUserInteraction,

@@ -1,5 +1,4 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:easyflow/layers/modules/home/widgets/subtitle_widget.dart';
 import 'package:easyflow/layers/data/model/representatives_model.dart';
 import 'package:flutter/material.dart';
 
@@ -92,17 +91,7 @@ class TileRepresentativeWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 0.0, bottom: 1),
-                child: SubtitleWidget(
-                  text: representative.email,
-                  icon: Icons.email_outlined,
-                ),
-              ),
-              SubtitleWidget(
-                text: representative.turn,
-                icon: Icons.alarm,
-              )
+            
             ],
           ),
         ),

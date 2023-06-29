@@ -15,6 +15,7 @@ class EquipmentController extends GetxController {
 
   var justificationTextFieldController = TextEditingController();
 
+  var requests = [].obs;
   var representatives = <String>[].obs;
   var representative = ''.obs;
 
@@ -65,4 +66,5 @@ class EquipmentController extends GetxController {
 
     return monthsOfTheYear[month] ?? "Janeiro";
   }
+  
 }
