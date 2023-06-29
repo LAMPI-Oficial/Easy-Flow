@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:easyflow/layers/modules/about/about_page.dart';
 import 'package:easyflow/layers/modules/complaint/complaint_binding.dart';
 import 'package:easyflow/layers/modules/complaint/pages/complaints_page.dart';
 import 'package:easyflow/layers/modules/schedule/pages/add_schedule_page.dart';
@@ -84,19 +85,13 @@ abstract class AppPages {
       name: Routes.FORGOT_PASSWORD_SUCCESS,
       page: () => SuccessForgotPasswordPage(),
     ),
-    GetPage(
-
-      name: Routes.LISTING_HORARY,
-      page: () => HoraryPage(),
-    ),
  GetPage(
-
         name: Routes.EDIT_PROFILE,
         page: () => EditProfilePage(),
         binding: EditProfileBinding()),
     GetPage(
       name: Routes.SCHEDULE,
-      page: () => SchedulePage(),
+      page: () => SchedulesPage(),
       binding: ScheduleBinding(),
     ),
     GetPage(

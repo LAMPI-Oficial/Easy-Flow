@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import '../schedule_controller.dart';
 import '../widgets/dropbutton_widget.dart';
 
-class SchedulePage extends GetView<ScheduleController> {
-  const SchedulePage({super.key});
+class SchedulesPage extends GetView<ScheduleController> {
+  const SchedulesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
