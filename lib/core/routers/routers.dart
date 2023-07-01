@@ -24,7 +24,7 @@ import 'package:easyflow/layers/modules/forgot_password/pages/success_forgot_pas
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-final routers = GoRouter(initialLocation: '/', routes: <GoRoute>[
+final routers = GoRouter(initialLocation: '/equipments', routes: <GoRoute>[
   GoRoute(
     path: '/',
     builder: (BuildContext context, GoRouterState state) => SplashScreenPage(),

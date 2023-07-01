@@ -4,6 +4,7 @@ import 'package:easyflow/layers/modules/equipment/equipment_controller.dart';
 import 'package:easyflow/layers/modules/equipment/widgets/calendar_day_widget.dart';
 import 'package:easyflow/layers/widgets/button_text_field_widget.dart';
 import 'package:easyflow/layers/widgets/listview/listview_widget.dart';
+import 'package:easyflow/layers/widgets/modals_widget.dart';
 import 'package:easyflow/layers/widgets/representative_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -153,7 +154,33 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                           height: 32,
                         ),
                         ButtonTextFieldWidget(
-                          onTap: () => _showModalRepresentative(context),
+                          onTap: () => Modals.select(
+                              context: context,
+                              title: const Text('Selecione o representante'),
+                              searchFieldEnabled: true,
+                              padding: const EdgeInsets.all(16),
+                              asyncListFilter: (value, list) => list
+                                  .where(
+                                    (element) => element.name
+                                        .toLowerCase()
+                                        .contains(value.toLowerCase()),
+                                  )
+                                  .toList(),
+                              onRefresh: () => controller.getRepresentatives(),
+                              asyncListCallback: () =>
+                                  controller.getRepresentatives(),
+                              separatorBuilder: (p0, p1) => const SizedBox(
+                                    height: 16,
+                                  ),
+                              builder: (_representative) =>
+                                  RepresentativeWidget(
+                                      selected: representative?.id ==
+                                              _representative.id
+                                          ? true
+                                          : false,
+                                      onTap: () =>
+                                          selectRepresentative(_representative),
+                                      representative: _representative)),
                           label: 'Representate',
                           controller: TextEditingController(
                               text: representative != null
@@ -212,6 +239,9 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
         builder: (context) => Scaffold(
             appBar: AppBar(
               title: const Text('Selecione o representante'),
+              leading: IconButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: const Icon(Icons.close)),
             ),
             body: SafeArea(
               child: ListViewWidget<RepresentativeModel>(

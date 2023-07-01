@@ -30,7 +30,9 @@ class CircleAccountWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      height: 50,
+      width: 50,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
       child: urlPhoto != null
