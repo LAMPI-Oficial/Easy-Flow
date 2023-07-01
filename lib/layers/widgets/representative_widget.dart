@@ -25,15 +25,12 @@ class RepresentativeWidget extends StatelessWidget {
         name: representative.name,
         urlPhoto: representative.imageUrl,
       ),
-      title: Row(
+      title: Text(representative.name),
+      subtitle: Row(
         children: [
-          Text(representative.name),
-          const SizedBox(
-            width: 16,
-          ),
           const Icon(
             Icons.verified_outlined,
-            size: 12,
+            size: 14,
             color: Color(0xFF0085FF),
           ),
           const SizedBox(
@@ -42,7 +39,7 @@ class RepresentativeWidget extends StatelessWidget {
           Text(
             representative.area,
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               color: Color(0xFF0085FF),
               fontFamily: 'Segoe UI',
               overflow: TextOverflow.ellipsis,
@@ -50,7 +47,6 @@ class RepresentativeWidget extends StatelessWidget {
           ),
         ],
       ),
-      subtitle: Text(representative.email),
     );
   }
 }

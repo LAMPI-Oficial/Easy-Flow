@@ -14,6 +14,10 @@ class Modals {
       bool? searchFieldEnabled}) {
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
+        isDismissible: false,
+        useSafeArea: true,
+        enableDrag: false,
         builder: (context) => Scaffold(
             appBar: AppBar(
               title: title,
