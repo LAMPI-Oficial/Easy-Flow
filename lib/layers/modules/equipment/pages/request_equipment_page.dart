@@ -1,15 +1,36 @@
 import 'package:easyflow/core/utils/validators_util.dart';
+import 'package:easyflow/layers/data/model/representative_model.dart';
 import 'package:easyflow/layers/modules/equipment/equipment_controller.dart';
 import 'package:easyflow/layers/modules/equipment/widgets/calendar_day_widget.dart';
+import 'package:easyflow/layers/widgets/button_text_field_widget.dart';
+import 'package:easyflow/layers/widgets/listview/listview_widget.dart';
+import 'package:easyflow/layers/widgets/representative_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class EquipmentRequestPage extends GetView<EquipmentController> {
-  const EquipmentRequestPage({super.key});
+class RequestEquipmentPage extends StatefulWidget {
+  const RequestEquipmentPage({super.key});
 
+  @override
+  State<RequestEquipmentPage> createState() => _RequestEquipmentPageState();
+}
+
+class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
   Widget? _dayBuilder(BuildContext cxt, DateTime day, DateTime focusedDay) {
     return CalendarDayWidget(day: day, focusedDay: focusedDay);
+  }
+
+  final controller = GetIt.I.get<EquipmentController>();
+  RepresentativeModel? representative;
+
+  selectRepresentative(RepresentativeModel _representative) {
+    setState(() {
+      representative = _representative;
+    });
+    context.pop();
   }
 
   @override
@@ -105,7 +126,6 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
                             formatButtonVisible: false,
                             titleCentered: true,
                           ),
-                          
                           calendarBuilders: CalendarBuilders(
                             outsideBuilder: _dayBuilder,
                             todayBuilder: _dayBuilder,
@@ -132,27 +152,13 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
                         const SizedBox(
                           height: 32,
                         ),
-                        Obx(
-                          () => DropdownButtonFormField<String>(
-                            decoration: const InputDecoration(
-                              label: Text('Representante'),
-                            ),
-                            items:
-                                controller.representatives.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (String? value) {
-                              controller.representative.value = value!;
-                            },
-                            validator: (value) => Validators.combine(
-                              [
-                                () => Validators.isNotSelected(value),
-                              ],
-                            ),
-                          ),
+                        ButtonTextFieldWidget(
+                          onTap: () => _showModalRepresentative(context),
+                          label: 'Representate',
+                          controller: TextEditingController(
+                              text: representative != null
+                                  ? representative!.name
+                                  : null),
                         ),
                         const SizedBox(
                           height: 16,
@@ -198,5 +204,38 @@ class EquipmentRequestPage extends GetView<EquipmentController> {
         ),
       ),
     );
+  }
+
+  void _showModalRepresentative(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) => Scaffold(
+            appBar: AppBar(
+              title: const Text('Selecione o representante'),
+            ),
+            body: SafeArea(
+              child: ListViewWidget<RepresentativeModel>(
+                  searchFieldEnabled: true,
+                  padding: const EdgeInsets.all(16),
+                  asyncListFilter: (value, list) => list
+                      .where(
+                        (element) => element.name
+                            .toLowerCase()
+                            .contains(value.toLowerCase()),
+                      )
+                      .toList(),
+                  onRefresh: () => controller.getRepresentatives(),
+                  asyncListCallback: () => controller.getRepresentatives(),
+                  separatorBuilder: (p0, p1) => const SizedBox(
+                        height: 16,
+                      ),
+                  builder: (RepresentativeModel _representative) =>
+                      RepresentativeWidget(
+                          selected: representative?.id == _representative.id
+                              ? true
+                              : false,
+                          onTap: () => selectRepresentative(_representative),
+                          representative: _representative)),
+            )));
   }
 }

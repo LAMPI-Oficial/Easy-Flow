@@ -1,10 +1,23 @@
-import 'package:easyflow/core/routes/app_pages.dart';
+import 'package:easyflow/layers/data/model/announcements_model.dart';
+import 'package:easyflow/layers/data/model/representative_model.dart';
 import 'package:easyflow/layers/modules/home/home_controller.dart';
+import 'package:easyflow/layers/modules/home/widgets/announcements_widget.dart';
+import 'package:easyflow/layers/widgets/representative_widget.dart';
+import 'package:easyflow/layers/widgets/listview/listview_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
-class HomePage extends GetView<HomeController> {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final controller = GetIt.I.get<HomeController>();
+  TabController? _controllerTab;
 
   @override
   Widget build(BuildContext context) {
@@ -13,44 +26,13 @@ class HomePage extends GetView<HomeController> {
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () => Navigator.of(context).pushNamed(Routes.MENU),
+            onPressed: () => context.push('/menu'),
             icon: const Icon(Icons.menu),
           ),
-          title: Container(
-            alignment: Alignment.centerLeft,
-            height: 32,
-            width: MediaQuery.of(context).size.width,
-            child: TextFormField(
-              controller: controller.controllerTextFormField,
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                hintText: "Buscar",
-                hintStyle: const TextStyle(
-                  fontSize: 16,
-                ),
-                filled: true,
-                isDense: true,
-                isCollapsed: true,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                fillColor: Colors.white,
-                prefixIcon: const Icon(
-                  Icons.search,
-                  size: 18,
-                ),
-              ),
-            ),
-          ),
+          title: const Text('Inicio'),
           bottom: TabBar(
-            controller: controller.controllerTab,
+            controller: _controllerTab,
             indicatorSize: TabBarIndicatorSize.label,
-            // indicatorWeight: 10,
             isScrollable: true,
             indicatorPadding: const EdgeInsets.symmetric(
               horizontal: -10,
@@ -73,6 +55,43 @@ class HomePage extends GetView<HomeController> {
               ),
               Tab(
                 text: "Representantes",
+              ),
+            ],
+          ),
+        ),
+        body: SafeArea(
+          child: TabBarView(
+            controller: _controllerTab,
+            children: [
+              ListViewWidget(
+                padding: const EdgeInsets.all(16),
+                separatorBuilder: (p0, p1) => const SizedBox(
+                  height: 16,
+                ),
+                onRefresh: () => controller.getAnnouncements(),
+                asyncListCallback: () => controller.getAnnouncements(),
+                builder: (AnnouncementsModel announcements) =>
+                    AnnouncementsWidget(
+                  announcements: announcements,
+                  representative: announcements.representative,
+                ),
+              ),
+              ListViewWidget(
+                onRefresh: () => controller.getRepresentatives(),
+                padding: const EdgeInsets.all(16),
+                separatorBuilder: (p0, p1) => const SizedBox(
+                  height: 16,
+                ),
+                asyncListCallback: () => controller.getRepresentatives(),
+                asyncListFilter: (value, list) => list
+                    .where(
+                      (element) => element.name
+                          .toLowerCase()
+                          .contains(value.toLowerCase()),
+                    )
+                    .toList(),
+                builder: (RepresentativeModel representative) =>
+                    RepresentativeWidget(representative: representative),
               ),
             ],
           ),

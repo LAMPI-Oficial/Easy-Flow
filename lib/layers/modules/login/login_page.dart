@@ -1,15 +1,16 @@
-import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/core/utils/validators_util.dart';
 import 'package:easyflow/layers/widgets/text_field_secure_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'login_controller.dart';
 
-class LoginPage extends GetView<LoginController> {
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = GetIt.I.get<LoginController>();
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -63,8 +64,7 @@ class LoginPage extends GetView<LoginController> {
                       width: double.infinity,
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () => Navigator.of(context)
-                            .pushNamed(Routes.FORGOT_PASSWORD_EMAIL),
+                        onPressed: () => context.push('/forgot_password'),
                         child: const Text(
                           "Esqueceu a senha?",
                           textAlign: TextAlign.right,
@@ -75,8 +75,7 @@ class LoginPage extends GetView<LoginController> {
                       width: double.infinity,
                       margin: const EdgeInsets.symmetric(vertical: 30),
                       child: ElevatedButton(
-                        onPressed: () =>
-                            Navigator.of(context).pushNamed(Routes.HOME),
+                        onPressed: () => controller.login(context),
                         child: const Text('Entrar'),
                       ),
                     ),
@@ -105,8 +104,7 @@ class LoginPage extends GetView<LoginController> {
                       children: [
                         const Text('Não tem uma conta? '),
                         TextButton(
-                            onPressed: () =>
-                                Navigator.of(context).pushNamed(Routes.SIGN_UP),
+                            onPressed: () => context.push('/signup'),
                             child: const Text('Criar conta'))
                       ],
                     )

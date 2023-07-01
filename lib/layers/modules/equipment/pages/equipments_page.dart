@@ -1,9 +1,10 @@
 import 'package:easyflow/layers/modules/equipment/equipment_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
-class EquipmentPage extends GetView<EquipmentController> {
-  const EquipmentPage({super.key});
+class EquipmentsPage extends StatelessWidget {
+  const EquipmentsPage({super.key});
 
   final green = const Color(0xff69c05b);
   final yellow = const Color(0xffFFDB5E);
@@ -11,24 +12,16 @@ class EquipmentPage extends GetView<EquipmentController> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = GetIt.I.get<EquipmentController>();
     return Scaffold(
       appBar: AppBar(
-        title: Dismissible(
-          key: const ValueKey('AppBar'),
-          direction: DismissDirection.startToEnd,
-          onDismissed: (direction) {
-            if (direction == DismissDirection.startToEnd) {
-              Navigator.of(context).pop();
-            }
-          },
-          child: const Text(
-            "Equipamento",
-            style: TextStyle(
-              fontFamily: "Poppins",
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-            ),
+        title: const Text(
+          "Equipamento",
+          style: TextStyle(
+            fontFamily: "Poppins",
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
           ),
         ),
       ),
@@ -128,7 +121,7 @@ class EquipmentPage extends GetView<EquipmentController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => context.push('/equipments/request'),
         child: const Icon(Icons.add),
       ),
     );

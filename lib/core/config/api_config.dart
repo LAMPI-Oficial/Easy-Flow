@@ -1,7 +1,7 @@
 class ApiConfig {
   // static const String _urlApi = "http://10.12.14.187:8080";
 
-  static const String _urlApi = "https://02ca-200-17-32-75.ngrok-free.app";
+  static const String _urlApi = "https://darmlabs.ifce.edu.br/apieasyflow";
 
   static const String urlEndPointAuth = "/auth";
 
@@ -10,8 +10,9 @@ class ApiConfig {
   static const String _urlEndPointGetUserByLogin =
       "/users/search_by_login?login=#login#";
 
-  static const String urlHorariesByRequester = "/horaries/requester/";
-  static const String urlHoraries = "/horaries/";
+  static const String urlSchedules = "/schedules/";
+  static const String urlDailys = "/dailys/";
+  
 
   static String getUrl(endpoint) => _urlApi + endpoint;
 

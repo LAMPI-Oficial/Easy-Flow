@@ -1,16 +1,16 @@
-import 'package:easyflow/layers/modules/widgets/app_bar_widget.dart';
+import 'package:easyflow/layers/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-
+import 'package:get_it/get_it.dart';
 import '../../../../core/utils/validators_util.dart';
 import '../../../widgets/text_field_secure_widget.dart';
 import '../sign_up_controller.dart';
 
-class PasswordSignUpPage extends GetView<SignUpController> {
+class PasswordSignUpPage extends StatelessWidget {
   const PasswordSignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+         final controller = GetIt.I.get<SignUpController>();
     return Scaffold(
       appBar: AppBarWidget(value: 3, subtitle: 'Senha'),
       backgroundColor: Colors.white,

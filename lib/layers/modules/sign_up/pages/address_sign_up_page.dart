@@ -1,17 +1,18 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:easyflow/layers/data/model/state_model.dart';
-import 'package:easyflow/layers/modules/widgets/app_bar_widget.dart';
+import 'package:easyflow/layers/modules/sign_up/sign_up_controller.dart';
+import 'package:easyflow/layers/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import '../../../../core/utils/validators_util.dart';
-import '../sign_up_controller.dart';
 
-class AddressSignUpPage extends GetView<SignUpController> {
+class AddressSignUpPage extends StatelessWidget {
   const AddressSignUpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+     final controller = GetIt.I.get<SignUpController>();
     return Scaffold(
       appBar: AppBarWidget(value: 2, subtitle: 'Dados residencias'),
       backgroundColor: Colors.white,

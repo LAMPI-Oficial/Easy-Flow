@@ -1,8 +1,9 @@
-import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EquipmentController extends GetxController {
+import '../../data/model/representative_model.dart';
+
+class EquipmentController {
   final formKey = GlobalKey<FormState>();
   var firstDay = DateTime.now();
   var lastDay = DateTime.utc(DateTime.now().year + 1);
@@ -17,21 +18,30 @@ class EquipmentController extends GetxController {
 
   var requests = [].obs;
   var representatives = <String>[].obs;
-  var representative = ''.obs;
+  String? representative;
 
-  @override
-  void onInit() {
-    super.onInit();
-    _loadRepresentatives();
-  }
-
-  void _loadRepresentatives() {
-    representatives.value = ['Abrahão', 'Júlia', 'Anderson'];
+  Future<List<RepresentativeModel>> getRepresentatives() async {
+    return [
+      RepresentativeModel(
+          name: 'Michael Alves Pereira',
+          area: 'Programação web',
+          email: 'maicon159951@gmail.com',
+          imageUrl: null,
+          turn: '',
+          id: 1),
+      RepresentativeModel(
+          name: 'Abrahao',
+          area: 'Programação web',
+          email: 'maicon159951@gmail.com',
+          imageUrl: null,
+          turn: '',
+          id: 2),
+    ];
   }
 
   requestEquipment(context) {
     if (formKey.currentState!.validate()) {
-      Navigator.of(context).pushNamed(Routes.EQUIPMENT);
+      context.push('/equipments');
     }
   }
 
@@ -66,5 +76,4 @@ class EquipmentController extends GetxController {
 
     return monthsOfTheYear[month] ?? "Janeiro";
   }
-  
 }

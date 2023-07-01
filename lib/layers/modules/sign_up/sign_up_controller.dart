@@ -1,4 +1,3 @@
-import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
 import 'package:easyflow/layers/data/model/create_user_request_model.dart';
 import 'package:easyflow/layers/data/model/state_model.dart';
@@ -6,9 +5,10 @@ import 'package:easyflow/layers/data/repository/auth_repository.dart';
 import 'package:easyflow/layers/data/service/user_service.dart';
 import 'package:easyflow/layers/widgets/dialogs_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
-class SignUpController extends GetxController {
+class SignUpController {
   final AuthRepository _authRepository;
   SignUpController(this._authRepository);
 
@@ -38,21 +38,21 @@ class SignUpController extends GetxController {
   final passwordTextController = TextEditingController();
   final repeatPasswordTextController = TextEditingController();
 
-  personal(context) async {
+  personal(BuildContext context) async {
     if (formKeyPersonal.currentState!.validate()) {
-      Navigator.of(context).pushNamed(Routes.ADDRESS_SIGN_UP);
+      context.push('/signup/address');
     }
   }
 
-  address(context) async {
+  address(BuildContext context) async {
     if (formKeyAddress.currentState!.validate()) {
-      Navigator.of(context).pushNamed(Routes.PASSWORD_SIGN_UP);
+      context.push('/signup/password');
     }
   }
 
-  password(context) async {
+  password(BuildContext context) async {
     if (formKeyPassword.currentState!.validate()) {
-      Navigator.of(context).pushNamed(Routes.REPEAT_PASSWORD_SIGN_UP);
+      context.push('/signup/repeat_password');
     }
   }
 
@@ -62,7 +62,7 @@ class SignUpController extends GetxController {
     }
   }
 
-  signUp(context) async {
+  signUp(BuildContext context) async {
     Dialogs.loading(context);
     try {
       _authRepository
@@ -74,8 +74,8 @@ class SignUpController extends GetxController {
         repeatPassword: repeatPasswordTextController.text,
       ))
           .then((user) {
-        Get.put(UserService()).auth(user);
-        Navigator.of(context).pushNamed(Routes.HOME);
+        GetIt.I<UserService>().auth(user);
+        Navigator.of(context).pushReplacementNamed('/home');
       });
     } on ApiException catch (e) {
       Navigator.of(context).pop();

@@ -3,13 +3,12 @@ import 'dart:convert';
 import 'package:easyflow/core/config/api_config.dart';
 import 'package:easyflow/core/config/http_headers_config.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
-import 'package:easyflow/layers/data/model/schedule_model.dart';
+import 'package:easyflow/layers/data/model/daily_model.dart';
 import 'package:http/http.dart' as http;
 
-class ScheduleProvider {
-  // Método para obter todos os horários da API
-  Future<List<ScheduleModel>> getAll() async {
-    final url = ApiConfig.getUrl(ApiConfig.urlSchedules);
+class DailyProvider {
+  Future<List<DailyModel>> getAll() async {
+    final url = ApiConfig.getUrl(ApiConfig.urlDailys);
     try {
       final response = await http
           .get(
@@ -23,7 +22,7 @@ class ScheduleProvider {
       if (response.statusCode == 200) {
         return (jsonDecode(response.body) as List)
             .map(
-              (i) => ScheduleModel.fromMap(
+              (i) => DailyModel.fromMap(
                 i,
               ),
             )
@@ -37,9 +36,9 @@ class ScheduleProvider {
     }
   }
 
-// Método para obter um horário específico por ID da API
-  Future<ScheduleModel> getById(int id) async {
-    final url = ApiConfig.getUrl(ApiConfig.urlSchedules) + id.toString();
+
+  Future<DailyModel> getById(int id) async {
+    final url = ApiConfig.getUrl(ApiConfig.urlDailys) + id.toString();
     try {
       final response = await http
           .get(
@@ -52,7 +51,7 @@ class ScheduleProvider {
       print(response.body);
 
       if (response.statusCode == 200) {
-        return ScheduleModel.fromMap(jsonDecode(response.body));
+        return DailyModel.fromMap(jsonDecode(response.body));
       } else {
         throw ApiException('Erro ao Realizar Operação', 'Tente novamente');
       }
@@ -62,14 +61,14 @@ class ScheduleProvider {
     }
   }
 
-  // Método para adicionar um novo horário à API
-  Future<int> add(ScheduleModel schedule) async {
-    final url = ApiConfig.getUrl(ApiConfig.urlSchedules);
+ 
+  Future<int> add(DailyModel horary) async {
+    final url = ApiConfig.getUrl(ApiConfig.urlDailys);
     try {
       final response = await http
           .post(
             Uri.parse(url),
-            body: jsonEncode(schedule.toMap()),
+            body: jsonEncode(horary.toMap()),
             headers: HttpHeadersConfig.buildHeadersWithUserLogged(),
           )
           .timeout(
@@ -77,7 +76,7 @@ class ScheduleProvider {
           );
       print(response.body);
       if (response.statusCode == 201) {
-        return schedule.id;
+        return horary.id;
       } else {
         throw ApiException('Erro ao Realizar Operação', 'Tente novamente');
       }
@@ -87,13 +86,13 @@ class ScheduleProvider {
     }
   }
 
-  // Método para editar um horário existente na API
-  Future<void> edit(ScheduleModel schedule) async {
-    final url = ApiConfig.getUrl(ApiConfig.urlSchedules) + schedule.id.toString();
+ 
+  Future<void> edit(DailyModel horary) async {
+    final url = ApiConfig.getUrl(ApiConfig.urlDailys) + horary.id.toString();
     try {
       final response = await http.put(
        Uri.parse(url),body:
-      jsonEncode(  schedule.toMap()),
+      jsonEncode(  horary.toMap()),
         headers: HttpHeadersConfig.buildHeadersWithUserLogged(),
       ).timeout(
         const Duration(seconds: 10),
@@ -108,9 +107,9 @@ class ScheduleProvider {
     }
   }
 
-  // Método para deletar um horário por ID da API
+
   Future<void> delete(int id) async {
-    final url = ApiConfig.getUrl(ApiConfig.urlSchedules) + id.toString();
+    final url = ApiConfig.getUrl(ApiConfig.urlDailys) + id.toString();
     try {
       final response = await http.delete(
        Uri.parse(url),

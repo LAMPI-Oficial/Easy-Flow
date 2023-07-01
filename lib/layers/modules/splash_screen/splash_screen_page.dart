@@ -1,8 +1,7 @@
-import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/modules/splash_screen/widgets/circle_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreenPage extends StatelessWidget {
   const SplashScreenPage({super.key});
@@ -92,7 +91,7 @@ class SplashScreenPage extends StatelessWidget {
                           width: double.infinity,
                           height: 40,
                           child: ElevatedButton(
-                            onPressed: () => Get.offNamed(Routes.LOGIN),
+                            onPressed: () => context.push('/login'),
                             child: const Text('Começar'),
                           ),
                         ),

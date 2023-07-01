@@ -1,5 +1,4 @@
 import 'package:easyflow/layers/data/model/schedule_model.dart';
-import 'package:easyflow/layers/data/model/user_model.dart';
 import 'package:easyflow/layers/data/provider/schedule_provider.dart';
 
 class ScheduleRepository {
@@ -7,12 +6,12 @@ class ScheduleRepository {
 
   ScheduleRepository(this.scheduleProvider);
 
-  Future<List<ScheduleModel>> getAll(UserModel userModel) {
-    return scheduleProvider.getAll(userModel);
+  Future<List<ScheduleModel>> getAll() {
+    return scheduleProvider.getAll();
   }
 
-  Future<ScheduleModel> getId(int id) {
-    return scheduleProvider.getId(id);
+  Future<ScheduleModel> getById(int id) {
+    return scheduleProvider.getById(id);
   }
 
   Future<int> add(ScheduleModel scheduleModel) {
@@ -23,7 +22,7 @@ class ScheduleRepository {
     return scheduleProvider.edit(scheduleModel);
   }
 
-  Future<void> del(int id) {
-    return scheduleProvider.del(id);
+  Future<void> delete(int id) {
+    return scheduleProvider.delete(id);
   }
 }

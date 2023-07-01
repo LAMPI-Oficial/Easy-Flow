@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CircleWidget extends Container {
-  CircleWidget({super.key, this.top, this.bottom, this.left, this.right});
-  double? top;
-  double? bottom;
-  double? left;
-  double? right;
+class CircleWidget extends StatelessWidget {
+  final double? top;
+  final double? bottom;
+  final double? left;
+  final double? right;
+  const CircleWidget({super.key, this.top, this.bottom, this.left, this.right});
 
   @override
   Widget build(BuildContext context) {

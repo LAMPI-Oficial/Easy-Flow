@@ -1,13 +1,12 @@
-import 'package:easyflow/core/routes/app_pages.dart';
 import 'package:easyflow/layers/data/exceptions/api_exception.dart';
 import 'package:easyflow/layers/data/model/auth_request_model.dart';
 import 'package:easyflow/layers/data/service/user_service.dart';
 import 'package:easyflow/layers/data/repository/auth_repository.dart';
 import 'package:easyflow/layers/widgets/dialogs_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 
-class LoginController extends GetxController {
+class LoginController {
   final AuthRepository _authRepository;
   LoginController(this._authRepository);
 
@@ -20,13 +19,13 @@ class LoginController extends GetxController {
     if (formKey.currentState!.validate()) {
       Dialogs.loading(context);
       try {
-        _authRepository
+        await _authRepository
             .login(AuthRequestModel(
                 login: loginTextController.text,
                 password: passwordTextController.text))
             .then((user) {
-          Get.put(UserService()).auth(user);
-          Navigator.of(context).pushNamed(Routes.HOME);
+          GetIt.I<UserService>().auth(user);
+          Navigator.of(context).pushReplacementNamed('/home');
         });
       } on ApiException catch (e) {
         Navigator.of(context).pop();

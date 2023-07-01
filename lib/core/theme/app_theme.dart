@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 final ThemeData appThemeData = ThemeData(
+  fontFamily: 'Poppins',
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
     primary: Color(0xFF0085FF),
@@ -14,12 +15,7 @@ final ThemeData appThemeData = ThemeData(
     surface: Colors.white,
     onSurface: Color(0xFF323232),
   ),
-  appBarTheme: const AppBarTheme(
-    foregroundColor: Colors.white,
-    elevation: 0,
-    titleTextStyle: TextStyle(
-        fontFamily: 'Poppins', fontSize: 16, fontWeight: FontWeight.w500),
-  ),
+  appBarTheme: const AppBarTheme(elevation: 0),
   inputDecorationTheme: InputDecorationTheme(
     contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
     border: OutlineInputBorder(
@@ -30,7 +26,6 @@ final ThemeData appThemeData = ThemeData(
     style: ElevatedButton.styleFrom(
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
-        fontFamily: 'Poppins',
         fontSize: 16,
       ),
       shape: RoundedRectangleBorder(
@@ -41,7 +36,6 @@ final ThemeData appThemeData = ThemeData(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       textStyle: const TextStyle(
-        fontFamily: 'Poppins',
         fontSize: 16,
       ),
       side: const BorderSide(
@@ -51,7 +45,6 @@ final ThemeData appThemeData = ThemeData(
       ),
     ),
   ),
-  
   dropdownMenuTheme: DropdownMenuThemeData(
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.all(0),

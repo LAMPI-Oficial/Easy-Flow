@@ -1,15 +1,15 @@
 import 'package:easyflow/layers/modules/forgot_password/forgot_password_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import '../../../../core/utils/validators_util.dart';
 
-class EmailForgotPasswordPage extends GetView<ForgotPasswordController> {
+class EmailForgotPasswordPage extends StatelessWidget {
   const EmailForgotPasswordPage({super.key});
 
 
   @override
   Widget build(BuildContext context) {
-
+final controller = GetIt.I.get<ForgotPasswordController>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
