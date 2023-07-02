@@ -48,7 +48,7 @@ class Inject {
         () => DailyController(DailyRepository(DailyProvider())));
 
     getIt.registerFactory<ComplaintController>(
-        () => ComplaintController(AuthRepository(AuthProvider())));
+        () => ComplaintController());
 
     getIt.registerFactory<ForgotPasswordController>(
         () => ForgotPasswordController(AuthRepository(AuthProvider())));

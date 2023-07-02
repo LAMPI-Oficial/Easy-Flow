@@ -1,4 +1,7 @@
+import 'package:easyflow/layers/data/model/equipment_model.dart';
 import 'package:easyflow/layers/modules/equipment/equipment_controller.dart';
+import 'package:easyflow/layers/modules/equipment/widgets/equipment_widget.dart';
+import 'package:easyflow/layers/widgets/listview/listview_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +19,7 @@ class EquipmentsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Equipamento",
+          "Equipamentos",
           style: TextStyle(
             fontFamily: "Poppins",
             fontSize: 16,
@@ -33,7 +36,6 @@ class EquipmentsPage extends StatelessWidget {
                 left: 20,
                 right: 20,
                 top: 20,
-                bottom: 40,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,68 +62,22 @@ class EquipmentsPage extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: controller.requests.length,
-                itemBuilder: (context, index) {
-                  final String status = controller.requests[index];
-
-                  return InkWell(
-                    onTap: () {},
-                    splashColor: Colors.blue,
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 5,
-                      ),
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Solicitação efetuada em 04 de Janeiro de 2023",
-                            style: TextStyle(
-                              fontFamily: "Segoe_UI",
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: CircleAvatar(
-                                  backgroundColor:
-                                      _getDropColorByStatus(status),
-                                  radius: 4,
-                                ),
-                              ),
-                              Text(
-                                status,
-                                style: const TextStyle(
-                                  fontFamily: "Poppins",
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
+              child: ListViewWidget<EquipmentModel>(
+                padding: const EdgeInsets.all(16),
+                onRefresh: () => controller.getEquipments(),
+                asyncListCallback: () => controller.getEquipments(),
+                separatorBuilder: (p0, p1) => const SizedBox(
+                  height: 16,
+                ),
+                builder: (EquipmentModel equipment) =>
+                    EquipmentWidget(equipment: equipment),
               ),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.push('/equipments/request'),
+        onPressed: () => context.push('/menu/equipments/request'),
         child: const Icon(Icons.add),
       ),
     );

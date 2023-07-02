@@ -22,10 +22,17 @@ class SignUpController {
   final phoneTextController = TextEditingController();
   final courseTextController = TextEditingController();
   final areaOfStudyTextController = TextEditingController();
-  final List<String> courses = ["Redes", "ADS", "Eventos"];
   String? course;
-  final List<String> areaOfStudys = ["Programação WEB", "UX/UI", "Jogos"];
   String? areaOfStudy;
+
+  Future<List<String>> getCourses() async{
+    return ["Redes", "ADS", "Eventos"];
+  }
+
+  
+  Future<List<String>> getAreaOfStudys() async{
+    return ["Programação WEB", "UX/UI", "Jogos"];
+  }
 
   final cepTextController = TextEditingController();
   final streetTextController = TextEditingController();

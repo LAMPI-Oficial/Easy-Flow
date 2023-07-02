@@ -108,8 +108,8 @@ class MenuPage extends StatelessWidget {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  onPressed: () => Navigator.of(context)
-                                      .pushNamed('/profile/edit'),
+                                  onPressed: () =>
+                                      context.push('/menu/profile/edit'),
                                   child: const Text(
                                     "Editar Perfil",
                                   ),
@@ -172,27 +172,27 @@ class MenuPage extends StatelessWidget {
                   MenuWidget(
                     icon: Icons.event_outlined,
                     title: "Horário",
-                    onTap: () => context.push('/schedules'),
+                    onTap: () => context.push('/menu/schedule'),
                   ),
                   MenuWidget(
                     icon: Icons.desktop_windows_outlined,
                     title: "Equipamentos",
-                    onTap: () => context.push('/equipments'),
+                    onTap: () => context.push('/menu/equipments'),
                   ),
                   MenuWidget(
                     icon: Icons.diversity_3_outlined,
                     title: "Daily",
-                    onTap: () => context.push('/dailys'),
+                    onTap: () => context.push('/menu/dailys'),
                   ),
                   MenuWidget(
                     icon: Icons.report_outlined,
                     title: "Reclamações",
-                    onTap: () => context.push('/complaints'),
+                    onTap: () => context.push('/menu/complaints'),
                   ),
                   MenuWidget(
                     icon: Icons.help_center_outlined,
                     title: "Sobre",
-                    onTap: () => context.push('/about'),
+                    onTap: () => context.push('/menu/about'),
                   ),
                   MenuWidget(
                     icon: Icons.logout_outlined,

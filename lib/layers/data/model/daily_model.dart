@@ -6,7 +6,7 @@ class DailyModel {
   DailyModel({required this.id, required this.date});
 
   String get formattedData {
-    return DateFormat('dd "de" MMMM yyyy', 'pt_BR').format(date).toString();
+    return "${DateFormat('dd', 'pt_BR').format(date)} de ${DateFormat('MMMM yyyy', 'pt_BR').format(date)}";
   }
 
   Map toMap() {

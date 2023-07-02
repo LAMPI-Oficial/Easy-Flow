@@ -13,7 +13,7 @@ class RepresentativeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      selected: selected!,
+      selected: selected ?? false,
       selectedTileColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
       tileColor: Colors.white,
       shape: const RoundedRectangleBorder(

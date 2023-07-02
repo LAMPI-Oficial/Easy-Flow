@@ -1,10 +1,10 @@
-import 'package:easyflow/layers/data/model/daily_model.dart';
+import 'package:easyflow/layers/data/model/complaint_model.dart';
 import 'package:flutter/material.dart';
 
-class DailyWidget extends StatelessWidget {
+class ComplaintWidget extends StatelessWidget {
   final void Function()? onTap;
-  final DailyModel daily;
-  const DailyWidget({super.key, required this.daily, this.onTap});
+  final ComplaintModel daily;
+  const ComplaintWidget({super.key, required this.daily, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class DailyWidget extends StatelessWidget {
         ),
       ),
       title: Text(
-        'Daily feito em ${daily.formattedData}',
+        'Reclamação feita em ${daily.formattedData}',
         style: const TextStyle(
           color: Color(0xFF4A6F90),
         ),

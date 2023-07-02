@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 class AddDayWidget extends StatelessWidget {
   final bool value;
@@ -80,7 +80,7 @@ class AddDayWidget extends StatelessWidget {
                 return TextButton(
                   style: TextButton.styleFrom(
                     backgroundColor: selected == index
-                        ? Get.theme.colorScheme.primary
+                        ? Theme.of(context).colorScheme.primary
                         : const Color(0xffD9D9D9),
                     elevation: 0,
                     shape: RoundedRectangleBorder(

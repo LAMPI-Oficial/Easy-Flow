@@ -1,5 +1,5 @@
 import 'package:easyflow/layers/data/service/user_service.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 
 class HttpHeadersConfig {
   static Map<String, String> buildHeadersWithToken(String token) {
@@ -7,16 +7,18 @@ class HttpHeadersConfig {
       'Content-Type': 'application/json',
       'authorization': "Bearer $token"
     };
+
     return headers;
   }
 
   static Map<String, String> buildHeadersWithUserLogged() {
-    final userService = Get.put(UserService());
+    final _userProvider = GetIt.I.get<UserService>();
 
     Map<String, String> headers = {
       'Content-Type': 'application/json',
-      'authorization':
-          userService.logged ? "Bearer ${userService.userLogged.token}" : "",
+      'authorization': _userProvider.logged
+          ? "Bearer ${_userProvider.userLogged.token}"
+          : "",
     };
 
     return headers;

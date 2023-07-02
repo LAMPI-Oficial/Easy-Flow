@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ListHoraryWidget extends StatelessWidget {
   final String? numTable;
@@ -37,7 +36,7 @@ class ListHoraryWidget extends StatelessWidget {
                     topLeft: Radius.circular(10),
                     bottomLeft: Radius.circular(10),
                   ),
-                  color: Get.theme.colorScheme.primary,
+                  color:Theme.of(context).colorScheme.primary,
                 ),
                 height: constraints.maxHeight,
                 child: Center(

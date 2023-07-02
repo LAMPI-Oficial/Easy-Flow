@@ -52,7 +52,7 @@ class ListViewWidget<T> extends StatefulWidget {
     this.autoFocusOnSearch = true,
     this.secondaryWidget,
     this.padding,
-    this.separatorBuilder,
+    required this.separatorBuilder,
   }) : super(key: key) {
     if (asyncListCallback == null) {
       throw ('asyncListCallback must be provided');

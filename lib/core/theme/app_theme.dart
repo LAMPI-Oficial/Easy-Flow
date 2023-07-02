@@ -17,7 +17,6 @@ final ThemeData appThemeData = ThemeData(
   ),
   appBarTheme: const AppBarTheme(elevation: 0),
   inputDecorationTheme: InputDecorationTheme(
-    contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
     ),

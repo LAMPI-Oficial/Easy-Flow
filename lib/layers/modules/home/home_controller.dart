@@ -36,7 +36,7 @@ class HomeController {
           email: 'maicon159951@gmail.com',
           imageUrl: null,
           turn: '',
-          id:1),
+          id: 1),
     ];
   }
 }

@@ -26,108 +26,117 @@ import 'package:go_router/go_router.dart';
 
 final routers = GoRouter(initialLocation: '/equipments', routes: <GoRoute>[
   GoRoute(
-    path: '/',
-    builder: (BuildContext context, GoRouterState state) => SplashScreenPage(),
-  ),
-  GoRoute(
-    path: '/login',
-    builder: (BuildContext context, GoRouterState state) => LoginPage(),
-  ),
-  GoRoute(
-      path: '/signup',
-      builder: (BuildContext context, GoRouterState state) => SignUpPage(),
-      routes: <GoRoute>[
-        GoRoute(
-          path: 'address',
-          builder: (BuildContext context, GoRouterState state) =>
-              AddressSignUpPage(),
-        ),
-        GoRoute(
-          path: 'password',
-          builder: (BuildContext context, GoRouterState state) =>
-              PasswordSignUpPage(),
-        ),
-        GoRoute(
-          path: 'repeat_password',
-          builder: (BuildContext context, GoRouterState state) =>
-              RepeatPasswordSignUpPage(),
-        ),
-        GoRoute(
-          path: 'success',
-          builder: (BuildContext context, GoRouterState state) =>
-              SuccessSignUpPage(),
-        ),
-      ]),
-  GoRoute(
-      path: '/forgot_password',
+      path: '/',
       builder: (BuildContext context, GoRouterState state) =>
-          EmailForgotPasswordPage(),
-      routes: <GoRoute>[
+          SplashScreenPage(),
+      routes: [
         GoRoute(
-          path: 'code',
-          builder: (BuildContext context, GoRouterState state) =>
-              CodeForgotPasswordPage(),
+          path: 'login',
+          builder: (BuildContext context, GoRouterState state) => LoginPage(),
         ),
         GoRoute(
-          path: 'password/new',
-          builder: (BuildContext context, GoRouterState state) =>
-              NewPasswordForgotPasswordPage(),
+            path: 'signup',
+            builder: (BuildContext context, GoRouterState state) =>
+                SignUpPage(),
+            routes: <GoRoute>[
+              GoRoute(
+                path: 'address',
+                builder: (BuildContext context, GoRouterState state) =>
+                    AddressSignUpPage(),
+              ),
+              GoRoute(
+                path: 'password',
+                builder: (BuildContext context, GoRouterState state) =>
+                    PasswordSignUpPage(),
+              ),
+              GoRoute(
+                path: 'repeat_password',
+                builder: (BuildContext context, GoRouterState state) =>
+                    RepeatPasswordSignUpPage(),
+              ),
+              GoRoute(
+                path: 'success',
+                builder: (BuildContext context, GoRouterState state) =>
+                    SuccessSignUpPage(),
+              ),
+            ]),
+        GoRoute(
+            path: 'forgot_password',
+            builder: (BuildContext context, GoRouterState state) =>
+                EmailForgotPasswordPage(),
+            routes: <GoRoute>[
+              GoRoute(
+                path: 'code',
+                builder: (BuildContext context, GoRouterState state) =>
+                    CodeForgotPasswordPage(),
+              ),
+              GoRoute(
+                path: 'password/new',
+                builder: (BuildContext context, GoRouterState state) =>
+                    NewPasswordForgotPasswordPage(),
+              ),
+              GoRoute(
+                path: 'sucess',
+                builder: (BuildContext context, GoRouterState state) =>
+                    SuccessForgotPasswordPage(),
+              ),
+            ]),
+        GoRoute(
+          path: 'home',
+          builder: (BuildContext context, GoRouterState state) => HomePage(),
         ),
         GoRoute(
-          path: 'sucess',
-          builder: (BuildContext context, GoRouterState state) =>
-              SuccessForgotPasswordPage(),
-        ),
+            path: 'menu',
+            builder: (BuildContext context, GoRouterState state) => MenuPage(),
+            routes: [
+              GoRoute(
+                path: 'profile/edit',
+                builder: (BuildContext context, GoRouterState state) =>
+                    EditProfilePage(),
+              ),
+              GoRoute(
+                path: 'schedule',
+                builder: (BuildContext context, GoRouterState state) =>
+                    SchedulePage(),
+              ),
+              GoRoute(
+                  path: 'dailys',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      DailysPage(),
+                  routes: <GoRoute>[
+                    GoRoute(
+                      path: 'add',
+                      builder: (BuildContext context, GoRouterState state) =>
+                          AddDailyPage(),
+                    ),
+                  ]),
+              GoRoute(
+                  path: 'complaints',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      ComplaintsPage(),
+                  routes: <GoRoute>[
+                    GoRoute(
+                      path: 'add',
+                      builder: (BuildContext context, GoRouterState state) =>
+                          AddComplaintPage(),
+                    ),
+                  ]),
+              GoRoute(
+                  path: 'equipments',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      EquipmentsPage(),
+                  routes: <GoRoute>[
+                    GoRoute(
+                      path: 'request',
+                      builder: (BuildContext context, GoRouterState state) =>
+                          RequestEquipmentPage(),
+                    ),
+                  ]),
+              GoRoute(
+                path: 'about',
+                builder: (BuildContext context, GoRouterState state) =>
+                    AboutPage(),
+              ),
+            ]),
       ]),
-  GoRoute(
-    path: '/home',
-    builder: (BuildContext context, GoRouterState state) => HomePage(),
-  ),
-  GoRoute(
-    path: '/menu',
-    builder: (BuildContext context, GoRouterState state) => MenuPage(),
-  ),
-  GoRoute(
-    path: '/profile/edit',
-    builder: (BuildContext context, GoRouterState state) => EditProfilePage(),
-  ),
-  GoRoute(
-    path: '/schedule',
-    builder: (BuildContext context, GoRouterState state) => SchedulePage(),
-  ),
-  GoRoute(
-      path: '/dailys',
-      builder: (BuildContext context, GoRouterState state) => DailysPage(),
-      routes: <GoRoute>[
-        GoRoute(
-          path: 'add',
-          builder: (BuildContext context, GoRouterState state) =>
-              AddDailyPage(),
-        ),
-      ]),
-  GoRoute(
-      path: '/complaints',
-      builder: (BuildContext context, GoRouterState state) => ComplaintsPage(),
-      routes: <GoRoute>[
-        GoRoute(
-          path: 'add',
-          builder: (BuildContext context, GoRouterState state) =>
-              AddComplaintPage(),
-        ),
-      ]),
-  GoRoute(
-      path: '/equipments',
-      builder: (BuildContext context, GoRouterState state) => EquipmentsPage(),
-      routes: <GoRoute>[
-        GoRoute(
-          path: 'request',
-          builder: (BuildContext context, GoRouterState state) =>
-              RequestEquipmentPage(),
-            
-        ),
-      ]),
-  GoRoute(
-    path: '/about',
-    builder: (BuildContext context, GoRouterState state) => AboutPage(),
-  ),
 ]);

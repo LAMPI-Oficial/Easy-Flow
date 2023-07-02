@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   representative: announcements.representative,
                 ),
               ),
-              ListViewWidget(
+              ListViewWidget<RepresentativeModel>(
                 onRefresh: () => controller.getRepresentatives(),
                 padding: const EdgeInsets.all(16),
                 separatorBuilder: (p0, p1) => const SizedBox(
