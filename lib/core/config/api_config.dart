@@ -10,12 +10,17 @@ class ApiConfig {
   static const String _urlEndPointGetUserByLogin =
       "/users/search_by_login?login=#login#";
 
+  static const String urlCourses = "/courses";
+  static const String urlStudyAreas = "/area_study";
+
   static const String urlSchedules = "/schedules/";
   static const String urlDailys = "/dailys/";
-  
 
   static String getUrl(endpoint) => _urlApi + endpoint;
 
   static String urlEndPointGetUserByLogin({required String login}) =>
       _urlEndPointGetUserByLogin.replaceAll("#login#", login);
+
+  static const String urlStorage =
+      "https://firebasestorage.googleapis.com/v0/b/easyflow-55ea5.appspot.com/o";
 }

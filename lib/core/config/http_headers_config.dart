@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/data/service/user_service.dart';
+import 'package:easyflow/layers/presentation/provider/user_provider.dart';
 import 'package:get_it/get_it.dart';
 
 class HttpHeadersConfig {
@@ -12,7 +12,7 @@ class HttpHeadersConfig {
   }
 
   static Map<String, String> buildHeadersWithUserLogged() {
-    final _userProvider = GetIt.I.get<UserService>();
+    final _userProvider = GetIt.I.get<UserProvider>();
 
     Map<String, String> headers = {
       'Content-Type': 'application/json',
