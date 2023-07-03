@@ -3,7 +3,6 @@ import 'package:easyflow/layers/domain/entities/course_entity.dart';
 import 'package:easyflow/layers/domain/entities/create_person_entity.dart';
 import 'package:easyflow/layers/domain/entities/study_area_entity.dart';
 import 'package:easyflow/layers/domain/exceptions/api_exception.dart';
-import 'package:easyflow/layers/domain/entities/state_model.dart';
 import 'package:easyflow/layers/domain/usecases/create_person_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/get_courses_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/get_study_areas_usecase.dart';
@@ -104,33 +103,5 @@ class SignUpController {
     }
   }
 
-  List<StateModel> states = [
-    StateModel(nome: 'Acre', sigla: 'AC'),
-    StateModel(nome: 'Alagoas', sigla: 'AL'),
-    StateModel(nome: 'Amapá', sigla: 'AP'),
-    StateModel(nome: 'Amazonas', sigla: 'AM'),
-    StateModel(nome: 'Bahia', sigla: 'BA'),
-    StateModel(nome: 'Ceará', sigla: 'CE'),
-    StateModel(nome: 'Distrito Federal', sigla: 'DF'),
-    StateModel(nome: 'Espírito Santo', sigla: 'ES'),
-    StateModel(nome: 'Goiás', sigla: 'GO'),
-    StateModel(nome: 'Maranhão', sigla: 'MA'),
-    StateModel(nome: 'Mato Grosso', sigla: 'MT'),
-    StateModel(nome: 'Mato Grosso do Sul', sigla: 'MS'),
-    StateModel(nome: 'Minas Gerais', sigla: 'MG'),
-    StateModel(nome: 'Pará', sigla: 'PA'),
-    StateModel(nome: 'Paraíba', sigla: 'PB'),
-    StateModel(nome: 'Paraná', sigla: 'PR'),
-    StateModel(nome: 'Pernambuco', sigla: 'PE'),
-    StateModel(nome: 'Piauí', sigla: 'PI'),
-    StateModel(nome: 'Rio de Janeiro', sigla: 'RJ'),
-    StateModel(nome: 'Rio Grande do Norte', sigla: 'RN'),
-    StateModel(nome: 'Rio Grande do Sul', sigla: 'RS'),
-    StateModel(nome: 'Rondônia', sigla: 'RO'),
-    StateModel(nome: 'Roraima', sigla: 'RR'),
-    StateModel(nome: 'Santa Catarina', sigla: 'SC'),
-    StateModel(nome: 'São Paulo', sigla: 'SP'),
-    StateModel(nome: 'Sergipe', sigla: 'SE'),
-    StateModel(nome: 'Tocantins', sigla: 'TO'),
-  ];
+
 }

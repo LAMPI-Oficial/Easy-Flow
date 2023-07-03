@@ -1,10 +1,10 @@
 import 'package:easyflow/layers/domain/entities/enums/status_enum.dart';
-import 'package:easyflow/layers/domain/entities/equipment_model.dart';
+import 'package:easyflow/layers/domain/entities/equipment_entity.dart';
 import 'package:flutter/material.dart';
 
 class EquipmentWidget extends StatelessWidget {
   final void Function()? onTap;
-  final EquipmentModel equipment;
+  final EquipmentEntity equipment;
   const EquipmentWidget({super.key, required this.equipment, this.onTap});
 
   @override

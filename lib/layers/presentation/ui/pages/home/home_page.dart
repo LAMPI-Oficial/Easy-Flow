@@ -1,5 +1,4 @@
-import 'package:easyflow/layers/domain/entities/announcements_model.dart';
-import 'package:easyflow/layers/domain/entities/representative_model.dart';
+import 'package:easyflow/layers/domain/entities/representative_entity.dart';
 import 'package:easyflow/layers/presentation/controller/home_controller.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/announcements_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/representative_widget.dart';
@@ -70,13 +69,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 onRefresh: () => controller.getAnnouncements(),
                 asyncListCallback: () => controller.getAnnouncements(),
-                builder: (AnnouncementsModel announcements) =>
+                builder: (_announcements) =>
                     AnnouncementsWidget(
-                  announcements: announcements,
-                  representative: announcements.representative,
+                  announcements: _announcements,
+                  representative: _announcements.representative,
                 ),
               ),
-              ListViewWidget<RepresentativeModel>(
+              ListViewWidget<RepresentativeEntity>(
                 onRefresh: () => controller.getRepresentatives(),
                 padding: const EdgeInsets.all(16),
                 separatorBuilder: (p0, p1) => const SizedBox(
@@ -90,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                           .contains(value.toLowerCase()),
                     )
                     .toList(),
-                builder: (RepresentativeModel representative) =>
+                builder: (RepresentativeEntity representative) =>
                     RepresentativeWidget(representative: representative),
               ),
             ],

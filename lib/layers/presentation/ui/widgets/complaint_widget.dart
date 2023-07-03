@@ -1,9 +1,9 @@
-import 'package:easyflow/layers/domain/entities/complaint_model.dart';
+import 'package:easyflow/layers/domain/entities/complaint_entity.dart';
 import 'package:flutter/material.dart';
 
 class ComplaintWidget extends StatelessWidget {
   final void Function()? onTap;
-  final ComplaintModel daily;
+  final ComplaintEntity daily;
   const ComplaintWidget({super.key, required this.daily, this.onTap});
 
   @override

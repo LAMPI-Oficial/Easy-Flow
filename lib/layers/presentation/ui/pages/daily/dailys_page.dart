@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/domain/entities/daily_model.dart';
+import 'package:easyflow/layers/domain/entities/daily_entity.dart';
 import 'package:easyflow/layers/presentation/controller/daily_controller.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/daily_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/listview/listview_widget.dart';
@@ -19,13 +19,13 @@ class DailysPage extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       body: SafeArea(
-        child: ListViewWidget<DailyModel>(
+        child: ListViewWidget<DailyEntity>(
           padding: const EdgeInsets.all(16),
           separatorBuilder: (p0, p1) => const SizedBox(
             height: 16,
           ),
           asyncListCallback: () => controller.getDailys(),
-          builder: (DailyModel daily) => DailyWidget(daily: daily),
+          builder: (DailyEntity daily) => DailyWidget(daily: daily),
         ),
       ),
     );

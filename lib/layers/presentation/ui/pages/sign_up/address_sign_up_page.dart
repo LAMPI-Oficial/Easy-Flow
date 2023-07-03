@@ -1,5 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:easyflow/layers/domain/entities/state_model.dart';
+import 'package:easyflow/layers/domain/entities/state_entity.dart';
 import 'package:easyflow/layers/presentation/controller/sign_up_controller.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +13,35 @@ class AddressSignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = GetIt.I.get<SignUpController>();
+    List<StateEntity> states = [
+    StateEntity(nome: 'Acre', sigla: 'AC'),
+    StateEntity(nome: 'Alagoas', sigla: 'AL'),
+    StateEntity(nome: 'Amapá', sigla: 'AP'),
+    StateEntity(nome: 'Amazonas', sigla: 'AM'),
+    StateEntity(nome: 'Bahia', sigla: 'BA'),
+    StateEntity(nome: 'Ceará', sigla: 'CE'),
+    StateEntity(nome: 'Distrito Federal', sigla: 'DF'),
+    StateEntity(nome: 'Espírito Santo', sigla: 'ES'),
+    StateEntity(nome: 'Goiás', sigla: 'GO'),
+    StateEntity(nome: 'Maranhão', sigla: 'MA'),
+    StateEntity(nome: 'Mato Grosso', sigla: 'MT'),
+    StateEntity(nome: 'Mato Grosso do Sul', sigla: 'MS'),
+    StateEntity(nome: 'Minas Gerais', sigla: 'MG'),
+    StateEntity(nome: 'Pará', sigla: 'PA'),
+    StateEntity(nome: 'Paraíba', sigla: 'PB'),
+    StateEntity(nome: 'Paraná', sigla: 'PR'),
+    StateEntity(nome: 'Pernambuco', sigla: 'PE'),
+    StateEntity(nome: 'Piauí', sigla: 'PI'),
+    StateEntity(nome: 'Rio de Janeiro', sigla: 'RJ'),
+    StateEntity(nome: 'Rio Grande do Norte', sigla: 'RN'),
+    StateEntity(nome: 'Rio Grande do Sul', sigla: 'RS'),
+    StateEntity(nome: 'Rondônia', sigla: 'RO'),
+    StateEntity(nome: 'Roraima', sigla: 'RR'),
+    StateEntity(nome: 'Santa Catarina', sigla: 'SC'),
+    StateEntity(nome: 'São Paulo', sigla: 'SP'),
+    StateEntity(nome: 'Sergipe', sigla: 'SE'),
+    StateEntity(nome: 'Tocantins', sigla: 'TO'),
+  ];
     return Scaffold(
       appBar: AppBarWidget(value: 2, subtitle: 'Dados residencias'),
       backgroundColor: Colors.white,
@@ -137,10 +166,10 @@ class AddressSignUpPage extends StatelessWidget {
                               label: Text('Estado'),
                             ),
                             items:
-                                controller.states.map((StateModel stateModel) {
+                                states.map((StateEntity state) {
                               return DropdownMenuItem<String>(
-                                value: stateModel.nome,
-                                child: Text(stateModel.sigla),
+                                value: state.nome,
+                                child: Text(state.sigla),
                               );
                             }).toList(),
                             onChanged: (String? value) {

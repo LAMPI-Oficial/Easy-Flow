@@ -1,13 +1,13 @@
-import 'package:easyflow/layers/domain/entities/announcements_model.dart';
-import 'package:easyflow/layers/domain/entities/representative_model.dart';
+import 'package:easyflow/layers/domain/entities/announcements_entity.dart';
+import 'package:easyflow/layers/domain/entities/representative_entity.dart';
 
 class HomeController {
-  Future<List<AnnouncementsModel>> getAnnouncements() async {
-    return <AnnouncementsModel>[
-      AnnouncementsModel(
+  Future<List<AnnouncementsEntity>> getAnnouncements() async {
+    return <AnnouncementsEntity>[
+      AnnouncementsEntity(
         description: 'description',
         urlPhoto: 'https://dotsy.com.br/wp-content/uploads/2021/04/teste.png',
-        representative: RepresentativeModel(
+        representative: RepresentativeEntity(
             name: 'Michael Alves Pereira',
             area: 'Programação web',
             email: 'maicon159951@gmail.com',
@@ -15,9 +15,9 @@ class HomeController {
             turn: '',
             id: 2),
       ),
-      AnnouncementsModel(
+      AnnouncementsEntity(
         description: 'description',
-        representative: RepresentativeModel(
+        representative: RepresentativeEntity(
             name: 'Michael Alves Pereira',
             area: 'Programação web',
             email: 'maicon159951@gmail.com',
@@ -28,9 +28,9 @@ class HomeController {
     ];
   }
 
-  Future<List<RepresentativeModel>> getRepresentatives() async {
-    return <RepresentativeModel>[
-      RepresentativeModel(
+  Future<List<RepresentativeEntity>> getRepresentatives() async {
+    return <RepresentativeEntity>[
+      RepresentativeEntity(
           name: 'Michael Alves Pereira',
           area: 'Programação web',
           email: 'maicon159951@gmail.com',

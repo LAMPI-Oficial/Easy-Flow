@@ -1,9 +1,9 @@
-import 'package:easyflow/layers/domain/entities/representative_model.dart';
+import 'package:easyflow/layers/domain/entities/representative_entity.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/circle_avatar_widget.dart';
 import 'package:flutter/material.dart';
 
 class RepresentativeWidget extends StatelessWidget {
-  final RepresentativeModel representative;
+  final RepresentativeEntity representative;
   final void Function()? onTap;
   final bool? selected;
   const RepresentativeWidget(

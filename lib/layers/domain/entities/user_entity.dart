@@ -1,4 +1,3 @@
-import 'package:easyflow/layers/data/dto/person_dto.dart';
 import 'package:easyflow/layers/domain/entities/course_entity.dart';
 import 'package:easyflow/layers/domain/entities/person_entity.dart';
 import 'package:easyflow/layers/domain/entities/study_area_entity.dart';

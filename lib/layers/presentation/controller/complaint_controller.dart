@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/domain/entities/complaint_model.dart';
+import 'package:easyflow/layers/domain/entities/complaint_entity.dart';
 import 'package:flutter/material.dart';
 
 class ComplaintController {
@@ -7,7 +7,7 @@ class ComplaintController {
   final formKey = GlobalKey<FormState>();
   final descriptionTextController = TextEditingController();
 
-  Future<List<ComplaintModel>> getComplaints() async {
-    return [ComplaintModel(description: 'saojfoiAJIFOJDIJFIOASJ', date: DateTime.now())];
+  Future<List<ComplaintEntity>> getComplaints() async {
+    return [ComplaintEntity(description: 'saojfoiAJIFOJDIJFIOASJ', date: DateTime.now())];
   }
 }

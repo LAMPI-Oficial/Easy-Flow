@@ -1,10 +1,6 @@
-import 'package:easyflow/layers/data/dto/address_dto.dart';
-import 'package:easyflow/layers/data/dto/course_dto.dart';
-import 'package:easyflow/layers/data/dto/study_area_dto.dart';
-import 'package:easyflow/layers/domain/entities/course_entity.dart';
 import 'package:easyflow/layers/domain/entities/enums/person_type_enum.dart';
 import 'package:easyflow/layers/domain/entities/person_entity.dart';
-import 'package:easyflow/layers/domain/entities/study_area_entity.dart';
+
 
 class PersonDto extends PersonEntity {
   PersonDto({

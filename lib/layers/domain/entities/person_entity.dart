@@ -1,6 +1,4 @@
-import 'package:easyflow/layers/domain/entities/course_entity.dart';
 import 'package:easyflow/layers/domain/entities/enums/person_type_enum.dart';
-import 'package:easyflow/layers/domain/entities/study_area_entity.dart';
 
 class PersonEntity {
   int id;

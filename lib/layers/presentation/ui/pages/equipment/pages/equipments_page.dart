@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/domain/entities/equipment_model.dart';
+import 'package:easyflow/layers/domain/entities/equipment_entity.dart';
 import 'package:easyflow/layers/presentation/ui/pages/equipment/equipment_controller.dart';
 import 'package:easyflow/layers/presentation/ui/pages/equipment/widgets/equipment_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/listview/listview_widget.dart';
@@ -62,14 +62,14 @@ class EquipmentsPage extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListViewWidget<EquipmentModel>(
+              child: ListViewWidget<EquipmentEntity>(
                 padding: const EdgeInsets.all(16),
                 onRefresh: () => controller.getEquipments(),
                 asyncListCallback: () => controller.getEquipments(),
                 separatorBuilder: (p0, p1) => const SizedBox(
                   height: 16,
                 ),
-                builder: (EquipmentModel equipment) =>
+                builder: (EquipmentEntity equipment) =>
                     EquipmentWidget(equipment: equipment),
               ),
             ),

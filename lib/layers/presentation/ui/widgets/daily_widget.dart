@@ -1,9 +1,9 @@
-import 'package:easyflow/layers/domain/entities/daily_model.dart';
+import 'package:easyflow/layers/domain/entities/daily_entity.dart';
 import 'package:flutter/material.dart';
 
 class DailyWidget extends StatelessWidget {
   final void Function()? onTap;
-  final DailyModel daily;
+  final DailyEntity  daily;
   const DailyWidget({super.key, required this.daily, this.onTap});
 
   @override

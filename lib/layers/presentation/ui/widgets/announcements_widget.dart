@@ -1,12 +1,12 @@
-import 'package:easyflow/layers/domain/entities/announcements_model.dart';
-import 'package:easyflow/layers/domain/entities/representative_model.dart';
+import 'package:easyflow/layers/domain/entities/announcements_entity.dart';
+import 'package:easyflow/layers/domain/entities/representative_entity.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/circle_avatar_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/images/image_network_widget.dart';
 import 'package:flutter/material.dart';
 
 class AnnouncementsWidget extends StatelessWidget {
-  final AnnouncementsModel announcements;
-  final RepresentativeModel representative;
+  final AnnouncementsEntity announcements;
+  final RepresentativeEntity representative;
   const AnnouncementsWidget(
       {super.key, required this.announcements, required this.representative});
 

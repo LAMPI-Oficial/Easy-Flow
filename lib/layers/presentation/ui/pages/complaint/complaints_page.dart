@@ -1,4 +1,4 @@
-import 'package:easyflow/layers/domain/entities/complaint_model.dart';
+import 'package:easyflow/layers/domain/entities/complaint_entity.dart';
 import 'package:easyflow/layers/presentation/controller/complaint_controller.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/complaint_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/listview/listview_widget.dart';
@@ -20,13 +20,13 @@ class ComplaintsPage extends StatelessWidget{
             onPressed: () => context.push('/menu/complaints/add'),
             child: const Icon(Icons.add)),
         body: SafeArea(child: SafeArea(
-        child: ListViewWidget<ComplaintModel>(
+        child: ListViewWidget<ComplaintEntity>(
           padding: const EdgeInsets.all(16),
           separatorBuilder: (p0, p1) => const SizedBox(
             height: 16,
           ),
           asyncListCallback: () => controller.getComplaints(),
-          builder: (ComplaintModel daily) => ComplaintWidget(daily: daily),
+          builder: (ComplaintEntity daily) => ComplaintWidget(daily: daily),
         ),
       ),));
   }

@@ -1,5 +1,5 @@
 import 'package:easyflow/core/utils/validators_util.dart';
-import 'package:easyflow/layers/domain/entities/representative_model.dart';
+import 'package:easyflow/layers/domain/entities/representative_entity.dart';
 import 'package:easyflow/layers/presentation/ui/pages/equipment/equipment_controller.dart';
 import 'package:easyflow/layers/presentation/ui/pages/equipment/widgets/calendar_day_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/button_text_field_widget.dart';
@@ -26,9 +26,9 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
   }
 
   final controller = GetIt.I.get<EquipmentController>();
-  RepresentativeModel? representative;
+  RepresentativeEntity? representative;
 
-  selectRepresentative(RepresentativeModel _representative) {
+  selectRepresentative(RepresentativeEntity _representative) {
     setState(() {
       representative = _representative;
     });
@@ -210,7 +210,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                           context: context,
                           title: const Text('Selecione o representate'),
                              body: SafeArea(
-                                  child: ListViewWidget<RepresentativeModel>(
+                                  child: ListViewWidget<RepresentativeEntity>(
                                       searchFieldEnabled: true,
                                       padding: const EdgeInsets.all(16),
                                       asyncListFilter: (value, list) => list
