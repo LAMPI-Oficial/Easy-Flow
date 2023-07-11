@@ -12,7 +12,7 @@ class GetStudyAreasDataSourceImpl implements GetStudyAreasDataSource {
     final url = ApiConfig.getUrl(ApiConfig.urlStudyAreas);
     final response = await http.get(
       Uri.parse(url),
-      headers: HttpHeadersConfig.buildHeadersWithUserLogged(),
+      headers: HttpHeadersConfig.buildHeadersWithoutAuth(),
     );
     print(response.body);
     return (jsonDecode(response.body) as List)

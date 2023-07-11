@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class ComplaintWidget extends StatelessWidget {
   final void Function()? onTap;
-  final ComplaintEntity daily;
-  const ComplaintWidget({super.key, required this.daily, this.onTap});
+  final ComplaintEntity complaint;
+  const ComplaintWidget({super.key, required this.complaint, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ComplaintWidget extends StatelessWidget {
         ),
       ),
       title: Text(
-        'Reclamação feita em ${daily.formattedData}',
+        'Reclamação feita em ${complaint.formattedData}',
         style: const TextStyle(
           color: Color(0xFF4A6F90),
         ),

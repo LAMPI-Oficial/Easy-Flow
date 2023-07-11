@@ -11,7 +11,7 @@ class ApiConfig {
       "/users/search_by_login?login=#login#";
 
   static const String urlCourses = "/courses";
-  static const String urlStudyAreas = "/area_study";
+  static const String urlStudyAreas = "/study_area";
 
   static const String urlSchedules = "/schedules/";
   static const String urlDailys = "/dailys/";

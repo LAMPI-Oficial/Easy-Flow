@@ -242,7 +242,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                                               },),),
                                 ),
                               ),
-                      label: 'Aréa de estudo',
+                      label: 'Representante',
                       controller: TextEditingController(
                           text: representative?.name ?? ''),
                     ),

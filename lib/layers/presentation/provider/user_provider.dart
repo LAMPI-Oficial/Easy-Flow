@@ -16,7 +16,6 @@ class UserProvider {
           name: 'Michael Alves',
           email: 'maicon159951@outlook.com',
           admin: false,
-       
           urlPhoto: '',
           personType: PersonType.student));
   bool logged = false;

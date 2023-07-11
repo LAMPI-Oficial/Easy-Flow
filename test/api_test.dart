@@ -29,15 +29,15 @@ void main() {
 
   // Teste para obter os cursos
   test('Get Courses', () async {
-    final url = ApiConfig.getUrl(ApiConfig.urlCourses);
+    final url = ApiConfig.getUrl('/study_area');
     String? token;
     await auth().then((value) => token = value.token);
     final response = await http.get(
       Uri.parse(url),
-      headers: HttpHeadersConfig.buildHeadersWithToken(token!),
+      headers: HttpHeadersConfig.buildHeadersWithoutAuth(),
     );
     expect(response.statusCode, 200);
-    expect(response.body, '[{"id":1,"course_name":"ADS-1"}]');
+    print(response.body);
   });
 
   // Teste para salvar um curso

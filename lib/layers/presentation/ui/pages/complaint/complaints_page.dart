@@ -22,11 +22,12 @@ class ComplaintsPage extends StatelessWidget{
         body: SafeArea(child: SafeArea(
         child: ListViewWidget<ComplaintEntity>(
           padding: const EdgeInsets.all(16),
+
           separatorBuilder: (p0, p1) => const SizedBox(
             height: 16,
           ),
           asyncListCallback: () => controller.getComplaints(),
-          builder: (ComplaintEntity daily) => ComplaintWidget(daily: daily),
+          builder: (ComplaintEntity complaint) => ComplaintWidget(complaint: complaint),
         ),
       ),));
   }
