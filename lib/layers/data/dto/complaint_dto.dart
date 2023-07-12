@@ -16,7 +16,6 @@ class ComplaintDto extends ComplaintEntity {
   static ComplaintDto fromMap(Map map) {
     return ComplaintDto(
       id: map['id'],
-
       description: map['course_name'],
       date: map['date'],
     );

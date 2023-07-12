@@ -26,7 +26,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final routers = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/home',
     errorBuilder: (BuildContext context, GoRouterState state) => ErrorPage(),
     routes: <GoRoute>[
       GoRoute(
