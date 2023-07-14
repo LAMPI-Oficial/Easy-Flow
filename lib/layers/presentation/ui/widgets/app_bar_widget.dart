@@ -25,13 +25,16 @@ class AppBarWidget extends PreferredSize {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                "Cadastro",
-                style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black),
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Text(
+                  "Cadastro",
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black),
+                ),
               ),
               Text(
                 subtitle,

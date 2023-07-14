@@ -1,6 +1,7 @@
 import 'package:easyflow/layers/domain/entities/address_entity.dart';
 import 'package:easyflow/layers/domain/entities/course_entity.dart';
 import 'package:easyflow/layers/domain/entities/create_person_entity.dart';
+import 'package:easyflow/layers/domain/entities/state_entity.dart';
 import 'package:easyflow/layers/domain/entities/study_area_entity.dart';
 import 'package:easyflow/layers/domain/exceptions/api_exception.dart';
 import 'package:easyflow/layers/domain/usecases/create_person_usecase.dart';
@@ -10,7 +11,6 @@ import 'package:easyflow/layers/presentation/provider/user_provider.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/dialogs_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:go_router/go_router.dart';
 
 class SignUpController {
   final GetCoursesUseCase _getCoursesIdUseCase;
@@ -51,31 +51,61 @@ class SignUpController {
   final passwordTextEditingController = TextEditingController();
   final repeatPasswordTextEditingController = TextEditingController();
 
-  personal(BuildContext context) async {
-    if (formKeyPersonal.currentState!.validate()) {
-      context.push('/signup/address');
+  List<StateEntity> getListStates() {
+    return [
+      StateEntity(nome: 'Acre', sigla: 'AC'),
+      StateEntity(nome: 'Alagoas', sigla: 'AL'),
+      StateEntity(nome: 'Amapá', sigla: 'AP'),
+      StateEntity(nome: 'Amazonas', sigla: 'AM'),
+      StateEntity(nome: 'Bahia', sigla: 'BA'),
+      StateEntity(nome: 'Ceará', sigla: 'CE'),
+      StateEntity(nome: 'Distrito Federal', sigla: 'DF'),
+      StateEntity(nome: 'Espírito Santo', sigla: 'ES'),
+      StateEntity(nome: 'Goiás', sigla: 'GO'),
+      StateEntity(nome: 'Maranhão', sigla: 'MA'),
+      StateEntity(nome: 'Mato Grosso', sigla: 'MT'),
+      StateEntity(nome: 'Mato Grosso do Sul', sigla: 'MS'),
+      StateEntity(nome: 'Minas Gerais', sigla: 'MG'),
+      StateEntity(nome: 'Pará', sigla: 'PA'),
+      StateEntity(nome: 'Paraíba', sigla: 'PB'),
+      StateEntity(nome: 'Paraná', sigla: 'PR'),
+      StateEntity(nome: 'Pernambuco', sigla: 'PE'),
+      StateEntity(nome: 'Piauí', sigla: 'PI'),
+      StateEntity(nome: 'Rio de Janeiro', sigla: 'RJ'),
+      StateEntity(nome: 'Rio Grande do Norte', sigla: 'RN'),
+      StateEntity(nome: 'Rio Grande do Sul', sigla: 'RS'),
+      StateEntity(nome: 'Rondônia', sigla: 'RO'),
+      StateEntity(nome: 'Roraima', sigla: 'RR'),
+      StateEntity(nome: 'Santa Catarina', sigla: 'SC'),
+      StateEntity(nome: 'São Paulo', sigla: 'SP'),
+      StateEntity(nome: 'Sergipe', sigla: 'SE'),
+      StateEntity(nome: 'Tocantins', sigla: 'TO'),
+    ];
+  }
+
+  signUp(BuildContext context, String page,
+      final void Function(String) onPressedCallback) async {
+    if (page == "personal") {
+      if (formKeyPersonal.currentState!.validate()) {
+        onPressedCallback(page);
+      }
+    } else if (page == "address") {
+      if (formKeyAddress.currentState!.validate()) {
+        print("atualizado para password");
+        onPressedCallback(page);
+      }
+    } else if (page == "password") {
+      if (formKeyPassword.currentState!.validate()) {
+        onPressedCallback(page);
+      }
+    } else {
+      if (formKeyRepeatPassword.currentState!.validate()) {
+        signUp2(context);
+      }
     }
   }
 
-  address(BuildContext context) async {
-    if (formKeyAddress.currentState!.validate()) {
-      context.push('/signup/password');
-    }
-  }
-
-  password(BuildContext context) async {
-    if (formKeyPassword.currentState!.validate()) {
-      context.push('/signup/repeat_password');
-    }
-  }
-
-  repeatPassword(context) async {
-    if (formKeyRepeatPassword.currentState!.validate()) {
-      signUp(context);
-    }
-  }
-
-  signUp(BuildContext context) async {
+  signUp2(BuildContext context) async {
     Dialogs.loading(context);
     try {
       _createPersonUseCase
@@ -92,7 +122,9 @@ class SignUpController {
                   district: districtTextEditingController.text,
                   street: streetTextEditingController.text,
                   number: numberTextEditingController.text,
-                  complement: complementTextEditingController.text), courseId: course!.id, studyAreaId: studyArea!.id))
+                  complement: complementTextEditingController.text),
+              courseId: course!.id,
+              studyAreaId: studyArea!.id))
           .then((user) {
         GetIt.I<UserProvider>().auth(user);
         Navigator.of(context).pushReplacementNamed('/home');
@@ -102,6 +134,4 @@ class SignUpController {
       Dialogs.error(context, title: e.title, message: e.message);
     }
   }
-
-
 }
