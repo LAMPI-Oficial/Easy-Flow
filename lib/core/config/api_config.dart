@@ -1,7 +1,8 @@
 class ApiConfig {
   // static const String _urlApi = "http://10.12.14.187:8080";
 
-  static const String _urlApi = "https://easyflow-55ea5-default-rtdb.firebaseio.com";
+  static const String _urlApi =
+      "https://easyflow-55ea5-default-rtdb.firebaseio.com";
 
   static const String urlEndPointAuth = "/auth";
 
@@ -14,9 +15,13 @@ class ApiConfig {
   static const String urlStudyAreas = "/study_area";
 
   static const String urlSchedules = "/schedules/";
-  
+
   static const String urlDailys = "/dailys.json";
   static const String urlComplaints = "/complaints.json";
+  static const String urlRepresentatives = "/representatives.json";
+  static const String urlAnnouncements = "/announcements.json";
+  static const String urlEquipments = "/equipments.json";
+
 
   static String getUrl(endpoint) => _urlApi + endpoint;
 

@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class GetComplaintsDataSourceImpl implements GetComplaintsDataSource {
   @override
   Future<List<ComplaintEntity>> call() async {
-    final url = ApiConfig.getUrl('/study_area');
+    final url = ApiConfig.getUrl(ApiConfig.urlStudyAreas);
 
     final response = await http.get(
       Uri.parse(url),

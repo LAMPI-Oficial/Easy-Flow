@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                 builder: (_announcements) =>
                     AnnouncementsWidget(
                   announcements: _announcements,
-                  representative: _announcements.representative,
+                  
                 ),
               ),
               ListViewWidget<RepresentativeEntity>(

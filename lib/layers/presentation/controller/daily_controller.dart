@@ -5,6 +5,6 @@ class DailyController {
 
 
   Future<List<DailyEntity>> getDailys() async {
-    return [DailyEntity(id: 1, date: DateTime.now())];
+    return [DailyEntity(id: 1, date: DateTime.now(), description: '')];
   }
 }

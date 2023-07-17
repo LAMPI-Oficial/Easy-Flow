@@ -37,7 +37,7 @@ class RepresentativeWidget extends StatelessWidget {
             width: 2,
           ),
           Text(
-            representative.area,
+            representative.studyArea,
             style: const TextStyle(
               fontSize: 14,
               color: Color(0xFF0085FF),

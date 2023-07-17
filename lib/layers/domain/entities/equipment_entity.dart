@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 class EquipmentEntity {
   final int id;
-  final DateTime date;
+  final String date;
   final Status status;
 
   EquipmentEntity({
@@ -13,6 +13,6 @@ class EquipmentEntity {
   });
 
   String get formattedData {
-    return "${DateFormat('dd', 'pt_BR').format(date)} de ${DateFormat('MMMM yyyy', 'pt_BR').format(date)}";
+    return "${DateFormat('dd', 'pt_BR').format(DateTime.parse(date))} de ${DateFormat('MMMM yyyy', 'pt_BR').format(DateTime.parse(date))}";
   }
 }
