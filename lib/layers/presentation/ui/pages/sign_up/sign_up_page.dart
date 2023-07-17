@@ -67,7 +67,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             ? ElevatedButton(
                                 onPressed: () => controller.signUp(
                                     context, signUpPage, nextPage),
-                                child: const Text("Continuar"),
+                                child: Text((signUpPage == "repeat_password"
+                                    ? "Finalizar"
+                                    : "Continuar")),
                               )
                             : ElevatedButton(
                                 onPressed: () {
