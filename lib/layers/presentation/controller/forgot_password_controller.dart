@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-class ForgotPasswordController  {
-
+class ForgotPasswordController {
   final formKeyEmail = GlobalKey<FormState>();
   final formKeyCheckCode = GlobalKey<FormState>();
   final formKeyNewPassword = GlobalKey<FormState>();
@@ -12,21 +10,37 @@ class ForgotPasswordController  {
   final repeatPasswordTextController = TextEditingController();
   final codeTextEditingController = TextEditingController();
 
-  sendCode(context) {
-    if (formKeyEmail.currentState!.validate()) {
-      context.push('/forgot_password/code');
+  String getRestrictedEmail(String email) {
+    List<String> list = email.split("@");
+    if (list[0].length > 5) {
+      return "${list[0].substring(0, list[0].length - 5)}*****@${list[1]}";
+    } else if (list[0].length == 5) {
+      return "${list[0].substring(0, list[0].length - 4)}****@${list[1]}";
+    } else if (list[0].length == 4) {
+      return "${list[0].substring(0, list[0].length - 3)}***@${list[1]}";
+    } else if (list[0].length == 3) {
+      return "${list[0].substring(0, list[0].length - 2)}**@${list[1]}";
+    } else if (list[0].length == 2) {
+      return "${list[0].substring(0, list[0].length - 1)}*@${list[1]}";
+    } else {
+      return email;
     }
   }
 
-  checkCode(context) {
-    if (formKeyCheckCode.currentState!.validate()) {
-      context.push('/forgot_password/password/new');
-    }
-  }
-
-  forgotPassword(context) {
-    if (formKeyNewPassword.currentState!.validate()) {
-      context.push('/forgot_password/sucess');
+  forgotPassword(BuildContext context, String page,
+      final void Function(String) onPressedCallback) async {
+    if (page == "email") {
+      if (formKeyEmail.currentState!.validate()) {
+        onPressedCallback(page);
+      }
+    } else if (page == "code") {
+      if (formKeyCheckCode.currentState!.validate()) {
+        onPressedCallback(page);
+      }
+    } else if (page == "new_password") {
+      if (formKeyNewPassword.currentState!.validate()) {
+        onPressedCallback(page);
+      }
     }
   }
 }

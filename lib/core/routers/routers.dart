@@ -6,6 +6,7 @@ import 'package:easyflow/layers/presentation/ui/pages/daily/dailys_page.dart';
 import 'package:easyflow/layers/presentation/ui/pages/equipment/pages/equipments_page.dart';
 import 'package:easyflow/layers/presentation/ui/pages/equipment/pages/request_equipment_page.dart';
 import 'package:easyflow/layers/presentation/ui/pages/error/error_page.dart';
+import 'package:easyflow/layers/presentation/ui/pages/forgot_password/forgot_password_page.dart';
 import 'package:easyflow/layers/presentation/ui/pages/schedule/schedule_page.dart';
 import 'package:easyflow/layers/presentation/ui/pages/complaint/add_complaint_page.dart';
 import 'package:easyflow/layers/presentation/ui/pages/profile/edit_profile_page.dart';
@@ -18,15 +19,11 @@ import 'package:easyflow/layers/presentation/ui/pages/splash_screen/splash_scree
 import 'package:easyflow/layers/presentation/ui/pages/login/login_page.dart';
 import 'package:easyflow/layers/presentation/ui/pages/sign_up/sign_up_page.dart';
 import 'package:easyflow/layers/presentation/ui/pages/sign_up/success_sign_up_page.dart';
-import 'package:easyflow/layers/presentation/ui/pages/forgot_password/email_forgot_password_page.dart';
-import 'package:easyflow/layers/presentation/ui/pages/forgot_password/code_forgot_password_page.dart';
-import 'package:easyflow/layers/presentation/ui/pages/forgot_password/new_password_forgot_password_page.dart';
-import 'package:easyflow/layers/presentation/ui/pages/forgot_password/success_forgot_password_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final routers = GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/forgot_password',
     errorBuilder: (BuildContext context, GoRouterState state) => ErrorPage(),
     routes: <GoRoute>[
       GoRoute(
@@ -66,26 +63,10 @@ final routers = GoRouter(
                   ),
                 ]),
             GoRoute(
-                path: 'forgot_password',
-                builder: (BuildContext context, GoRouterState state) =>
-                    EmailForgotPasswordPage(),
-                routes: <GoRoute>[
-                  GoRoute(
-                    path: 'code',
-                    builder: (BuildContext context, GoRouterState state) =>
-                        CodeForgotPasswordPage(),
-                  ),
-                  GoRoute(
-                    path: 'password/new',
-                    builder: (BuildContext context, GoRouterState state) =>
-                        NewPasswordForgotPasswordPage(),
-                  ),
-                  GoRoute(
-                    path: 'sucess',
-                    builder: (BuildContext context, GoRouterState state) =>
-                        SuccessForgotPasswordPage(),
-                  ),
-                ]),
+              path: 'forgot_password',
+              builder: (BuildContext context, GoRouterState state) =>
+                  ForgotPasswordPage(),
+            ),
             GoRoute(
               path: 'home',
               builder: (BuildContext context, GoRouterState state) =>
