@@ -55,7 +55,7 @@ class Inject {
     getIt.registerLazySingleton<GetCoursesDataSource>(
       () => GetCoursesDataSourceImpl(),
     );
-       getIt.registerLazySingleton<GetStudyAreasDataSource>(
+    getIt.registerLazySingleton<GetStudyAreasDataSource>(
       () => GetStudyAreasDataSourceImpl(),
     );
   }
@@ -74,7 +74,7 @@ class Inject {
     getIt.registerLazySingleton<GetCoursesRepository>(
       () => GetCoursesRepositoryImpl(getIt()),
     );
-       getIt.registerLazySingleton<GetStudyAreasRepository>(
+    getIt.registerLazySingleton<GetStudyAreasRepository>(
       () => GetStudyAreasRepositoryImpl(getIt()),
     );
   }
@@ -92,7 +92,7 @@ class Inject {
     getIt.registerLazySingleton<GetCoursesUseCase>(
       () => GetCoursesUseCaseImpl(getIt()),
     );
-      getIt.registerLazySingleton<GetStudyAreasUseCase>(
+    getIt.registerLazySingleton<GetStudyAreasUseCase>(
       () => GetStudyAreasUseCaseImpl(getIt()),
     );
   }
@@ -101,30 +101,38 @@ class Inject {
     GetIt getIt = GetIt.instance;
 
     //CONTROLLERS
-        getIt.registerFactory<UserController>(
+    getIt.registerFactory<UserController>(
       () => UserController(
-getIt(),getIt(),
+        getIt(),
+        getIt(),
       ),
     );
 
     getIt.registerFactory<SignUpController>(
       () => SignUpController(
-
-        getIt(),  getIt(),getIt(),
+        getIt(),
+        getIt(),
+        getIt(),
       ),
     );
 
     getIt.registerFactory<EquipmentController>(() => EquipmentController());
 
-    getIt.registerFactory<ProfileController>(() => ProfileController(getIt(),getIt(),));
+    getIt.registerFactory<ProfileController>(() => ProfileController(
+          getIt(),
+          getIt(),
+        ));
 
-    getIt.registerFactory<DailyController>(
-        () => DailyController( ));
+    getIt.registerFactory<DailyController>(() => DailyController());
 
     getIt.registerFactory<ComplaintController>(() => ComplaintController());
 
     getIt.registerFactory<ForgotPasswordController>(
-        () => ForgotPasswordController());
+        () => ForgotPasswordController(
+              getIt(),
+              getIt(),
+              getIt(),
+            ));
 
     getIt.registerFactory<HomeController>(() => HomeController());
 

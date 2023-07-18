@@ -1,11 +1,19 @@
 class ApiConfig {
   // static const String _urlApi = "http://10.12.14.187:8080";
 
-  static const String _urlApi = "https://easyflow-55ea5-default-rtdb.firebaseio.com";
+  static const String _urlApi =
+      "https://easyflow-55ea5-default-rtdb.firebaseio.com";
 
   static const String urlEndPointAuth = "/auth";
 
   static const String urlEndPointCreateUser = "/users";
+
+  static const String urlEndPointForgotPasswordSendEmail =
+      "/forgot_password_email";
+  static const String urlEndPointForgotPasswordSendCode =
+      "/forgot_password_code";
+  static const String urlEndPointForgotPasswordSendPassword =
+      "/forgot_password_password";
 
   static const String _urlEndPointGetUserByLogin =
       "/users/search_by_login?login=#login#";
@@ -14,7 +22,7 @@ class ApiConfig {
   static const String urlStudyAreas = "/study_area";
 
   static const String urlSchedules = "/schedules/";
-  
+
   static const String urlDailys = "/dailys.json";
   static const String urlComplaints = "/complaints.json";
 

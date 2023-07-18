@@ -92,7 +92,9 @@ class SignUpController {
                   district: districtTextEditingController.text,
                   street: streetTextEditingController.text,
                   number: numberTextEditingController.text,
-                  complement: complementTextEditingController.text), courseId: course!.id, studyAreaId: studyArea!.id))
+                  complement: complementTextEditingController.text),
+              courseId: course!.id,
+              studyAreaId: studyArea!.id))
           .then((user) {
         GetIt.I<UserProvider>().auth(user);
         Navigator.of(context).pushReplacementNamed('/home');
@@ -102,6 +104,4 @@ class SignUpController {
       Dialogs.error(context, title: e.title, message: e.message);
     }
   }
-
-
 }
