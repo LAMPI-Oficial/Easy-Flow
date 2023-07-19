@@ -15,7 +15,7 @@ class AnnouncementsDto extends AnnouncementsEntity {
   Map<String, dynamic> toMap() => {
         "id": id,
         "description": description,
-        "urlPhoto": urlPhoto,
+        "url_photo": urlPhoto,
         // "representative": representative,
       };
 
@@ -23,7 +23,7 @@ class AnnouncementsDto extends AnnouncementsEntity {
     return AnnouncementsDto(
       id: map["id"],
       description: map["description"],
-      urlPhoto: map["urlPhoto"],
+      urlPhoto: map["url_photo"],
       // representative: RepresentativeEntity(
       //     id: 1,
       //     name: "name",

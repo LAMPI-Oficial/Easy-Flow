@@ -2,7 +2,6 @@ import 'package:easyflow/layers/presentation/ui/widgets/images/image_file_widget
 import 'package:easyflow/layers/presentation/ui/widgets/images/image_network_widget.dart';
 import 'package:flutter/material.dart';
 
-
 class ImageAdaptiveWidget extends StatelessWidget {
   final String value;
   final BoxFit? fit = BoxFit.cover;
