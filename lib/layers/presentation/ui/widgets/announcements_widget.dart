@@ -51,7 +51,7 @@ class AnnouncementsWidget extends StatelessWidget {
               height: 55,
               decoration: const BoxDecoration(shape: BoxShape.circle),
               child: const ImageAdaptiveWidget('assets/images/logo.png',
-                  height: 55),
+                  width: 50, height: 55),
             ),
             title: Text(
               announcements.description,
