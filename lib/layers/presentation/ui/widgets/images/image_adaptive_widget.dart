@@ -16,11 +16,14 @@ class ImageAdaptiveWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: value.startsWith('http') || value.startsWith('https')
-          ? ImageNetworkWidget(
-              value,
-              fit: fit,
-              height: height,
-              width: width,
+          ? ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: ImageNetworkWidget(
+                value,
+                fit: fit,
+                height: height,
+                width: width,
+              ),
             )
           : ImageFileWidget(
               value,
