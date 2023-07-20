@@ -1,18 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:easyflow/core/config/api_config.dart';
 import 'package:easyflow/core/config/http_headers_config.dart';
-import 'package:easyflow/layers/data/datasources/get_announcements_datasource.dart';
-import 'package:easyflow/layers/data/dto/announcements_dto.dart';
-import 'package:easyflow/layers/domain/entities/announcements_entity.dart';
+import 'package:easyflow/layers/data/datasources/get_representatives_datasource.dart';
+import 'package:easyflow/layers/data/dto/representatives_dto.dart';
+import 'package:easyflow/layers/domain/entities/representative_entity.dart';
 import 'package:easyflow/layers/domain/exceptions/api_exception.dart';
 import 'package:http/http.dart' as http;
 
-class GetAnnouncementsDataSourceImpl implements GetAnnouncementsDataSource {
+class GetRepresentativesDataSourceImpl implements GetRepresentativesDataSource {
   @override
-  Future<List<AnnouncementsEntity>> call() async {
-    final url = ApiConfig.getUrl(ApiConfig.urlAnnouncements);
+  Future<List<RepresentativeEntity>> call() async {
+    final url = ApiConfig.getUrl(ApiConfig.urlRepresentatives);
     try {
       final response = await http
           .get(
@@ -26,7 +25,7 @@ class GetAnnouncementsDataSourceImpl implements GetAnnouncementsDataSource {
       if (response.statusCode == 200) {
         return (jsonDecode(response.body) as List)
             .map(
-              (i) => AnnouncementsDto.fromMap(
+              (i) => RepresentativeDto.fromMap(
                 i,
               ),
             )

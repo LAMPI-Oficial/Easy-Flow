@@ -40,7 +40,7 @@ class CircleAvatarWidget extends StatelessWidget {
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primary,
             shape: BoxShape.circle),
-        child: urlPhoto != null
+        child: (urlPhoto != "" || urlPhoto == null)
             ? ImageAdaptiveWidget(urlPhoto!)
             : Text(
                 getInitials(name),

@@ -2,26 +2,31 @@ import 'package:easyflow/layers/data/datasources/authenticate_user_datasource.da
 import 'package:easyflow/layers/data/datasources/create_person_datasource.dart';
 import 'package:easyflow/layers/data/datasources/get_announcements_datasource.dart';
 import 'package:easyflow/layers/data/datasources/get_courses_datasource.dart';
+import 'package:easyflow/layers/data/datasources/get_representatives_datasource.dart';
 import 'package:easyflow/layers/data/datasources/get_study_areas_datasource.dart';
 import 'package:easyflow/layers/data/datasources/remote/authenticate_user_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/create_person_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/get_announcements_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/get_courses_datasource_impl.dart';
+import 'package:easyflow/layers/data/datasources/remote/get_representatives_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/get_study_areas_datasource_impl.dart';
 import 'package:easyflow/layers/data/repositories/authenticate_user_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/create_person_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/get_announcements_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/get_courses_repository_impl.dart';
+import 'package:easyflow/layers/data/repositories/get_representatives_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/get_study_areas_repository_impl.dart';
 import 'package:easyflow/layers/domain/repositories/authenticate_user_repository.dart';
 import 'package:easyflow/layers/domain/repositories/create_person_repository.dart';
 import 'package:easyflow/layers/domain/repositories/get_announcements_repository.dart';
 import 'package:easyflow/layers/domain/repositories/get_courses_repository.dart';
+import 'package:easyflow/layers/domain/repositories/get_representative_repository.dart';
 import 'package:easyflow/layers/domain/repositories/get_study_areas_repository.dart';
 import 'package:easyflow/layers/domain/usecases/authenticate_user_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/create_person_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/get_announcements_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/get_courses_usecase.dart';
+import 'package:easyflow/layers/domain/usecases/get_representative_usercase.dart';
 import 'package:easyflow/layers/domain/usecases/get_study_areas_usecase.dart';
 import 'package:easyflow/layers/presentation/controller/complaint_controller.dart';
 import 'package:easyflow/layers/presentation/controller/daily_controller.dart';
@@ -65,6 +70,8 @@ class Inject {
     );
     getIt.registerLazySingleton<GetAnnouncementsDataSource>(
         () => GetAnnouncementsDataSourceImpl());
+    getIt.registerLazySingleton<GetRepresentativesDataSource>(
+        () => GetRepresentativesDataSourceImpl());
   }
 
   static void _initRepositores() {
@@ -87,6 +94,9 @@ class Inject {
     getIt.registerLazySingleton<GetAnnouncementsRepository>(
       () => GetAnnouncementRepositoryImpl(getIt()),
     );
+    getIt.registerLazySingleton<GetRepresentativesRepository>(
+      () => GetRepresentativesRepositoryimpl(getIt()),
+    );
   }
 
   static void _initUseCases() {
@@ -105,6 +115,9 @@ class Inject {
     getIt.registerLazySingleton<GetStudyAreasUseCase>(
       () => GetStudyAreasUseCaseImpl(getIt()),
     );
+
+    getIt.registerLazySingleton<GetRepresentativesUserCase>(
+        () => GetRepresentativesUseCaseImpl(getIt()));
     getIt.registerLazySingleton<GetAnnouncementsUseCase>(
         () => GetAnnouncementsUseCaseImpl(getIt()));
   }
@@ -142,7 +155,8 @@ class Inject {
     getIt.registerFactory<ForgotPasswordController>(
         () => ForgotPasswordController());
 
-    getIt.registerFactory<HomeController>(() => HomeController(getIt()));
+    getIt.registerFactory<HomeController>(
+        () => HomeController(getIt(), getIt()));
 
     getIt.registerFactory<ScheduleController>(() => ScheduleController());
   }
