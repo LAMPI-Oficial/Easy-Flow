@@ -69,10 +69,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 onRefresh: () => controller.getAnnouncements(),
                 asyncListCallback: () => controller.getAnnouncements(),
-                builder: (_announcements) =>
-                    AnnouncementsWidget(
-                  announcements: _announcements,
-                  
+                builder: (announcements) => AnnouncementsWidget(
+                  announcements: announcements,
                 ),
               ),
               ListViewWidget<RepresentativeEntity>(

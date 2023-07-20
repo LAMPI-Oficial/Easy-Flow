@@ -1,22 +1,32 @@
 import 'package:easyflow/layers/data/datasources/authenticate_user_datasource.dart';
 import 'package:easyflow/layers/data/datasources/create_person_datasource.dart';
+import 'package:easyflow/layers/data/datasources/get_announcements_datasource.dart';
 import 'package:easyflow/layers/data/datasources/get_courses_datasource.dart';
+import 'package:easyflow/layers/data/datasources/get_representatives_datasource.dart';
 import 'package:easyflow/layers/data/datasources/get_study_areas_datasource.dart';
 import 'package:easyflow/layers/data/datasources/remote/authenticate_user_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/create_person_datasource_impl.dart';
+import 'package:easyflow/layers/data/datasources/remote/get_announcements_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/get_courses_datasource_impl.dart';
+import 'package:easyflow/layers/data/datasources/remote/get_representatives_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/get_study_areas_datasource_impl.dart';
 import 'package:easyflow/layers/data/repositories/authenticate_user_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/create_person_repository_impl.dart';
+import 'package:easyflow/layers/data/repositories/get_announcements_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/get_courses_repository_impl.dart';
+import 'package:easyflow/layers/data/repositories/get_representatives_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/get_study_areas_repository_impl.dart';
 import 'package:easyflow/layers/domain/repositories/authenticate_user_repository.dart';
 import 'package:easyflow/layers/domain/repositories/create_person_repository.dart';
+import 'package:easyflow/layers/domain/repositories/get_announcements_repository.dart';
 import 'package:easyflow/layers/domain/repositories/get_courses_repository.dart';
+import 'package:easyflow/layers/domain/repositories/get_representative_repository.dart';
 import 'package:easyflow/layers/domain/repositories/get_study_areas_repository.dart';
 import 'package:easyflow/layers/domain/usecases/authenticate_user_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/create_person_usecase.dart';
+import 'package:easyflow/layers/domain/usecases/get_announcements_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/get_courses_usecase.dart';
+import 'package:easyflow/layers/domain/usecases/get_representative_usercase.dart';
 import 'package:easyflow/layers/domain/usecases/get_study_areas_usecase.dart';
 import 'package:easyflow/layers/presentation/controller/complaint_controller.dart';
 import 'package:easyflow/layers/presentation/controller/daily_controller.dart';
@@ -55,9 +65,13 @@ class Inject {
     getIt.registerLazySingleton<GetCoursesDataSource>(
       () => GetCoursesDataSourceImpl(),
     );
-       getIt.registerLazySingleton<GetStudyAreasDataSource>(
+    getIt.registerLazySingleton<GetStudyAreasDataSource>(
       () => GetStudyAreasDataSourceImpl(),
     );
+    getIt.registerLazySingleton<GetAnnouncementsDataSource>(
+        () => GetAnnouncementsDataSourceImpl());
+    getIt.registerLazySingleton<GetRepresentativesDataSource>(
+        () => GetRepresentativesDataSourceImpl());
   }
 
   static void _initRepositores() {
@@ -74,8 +88,14 @@ class Inject {
     getIt.registerLazySingleton<GetCoursesRepository>(
       () => GetCoursesRepositoryImpl(getIt()),
     );
-       getIt.registerLazySingleton<GetStudyAreasRepository>(
+    getIt.registerLazySingleton<GetStudyAreasRepository>(
       () => GetStudyAreasRepositoryImpl(getIt()),
+    );
+    getIt.registerLazySingleton<GetAnnouncementsRepository>(
+      () => GetAnnouncementRepositoryImpl(getIt()),
+    );
+    getIt.registerLazySingleton<GetRepresentativesRepository>(
+      () => GetRepresentativesRepositoryimpl(getIt()),
     );
   }
 
@@ -92,41 +112,51 @@ class Inject {
     getIt.registerLazySingleton<GetCoursesUseCase>(
       () => GetCoursesUseCaseImpl(getIt()),
     );
-      getIt.registerLazySingleton<GetStudyAreasUseCase>(
+    getIt.registerLazySingleton<GetStudyAreasUseCase>(
       () => GetStudyAreasUseCaseImpl(getIt()),
     );
+
+    getIt.registerLazySingleton<GetRepresentativesUserCase>(
+        () => GetRepresentativesUseCaseImpl(getIt()));
+    getIt.registerLazySingleton<GetAnnouncementsUseCase>(
+        () => GetAnnouncementsUseCaseImpl(getIt()));
   }
 
   static void _initControllers() {
     GetIt getIt = GetIt.instance;
 
     //CONTROLLERS
-        getIt.registerFactory<UserController>(
+    getIt.registerFactory<UserController>(
       () => UserController(
-getIt(),getIt(),
+        getIt(),
+        getIt(),
       ),
     );
 
     getIt.registerFactory<SignUpController>(
       () => SignUpController(
-
-        getIt(),  getIt(),getIt(),
+        getIt(),
+        getIt(),
+        getIt(),
       ),
     );
 
     getIt.registerFactory<EquipmentController>(() => EquipmentController());
 
-    getIt.registerFactory<ProfileController>(() => ProfileController(getIt(),getIt(),));
+    getIt.registerFactory<ProfileController>(() => ProfileController(
+          getIt(),
+          getIt(),
+        ));
 
-    getIt.registerFactory<DailyController>(
-        () => DailyController( ));
+    getIt.registerFactory<DailyController>(() => DailyController());
 
     getIt.registerFactory<ComplaintController>(() => ComplaintController());
 
     getIt.registerFactory<ForgotPasswordController>(
         () => ForgotPasswordController());
 
-    getIt.registerFactory<HomeController>(() => HomeController());
+    getIt.registerFactory<HomeController>(
+        () => HomeController(getIt(), getIt()));
 
     getIt.registerFactory<ScheduleController>(() => ScheduleController());
   }

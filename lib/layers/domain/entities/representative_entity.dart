@@ -12,3 +12,4 @@ class RepresentativeEntity {
     required this.studyArea,
   });
 }
+ 

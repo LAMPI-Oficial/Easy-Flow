@@ -38,10 +38,15 @@ class CircleAvatarWidget extends StatelessWidget {
         width: maxRadius ?? 50,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            shape: BoxShape.circle),
-        child: urlPhoto != null
-            ? ImageAdaptiveWidget(urlPhoto!)
+          color: Theme.of(context).colorScheme.primary,
+          shape: BoxShape.circle,
+        ),
+        child: (urlPhoto != "" || urlPhoto == null)
+            ? ImageAdaptiveWidget(
+                urlPhoto!,
+                height: maxRadius ?? 50,
+                width: maxRadius ?? 50,
+              )
             : Text(
                 getInitials(name),
                 style: TextStyle(
