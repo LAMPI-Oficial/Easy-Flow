@@ -11,9 +11,9 @@ class ApiConfig {
   static const String _urlEndPointGetUserByLogin =
       "/users/search_by_login?login=#login#";
 
-  static const String urlCourses = "/courses";
-  static const String urlStudyAreas = "/study_area";
-
+  static const String urlCourses = "/courses.json";
+  static const String urlStudyAreas = "/study_area.json";
+  static const String user = "/users/0.json";
   static const String urlSchedules = "/schedules/";
 
   static const String urlDailys = "/dailys.json";
@@ -21,7 +21,6 @@ class ApiConfig {
   static const String urlRepresentatives = "/representatives.json";
   static const String urlAnnouncements = "/announcements.json";
   static const String urlEquipments = "/equipments.json";
-
 
   static String getUrl(endpoint) => _urlApi + endpoint;
 

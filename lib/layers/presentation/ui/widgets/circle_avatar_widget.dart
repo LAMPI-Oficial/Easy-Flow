@@ -1,4 +1,3 @@
-import 'package:easyflow/layers/presentation/ui/widgets/images/image_adaptive_widget.dart';
 import 'package:flutter/material.dart';
 
 class CircleAvatarWidget extends StatelessWidget {
@@ -40,14 +39,20 @@ class CircleAvatarWidget extends StatelessWidget {
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primary,
             shape: BoxShape.circle),
-        child: urlPhoto != null
-            ? ImageAdaptiveWidget(urlPhoto!)
-            : Text(
-                getInitials(name),
-                style: TextStyle(
-                    fontSize: maxRadius != null ? maxRadius! / 3 : 14,
-                    color: Theme.of(context).colorScheme.onPrimary),
-              ),
+        child:
+            //  (urlPhoto != "" || urlPhoto == null)
+            //     ? ImageAdaptiveWidget(
+            //         urlPhoto!,
+            //         height: maxRadius ?? 50,
+            //         width: maxRadius ?? 50,
+            //       )
+            // :
+            Text(
+          getInitials(name),
+          style: TextStyle(
+              fontSize: maxRadius != null ? maxRadius! / 3 : 14,
+              color: Theme.of(context).colorScheme.onPrimary),
+        ),
       ),
     );
   }

@@ -38,22 +38,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
   StudyAreaEntity? studyArea;
 
   getUser() {
-    photo = user.userLogged.person.urlPhoto;
-    nameTextEditingController =
-        TextEditingController(text: user.userLogged.person.name);
-    emailTextEditingController =
-        TextEditingController(text: user.userLogged.person.email);
-    course = user.userLogged.course;
-    studyArea = user.userLogged.studyArea;
+    controller.getUser().then((value) {
+      photo = value.person.urlPhoto;
+      nameTextEditingController.text = value.person.name;
+      emailTextEditingController.text = value.person.email;
+      course = value.course;
+     
+      studyArea = value.studyArea;
+    });
   }
-    Future<XFile?> pickerPhoto(context,
-        {required ImageSource imageSource}) async {
-      return ImagePicker().pickImage(source: imageSource);
-    }
+
+  Future<XFile?> pickerPhoto(context,
+      {required ImageSource imageSource}) async {
+    return ImagePicker().pickImage(source: imageSource);
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -97,18 +98,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 Positioned(
                   top: 20,
                   child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 3,
-                          ),
-                          shape: BoxShape.circle),
-                      child: CircleAvatarWidget(
-                          maxRadius: 100,
-                          urlPhoto: photo,
-                          name: user.userLogged.person.name)),
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 3,
+                        ),
+                        shape: BoxShape.circle),
+                    child: CircleAvatarWidget(
+                      maxRadius: 100,
+                      urlPhoto: photo,
+                      name: user.userLogged.person.name,
+                    ),
+                  ),
                 ),
                 Positioned(
                   bottom: 18,
@@ -172,97 +175,94 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             controller: emailTextEditingController,
                             textInputAction: TextInputAction.next,
                           ),
-                       const SizedBox(
-                      height: 16,
-                    ),
-                    ButtonTextFieldWidget(
-                      validator: (value) => Validators.isNotEmpty(value),
-                      onTap: () => Modals.page(
-                          context: context,
-                          title: const Text('Selecione o curso'),                                  
-                             body: SafeArea(
-                                  child: ListViewWidget<CourseEntity>(
-                                      searchFieldEnabled: true,
-                                      padding: const EdgeInsets.all(16),
-                                      asyncListFilter: (value, list) => list
-                                          .where(
-                                            (element) => element.name
-                                                .toLowerCase()
-                                                .contains(value.toLowerCase()),
-                                          )
-                                          .toList(),
-                                      onRefresh: () => controller.getCourses(),
-                                      asyncListCallback: () =>
-                                          controller.getCourses(),
-                                      separatorBuilder: (p0, p1) =>
-                                          const SizedBox(
-                                            height: 16,
-                                          ),
-                                      builder: (_course) =>
-                                          ListTileWidget(
-                                              selected: course?.id ==
-                                                      _course.id
-                                                  ? true
-                                                  : false,
-                                              title: Text(_course.name),
-                                              onTap: () {
-                                                setState(() {
-                                                  course = _course;
-                                                  context.pop();
-                                                });
-                                              },),),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          ButtonTextFieldWidget(
+                            validator: (value) => Validators.isNotEmpty(value),
+                            onTap: () => Modals.page(
+                              context: context,
+                              title: const Text('Selecione o curso'),
+                              body: SafeArea(
+                                child: ListViewWidget<CourseEntity>(
+                                  searchFieldEnabled: true,
+                                  padding: const EdgeInsets.all(16),
+                                  asyncListFilter: (value, list) => list
+                                      .where(
+                                        (element) => element.name
+                                            .toLowerCase()
+                                            .contains(value.toLowerCase()),
+                                      )
+                                      .toList(),
+                                  onRefresh: () => controller.getCourses(),
+                                  asyncListCallback: () =>
+                                      controller.getCourses(),
+                                  separatorBuilder: (p0, p1) => const SizedBox(
+                                    height: 16,
+                                  ),
+                                  builder: (course) => ListTileWidget(
+                                    selected:
+                                        course.id == course.id ? true : false,
+                                    title: Text(course.name),
+                                    onTap: () {
+                                      setState(() {
+                                        course = course;
+                                        context.pop();
+                                      });
+                                    },
+                                  ),
                                 ),
                               ),
-                      label: 'Curso',
-                      controller: TextEditingController(
-                          text: course?.name ?? ''),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    ButtonTextFieldWidget(
-                      validator: (value) => Validators.isNotEmpty(value),
-                      onTap: () => Modals.page(
-                          context: context,
-                          title: const Text('Selecione a area de estudo'),
-                             body: SafeArea(
-                                  child: ListViewWidget<StudyAreaEntity>(
-                                      searchFieldEnabled: true,
-                                      padding: const EdgeInsets.all(16),
-                                      asyncListFilter: (value, list) => list
-                                          .where(
-                                            (element) => element.name
-                                                .toLowerCase()
-                                                .contains(value.toLowerCase()),
-                                          )
-                                          .toList(),
-                                      onRefresh: () => controller.getStudyAreas(),
-                                      asyncListCallback: () =>
-                                          controller.getStudyAreas(),
-                                      separatorBuilder: (p0, p1) =>
-                                          const SizedBox(
-                                            height: 16,
-                                          ),
-                                      builder: (_studyArea) =>
-                                          ListTileWidget(
-                                              selected: studyArea?.id ==
-                                                      _studyArea.id
-                                                  ? true
-                                                  : false,
-                                              title: Text(_studyArea.name),
-                                              onTap: () {
-                                                setState(() {
-                                                  studyArea = _studyArea;
-                                                  context.pop();
-                                                });
-                                              },),),
+                            ),
+                            label: 'Curso',
+                            controller:
+                                TextEditingController(text: course?.name ?? ''),
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          ButtonTextFieldWidget(
+                            validator: (value) => Validators.isNotEmpty(value),
+                            onTap: () => Modals.page(
+                              context: context,
+                              title: const Text('Selecione a area de estudo'),
+                              body: SafeArea(
+                                child: ListViewWidget<StudyAreaEntity>(
+                                  searchFieldEnabled: true,
+                                  padding: const EdgeInsets.all(16),
+                                  asyncListFilter: (value, list) => list
+                                      .where(
+                                        (element) => element.name
+                                            .toLowerCase()
+                                            .contains(value.toLowerCase()),
+                                      )
+                                      .toList(),
+                                  onRefresh: () => controller.getStudyAreas(),
+                                  asyncListCallback: () =>
+                                      controller.getStudyAreas(),
+                                  separatorBuilder: (p0, p1) => const SizedBox(
+                                    height: 16,
+                                  ),
+                                  builder: (studyArea) => ListTileWidget(
+                                    selected: studyArea.id == studyArea.id
+                                        ? true
+                                        : false,
+                                    title: Text(studyArea.name),
+                                    onTap: () {
+                                      setState(() {
+                                        studyArea = studyArea;
+                                        context.pop();
+                                      });
+                                    },
+                                  ),
                                 ),
                               ),
-                      label: 'Aréa de estudo',
-                      controller: TextEditingController(
-                          text: studyArea?.name ?? ''),
-                    ),
-                          
+                            ),
+                            label: 'Aréa de estudo',
+                            controller: TextEditingController(
+                              text: studyArea?.name ?? '',
+                            ),
+                          ),
                         ],
                       ),
                     ),

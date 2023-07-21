@@ -7,12 +7,12 @@ class StudyAreaDto extends StudyAreaEntity {
   Map<String, dynamic> toMap() => {
         "id": id,
         "name": name,
-  };
+      };
 
   static StudyAreaDto fromMap(Map map) {
     return StudyAreaDto(
       id: map['id'],
-      name: map['study_area_name'],
+      name: map['name'],
     );
   }
 }
