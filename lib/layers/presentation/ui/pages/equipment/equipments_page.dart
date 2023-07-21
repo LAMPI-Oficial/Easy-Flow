@@ -1,6 +1,6 @@
 import 'package:easyflow/layers/domain/entities/equipment_entity.dart';
-import 'package:easyflow/layers/presentation/ui/pages/equipment/equipment_controller.dart';
-import 'package:easyflow/layers/presentation/ui/pages/equipment/widgets/equipment_widget.dart';
+import 'package:easyflow/layers/presentation/controller/equipment_controller.dart';
+import 'package:easyflow/layers/presentation/ui/widgets/equipment_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/listview/listview_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

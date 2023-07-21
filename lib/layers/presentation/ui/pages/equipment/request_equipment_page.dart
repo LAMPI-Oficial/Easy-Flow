@@ -1,7 +1,7 @@
 import 'package:easyflow/core/utils/validators_util.dart';
 import 'package:easyflow/layers/domain/entities/representative_entity.dart';
-import 'package:easyflow/layers/presentation/ui/pages/equipment/equipment_controller.dart';
-import 'package:easyflow/layers/presentation/ui/pages/equipment/widgets/calendar_day_widget.dart';
+import 'package:easyflow/layers/presentation/controller/equipment_controller.dart';
+import 'package:easyflow/layers/presentation/ui/widgets/calendar_day_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/button_text_field_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/listview/listview_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/modals_widget.dart';
@@ -28,9 +28,9 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
   final controller = GetIt.I.get<EquipmentController>();
   RepresentativeEntity? representative;
 
-  selectRepresentative(RepresentativeEntity _representative) {
+  selectRepresentative(RepresentativeEntity representative) {
     setState(() {
-      representative = _representative;
+      representative = representative;
     });
     context.pop();
   }
@@ -204,44 +204,43 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                     const SizedBox(
                       height: 32,
                     ),
-                  ButtonTextFieldWidget(
+                    ButtonTextFieldWidget(
                       validator: (value) => Validators.isNotEmpty(value),
                       onTap: () => Modals.page(
-                          context: context,
-                          title: const Text('Selecione o representate'),
-                             body: SafeArea(
-                                  child: ListViewWidget<RepresentativeEntity>(
-                                      searchFieldEnabled: true,
-                                      padding: const EdgeInsets.all(16),
-                                      asyncListFilter: (value, list) => list
-                                          .where(
-                                            (element) => element.name
-                                                .toLowerCase()
-                                                .contains(value.toLowerCase()),
-                                          )
-                                          .toList(),
-                                      onRefresh: () => controller.getRepresentatives(),
-                                      asyncListCallback: () =>
-                                          controller.getRepresentatives(),
-                                      separatorBuilder: (p0, p1) =>
-                                          const SizedBox(
-                                            height: 16,
-                                          ),
-                                      builder: (_representative) =>
-                                          RepresentativeWidget(
-                                              selected: representative?.id ==
-                                                      _representative.id
-                                                  ? true
-                                                  : false,
-                                            representative: _representative,
-                                              onTap: () {
-                                                setState(() {
-                                                  representative = _representative;
-                                                  context.pop();
-                                                });
-                                              },),),
-                                ),
-                              ),
+                        context: context,
+                        title: const Text('Selecione o representate'),
+                        body: SafeArea(
+                          child: ListViewWidget<RepresentativeEntity>(
+                            searchFieldEnabled: true,
+                            padding: const EdgeInsets.all(16),
+                            asyncListFilter: (value, list) => list
+                                .where(
+                                  (element) => element.name
+                                      .toLowerCase()
+                                      .contains(value.toLowerCase()),
+                                )
+                                .toList(),
+                            onRefresh: () => controller.getRepresentatives(),
+                            asyncListCallback: () =>
+                                controller.getRepresentatives(),
+                            separatorBuilder: (p0, p1) => const SizedBox(
+                              height: 16,
+                            ),
+                            builder: (representative) => RepresentativeWidget(
+                              selected: representative.id == representative.id
+                                  ? true
+                                  : false,
+                              representative: representative,
+                              onTap: () {
+                                setState(() {
+                                  representative = representative;
+                                  context.pop();
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
                       label: 'Representante',
                       controller: TextEditingController(
                           text: representative?.name ?? ''),
