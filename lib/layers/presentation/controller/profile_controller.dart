@@ -44,14 +44,14 @@ class ProfileController {
     return _getStudyAreasUseCase.call();
   }
 
-  getUser(BuildContext context) async {
+  Future getUser(BuildContext context) async {
     try {
       return _getUserUsecase.call().then((value) {
         dataUser = value;
         emailTextEditingController.text = dataUser!.person.email;
         nameTextEditingController.text = dataUser!.person.name;
         urlPhoto =
-            "/data/user/0/com.example.easyflow/cache/dc25f0dd-b6ef-4c2b-83f1-8b96dd052d7a/20230713_195209.jpg";
+            "https://s2-techtudo.glbimg.com/Bxr-QA4_gL25CarCCxr9JQFybt8=/0x0:1024x609/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/c/u/15eppqSmeTdHkoAKM0Uw/dall-e-2.jpg";
         course = dataUser!.course;
         courseTextEditingController.text = course!.name;
         studyArea = dataUser!.studyArea;
@@ -79,30 +79,32 @@ class ProfileController {
   }
 
   updateUser(BuildContext context) async {
-    Dialogs.loading(context);
-    try {
-      final pacthUser = UserDto(
-        id: dataUser!.id,
-        token: dataUser!.token,
-        login: emailTextEditingController.text,
-        person: PersonEntity(
+    if (formKey.currentState!.validate()) {
+      Dialogs.loading(context);
+      try {
+        final pacthUser = UserDto(
           id: dataUser!.id,
-          urlPhoto:
-              "https://s2-techtudo.glbimg.com/Bxr-QA4_gL25CarCCxr9JQFybt8=/0x0:1024x609/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/c/u/15eppqSmeTdHkoAKM0Uw/dall-e-2.jpg",
-          name: nameTextEditingController.text,
-          email: emailTextEditingController.text,
-          admin: dataUser!.person.admin,
-          personType: dataUser!.person.personType,
-        ),
-        course: course!,
-        studyArea: studyArea!,
-      );
-      _patchUserUserCase.call(pacthUser).then((value) {
-        context.pushReplacement('/home');
-      });
-    } on ApiException catch (e) {
-      Navigator.of(context).pop();
-      Dialogs.error(context, title: e.title, message: e.message);
+          token: dataUser!.token,
+          login: emailTextEditingController.text,
+          person: PersonEntity(
+            id: dataUser!.id,
+            urlPhoto:
+                "https://s2-techtudo.glbimg.com/Bxr-QA4_gL25CarCCxr9JQFybt8=/0x0:1024x609/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/c/u/15eppqSmeTdHkoAKM0Uw/dall-e-2.jpg",
+            name: nameTextEditingController.text,
+            email: emailTextEditingController.text,
+            admin: dataUser!.person.admin,
+            personType: dataUser!.person.personType,
+          ),
+          course: course!,
+          studyArea: studyArea!,
+        );
+        _patchUserUserCase.call(pacthUser).then((value) {
+          context.pushReplacement('/home');
+        });
+      } on ApiException catch (e) {
+        Navigator.of(context).pop();
+        Dialogs.error(context, title: e.title, message: e.message);
+      }
     }
   }
 }

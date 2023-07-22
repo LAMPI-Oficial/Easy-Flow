@@ -12,271 +12,282 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
-class EditProfilePage extends StatelessWidget {
+class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
+
+  @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage> {
+  final controller = GetIt.I.get<ProfileController>();
+  String urlPhoto = "";
+  @override
+  void initState() {
+    controller.getUser(context).then((value) {
+      setState(() {
+        urlPhoto = controller.urlPhoto;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final controller = GetIt.I.get<ProfileController>();
-
-    return FutureBuilder(
-        future: controller.getUser(context),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text(
-                "Perfil",
-              ),
-            ),
-            backgroundColor: Colors.white,
-            body: SafeArea(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Container(
-                        height: 130,
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: Color(0xFF0085FF),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Perfil",
+        ),
+      ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  height: 130,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF0085FF),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Container(
+                      height: 70,
+                      color: const Color(0xFF0085FF),
+                    ),
+                    Container(
+                      height: 60,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(
+                            8,
+                          ),
                         ),
                       ),
-                      Column(
+                    ),
+                  ],
+                ),
+                Positioned(
+                  top: 20,
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 3,
+                        ),
+                        shape: BoxShape.circle),
+                    child: CircleAvatarWidget(
+                      maxRadius: 100,
+                      urlPhoto: urlPhoto,
+                      name: controller.nameTextEditingController.text,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 18,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 85),
+                    child: InkWell(
+                      onTap: () => Modals.imagePicker(
+                        context,
+                        onChoosePhoto: () => controller
+                            .pickerPhoto(
+                          context,
+                          imageSource: ImageSource.gallery,
+                        )
+                            .then((value) {
+                          setState(() {
+                            controller.urlPhoto = value?.path ?? "";
+                            urlPhoto = controller.urlPhoto;
+                          });
+                          context.pop();
+                        }),
+                        onTakePhoto: () {
+                          controller
+                              .pickerPhoto(
+                            context,
+                            imageSource: ImageSource.camera,
+                          )
+                              .then((value) {
+                            setState(() {
+                              controller.urlPhoto = value?.path ?? "";
+                              urlPhoto = controller.urlPhoto;
+                            });
+                            context.pop();
+                          });
+                        },
+                      ),
+                      child: Container(
+                        width: 22,
+                        height: 22,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF0085FF),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: const Icon(
+                          Icons.add_photo_alternate_outlined,
+                          color: Colors.white,
+                          size: 12,
+                          fill: 0.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Expanded(
+              child: Container(
+                color: const Color(0xFFFFFFFF),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Form(
+                      key: controller.formKey,
+                      child: Column(
                         children: [
-                          Container(
-                            height: 70,
-                            color: const Color(0xFF0085FF),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              label: Text('Nome Completo'),
+                            ),
+                            controller: controller.nameTextEditingController,
+                            textInputAction: TextInputAction.next,
+                            validator: (value) => Validators.combine([
+                              () => Validators.isNotEmpty(value),
+                              () => Validators.isName(value),
+                            ]),
                           ),
-                          Container(
-                            height: 60,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFFFFFFF),
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(
-                                  8,
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              label: Text('E-mail'),
+                            ),
+                            controller: controller.emailTextEditingController,
+                            textInputAction: TextInputAction.next,
+                            validator: (value) => Validators.combine([
+                              () => Validators.isNotEmpty(value),
+                              () => Validators.isEmail(value),
+                            ]),
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          ButtonTextFieldWidget(
+                            validator: (value) => Validators.isNotEmpty(value),
+                            onTap: () => Modals.page(
+                              context: context,
+                              title: const Text('Selecione o curso'),
+                              body: SafeArea(
+                                child: ListViewWidget<CourseEntity>(
+                                  searchFieldEnabled: true,
+                                  padding: const EdgeInsets.all(16),
+                                  asyncListFilter: (value, list) => list
+                                      .where(
+                                        (element) => element.name
+                                            .toLowerCase()
+                                            .contains(value.toLowerCase()),
+                                      )
+                                      .toList(),
+                                  onRefresh: () => controller.getCourses(),
+                                  asyncListCallback: () =>
+                                      controller.getCourses(),
+                                  separatorBuilder: (p0, p1) => const SizedBox(
+                                    height: 16,
+                                  ),
+                                  builder: (courseBuilder) => ListTileWidget(
+                                    selected: courseBuilder.id ==
+                                            controller.course?.id
+                                        ? true
+                                        : false,
+                                    title: Text(courseBuilder.name),
+                                    onTap: () {
+                                      controller.selectCourse(courseBuilder);
+                                      context.pop();
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
+                            label: 'Curso',
+                            controller: controller.courseTextEditingController,
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          ButtonTextFieldWidget(
+                            validator: (value) => Validators.isNotEmpty(value),
+                            onTap: () => Modals.page(
+                              context: context,
+                              title: const Text('Selecione a area de estudo'),
+                              body: SafeArea(
+                                child: ListViewWidget<StudyAreaEntity>(
+                                  searchFieldEnabled: true,
+                                  padding: const EdgeInsets.all(16),
+                                  asyncListFilter: (value, list) => list
+                                      .where(
+                                        (element) => element.name
+                                            .toLowerCase()
+                                            .contains(value.toLowerCase()),
+                                      )
+                                      .toList(),
+                                  onRefresh: () => controller.getStudyAreas(),
+                                  asyncListCallback: () =>
+                                      controller.getStudyAreas(),
+                                  separatorBuilder: (p0, p1) => const SizedBox(
+                                    height: 16,
+                                  ),
+                                  builder: (studyAreaBuilder) => ListTileWidget(
+                                    selected: studyAreaBuilder.id ==
+                                            controller.studyArea?.id
+                                        ? true
+                                        : false,
+                                    title: Text(studyAreaBuilder.name),
+                                    onTap: () {
+                                      controller
+                                          .selectStudyArea(studyAreaBuilder);
+
+                                      context.pop();
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                            label: 'Aréa de estudo',
+                            controller:
+                                controller.studyAreaTextEditingController,
                           ),
                         ],
                       ),
-                      Positioned(
-                        top: 20,
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.white,
-                                width: 3,
-                              ),
-                              shape: BoxShape.circle),
-                          child: CircleAvatarWidget(
-                            maxRadius: 100,
-                            urlPhoto: controller.urlPhoto,
-                            name: controller.nameTextEditingController.text,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 18,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 85),
-                          child: InkWell(
-                            onTap: () => Modals.imagePicker(
-                              context,
-                              onChoosePhoto: () => controller
-                                  .pickerPhoto(
-                                context,
-                                imageSource: ImageSource.gallery,
-                              )
-                                  .then((value) {
-                                controller.urlPhoto = value?.path ?? "";
-                                context.pop();
-                              }),
-                              onTakePhoto: () {
-                                controller
-                                    .pickerPhoto(
-                                  context,
-                                  imageSource: ImageSource.camera,
-                                )
-                                    .then((value) {
-                                  controller.urlPhoto = value?.path ?? "";
-                                  context.pop();
-                                });
-                              },
-                            ),
-                            child: Container(
-                              width: 22,
-                              height: 22,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF0085FF),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: const Icon(
-                                Icons.add_photo_alternate_outlined,
-                                color: Colors.white,
-                                size: 12,
-                                fill: 0.5,
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: const Color(0xFFFFFFFF),
-                      child: SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Form(
-                            key: controller.formKey,
-                            child: Column(
-                              children: [
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    label: Text('Nome Completo'),
-                                  ),
-                                  controller:
-                                      controller.nameTextEditingController,
-                                  textInputAction: TextInputAction.next,
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    label: Text('E-mail'),
-                                  ),
-                                  controller:
-                                      controller.emailTextEditingController,
-                                  textInputAction: TextInputAction.next,
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                ButtonTextFieldWidget(
-                                  validator: (value) =>
-                                      Validators.isNotEmpty(value),
-                                  onTap: () => Modals.page(
-                                    context: context,
-                                    title: const Text('Selecione o curso'),
-                                    body: SafeArea(
-                                      child: ListViewWidget<CourseEntity>(
-                                        searchFieldEnabled: true,
-                                        padding: const EdgeInsets.all(16),
-                                        asyncListFilter: (value, list) => list
-                                            .where(
-                                              (element) => element.name
-                                                  .toLowerCase()
-                                                  .contains(
-                                                      value.toLowerCase()),
-                                            )
-                                            .toList(),
-                                        onRefresh: () =>
-                                            controller.getCourses(),
-                                        asyncListCallback: () =>
-                                            controller.getCourses(),
-                                        separatorBuilder: (p0, p1) =>
-                                            const SizedBox(
-                                          height: 16,
-                                        ),
-                                        builder: (courseBuilder) =>
-                                            ListTileWidget(
-                                          selected: courseBuilder.id ==
-                                                  controller.course?.id
-                                              ? true
-                                              : false,
-                                          title: Text(courseBuilder.name),
-                                          onTap: () {
-                                            controller
-                                                .selectCourse(courseBuilder);
-                                            context.pop();
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  label: 'Curso',
-                                  controller:
-                                      controller.courseTextEditingController,
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                ButtonTextFieldWidget(
-                                  validator: (value) =>
-                                      Validators.isNotEmpty(value),
-                                  onTap: () => Modals.page(
-                                    context: context,
-                                    title: const Text(
-                                        'Selecione a area de estudo'),
-                                    body: SafeArea(
-                                      child: ListViewWidget<StudyAreaEntity>(
-                                        searchFieldEnabled: true,
-                                        padding: const EdgeInsets.all(16),
-                                        asyncListFilter: (value, list) => list
-                                            .where(
-                                              (element) => element.name
-                                                  .toLowerCase()
-                                                  .contains(
-                                                      value.toLowerCase()),
-                                            )
-                                            .toList(),
-                                        onRefresh: () =>
-                                            controller.getStudyAreas(),
-                                        asyncListCallback: () =>
-                                            controller.getStudyAreas(),
-                                        separatorBuilder: (p0, p1) =>
-                                            const SizedBox(
-                                          height: 16,
-                                        ),
-                                        builder: (studyAreaBuilder) =>
-                                            ListTileWidget(
-                                          selected: studyAreaBuilder.id ==
-                                                  controller.studyArea?.id
-                                              ? true
-                                              : false,
-                                          title: Text(studyAreaBuilder.name),
-                                          onTap: () {
-                                            controller.selectStudyArea(
-                                                studyAreaBuilder);
-
-                                            context.pop();
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  label: 'Aréa de estudo',
-                                  controller:
-                                      controller.studyAreaTextEditingController,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    width: double.infinity,
-                    margin: const EdgeInsets.all(16),
-                    child: ElevatedButton(
-                      onPressed: () => controller.updateUser(context),
-                      child: const Text(
-                        'Salvar',
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-          );
-        });
+            Container(
+              height: 50,
+              width: double.infinity,
+              margin: const EdgeInsets.all(16),
+              child: ElevatedButton(
+                onPressed: () => controller.updateUser(context),
+                child: const Text(
+                  'Salvar',
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
