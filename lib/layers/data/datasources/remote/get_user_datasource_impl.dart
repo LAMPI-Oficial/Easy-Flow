@@ -26,7 +26,7 @@ class GetUserDataSourceImpl implements GetUserDataSource {
             const Duration(seconds: 10),
           );
       if (response.statusCode == 200) {
-        final valores = jsonDecode(response.body);
+        final valores = jsonDecode(response.body)["user"];
 
         return UserEntity(
           id: valores["id"],
@@ -42,7 +42,7 @@ class GetUserDataSourceImpl implements GetUserDataSource {
             id: valores["tb_person"]["id"],
             name: valores["tb_person"]["name"],
             email: valores["tb_person"]["email"],
-            admin: valores["tb_person"]["person_admin"],
+            admin: valores["tb_person"]["admin"],
             urlPhoto: "",
             personType: PersonType.student,
           ),
@@ -51,8 +51,10 @@ class GetUserDataSourceImpl implements GetUserDataSource {
         throw ApiException('Erro ao Realizar Operação', 'Tente novamente');
       }
     } on TimeoutException catch (_) {
-      throw ApiException('Erro ao Realizar Operação ',
-          'Servidor indisponível, Tente novamente');
+      throw ApiException(
+        'Erro ao Realizar Operação ',
+        'Servidor indisponível, Tente novamente',
+      );
     }
   }
 }

@@ -3,26 +3,31 @@ import 'package:easyflow/layers/data/datasources/create_person_datasource.dart';
 import 'package:easyflow/layers/data/datasources/get_courses_datasource.dart';
 import 'package:easyflow/layers/data/datasources/get_study_areas_datasource.dart';
 import 'package:easyflow/layers/data/datasources/get_user_datasource.dart';
+import 'package:easyflow/layers/data/datasources/patch_user_datasource.dart';
 import 'package:easyflow/layers/data/datasources/remote/authenticate_user_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/create_person_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/get_courses_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/get_study_areas_datasource_impl.dart';
 import 'package:easyflow/layers/data/datasources/remote/get_user_datasource_impl.dart';
+import 'package:easyflow/layers/data/datasources/remote/patch_user_datasource_impl.dart';
 import 'package:easyflow/layers/data/repositories/authenticate_user_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/create_person_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/get_courses_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/get_study_areas_repository_impl.dart';
 import 'package:easyflow/layers/data/repositories/get_user_repository_impl.dart';
+import 'package:easyflow/layers/data/repositories/patch_user_repository_impl.dart';
 import 'package:easyflow/layers/domain/repositories/authenticate_user_repository.dart';
 import 'package:easyflow/layers/domain/repositories/create_person_repository.dart';
 import 'package:easyflow/layers/domain/repositories/get_courses_repository.dart';
 import 'package:easyflow/layers/domain/repositories/get_study_areas_repository.dart';
 import 'package:easyflow/layers/domain/repositories/get_user_repository.dart';
+import 'package:easyflow/layers/domain/repositories/patch_user_repository.dart';
 import 'package:easyflow/layers/domain/usecases/authenticate_user_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/create_person_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/get_courses_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/get_study_areas_usecase.dart';
 import 'package:easyflow/layers/domain/usecases/get_user_usecase.dart';
+import 'package:easyflow/layers/domain/usecases/put_user_usercase.dart';
 import 'package:easyflow/layers/presentation/controller/complaint_controller.dart';
 import 'package:easyflow/layers/presentation/controller/daily_controller.dart';
 import 'package:easyflow/layers/presentation/controller/profile_controller.dart';
@@ -66,6 +71,9 @@ class Inject {
     getIt.registerLazySingleton<GetUserDataSource>(
       () => GetUserDataSourceImpl(),
     );
+    getIt.registerLazySingleton<PatchUserDataSource>(
+      () => PatchUserDataSourceImpl(),
+    );
   }
 
   static void _initRepositores() {
@@ -88,6 +96,9 @@ class Inject {
     getIt.registerLazySingleton<GetUserRepository>(
       () => GetUserRepositoryImpl(getIt()),
     );
+    getIt.registerLazySingleton<PatchUserRepository>(
+      () => PatchUserRepositoryImpl(getIt()),
+    );
   }
 
   static void _initUseCases() {
@@ -108,7 +119,8 @@ class Inject {
     );
     getIt.registerLazySingleton<GetUserUsecase>(
         () => GetUserUsecaseImpl(getUserRepository: getIt()));
-   
+    getIt.registerLazySingleton<PatchUserUserCase>(
+        () => PatchUserUserCaseImpl(getIt()));
   }
 
   static void _initControllers() {
@@ -133,6 +145,7 @@ class Inject {
     getIt.registerFactory<EquipmentController>(() => EquipmentController());
 
     getIt.registerFactory<ProfileController>(() => ProfileController(
+          getIt(),
           getIt(),
           getIt(),
           getIt(),
