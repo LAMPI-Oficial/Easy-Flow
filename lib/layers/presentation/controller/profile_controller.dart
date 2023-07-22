@@ -26,6 +26,7 @@ class ProfileController {
 
   CourseEntity? course;
   StudyAreaEntity? studyArea;
+  String urlPhoto = "";
   TextEditingController nameTextEditingController =
       TextEditingController(text: "");
   TextEditingController emailTextEditingController =
@@ -49,6 +50,8 @@ class ProfileController {
         dataUser = value;
         emailTextEditingController.text = dataUser!.person.email;
         nameTextEditingController.text = dataUser!.person.name;
+        urlPhoto =
+            "/data/user/0/com.example.easyflow/cache/dc25f0dd-b6ef-4c2b-83f1-8b96dd052d7a/20230713_195209.jpg";
         course = dataUser!.course;
         courseTextEditingController.text = course!.name;
         studyArea = dataUser!.studyArea;
@@ -70,6 +73,11 @@ class ProfileController {
     studyAreaTextEditingController.text = studyArea!.name;
   }
 
+  Future<XFile?> pickerPhoto(context,
+      {required ImageSource imageSource}) async {
+    return ImagePicker().pickImage(source: imageSource);
+  }
+
   updateUser(BuildContext context) async {
     Dialogs.loading(context);
     try {
@@ -79,7 +87,8 @@ class ProfileController {
         login: emailTextEditingController.text,
         person: PersonEntity(
           id: dataUser!.id,
-          urlPhoto: "",
+          urlPhoto:
+              "https://s2-techtudo.glbimg.com/Bxr-QA4_gL25CarCCxr9JQFybt8=/0x0:1024x609/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/c/u/15eppqSmeTdHkoAKM0Uw/dall-e-2.jpg",
           name: nameTextEditingController.text,
           email: emailTextEditingController.text,
           admin: dataUser!.person.admin,
@@ -95,10 +104,5 @@ class ProfileController {
       Navigator.of(context).pop();
       Dialogs.error(context, title: e.title, message: e.message);
     }
-  }
-
-  Future<XFile?> pickerPhoto(context,
-      {required ImageSource imageSource}) async {
-    return ImagePicker().pickImage(source: imageSource);
   }
 }

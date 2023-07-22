@@ -13,11 +13,11 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfilePage extends StatelessWidget {
-  EditProfilePage({super.key});
-
-  final controller = GetIt.I.get<ProfileController>();
+  const EditProfilePage({super.key});
   @override
   Widget build(BuildContext context) {
+    final controller = GetIt.I.get<ProfileController>();
+
     return FutureBuilder(
         future: controller.getUser(context),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -74,9 +74,8 @@ class EditProfilePage extends StatelessWidget {
                               shape: BoxShape.circle),
                           child: CircleAvatarWidget(
                             maxRadius: 100,
-                            urlPhoto:
-                                controller.dataUser?.person.urlPhoto ?? "",
-                            name: controller.dataUser?.person.name ?? "Andeson",
+                            urlPhoto: controller.urlPhoto,
+                            name: controller.nameTextEditingController.text,
                           ),
                         ),
                       ),
@@ -85,16 +84,29 @@ class EditProfilePage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 85),
                           child: InkWell(
-                            onTap: () => Modals.imagePicker(context,
-                                onChoosePhoto: () => controller
-                                    .pickerPhoto(context,
-                                        imageSource: ImageSource.gallery)
-                                    .then((value) => controller.dataUser?.person
-                                        .urlPhoto = value?.path),
-                                onTakePhoto: () => controller
-                                    .pickerPhoto(context,
-                                        imageSource: ImageSource.camera)
-                                    .then((value) => controller.dataUser?.person.urlPhoto = value?.path)),
+                            onTap: () => Modals.imagePicker(
+                              context,
+                              onChoosePhoto: () => controller
+                                  .pickerPhoto(
+                                context,
+                                imageSource: ImageSource.gallery,
+                              )
+                                  .then((value) {
+                                controller.urlPhoto = value?.path ?? "";
+                                context.pop();
+                              }),
+                              onTakePhoto: () {
+                                controller
+                                    .pickerPhoto(
+                                  context,
+                                  imageSource: ImageSource.camera,
+                                )
+                                    .then((value) {
+                                  controller.urlPhoto = value?.path ?? "";
+                                  context.pop();
+                                });
+                              },
+                            ),
                             child: Container(
                               width: 22,
                               height: 22,

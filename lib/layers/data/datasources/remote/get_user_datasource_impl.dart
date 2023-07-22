@@ -43,7 +43,7 @@ class GetUserDataSourceImpl implements GetUserDataSource {
             name: valores["tb_person"]["name"],
             email: valores["tb_person"]["email"],
             admin: valores["tb_person"]["admin"],
-            urlPhoto: "",
+            urlPhoto: valores["tb_person"]["urlPhoto"],
             personType: PersonType.student,
           ),
         );

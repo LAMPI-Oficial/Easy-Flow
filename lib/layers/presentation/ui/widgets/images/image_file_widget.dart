@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-
 class ImageFileWidget extends StatelessWidget {
   final String value;
   final BoxFit? fit = BoxFit.cover;
@@ -14,11 +13,14 @@ class ImageFileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return kIsWeb ? Image.network(value,
+    return kIsWeb
+        ? Image.network(
+            value,
             fit: fit,
             height: height,
-            width: width,): 
-        Image.file(
+            width: width,
+          )
+        : Image.file(
             File(value),
             fit: fit,
             height: height,
