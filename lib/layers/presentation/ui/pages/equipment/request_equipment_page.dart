@@ -19,14 +19,11 @@ class RequestEquipmentPage extends StatefulWidget {
 }
 
 class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
-  final formKey = GlobalKey<FormState>();
-
   Widget? _dayBuilder(BuildContext cxt, DateTime day, DateTime focusedDay) {
     return CalendarDayWidget(day: day, focusedDay: focusedDay);
   }
 
   final controller = GetIt.I.get<EquipmentController>();
-  RepresentativeEntity? representative;
 
   selectRepresentative(RepresentativeEntity representative) {
     setState(() {
@@ -36,56 +33,28 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
   }
 
   requestEquipment(context) {
-    if (formKey.currentState!.validate()) {
+    if (controller.formKey.currentState!.validate()) {
       context.push('/equipments');
     }
   }
 
-  var firstDay = DateTime.now();
-  var lastDay = DateTime.utc(DateTime.now().year + 1);
-  var requestDate = DateTime.now();
-  var focusedDay = DateTime.now();
-
-  var returnDate = DateTime.now();
-  var returnDateFocusedDay = DateTime.now().add(const Duration(days: 1));
-  var returnDateFirstDay = DateTime.now().add(const Duration(days: 1));
-
-  var justificationTextFieldController = TextEditingController();
-
   void onRequestDaySelected(DateTime selectedDay, DateTime focusedDay) {
     setState(() {
-      requestDate = selectedDay;
-      this.focusedDay = focusedDay;
+      controller.requestDate = selectedDay;
+      controller.focusedDay = focusedDay;
 
-      returnDateFocusedDay = requestDate.add(const Duration(days: 1));
-      returnDateFirstDay = requestDate.add(const Duration(days: 1));
+      controller.returnDateFocusedDay =
+          controller.requestDate.add(const Duration(days: 1));
+      controller.returnDateFirstDay =
+          controller.requestDate.add(const Duration(days: 1));
     });
   }
 
   void onReturnDaySelected(DateTime selectedDay, DateTime focusedDay) {
     setState(() {
-      returnDate = selectedDay;
-      returnDateFocusedDay = focusedDay;
+      controller.returnDate = selectedDay;
+      controller.returnDateFocusedDay = focusedDay;
     });
-  }
-
-  String getMonth(int month) {
-    var monthsOfTheYear = {
-      1: "Janeiro",
-      2: "Fevereiro",
-      3: "Março",
-      4: "Abril",
-      5: "Maio",
-      6: "Junho",
-      7: "Julho",
-      8: "Agosto",
-      9: "Setembro",
-      10: "Outubro",
-      11: "Novembro",
-      12: "Dezembro",
-    };
-
-    return monthsOfTheYear[month] ?? "Janeiro";
   }
 
   @override
@@ -103,7 +72,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Form(
-                key: formKey,
+                key: controller.formKey,
                 child: Column(
                   children: [
                     const Text(
@@ -115,15 +84,15 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                       ),
                     ),
                     TableCalendar(
-                      focusedDay: focusedDay,
-                      firstDay: firstDay,
-                      lastDay: lastDay,
+                      focusedDay: controller.focusedDay,
+                      firstDay: controller.firstDay,
+                      lastDay: controller.lastDay,
                       calendarFormat: CalendarFormat.week,
                       daysOfWeekVisible: false,
                       rowHeight: 69,
                       onDaySelected: onRequestDaySelected,
                       selectedDayPredicate: (day) {
-                        return isSameDay(requestDate, day);
+                        return isSameDay(controller.requestDate, day);
                       },
                       headerStyle: const HeaderStyle(
                         formatButtonVisible: false,
@@ -142,7 +111,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                           );
                         },
                         headerTitleBuilder: (context, day) => Text(
-                          getMonth(day.month),
+                          controller.getMonth(day.month),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontFamily: "Segoe_UI",
@@ -164,15 +133,15 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                       ),
                     ),
                     TableCalendar(
-                      focusedDay: returnDateFocusedDay,
-                      firstDay: returnDateFirstDay,
-                      lastDay: lastDay,
+                      focusedDay: controller.returnDateFocusedDay,
+                      firstDay: controller.returnDateFirstDay,
+                      lastDay: controller.lastDay,
                       calendarFormat: CalendarFormat.week,
                       daysOfWeekVisible: false,
                       rowHeight: 69,
                       onDaySelected: onReturnDaySelected,
                       selectedDayPredicate: (day) {
-                        return isSameDay(returnDate, day);
+                        return isSameDay(controller.returnDate, day);
                       },
                       headerStyle: const HeaderStyle(
                         formatButtonVisible: false,
@@ -191,7 +160,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                           );
                         },
                         headerTitleBuilder: (context, day) => Text(
-                          getMonth(day.month),
+                          controller.getMonth(day.month),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontFamily: "Segoe_UI",
@@ -242,8 +211,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                         ),
                       ),
                       label: 'Representante',
-                      controller: TextEditingController(
-                          text: representative?.name ?? ''),
+                      controller: controller.representativeController,
                     ),
                     const SizedBox(
                       height: 16,
@@ -256,7 +224,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                         hintText:
                             'Escreva uma justificativa para a solicitação do notebook',
                       ),
-                      controller: justificationTextFieldController,
+                      controller: controller.justificationTextFieldController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) => Validators.isNotEmpty(value),
                     ),

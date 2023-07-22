@@ -23,7 +23,6 @@ class GetEquipmentsDataSourceImpl implements GetEquipmentsDataSource {
             const Duration(seconds: 10),
           );
       print(response.body);
-      print(response.statusCode);
       if (response.statusCode == 200) {
         return (jsonDecode(response.body) as List)
             .map(
