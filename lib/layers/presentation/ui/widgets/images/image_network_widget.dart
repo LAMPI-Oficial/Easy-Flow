@@ -20,8 +20,13 @@ class ImageNetworkWidget extends StatelessWidget {
         Icons.error,
         color: Colors.red,
       ),
-      loadingBuilder: (context, child, loadingProgress) =>
-          const Center(child: CircularProgressIndicator.adaptive()),
+      loadingBuilder: (context, child, loadingProgress) {
+        if (loadingProgress == null) {
+          return child;
+        } else {
+          return const Center(child: CircularProgressIndicator.adaptive());
+        }
+      },
     );
   }
 }
