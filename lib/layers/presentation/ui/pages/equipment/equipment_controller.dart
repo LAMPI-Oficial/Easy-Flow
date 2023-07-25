@@ -8,8 +8,9 @@ class EquipmentController {
     return [
       EquipmentEntity(
           date: "${DateTime.now()}", status: Status.DISAPPROVED, id: 1),
-      EquipmentEntity(date: DateTime.now(), status: Status.APPROVED, id: 2),
-      EquipmentEntity(date: DateTime.now(), status: Status.PENDING, id: 1),
+      EquipmentEntity(
+          date: '${DateTime.now()}', status: Status.APPROVED, id: 2),
+      EquipmentEntity(date: '${DateTime.now()}', status: Status.PENDING, id: 1),
     ];
   }
 
