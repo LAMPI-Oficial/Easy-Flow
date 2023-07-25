@@ -50,8 +50,7 @@ class ProfileController {
         dataUser = value;
         emailTextEditingController.text = dataUser!.person.email;
         nameTextEditingController.text = dataUser!.person.name;
-        urlPhoto =
-            "https://s2-techtudo.glbimg.com/Bxr-QA4_gL25CarCCxr9JQFybt8=/0x0:1024x609/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/c/u/15eppqSmeTdHkoAKM0Uw/dall-e-2.jpg";
+        urlPhoto = "";
         course = dataUser!.course;
         courseTextEditingController.text = course!.name;
         studyArea = dataUser!.studyArea;
@@ -88,8 +87,7 @@ class ProfileController {
           login: emailTextEditingController.text,
           person: PersonEntity(
             id: dataUser!.id,
-            urlPhoto:
-                "https://s2-techtudo.glbimg.com/Bxr-QA4_gL25CarCCxr9JQFybt8=/0x0:1024x609/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/c/u/15eppqSmeTdHkoAKM0Uw/dall-e-2.jpg",
+            urlPhoto: "",
             name: nameTextEditingController.text,
             email: emailTextEditingController.text,
             admin: dataUser!.person.admin,
