@@ -28,7 +28,7 @@ class EquipmentWidget extends StatelessWidget {
       ),
       subtitle: Column(
         children: [
-          if (equipment.status == Status.APPROVED)
+          if (equipment.statusFormatted == Status.APPROVED)
             const Row(
               children: [
                 CircleAvatar(
@@ -43,7 +43,7 @@ class EquipmentWidget extends StatelessWidget {
                 ),
               ],
             ),
-          if (equipment.status == Status.PENDING)
+          if (equipment.statusFormatted == Status.PENDING)
             const Row(
               children: [
                 CircleAvatar(
@@ -58,7 +58,7 @@ class EquipmentWidget extends StatelessWidget {
                 ),
               ],
             ),
-          if (equipment.status == Status.DISAPPROVED)
+          if (equipment.statusFormatted == Status.DISAPPROVED)
             const Row(
               children: [
                 CircleAvatar(

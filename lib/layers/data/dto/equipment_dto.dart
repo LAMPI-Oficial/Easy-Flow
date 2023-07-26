@@ -16,7 +16,7 @@ class EquipmentDto extends EquipmentEntity {
   static EquipmentDto fromMap(Map map) {
     return EquipmentDto(
       id: map['id'],
-      date: map['date'],
+      date: map['created_at'],
       status: map['status'],
     );
   }

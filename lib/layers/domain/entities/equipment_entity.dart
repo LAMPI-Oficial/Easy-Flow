@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 class EquipmentEntity {
   final int id;
   final String date;
-  final Status status;
+  final String status;
 
   EquipmentEntity({
     required this.id,
@@ -14,5 +14,15 @@ class EquipmentEntity {
 
   String get formattedData {
     return "${DateFormat('dd', 'pt_BR').format(DateTime.parse(date))} de ${DateFormat('MMMM yyyy', 'pt_BR').format(DateTime.parse(date))}";
+  }
+
+  Status get statusFormatted {
+    if (status == "APPROVED") {
+      return Status.APPROVED;
+    } else if (status == "DISAPPROVED") {
+      return Status.DISAPPROVED;
+    } else {
+      return Status.PENDING;
+    }
   }
 }
