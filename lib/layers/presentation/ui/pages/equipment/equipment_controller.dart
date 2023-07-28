@@ -6,9 +6,11 @@ import '../../../../domain/entities/representative_entity.dart';
 class EquipmentController {
   Future<List<EquipmentEntity>> getEquipments() async {
     return [
-      EquipmentEntity(date: DateTime.now(), status: Status.DISAPPROVED, id: 1),
-      EquipmentEntity(date: DateTime.now(), status: Status.APPROVED, id: 2),
-      EquipmentEntity(date: DateTime.now(), status: Status.PENDING, id: 1),
+      EquipmentEntity(
+          date: "${DateTime.now()}", status: Status.DISAPPROVED, id: 1),
+      EquipmentEntity(
+          date: '${DateTime.now()}', status: Status.APPROVED, id: 2),
+      EquipmentEntity(date: '${DateTime.now()}', status: Status.PENDING, id: 1),
     ];
   }
 
@@ -16,17 +18,15 @@ class EquipmentController {
     return [
       RepresentativeEntity(
           name: 'Michael Alves Pereira',
-          area: 'Programação web',
+          studyArea: 'Programação web',
           email: 'maicon159951@gmail.com',
           imageUrl: null,
-          turn: '',
           id: 1),
       RepresentativeEntity(
           name: 'Abrahao',
-          area: 'Programação web',
+          studyArea: 'Programação web',
           email: 'maicon159951@gmail.com',
           imageUrl: null,
-          turn: '',
           id: 2),
     ];
   }

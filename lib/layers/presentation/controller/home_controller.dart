@@ -9,20 +9,20 @@ class HomeController {
         urlPhoto: 'https://dotsy.com.br/wp-content/uploads/2021/04/teste.png',
         representative: RepresentativeEntity(
             name: 'Michael Alves Pereira',
-            area: 'Programação web',
+            studyArea: 'Programação web',
             email: 'maicon159951@gmail.com',
             imageUrl: null,
-            turn: '',
+          
             id: 2),
       ),
       AnnouncementsEntity(
         description: 'description',
         representative: RepresentativeEntity(
             name: 'Michael Alves Pereira',
-            area: 'Programação web',
+            studyArea: 'Programação web',
             email: 'maicon159951@gmail.com',
             imageUrl: null,
-            turn: '',
+          
             id: 1),
       ),
     ];
@@ -32,10 +32,10 @@ class HomeController {
     return <RepresentativeEntity>[
       RepresentativeEntity(
           name: 'Michael Alves Pereira',
-          area: 'Programação web',
+          studyArea: 'Programação web',
           email: 'maicon159951@gmail.com',
           imageUrl: null,
-          turn: '',
+        
           id: 1),
     ];
   }
