@@ -75,7 +75,7 @@ class MenuPage extends StatelessWidget {
                                 height: 92,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12),
-                                  child: FadeInImage(
+                                  /* child: FadeInImage(
                                     placeholder: const AssetImage(
                                         "assets/images/collab_bro_image.png"),
                                     image: const NetworkImage(
@@ -90,6 +90,11 @@ class MenuPage extends StatelessWidget {
                                         ),
                                       );
                                     },
+                                  ),*/
+                                  child: const Image(
+                                    image: AssetImage(
+                                      "assets/images/collab_bro_image.png",
+                                    ),
                                   ),
                                 ),
                               ),

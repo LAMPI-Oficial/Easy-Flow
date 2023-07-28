@@ -9,7 +9,6 @@ class CreateDailyRequestDto {
 
   Map toMap() {
     return {
-      'id': dailyEntity.id,
       'description': dailyEntity.description,
       'created_in': "${dailyEntity.date}",
     };
