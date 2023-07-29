@@ -12,7 +12,7 @@ class ApiConfig {
 
   static const String urlCourses = "/courses";
   static const String urlStudyAreas = "/study_area";
-
+  static const String user = "/users";
   static const String urlSchedules = "/schedules/";
 
   static const String urlDailys = "/dailys";

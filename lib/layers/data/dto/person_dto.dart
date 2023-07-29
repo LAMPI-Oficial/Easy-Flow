@@ -1,14 +1,12 @@
 import 'package:easyflow/layers/domain/entities/enums/person_type_enum.dart';
 import 'package:easyflow/layers/domain/entities/person_entity.dart';
 
-
 class PersonDto extends PersonEntity {
   PersonDto({
     required int id,
     required String? urlPhoto,
     required String name,
     required String email,
-
     required bool admin,
     required bool isRepresentative,
   }) : super(
@@ -16,7 +14,6 @@ class PersonDto extends PersonEntity {
           urlPhoto: urlPhoto,
           name: name,
           email: email,
-
           admin: admin,
           personType:
               isRepresentative ? PersonType.representative : PersonType.student,
@@ -27,7 +24,6 @@ class PersonDto extends PersonEntity {
         "urlPhoto": urlPhoto,
         "name": name,
         "email": email,
-
         "admin": admin,
         "representative":
             personType == PersonType.representative ? true : false,
@@ -38,10 +34,9 @@ class PersonDto extends PersonEntity {
       id: map['id'],
       name: map['name'],
       email: map['email'],
-      admin: map['person_admin'],
-      isRepresentative: map['person_representant'],
+      admin: map['admin'],
+      isRepresentative: map['admin'],
       urlPhoto: map['url_photo'],
-     
     );
   }
 }

@@ -7,12 +7,12 @@ class CourseDto extends CourseEntity {
   Map<String, dynamic> toMap() => {
         "id": id,
         "name": name,
-  };
+      };
 
   static CourseDto fromMap(Map map) {
     return CourseDto(
       id: map['id'],
-      name: map['course_name'],
+      name: map['name'],
     );
   }
 }
