@@ -1,37 +1,58 @@
 {
-  "dailys": [
+  "announcements": [
     {
+      "description": "sdkafsdnfondsinfnsdafnisdnfiansdfinasidfnidsnfionasdoinfasdf",
       "id": 0,
-      "description": "safojdsiaofjiosdjfisdfopafdos",
-      "created_in": "1969-07-20 20:18:04Z"
+      "url_photo": "https://www.pinhal.sp.gov.br/admin/globalarq/noticia/noticia/651_366/84fb5814f73699ed142d79425064de4d.png"
     },
     {
+      "description": "dsiafjidsjifjadsojfioasjdfiojasdijf",
       "id": 1,
-      "description": "safojdsiaofjiosdjfisdfopafdos",
-      "created_in": "1969-07-20 20:18:04Z"
-    },
-    {
-      "id": 2,
-      "description": "safojdsiaofjiosdjfisdfopafdos",
-      "created_in": "1969-07-20 20:18:04Z"
+      "url_photo": "https://www.pinhal.sp.gov.br/admin/globalarq/noticia/noticia/651_366/84fb5814f73699ed142d79425064de4d.png"
     }
   ],
   "complaints": [
     {
-      "id": 0,
+      "created_in": "1969-07-20 20:18:04Z",
       "description": "safojdsiaofjiosdjfisdfopafdos",
-      "created_in": "1969-07-20 20:18:04Z"
+      "id": 0
     },
     {
-      "id": 1,
+      "created_in": "1969-07-20 20:18:04Z",
       "description": "safojdsiaofjiosdjfisdfopafdos",
-      "created_in": "1969-07-20 20:18:04Z"
+      "id": 1
     },
     {
-      "id": 2,
+      "created_in": "1969-07-20 20:18:04Z",
       "description": "safojdsiaofjiosdjfisdfopafdos",
-      "created_in": "1969-07-20 20:18:04Z"
+      "id": 2
     }
+  ],
+  "courses": [
+    { "id": 0, "name": "ADS" },
+    { "id": 1, "name": "Redes de computadores" }
+  ],
+  "dailys": [
+    {
+      "created_in": "1969-07-20 20:18:04Z",
+      "description": "safojdsiaofjiosdjfisdfopafdos",
+      "id": 0
+    },
+    {
+      "created_in": "1969-07-20 20:18:04Z",
+      "description": "safojdsiaofjiosdjfisdfopafdos",
+      "id": 1
+    },
+    {
+      "created_in": "1969-07-20 20:18:04Z",
+      "description": "safojdsiaofjiosdjfisdfopafdos",
+      "id": 2
+    }
+  ],
+  "equipments": [
+    { "created_at": "2023-07-17 19:26:00", "id": 0, "status": "PENDING" },
+    { "created_at": "2023-07-17 19:26:00", "id": 1, "status": "APPROVED" },
+    { "created_at": "2023-07-17 19:26:00", "id": 2, "status": "DISAPPROVED" }
   ],
   "representatives": [
     {
@@ -49,21 +70,29 @@
       "url_photo": ""
     }
   ],
-  "announcements": [
-    {
-      "description": "sdkafsdnfondsinfnsdafnisdnfiansdfinasidfnidsnfionasdoinfasdf",
-      "id": 0,
-      "url_photo": "https://www.pinhal.sp.gov.br/admin/globalarq/noticia/noticia/651_366/84fb5814f73699ed142d79425064de4d.png"
-    },
-    {
-      "description": "dsiafjidsjifjadsojfioasjdfiojasdijf",
-      "id": 1,
-      "url_photo": "https://www.pinhal.sp.gov.br/admin/globalarq/noticia/noticia/651_366/84fb5814f73699ed142d79425064de4d.png"
-    }
+  "study_area": [
+    { "id": 0, "name": "Programação Web" },
+    { "id": 1, "name": "Inteligência artifícial" }
   ],
-  "equipments": [
-    { "created_at": "2023-07-17 19:26:00", "id": 0, "status": "PENDING" },
-    { "created_at": "2023-07-17 19:26:00", "id": 1, "status": "APPROVED" },
-    { "created_at": "2023-07-17 19:26:00", "id": 2, "status": "DISAPPROVED" }
+  "users": [
+    {
+      "user": {
+        "course_id": 1,
+        "course_name": "Redes de computadores",
+        "id": 1,
+        "login": "andesonsilva@gmail.com",
+        "studyArea_id": 0,
+        "studyArea_name": "Programação Web",
+        "tb_person": {
+          "admin": false,
+          "email": "andesonsilva@gmail.com",
+          "id": 1,
+          "name": "Andeson Silva",
+          "representative": false,
+          "urlPhoto": ""
+        },
+        "token": "token"
+      }
+    }
   ]
 }
