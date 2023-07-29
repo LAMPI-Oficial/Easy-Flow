@@ -1,17 +1,20 @@
 import 'package:easyflow/layers/presentation/ui/widgets/images/image_adaptive_widget.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CircleAvatarWidget extends StatelessWidget {
   final void Function()? onTap;
   final String? urlPhoto;
   final String name;
   final double? maxRadius;
-  const CircleAvatarWidget({
+  bool isMenu;
+  CircleAvatarWidget({
     Key? key,
     required this.name,
     this.maxRadius,
     this.urlPhoto,
     this.onTap,
+    this.isMenu = false,
   }) : super(key: key);
 
   String getInitials(String fullName) {
@@ -38,16 +41,26 @@ class CircleAvatarWidget extends StatelessWidget {
         width: maxRadius ?? 50,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            shape: BoxShape.circle),
-        child: urlPhoto != null
-            ? ImageAdaptiveWidget(urlPhoto!)
-            : Text(
-                getInitials(name),
-                style: TextStyle(
-                    fontSize: maxRadius != null ? maxRadius! / 3 : 14,
-                    color: Theme.of(context).colorScheme.onPrimary),
-              ),
+          color: Theme.of(context).colorScheme.primary,
+          shape: isMenu ? BoxShape.rectangle : BoxShape.circle,
+        ),
+        child: (name == "" && urlPhoto == "")
+            ? const CircularProgressIndicator(
+                color: Colors.white,
+              )
+            : ((urlPhoto == "" || urlPhoto == null)
+                ? Text(
+                    getInitials(name),
+                    style: TextStyle(
+                        fontSize: maxRadius != null ? maxRadius! / 3 : 14,
+                        color: Theme.of(context).colorScheme.onPrimary),
+                  )
+                : ImageAdaptiveWidget(
+                    isMenu: isMenu,
+                    urlPhoto!,
+                    height: maxRadius ?? 100,
+                    width: maxRadius ?? 100,
+                  )),
       ),
     );
   }
