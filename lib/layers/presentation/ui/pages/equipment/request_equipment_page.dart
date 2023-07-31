@@ -27,22 +27,24 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
 
   selectRepresentative(RepresentativeEntity representative) {
     setState(() {
-      representative = representative;
+      controller.representative = representative;
+      context.pop();
+      if (controller.representative.id > 0) {
+        controller.representativeController.text =
+            controller.representative.name;
+      }
     });
-    context.pop();
-  }
-
-  requestEquipment(context) {
-    if (controller.formKey.currentState!.validate()) {
-      context.push('/equipments');
-    }
   }
 
   void onRequestDaySelected(DateTime selectedDay, DateTime focusedDay) {
-    setState(() {
-      controller.requestDate = selectedDay;
-      controller.focusedDay = focusedDay;
+    controller.requestDate = selectedDay;
+    controller.focusedDay = focusedDay;
 
+    setState(() {
+      if (controller.returnDate.compareTo(controller.requestDate) <= 0) {
+        controller.returnDate =
+            controller.requestDate.add(const Duration(days: 1));
+      }
       controller.returnDateFocusedDay =
           controller.requestDate.add(const Duration(days: 1));
       controller.returnDateFirstDay =
@@ -196,16 +198,12 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                               height: 16,
                             ),
                             builder: (representative) => RepresentativeWidget(
-                              selected: representative.id == representative.id
+                              selected: controller.representative.id ==
+                                      representative.id
                                   ? true
                                   : false,
                               representative: representative,
-                              onTap: () {
-                                setState(() {
-                                  representative = representative;
-                                  context.pop();
-                                });
-                              },
+                              onTap: () => selectRepresentative(representative),
                             ),
                           ),
                         ),
@@ -239,7 +237,11 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
           height: 50,
           margin: const EdgeInsets.all(16),
           child: ElevatedButton(
-            onPressed: () => requestEquipment(context),
+            onPressed: () => controller.requestEquipment(
+              context,
+              controller.requestDate,
+              controller.returnDate,
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primary,
               elevation: 0,

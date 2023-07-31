@@ -5,11 +5,13 @@ class EquipmentEntity {
   final int id;
   final String date;
   final String status;
+  final int idRepresentative;
 
   EquipmentEntity({
     required this.id,
     required this.date,
     required this.status,
+    required this.idRepresentative,
   });
 
   String get formattedData {

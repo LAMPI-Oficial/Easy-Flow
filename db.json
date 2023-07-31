@@ -29,8 +29,14 @@
     }
   ],
   "courses": [
-    { "id": 0, "name": "ADS" },
-    { "id": 1, "name": "Redes de computadores" }
+    {
+      "id": 0,
+      "name": "ADS"
+    },
+    {
+      "id": 1,
+      "name": "Redes de computadores"
+    }
   ],
   "dailys": [
     {
@@ -50,9 +56,24 @@
     }
   ],
   "equipments": [
-    { "created_at": "2023-07-17 19:26:00", "id": 0, "status": "PENDING" },
-    { "created_at": "2023-07-17 19:26:00", "id": 1, "status": "APPROVED" },
-    { "created_at": "2023-07-17 19:26:00", "id": 2, "status": "DISAPPROVED" }
+    {
+      "created_at": "2023-07-17 19:26:00",
+      "id": 0,
+      "status": "PENDING",
+      "id_representative": 0
+    },
+    {
+      "created_at": "2023-07-17 19:26:00",
+      "id": 1,
+      "status": "APPROVED",
+      "id_representative": 1
+    },
+    {
+      "created_at": "2023-07-17 19:26:00",
+      "id": 2,
+      "status": "DISAPPROVED",
+      "id_representative": 0
+    }
   ],
   "representatives": [
     {
@@ -71,8 +92,14 @@
     }
   ],
   "study_area": [
-    { "id": 0, "name": "Programação Web" },
-    { "id": 1, "name": "Inteligência artifícial" }
+    {
+      "id": 0,
+      "name": "Programação Web"
+    },
+    {
+      "id": 1,
+      "name": "Inteligência artifícial"
+    }
   ],
   "users": [
     {

@@ -5,12 +5,14 @@ class EquipmentDto extends EquipmentEntity {
     required super.id,
     required super.date,
     required super.status,
+    required super.idRepresentative,
   });
 
   Map<String, dynamic> toMap() => {
         "id": id,
         "date": date,
         "status": status,
+        'id_representative' : idRepresentative,
       };
 
   static EquipmentDto fromMap(Map map) {
@@ -18,6 +20,7 @@ class EquipmentDto extends EquipmentEntity {
       id: map['id'],
       date: map['created_at'],
       status: map['status'],
+      idRepresentative: map['id_representative'],
     );
   }
 }
