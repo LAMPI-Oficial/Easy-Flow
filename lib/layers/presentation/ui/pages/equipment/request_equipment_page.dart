@@ -1,4 +1,5 @@
 import 'package:easyflow/core/utils/validators_util.dart';
+import 'package:easyflow/layers/domain/entities/equipment_entity.dart';
 import 'package:easyflow/layers/domain/entities/representative_entity.dart';
 import 'package:easyflow/layers/presentation/controller/equipment_controller.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/calendar_day_widget.dart';
@@ -239,8 +240,14 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
           child: ElevatedButton(
             onPressed: () => controller.requestEquipment(
               context,
-              controller.requestDate,
-              controller.returnDate,
+              EquipmentEntity(
+                date: "${DateTime.now()}",
+                status: "PENDING",
+                idRepresentative: controller.representative.id,
+                dateRequest: "${controller.requestDate}",
+                dateReturn: "${controller.returnDate}",
+                justify: controller.justificationTextFieldController.text,
+              ),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primary,

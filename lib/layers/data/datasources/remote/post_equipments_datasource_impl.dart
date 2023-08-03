@@ -20,19 +20,19 @@ class PostEquipmentsDataSourceImpl implements PostEquipmentsDataSource {
             Uri.parse(url),
             body: jsonEncode(
               EquipmentDto(
-                      id: data.id,
-                      date: data.date,
-                      status: data.status,
-                      idRepresentative: data.idRepresentative)
-                  .toMap(),
+                id: data.id,
+                date: data.date,
+                status: data.status,
+                idRepresentative: data.idRepresentative,
+                dateRequest: data.dateRequest,
+                dateReturn: data.dateReturn,
+                justify: data.justify,
+              ).toMap(),
             ),
             headers: HttpHeadersConfig.buildHeadersWithUserLogged(),
           )
-          .timeout(
-            const Duration(seconds: 10),
-          );
-      print(response.body);
-      if (response.statusCode == 200) {
+          .timeout(const Duration(seconds: 10));
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return EquipmentDto.fromMap(
           jsonDecode(
             response.body,

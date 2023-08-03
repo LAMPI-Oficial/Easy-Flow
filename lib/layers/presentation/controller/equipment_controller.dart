@@ -1,7 +1,10 @@
 import 'package:easyflow/layers/domain/entities/equipment_entity.dart';
+import 'package:easyflow/layers/domain/exceptions/api_exception.dart';
 import 'package:easyflow/layers/domain/usecases/get_equipments_usercase.dart';
 import 'package:easyflow/layers/domain/usecases/post_equipments_usercase.dart';
+import 'package:easyflow/layers/presentation/ui/widgets/dialogs_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../domain/entities/representative_entity.dart';
 
@@ -62,19 +65,24 @@ class EquipmentController {
     ];
   }
 
-  requestEquipment(context, DateTime requestDate, DateTime returnDate) {
-    bool datesValid;
-
-    if (returnDate.compareTo(requestDate) <= 0) {
-      datesValid = true;
+  requestEquipment(BuildContext context, EquipmentEntity equipment) async {
+    if (formKey.currentState!.validate() &&
+        returnDate.compareTo(requestDate) > 0) {
+      Dialogs.loading(context);
+      try {
+        _postEquipmentsUseCase(equipment).then(
+          (value) => context.pushReplacement('/menu'),
+        );
+      } on ApiException catch (e) {
+        Navigator.of(context).pop();
+        Dialogs.error(context, title: e.title, message: e.message);
+      }
     } else {
-      datesValid = false;
-    }
-// controller.formKey.currentState!.validate() &&
-    if (datesValid) {
-      print("dados salvos");
-    } else {
-      print("erro");
+      Dialogs.error(
+        context,
+        title: "Erro",
+        message: "Por favor, preencha todos os dados!",
+      );
     }
   }
 

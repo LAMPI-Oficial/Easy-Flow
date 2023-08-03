@@ -2,16 +2,22 @@ import 'package:easyflow/layers/domain/entities/enums/status_enum.dart';
 import 'package:intl/intl.dart';
 
 class EquipmentEntity {
-  final int id;
+  final int? id;
   final String date;
   final String status;
   final int idRepresentative;
+  final String dateRequest;
+  final String dateReturn;
+  final String justify;
 
   EquipmentEntity({
-    required this.id,
+    this.id,
     required this.date,
     required this.status,
     required this.idRepresentative,
+    required this.dateRequest,
+    required this.dateReturn,
+    required this.justify,
   });
 
   String get formattedData {
