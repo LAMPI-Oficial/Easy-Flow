@@ -1,21 +1,27 @@
 import 'package:easyflow/layers/domain/entities/equipment_entity.dart';
-import 'package:easyflow/layers/presentation/ui/pages/equipment/equipment_controller.dart';
-import 'package:easyflow/layers/presentation/ui/pages/equipment/widgets/equipment_widget.dart';
+import 'package:easyflow/layers/presentation/controller/equipment_controller.dart';
+import 'package:easyflow/layers/presentation/ui/widgets/equipment_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/listview/listview_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
-class EquipmentsPage extends StatelessWidget {
+class EquipmentsPage extends StatefulWidget {
   const EquipmentsPage({super.key});
 
+  @override
+  State<EquipmentsPage> createState() => _EquipmentsPageState();
+}
+
+class _EquipmentsPageState extends State<EquipmentsPage> {
   final green = const Color(0xff69c05b);
   final yellow = const Color(0xffFFDB5E);
   final red = const Color(0xffFF4C4C);
 
+  final controller = GetIt.I.get<EquipmentController>();
+
   @override
   Widget build(BuildContext context) {
-    final controller = GetIt.I.get<EquipmentController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -64,6 +70,14 @@ class EquipmentsPage extends StatelessWidget {
             Expanded(
               child: ListViewWidget<EquipmentEntity>(
                 padding: const EdgeInsets.all(16),
+                asyncListFilter: (value, list) => list
+                    .where(
+                      (element) => element.id
+                          .toString()
+                          .toLowerCase()
+                          .contains(value.toLowerCase()),
+                    )
+                    .toList(),
                 onRefresh: () => controller.getEquipments(),
                 asyncListCallback: () => controller.getEquipments(),
                 separatorBuilder: (p0, p1) => const SizedBox(
@@ -81,17 +95,6 @@ class EquipmentsPage extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
     );
-  }
-
-  Color _getDropColorByStatus(String status) {
-    switch (status) {
-      case "Aprovado":
-        return green;
-      case "Pendente":
-        return yellow;
-      default:
-        return red;
-    }
   }
 
   Widget _requestStatusWidget(

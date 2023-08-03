@@ -1,7 +1,8 @@
 import 'package:easyflow/core/utils/validators_util.dart';
+import 'package:easyflow/layers/domain/entities/equipment_entity.dart';
 import 'package:easyflow/layers/domain/entities/representative_entity.dart';
-import 'package:easyflow/layers/presentation/ui/pages/equipment/equipment_controller.dart';
-import 'package:easyflow/layers/presentation/ui/pages/equipment/widgets/calendar_day_widget.dart';
+import 'package:easyflow/layers/presentation/controller/equipment_controller.dart';
+import 'package:easyflow/layers/presentation/ui/widgets/calendar_day_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/button_text_field_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/listview/listview_widget.dart';
 import 'package:easyflow/layers/presentation/ui/widgets/modals_widget.dart';
@@ -19,73 +20,44 @@ class RequestEquipmentPage extends StatefulWidget {
 }
 
 class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
-  final formKey = GlobalKey<FormState>();
-
   Widget? _dayBuilder(BuildContext cxt, DateTime day, DateTime focusedDay) {
     return CalendarDayWidget(day: day, focusedDay: focusedDay);
   }
 
   final controller = GetIt.I.get<EquipmentController>();
-  RepresentativeEntity? representative;
 
-  selectRepresentative(RepresentativeEntity _representative) {
+  selectRepresentative(RepresentativeEntity representative) {
     setState(() {
-      representative = _representative;
+      controller.representative = representative;
+      context.pop();
+      if (controller.representative.id > 0) {
+        controller.representativeController.text =
+            controller.representative.name;
+      }
     });
-    context.pop();
   }
-
-  requestEquipment(context) {
-    if (formKey.currentState!.validate()) {
-      context.push('/equipments');
-    }
-  }
-
-  var firstDay = DateTime.now();
-  var lastDay = DateTime.utc(DateTime.now().year + 1);
-  var requestDate = DateTime.now();
-  var focusedDay = DateTime.now();
-
-  var returnDate = DateTime.now();
-  var returnDateFocusedDay = DateTime.now().add(const Duration(days: 1));
-  var returnDateFirstDay = DateTime.now().add(const Duration(days: 1));
-
-  var justificationTextFieldController = TextEditingController();
 
   void onRequestDaySelected(DateTime selectedDay, DateTime focusedDay) {
-    setState(() {
-      requestDate = selectedDay;
-      this.focusedDay = focusedDay;
+    controller.requestDate = selectedDay;
+    controller.focusedDay = focusedDay;
 
-      returnDateFocusedDay = requestDate.add(const Duration(days: 1));
-      returnDateFirstDay = requestDate.add(const Duration(days: 1));
+    setState(() {
+      if (controller.returnDate.compareTo(controller.requestDate) <= 0) {
+        controller.returnDate =
+            controller.requestDate.add(const Duration(days: 1));
+      }
+      controller.returnDateFocusedDay =
+          controller.requestDate.add(const Duration(days: 1));
+      controller.returnDateFirstDay =
+          controller.requestDate.add(const Duration(days: 1));
     });
   }
 
   void onReturnDaySelected(DateTime selectedDay, DateTime focusedDay) {
     setState(() {
-      returnDate = selectedDay;
-      returnDateFocusedDay = focusedDay;
+      controller.returnDate = selectedDay;
+      controller.returnDateFocusedDay = focusedDay;
     });
-  }
-
-  String getMonth(int month) {
-    var monthsOfTheYear = {
-      1: "Janeiro",
-      2: "Fevereiro",
-      3: "Março",
-      4: "Abril",
-      5: "Maio",
-      6: "Junho",
-      7: "Julho",
-      8: "Agosto",
-      9: "Setembro",
-      10: "Outubro",
-      11: "Novembro",
-      12: "Dezembro",
-    };
-
-    return monthsOfTheYear[month] ?? "Janeiro";
   }
 
   @override
@@ -103,7 +75,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Form(
-                key: formKey,
+                key: controller.formKey,
                 child: Column(
                   children: [
                     const Text(
@@ -115,15 +87,15 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                       ),
                     ),
                     TableCalendar(
-                      focusedDay: focusedDay,
-                      firstDay: firstDay,
-                      lastDay: lastDay,
+                      focusedDay: controller.focusedDay,
+                      firstDay: controller.firstDay,
+                      lastDay: controller.lastDay,
                       calendarFormat: CalendarFormat.week,
                       daysOfWeekVisible: false,
                       rowHeight: 69,
                       onDaySelected: onRequestDaySelected,
                       selectedDayPredicate: (day) {
-                        return isSameDay(requestDate, day);
+                        return isSameDay(controller.requestDate, day);
                       },
                       headerStyle: const HeaderStyle(
                         formatButtonVisible: false,
@@ -142,7 +114,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                           );
                         },
                         headerTitleBuilder: (context, day) => Text(
-                          getMonth(day.month),
+                          controller.getMonth(day.month),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontFamily: "Segoe_UI",
@@ -164,15 +136,15 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                       ),
                     ),
                     TableCalendar(
-                      focusedDay: returnDateFocusedDay,
-                      firstDay: returnDateFirstDay,
-                      lastDay: lastDay,
+                      focusedDay: controller.returnDateFocusedDay,
+                      firstDay: controller.returnDateFirstDay,
+                      lastDay: controller.lastDay,
                       calendarFormat: CalendarFormat.week,
                       daysOfWeekVisible: false,
                       rowHeight: 69,
                       onDaySelected: onReturnDaySelected,
                       selectedDayPredicate: (day) {
-                        return isSameDay(returnDate, day);
+                        return isSameDay(controller.returnDate, day);
                       },
                       headerStyle: const HeaderStyle(
                         formatButtonVisible: false,
@@ -191,7 +163,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                           );
                         },
                         headerTitleBuilder: (context, day) => Text(
-                          getMonth(day.month),
+                          controller.getMonth(day.month),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontFamily: "Segoe_UI",
@@ -204,47 +176,41 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                     const SizedBox(
                       height: 32,
                     ),
-                  ButtonTextFieldWidget(
+                    ButtonTextFieldWidget(
                       validator: (value) => Validators.isNotEmpty(value),
                       onTap: () => Modals.page(
-                          context: context,
-                          title: const Text('Selecione o representate'),
-                             body: SafeArea(
-                                  child: ListViewWidget<RepresentativeEntity>(
-                                      searchFieldEnabled: true,
-                                      padding: const EdgeInsets.all(16),
-                                      asyncListFilter: (value, list) => list
-                                          .where(
-                                            (element) => element.name
-                                                .toLowerCase()
-                                                .contains(value.toLowerCase()),
-                                          )
-                                          .toList(),
-                                      onRefresh: () => controller.getRepresentatives(),
-                                      asyncListCallback: () =>
-                                          controller.getRepresentatives(),
-                                      separatorBuilder: (p0, p1) =>
-                                          const SizedBox(
-                                            height: 16,
-                                          ),
-                                      builder: (_representative) =>
-                                          RepresentativeWidget(
-                                              selected: representative?.id ==
-                                                      _representative.id
-                                                  ? true
-                                                  : false,
-                                            representative: _representative,
-                                              onTap: () {
-                                                setState(() {
-                                                  representative = _representative;
-                                                  context.pop();
-                                                });
-                                              },),),
-                                ),
-                              ),
+                        context: context,
+                        title: const Text('Selecione o representate'),
+                        body: SafeArea(
+                          child: ListViewWidget<RepresentativeEntity>(
+                            searchFieldEnabled: true,
+                            padding: const EdgeInsets.all(16),
+                            asyncListFilter: (value, list) => list
+                                .where(
+                                  (element) => element.name
+                                      .toLowerCase()
+                                      .contains(value.toLowerCase()),
+                                )
+                                .toList(),
+                            onRefresh: () => controller.getRepresentatives(),
+                            asyncListCallback: () =>
+                                controller.getRepresentatives(),
+                            separatorBuilder: (p0, p1) => const SizedBox(
+                              height: 16,
+                            ),
+                            builder: (representative) => RepresentativeWidget(
+                              selected: controller.representative.id ==
+                                      representative.id
+                                  ? true
+                                  : false,
+                              representative: representative,
+                              onTap: () => selectRepresentative(representative),
+                            ),
+                          ),
+                        ),
+                      ),
                       label: 'Representante',
-                      controller: TextEditingController(
-                          text: representative?.name ?? ''),
+                      controller: controller.representativeController,
                     ),
                     const SizedBox(
                       height: 16,
@@ -257,7 +223,7 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
                         hintText:
                             'Escreva uma justificativa para a solicitação do notebook',
                       ),
-                      controller: justificationTextFieldController,
+                      controller: controller.justificationTextFieldController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) => Validators.isNotEmpty(value),
                     ),
@@ -272,7 +238,17 @@ class _RequestEquipmentPageState extends State<RequestEquipmentPage> {
           height: 50,
           margin: const EdgeInsets.all(16),
           child: ElevatedButton(
-            onPressed: () => requestEquipment(context),
+            onPressed: () => controller.requestEquipment(
+              context,
+              EquipmentEntity(
+                date: "${DateTime.now()}",
+                status: "PENDING",
+                idRepresentative: controller.representative.id,
+                dateRequest: "${controller.requestDate}",
+                dateReturn: "${controller.returnDate}",
+                justify: controller.justificationTextFieldController.text,
+              ),
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primary,
               elevation: 0,

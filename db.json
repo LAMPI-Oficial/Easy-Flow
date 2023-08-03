@@ -29,8 +29,14 @@
     }
   ],
   "courses": [
-    { "id": 0, "name": "ADS" },
-    { "id": 1, "name": "Redes de computadores" }
+    {
+      "id": 0,
+      "name": "ADS"
+    },
+    {
+      "id": 1,
+      "name": "Redes de computadores"
+    }
   ],
   "dailys": [
     {
@@ -50,9 +56,33 @@
     }
   ],
   "equipments": [
-    { "created_at": "2023-07-17 19:26:00", "id": 0, "status": "PENDING" },
-    { "created_at": "2023-07-17 19:26:00", "id": 1, "status": "APPROVED" },
-    { "created_at": "2023-07-17 19:26:00", "id": 2, "status": "DISAPPROVED" }
+    {
+      "id": 1,
+      "created_at": "2023-08-02 21:29:05.290507",
+      "status": "PENDING",
+      "id_representative": 1,
+      "date_request": "2023-08-02 00:00:00.000Z",
+      "date_return": "2023-08-03 00:00:00.000Z",
+      "justify": "Notebook Acer Aspire A315"
+    },
+    {
+      "id": 2,
+      "created_at": "2023-08-02 21:29:45.133181",
+      "status": "PENDING",
+      "id_representative": 2,
+      "date_request": "2023-08-03 00:00:00.000Z",
+      "date_return": "2023-08-04 00:00:00.000Z",
+      "justify": "Notebook para desenvolvimento mobile com Flutter."
+    },
+    {
+      "id": 3,
+      "created_at": "2023-08-02 21:31:49.330426",
+      "status": "PENDING",
+      "id_representative": 1,
+      "date_request": "2023-08-03 00:00:00.000Z",
+      "date_return": "2023-08-04 00:00:00.000Z",
+      "justify": "Notebook para inteligência artificial"
+    }
   ],
   "representatives": [
     {
@@ -71,8 +101,14 @@
     }
   ],
   "study_area": [
-    { "id": 0, "name": "Programação Web" },
-    { "id": 1, "name": "Inteligência artifícial" }
+    {
+      "id": 0,
+      "name": "Programação Web"
+    },
+    {
+      "id": 1,
+      "name": "Inteligência artifícial"
+    }
   ],
   "users": [
     {
