@@ -1,5 +1,6 @@
 {
     "githubPullRequests.ignoredPullRequestBranches": [
         "main"
-    ]
+    ],
+    "cmake.sourceDirectory": "C:/Users/lucas/Downloads/flutter/Easy-Flow/linux"
 }

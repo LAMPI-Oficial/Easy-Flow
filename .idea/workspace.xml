@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="06318f79-3f39-42cf-8bc2-49acc3c149e0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Easy-Flow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Easy-Flow.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/routers/routers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routers/routers.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/data/datasources/remote/create_person_datasource_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/data/datasources/remote/create_person_datasource_impl.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/data/dto/course_dto.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/data/dto/course_dto.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/data/dto/study_area_dto.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/data/dto/study_area_dto.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/presentation/controller/sign_up_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/presentation/controller/sign_up_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/presentation/ui/pages/sign_up/address_sign_up_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/presentation/ui/pages/sign_up/password_sign_up_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/presentation/ui/pages/sign_up/repeat_password_sign_up_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/layers/presentation/ui/pages/sign_up/sign_up_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/layers/presentation/ui/pages/sign_up/sign_up_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2U9qgqRXjkuD0nnrfufgGbGNX7R" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="06318f79-3f39-42cf-8bc2-49acc3c149e0" name="Changes" comment="" />
+      <created>1692362267114</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692362267114</updated>
+    </task>
+    <servers />
+  </component>
+</project>
